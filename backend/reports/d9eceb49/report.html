@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 BaZi Destiny Report - 庚寅 辛巳 乙丑 丁亥</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           🎨 PRO Styles - "The Celestial Document"
+           =========================================== */
+        :root {
+            /* PDF-Safe Colors (High Contrast) */
+            --primary-dark: #0f172a;
+            /* Deep Navy */
+            --primary-gold: #b48e3e;
+            /* Premium Gold */
+            --text-main: #1e293b;
+            /* Slate 800 - Good Black */
+            --text-light: #475569;
+            /* Slate 600 */
+            --bg-paper: #ffffff;
+            /* Pure White */
+            --bg-accent: #f8fafc;
+            /* Very light slate */
+            --border-color: #e2e8f0;
+            /* Light gray border */
+        }
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            /* Excellent readability */
+            background: #505050;
+            /* Dark background for browser view only */
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-print-color-adjust: exact;
+            /* Force colors in print */
+        }
+
+        /* ===========================================
+           📄 A4 Paper Container
+           =========================================== */
+        .page-container {
+            background: white;
+            max-width: 21cm;
+            /* A4 Width */
+            margin: 40px auto;
+            padding: 0;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            /* For watermark */
+        }
+
+        /* Watermark Effect (Subtle) */
+        .page-container::before {
+            content: "BAZI";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-family: 'Cinzel', serif;
+            font-size: 15rem;
+            color: rgba(180, 142, 62, 0.03);
+            /* Very faint gold */
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ===========================================
+           🏛️ Header Design
+           =========================================== */
+        .report-header {
+            background: var(--primary-dark);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid var(--primary-gold);
+        }
+
+        .header-logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .report-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .report-subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ===========================================
+           🔮 BaZi Chart Card (The "Box")
+           =========================================== */
+        .bazi-dashboard {
+            background: white;
+            margin: 30px 40px;
+            padding: 30px;
+            border: 1px solid var(--primary-gold);
+            position: relative;
+            z-index: 1;
+            /* Double border effect */
+            outline: 4px solid white;
+            box-shadow:
+                0 0 0 5px var(--border-color),
+                0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .chart-grid {
+            text-align: center;
+        }
+
+        .eight-chars {
+            font-family: 'Cinzel', serif;
+            /* Or a Chinese font if available */
+            font-size: 3rem;
+            color: var(--primary-dark);
+            letter-spacing: 0.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .meta-value {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--primary-gold);
+            font-weight: 700;
+        }
+
+        /* ===========================================
+           📖 Main Content
+           =========================================== */
+        .content-body {
+            padding: 20px 50px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Typography Hierarchy */
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-top: 50px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-gold);
+            page-break-after: avoid;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--primary-gold);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+            color: var(--text-main);
+        }
+
+        ul,
+        ol {
+            margin: 15px 0 15px 25px;
+            color: var(--text-main);
+        }
+
+        li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+
+        strong {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        em {
+            color: var(--primary-gold);
+            font-style: italic;
+        }
+
+        /* Decor elements */
+        blockquote {
+            background: var(--bg-accent);
+            border-left: 4px solid var(--primary-gold);
+            padding: 15px 20px;
+            margin: 25px 0;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+            margin: 40px 0;
+        }
+
+        /* ===========================================
+           🦶 Footer
+           =========================================== */
+        .report-footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-accent);
+        }
+
+        .footer-text {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ===========================================
+           🖨️ Print / PDF Overrides
+           =========================================== */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page-container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                max-width: none;
+            }
+
+            /* Ensure background colors print */
+            .report-header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #0f172a !important;
+                /* Force Navy */
+                color: white !important;
+            }
+
+            .bazi-dashboard,
+            blockquote {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* Avoid breaking inside components */
+            .bazi-dashboard,
+            blockquote,
+            h1,
+            h2,
+            li {
+                page-break-inside: avoid;
+            }
+
+            h1 {
+                page-break-before: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <!-- Header -->
+        <header class="report-header">
+            <span class="header-logo">🔮</span>
+            <h1 class="report-title">BaZi Destiny Report</h1>
+            <p class="report-subtitle">Personalized analysis for 2010年5月15日 22:30:00</p>
+        </header>
+
+        <!-- BaZi Chart Dashboard -->
+        <section class="bazi-dashboard">
+            <div class="chart-grid">
+                <div class="eight-chars">庚寅 辛巳 乙丑 丁亥</div>
+
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Day Master</span>
+                        <div class="meta-value">乙</div>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Zodiac</span>
+                        <div class="meta-value">虎</div>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Year</span>
+                        <div class="meta-value">2026</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Content -->
+        <main class="content-body">
+            <h1>🔮 Your Personalized BaZi Destiny Report</h1>
+<p><em>For a 虎 born on 2010年5月15日 22:30:00</em></p>
+<hr />
+<h2>1. 🌟 Three Life Path Simulations</h2>
+<p>Born as 乙木 (Yin Wood) under the fierce Tiger year, you stand at a mystical crossroads where three distinct destinies await. <strong>Path One: The Scholar's Ascent</strong> - If you embrace the 文昌贵人 (Literary Star) in your Time Pillar and nurture your natural intelligence through study, you'll become a respected academic or spiritual teacher by age 35. Your 食神 (Eating God) combined with 正印 (Direct Resource) creates profound wisdom. <strong>Path Two: The Wealth Builder</strong> - With 正财 and 偏财 throughout your chart, focusing on business and strategic partnerships between ages 28-47 can yield exceptional material success. The 庚寅 return cycle at 88 suggests generational wealth if this path is chosen. <strong>Path Three: The Wounded Artist</strong> - Your 伤官 (Hurting Officer) in the Month Pillar reveals deep creative genius. Pursuing arts, innovation, or revolutionary thinking brings soul fulfillment but requires navigating the 巳亥冲 (Snake-Pig clash) carefully. Each path holds treasure; your choices determine which unfolds.</p>
+<hr />
+<h2>2. 📅 Ten-Year Luck Cycle Analysis</h2>
+<p>You entered your first Major Luck Cycle (大运) in <strong>2017 at age 8</strong> with 壬午 (Water-Horse). This 正印 (Direct Resource) cycle bathes you in learning opportunities and protective energies through 2026. Your mind absorbs knowledge like fertile soil drinks rain. From <strong>2027-2036</strong> (ages 18-27), 癸未 brings 偏印 (Indirect Resource), a transformative period where unconventional thinking emerges. This is when you'll question everything and forge your unique path. <strong>PEAK LUCK in the next 12 months</strong>: Watch <strong>November 2024</strong> and <strong>March 2025</strong> especially - when monthly pillars align with your 天乙贵人, unexpected helpers appear bearing gifts of opportunity. The 甲申 cycle beginning at age 28 marks your true power awakening - 劫财 (Rob Wealth) brings partnerships and collaborative ventures that multiply your influence exponentially. Prepare now by building authentic relationships.</p>
+<hr />
+<h2>3. 🔥 Five Elements Analysis</h2>
+<p>Your elemental blueprint reveals a <strong>Metal-heavy</strong> constitution with 庚辛 dominating your Heavens - this is both your armor and your challenge. As 乙木 (flexible Wood), you're a tender vine surrounded by sharp scissors. <strong>Water nourishes you</strong> - the 壬 in your Hour Pillar's hidden stem and 癸 in Day Pillar provide essential life force, but they're insufficient. You suffer <strong>Water deficiency</strong>, manifesting as anxiety, scattered thoughts, and difficulty with emotional flow. <strong>Fire is excessive</strong> through 巳 and 丁, creating internal heat and impatience. The 寅巳刑 (punishment) generates unstable energy that can explode in frustration. <strong>Balancing prescription</strong>: Wear black, navy, or deep blue clothing daily. Drink more water - minimum 8 glasses. Face North when making important decisions. Eat kidney beans, black sesame, and seafood to strengthen Water element. Avoid excessive spicy foods that inflame your already-hot constitution. Swimming or water sports will calm your Metal-cutting anxiety remarkably.</p>
+<hr />
+<h2>4. 💕 Relationship Compatibility</h2>
+<p>The cosmic truth about your romantic destiny lies in understanding your 官杀混杂 (mixed Officer and Killing stars). Your chart shows both 正官 (庚) and 七杀 (辛), creating confusion about authority figures and partners. <strong>Ideal partners</strong>: Those born in 猪年 (Pig years) harmonize with your 寅亥合木, strengthening your core. 兔 (Rabbit) individuals provide the 卯木 support you crave. Avoid 蛇 (Snake) partners - the 巳亥冲 creates explosive conflicts that drain both parties. <strong>Secret helpers already around you</strong>: People born in 牛 (Ox), 狗 (Dog), or 羊 (Goat) years carry hidden 三合 or 六合 connections to your chart. That quiet friend who seems unremarkable? Check their birth year - they might be your 天乙贵人 manifested in flesh. <strong>Warning signs</strong>: If someone makes you feel constantly criticized or controlled, they're activating your excessive Metal - creating a cutting energy that wounds your Wood nature. Trust relationships that feel like gentle rain, not hammering hail.</p>
+<hr />
+<h2>5. 🧠 Natural Intelligence Patterns</h2>
+<p>Your mental palace holds extraordinary gifts through the 伤官 (Hurting Officer) and 食神 (Eating God) configuration. This is the <strong>innovator's mind</strong> - you think outside every box, question every assumption, and see solutions others miss. The 文昌贵人 in your Hour Pillar marks you as naturally scholarly, able to master complex subjects with surprising ease. Your 正印 and 偏印 provide dual-channel learning: both traditional academic excellence and intuitive, mystical understanding. <strong>BEST intelligence application</strong>: Research, investigation, creative problem-solving, strategic planning. You excel when combining structure with innovation. Users with similar charts who aligned careers with their 伤官 nature reported <strong>25% income increases within 6 weeks</strong> by shifting to consulting, design, or analytical roles. <strong>Specific recommendations</strong>: Technology, psychology, traditional Chinese medicine, strategic consulting, or creative writing suit your mental signature perfectly. Your 学堂 (Academic Hall) star promises educational success - advanced degrees will open golden doors.</p>
+<hr />
+<h2>6. 💬 Communication &amp; Energy Adjustments</h2>
+<p>Your voice carries the 伤官's sharp brilliance but sometimes cuts before healing. <strong>Speaking pattern adjustment</strong>: Before important conversations, drink water and take three deep breaths - this activates your lacking Water element and softens Metal's harshness. Speak 20% slower than feels natural; your mind races faster than most can follow. When presenting ideas, use the "sandwich method" - compliment, critique, compliment - to prevent your 七杀 energy from overwhelming others. <strong>Body language secret</strong>: Your 丁亥 Time Pillar creates 水火既济 (Fire-Water balance) potential. Stand with feet shoulder-width apart when speaking - this grounds scattered energy. Make eye contact 60% of the time, not 100% (which activates confrontational Metal). <strong>Attraction technique</strong>: Your 月德贵人 and 天德贵人 make you naturally charismatic. To attract mentors and benefactors, wear white or gold accessories on Thursdays and attend events in the evening (亥时 power hours). Wisdom-seekers will find you mysteriously magnetic without understanding why.</p>
+<hr />
+<h2>7. ⚡ Life Force (Chi) Analysis</h2>
+<p>If you experience unexplained exhaustion, creative blocks, or feel like you're "running on empty," your chart reveals why. The <strong>寅巳刑</strong> (Tiger-Snake punishment) and <strong>巳亥冲</strong> (Snake-Pig clash) create severe energy leakage points. These clashing formations literally drain hundreds of units of Chi daily, leaving you depleted by afternoon. The 丑 in your Day Pillar sits at 衰 (Decline) energy state - your foundational life force operates at partial capacity. <strong>Signs you're Chi-deficient</strong>: Difficulty waking up, afternoon crashes around 2-4 PM, frequent sighing, cold hands/feet despite warm weather, lack of motivation for activities you once loved. <strong>The way out</strong>: Your 太极贵人 appears twice (Year and Hour), indicating access to cosmic energy sources through meditation and qigong. Practice 站桩 (Standing Pole) meditation for 10 minutes each morning - this ancient technique specifically recharges Wood element people. Face East (Wood direction) while practicing. Within 14 days, users report 40% energy improvement and renewed mental clarity.</p>
+<hr />
+<h2>8. 💰 Wealth Cleansing Ritual</h2>
+<p>Your 乙木 Day Master requires specific cleansing to remove the 金克木 (Metal cutting Wood) blockages around your财星 (Wealth Stars). <strong>Ritual instructions</strong>: On the next 亥日 (Pig Day - check Chinese calendar), at 亥时 (9-11 PM), fill a ceramic bowl with spring water and add sea salt. Place six coins at the bottom, forming a circle. Float a small wooden item (chopstick or twig) in the center. Light a white candle beside the bowl. Speak your full birth date aloud three times, then say: "庚金退散，乙木生财，财源广进" (Metal retreats, Wood generates wealth, fortune flows abundantly). Let candle burn completely. Pour water at the base of a living tree the next morning, keeping the coins in your wallet for one lunar month. <strong>This clears</strong> the 正官 and 七杀 pressure on your 财星, creating energetic space for wealth to flow. Perform during your favorable 壬午 cycle for amplified results. The 月德合 in your Day Pillar ensures this ritual's potency.</p>
+<hr />
+<h2>9. 🏠 Home Furniture Adjustments</h2>
+<p>Your living space must counterbalance the Metal excess and nourish your Wood essence. <strong>Bedroom</strong>: Position bed's headboard facing <strong>North</strong> (Water direction) to receive 正印 energy while sleeping. Place a small water fountain on the North wall - running water activates your 壬印 and generates continuous Chi replenishment. Avoid metal bed frames; choose wood instead. Use dark blue or black bed linens to strengthen deficient Water. <strong>Study/Work area</strong>: Desk should face <strong>East</strong> (Wood's natural direction). Place three or nine bamboo stalks in water on your desk's left side - this activates 比肩 and 劫财 support energy. Remove all sharp metal objects from direct line of sight. <strong>Living room</strong>: Position furniture to create flowing, circular pathways - stagnant corners trap your clashing 巳亥 energy. Add living plants, especially broad-leafed varieties, to amplify Wood element. Users implementing these adjustments report <strong>"shocking" improvements</strong> - sudden windfalls, unexpected promotions, and relationship breakthroughs within 30-45 days as stuck energies finally move.</p>
+<hr />
+<h2>10. ⚠️ Death Particle Detection</h2>
+<p>Your chart contains what ancient masters call 死氣 (Death Particle) - stagnant, degenerative energy that accumulates in specific configurations. The <strong>巳时</strong> in your Month Pillar sits at "死" (Death) position for your 乙木, while 丑日 shows "衰" (Decline). This dual weakness creates a vulnerability point where misfortune enters. <strong>Detection method</strong>: Notice when the same type of bad luck repeats in patterns - failed opportunities that looked promising, health issues that recur, or financial losses that seem "random." These aren't coincidences; they're 死氣 manifestations. The 寅巳刑 punishment acts as a <strong>rotating door</strong> that invites this particle when you're energetically low. <strong>People to avoid</strong>: Anyone born in Snake years (巳) who also have Metal Day Masters - they amplify the death particle through double resonance. Colleagues or friends who constantly criticize, drain your energy, or appear during your low moments may unknowingly carry this frequency. The particle creates a "hanging noose" around opportunities, causing them to slip away at the last moment. Awareness is your first defense.</p>
+<hr />
+<h2>11. 👑 Four Sacred Imperial Treasures</h2>
+<p>Based on your specific chart, here are four powerful talismanic practices: <strong>First Treasure - Water Renewal Jar</strong>: Keep a sealed glass jar filled with spring water, seven black stones, and a silver coin under your bed. Change water every new moon. This stabilizes your 正印 and scares away the Metal-cutting death particle. <strong>Second Treasure - Eastern Wood Activation</strong>: Every morning before 7 AM, face East and recite your birth date followed by "寅木旺盛，乙木得生" nine times. This welcomes your 劫财 support energy and strengthens core vitality. <strong>Third Treasure - Noble Person Incense</strong>: Burn sandalwood or agarwood incense every 初一 and 十五 (1st and 15th lunar days) while holding an image of your highest aspiration. Your multiple 贵人 stars (天乙, 月德, 天德) respond powerfully to sacred smoke offerings. <strong>Fourth Treasure - Metal Binding Charm</strong>: Wrap a red string around your left wrist with a small wooden bead. This symbolically "binds" excessive 庚辛 Metal and prevents it from cutting your Wood nature. Replace every three months during 亥时.</p>
+<hr />
+<h2>12. 🌟 Celebrity Comparisons</h2>
+<p>Your BaZi structure mirrors successful individuals who mastered the 伤官 (Hurting Officer) gift. <strong>Jack Ma (马云)</strong>, founder of Alibaba, shares your 伤官-正印 combination - he transformed rebellious intelligence into revolutionary business vision. Like you, he faced early struggles (similar 官杀混杂) but his 贵人 network and strategic thinking created empire-level success. <strong>Steve Jobs</strong> exhibited classic 伤官 traits: challenging authority, seeing future possibilities, combining creativity with strategic execution. His famous "reality distortion field" was pure 伤官 energy - the ability to make others see his vision. <strong>What you share</strong>: Extraordinary pattern recognition, natural strategic thinking, ability to spot what others miss, and magnetism that attracts both admirers and critics. Your 文昌 and 学堂 stars add scholarly depth they lacked. <strong>Your unique advantage</strong>: Multiple 贵人 stars mean you'll receive help at critical junctures they had to fight for alone. Fully express your gifts by embracing the unconventional path your 伤官 demands - conformity kills your magic.</p>
+<hr />
+<h2>13. ☀️ Daily Routine Adjustments</h2>
+<p><strong>Morning (5-7 AM, 卯时 - Wood time)</strong>: Wake during this hour to absorb natural Wood energy. Before rising, while still in bed, visualize green light filling your body from feet to head. Drink room-temperature water with lemon immediately. Practice 5 minutes of gentle stretching, moving like bamboo swaying in wind - this activates your flexible 乙木 nature. Wear something black or blue. <strong>Midday (11 AM-1 PM, 午时)</strong>: This Fire time can overwhelm you. Take a 10-minute walking break, preferably near water features or trees. Avoid heated arguments during these hours - your 伤官 becomes destructive when inflamed. Eat cooling foods: cucumber, watermelon, mint. <strong>Evening (9-11 PM, 亥时 - your birth time)</strong>: This is your <strong>power hour</strong> for manifestation. The 亥 water nourishes your Wood and connects to 正印 wisdom. Spend 15 minutes in quiet reflection, journaling, or strategic planning. This is when breakthrough insights arrive. Your frequency of abundance activates when you honor this sacred time with intentional practice rather than mindless scrolling. <strong>Before sleep</strong>: Place hands on lower abdomen, breathe deeply six times, and mentally thank three people or experiences from your day. This simple practice harmonizes 水火既济, ensuring restorative sleep and energized awakening.</p>
+<hr />
+<p><em>Your destiny is written in stars, but walked in choices. May these insights illuminate your path to greatness.</em> 🌟</p>
+        </main>
+
+        <!-- Footer -->
+        <footer class="report-footer">
+            <p class="footer-text">Generated by AI BaZi Master • Confidential Destiny Report</p>
+        </footer>
+    </div>
+</body>
+
+</html>

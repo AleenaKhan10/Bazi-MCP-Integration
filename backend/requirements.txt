@@ -1,0 +1,38 @@
+# Backend Dependencies
+# ====================
+
+# Web Framework
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+
+# Claude API
+anthropic>=0.18.0
+
+# PDF Generation
+weasyprint>=60.0
+
+# Validation
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Markdown to HTML conversion
+markdown>=3.5.0
+
+# HTTP Client (for MCP communication)
+httpx>=0.26.0
+
+# Template Engine
+jinja2>=3.1.0
+
+# Timezone handling
+pytz>=2024.1
+timezonefinder>=6.2.0
+
+# Retry Logic
+tenacity>=8.2.0
+
+# Rate Limiting
+slowapi>=0.1.9
+
+# Development
+python-dotenv>=1.0.0

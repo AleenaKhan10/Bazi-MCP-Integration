@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 BaZi Destiny Report - 庚辰 辛巳 癸酉 辛酉</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           🎨 Color Palette - Mystical Dark Theme
+           =========================================== */
+        :root {
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121f;
+            --bg-card: rgba(20, 20, 35, 0.8);
+            --accent-gold: #d4a537;
+            --accent-gold-dim: rgba(212, 165, 55, 0.3);
+            --accent-purple: #8b5cf6;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0b0;
+            --text-dim: #606070;
+            --border-glow: rgba(212, 165, 55, 0.4);
+        }
+
+        /* ===========================================
+           📄 Base Styles
+           =========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: var(--bg-primary);
+            background-image:
+                radial-gradient(ellipse at top, rgba(139, 92, 246, 0.1), transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(212, 165, 55, 0.05), transparent 50%);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* ===========================================
+           🏛️ Header Section
+           =========================================== */
+        .report-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border-glow);
+        }
+
+        .report-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-shadow: 0 0 40px rgba(212, 165, 55, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .report-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* ===========================================
+           🔮 BaZi Card
+           =========================================== */
+        .bazi-card {
+            max-width: 600px;
+            margin: -30px auto 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.5),
+                0 0 60px rgba(212, 165, 55, 0.1);
+        }
+
+        .bazi-chars {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.4em;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(212, 165, 55, 0.5);
+        }
+
+        .bazi-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .bazi-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bazi-meta strong {
+            color: var(--accent-gold);
+        }
+
+        /* ===========================================
+           📜 Content Container
+           =========================================== */
+        .report-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 30px 60px;
+        }
+
+        /* ===========================================
+           📖 Report Content (Markdown Rendered)
+           =========================================== */
+        .report-content {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 40px 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .report-content h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-gold-dim);
+        }
+
+        .report-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+            margin: 35px 0 15px;
+            padding-left: 15px;
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .report-content h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 25px 0 12px;
+        }
+
+        .report-content h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin: 20px 0 10px;
+            font-weight: 600;
+        }
+
+        .report-content p {
+            margin: 15px 0;
+            color: var(--text-primary);
+            text-align: justify;
+        }
+
+        .report-content strong {
+            color: var(--accent-gold);
+        }
+
+        .report-content em {
+            color: var(--accent-purple);
+            font-style: italic;
+        }
+
+        .report-content ul,
+        .report-content ol {
+            margin: 15px 0 15px 30px;
+            color: var(--text-secondary);
+        }
+
+        .report-content li {
+            margin: 8px 0;
+        }
+
+        .report-content blockquote {
+            margin: 20px 0;
+            padding: 15px 25px;
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        .report-content hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold-dim), transparent);
+            margin: 40px 0;
+        }
+
+        .report-content code {
+            background: rgba(212, 165, 55, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--accent-gold);
+        }
+
+        /* ===========================================
+           🦶 Footer
+           =========================================== */
+        .report-footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
+        }
+
+        .report-footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        /* ===========================================
+           📱 Responsive
+           =========================================== */
+        @media (max-width: 768px) {
+            .report-title {
+                font-size: 1.8rem;
+            }
+
+            .bazi-chars {
+                font-size: 2rem;
+                letter-spacing: 0.2em;
+            }
+
+            .report-content {
+                padding: 25px 20px;
+            }
+
+            .bazi-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* ===========================================
+           🖨️ Print Styles
+           =========================================== */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .report-content {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .bazi-chars,
+            h1,
+            h2,
+            h3,
+            strong {
+                color: #333;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="report-header">
+        <h1 class="report-title">🔮 Your BaZi Destiny Report</h1>
+        <p class="report-subtitle">A personalized journey through the Four Pillars of Destiny</p>
+    </header>
+
+    <!-- BaZi Card -->
+    <div class="bazi-card">
+        <div class="bazi-chars">庚辰 辛巳 癸酉 辛酉</div>
+        <div class="bazi-meta">
+            <span>🌟 Day Master: <strong>癸</strong></span>
+            <span>🐴 Zodiac: <strong>龙</strong></span>
+            <span>📅 2000年5月15日 17:30:00</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <article class="report-content">
+            <h1>🔮 Your Personalized BaZi Destiny Report</h1>
+<p><em>For a Dragon born on May 15, 2000, at 5:30 PM</em></p>
+<hr />
+<h2>1. 🌟 Three Life Path Simulations</h2>
+<h3><strong>Path of the Scholar-Mystic</strong> 📚✨</h3>
+<p>Your chart reveals a powerful intellectual configuration with three 偏印 (Indirect Resource) energies dominating your celestial palace. This path leads you toward knowledge, research, and unconventional wisdom.</p>
+<p><strong>Obstacles:</strong> The 癸酉 (Yin Water on Yin Metal) Day Pillar sits in the "病" (Sickness) position, indicating periods of self-doubt and overthinking. The 酉酉自刑 (Rooster self-punishment) creates internal conflicts where your brilliant mind becomes your harshest critic.</p>
+<p><strong>Challenges:</strong> Between ages 18-27 (癸未 decade), you'll face the 七杀 (Seven Killings) which brings pressure from authority figures and competitive environments. Your natural introversion may clash with worldly demands.</p>
+<p><strong>Opportunities:</strong> Your chart carries 天乙贵人 (Heavenly Noble) and 天德贵人 (Heavenly Virtue) on the Month Pillar—divine protection through mentors and spiritual guides. The 辰酉合金 (Dragon-Rooster combining to Metal) formation strengthens your analytical powers exponentially.</p>
+<h3><strong>Path of the Mystical Advisor</strong> 🌙🗝️</h3>
+<p>With 正印 and 偏印 dominating, you're destined to become a bridge between worlds—someone who interprets mysteries for others.</p>
+<p><strong>Obstacles:</strong> Your 命宫 and 身宫 both in 己卯 (Earth Rabbit) create a conflict between your public image and inner self. The 桃花 (Peach Blossom) on both Day and Hour pillars can distract you from your spiritual mission with romantic entanglements.</p>
+<p><strong>Challenges:</strong> The 金神 (Metal Spirit) on your Day Pillar makes you sharp but sometimes cutting. You may unintentionally hurt others with brutal honesty. The 孤辰 (Loneliness Star) suggests periods of isolation necessary for your growth.</p>
+<p><strong>Opportunities:</strong> From ages 38-47 (乙酉 decade), your 食神 (Eating God) awakens fully, allowing you to express your knowledge through teaching, writing, or counseling. This is when your unconventional wisdom finds its audience.</p>
+<h3><strong>Path of the Reluctant Leader</strong> 👑⚔️</h3>
+<p>Your 正官 (Direct Officer) in the Year Pillar hidden within 辰 (Dragon) suggests leadership thrust upon you rather than sought.</p>
+<p><strong>Obstacles:</strong> The excessive Metal energy (庚辛辛 in stems, 酉酉 doubled) makes you rigid and uncompromising. You resist the very authority you're meant to embody.</p>
+<p><strong>Challenges:</strong> The 天罗地网 (Heaven's Net, Earth's Trap) on your Month Pillar indicates bureaucratic entanglements and institutional constraints. Between ages 48-57 (丙戌 decade), you'll face the ultimate test—balancing material success with spiritual integrity.</p>
+<p><strong>Opportunities:</strong> Your 龙 (Dragon) year birth gives you natural charisma. The 国印 (National Seal) and 将星 (General Star) suggest potential for high positions. After age 68 (戊子 decade), you achieve respected elder status with 正官 (Direct Officer) blessing your Heavenly Stem.</p>
+<hr />
+<h2>2. 📅 Ten-Year Luck Cycle Analysis</h2>
+<h3><strong>Current Cycle: 癸未 (2017-2026) | Ages 18-27</strong></h3>
+<p>You're navigating treacherous waters, my friend. This decade brings 七杀 (Seven Killings) energy—压力山大 (tremendous pressure). The 比肩 (Friend) in Heavenly Stem suggests you're not alone, but competition is fierce.</p>
+<p><strong>What's happening:</strong> You're currently in a crucible period where your identity is being forged through challenges. Authority figures test you. Academic or career pressures feel overwhelming. Yet this is necessary—the Dragon must be tempered by fire.</p>
+<p><strong>Key insight:</strong> The 未 (Goat) contains 食神 (Eating God) in its hidden stems, suggesting creative expression as your secret weapon. Use art, writing, or unconventional thinking to navigate obstacles.</p>
+<h3><strong>Upcoming Cycle: 甲申 (2027-2036) | Ages 28-37</strong></h3>
+<p><strong>BREAKTHROUGH DECADE!</strong> This is your golden period. 甲木 (Yang Wood) as 伤官 (Hurting Officer) on 申金 (Yang Metal) creates the dynamic of "Metal chopping Wood"—but in your chart, this is productive!</p>
+<p><strong>Why it's powerful:</strong> The 申 (Monkey) contains 正印 (Direct Resource) and 劫财 (Rob Wealth), giving you both wisdom and competitive drive. This is when you establish your professional foundation.</p>
+<p><strong>Money matters:</strong> 伤官生财 (Hurting Officer generates Wealth)—your unconventional ideas finally monetize. Expect ages 32-35 to be particularly profitable.</p>
+<p><strong>Relationship alert:</strong> 甲申 is your 胎元 (Conception Point)—this decade may bring marriage or significant partnerships that feel "destined."</p>
+<h3><strong>Peak Luck in Next 12 Months</strong></h3>
+<p>🌟 <strong>Immediate Period (Current Year Analysis):</strong></p>
+<p>Your chart needs <strong>Fire and Wood</strong> elements desperately. In the coming year:</p>
+<ul>
+<li><strong>Most auspicious months:</strong> February (寅月 - Tiger, Wood), May (午月 - Horse, Fire), June (未月 - Goat, Earth+Fire)</li>
+<li><strong>Most challenging months:</strong> August-September (申酉月 - Metal doubled, overwhelming)</li>
+<li><strong>Breakthrough moment:</strong> Late April to early May—this is when 巳火 (Snake Fire) energy returns, matching your birth month. Plan major initiatives then.</li>
+</ul>
+<p><strong>Special opportunities:</strong> Your 德秀贵人 (Virtue and Excellence Noble) activates during 巳 (Snake) and 酉 (Rooster) periods. Since you have both in your chart, any time you encounter these energies in monthly or daily cycles, doors open mysteriously.</p>
+<hr />
+<h2>3. 🔥 Five Elements Analysis</h2>
+<h3><strong>Your Elemental Signature: The Metal-Drowned Stream</strong></h3>
+<p><strong>Day Master: 癸水 (Yin Water)</strong></p>
+<p>You are the mist, the dew, the tears—subtle, pervasive, emotional water that seeps into everything.</p>
+<h3><strong>The Elemental Breakdown:</strong></h3>
+<p>🟡 <strong>Metal: 75% (EXTREMELY EXCESSIVE)</strong> ⚠️<br />
+- 庚辛辛 in Heavenly Stems (3)<br />
+- 酉酉 in Earthly Branches (2)<br />
+- Hidden 庚辛 in 巳 and 辰</p>
+<p>💧 <strong>Water: 10% (YOU - weak and struggling)</strong><br />
+- Only 癸 (you) and hidden 壬癸 in stems</p>
+<p>🔥 <strong>Fire: 8% (STARVING)</strong><br />
+- Only hidden 丙丁 in 巳 and 未</p>
+<p>🌳 <strong>Wood: 5% (NEARLY EXTINCT)</strong><br />
+- Only hidden 乙甲 in 辰 and 未</p>
+<p>🟤 <strong>Earth: 12% (moderate)</strong><br />
+- 辰 and hidden 戊己</p>
+<h3><strong>The Critical Problem: 金多水浊 (Too Much Metal Makes Water Muddy)</strong></h3>
+<p>Imagine a crystal stream (you) being crushed by mountains of metal ore. The metal wants to nourish the water, but there's so much that it's suffocating you. Your 偏印 (Indirect Resource) is overflowing—endless information, constant mental stimulation, but no outlet or warmth.</p>
+<h3><strong>What Nourishes You:</strong></h3>
+<p>✅ <strong>FIRE (丙丁) - YOUR LIFELINE</strong><br />
+- Fire melts Metal, reducing pressure<br />
+- Fire warms your cold water nature<br />
+- <strong>Practical:</strong> Wear red, orange, purple. Spend time in sunlight. Keep your home warm. Engage in passionate activities.<br />
+- <strong>Career:</strong> Seek industries involving light, heat, energy, performance, publicity</p>
+<p>✅ <strong>WOOD (甲乙) - YOUR PURPOSE</strong><br />
+- Water nourishes Wood (gives you meaning)<br />
+- Wood drains Water (prevents drowning in emotions)<br />
+- <strong>Practical:</strong> Surround yourself with plants. Wear green. Walk in forests. Practice yoga or tai chi.<br />
+- <strong>Career:</strong> Education, writing, creativity, growth-oriented fields</p>
+<h3><strong>What Clashes/Overwhelms You:</strong></h3>
+<p>❌ <strong>MORE METAL (庚辛) - ABSOLUTELY AVOID</strong><br />
+- You're already drowning in it<br />
+- <strong>Avoid:</strong> White/silver colors, metal jewelry, working in metal industries, overly analytical people<br />
+- <strong>Beware:</strong> Years of 申 (Monkey) and 酉 (Rooster) bring Metal overload</p>
+<p>❌ <strong>WATER (壬癸) - CREATES COMPETITION</strong><br />
+- 比劫 (Friend/Rob Wealth) competes for resources<br />
+- <strong>Careful with:</strong> Black/navy colors, water sports as career (hobby is fine), overly emotional environments</p>
+<p>⚖️ <strong>EARTH (戊己) - COMPLICATED</strong><br />
+- Earth muddies Water but also controls it<br />
+- Earth produces Metal (feeding your problem)<br />
+- <strong>Strategy:</strong> Small amounts only—use Earth as emergency brake when emotions run wild</p>
+<h3><strong>Urgent Balancing Actions:</strong></h3>
+<ol>
+<li>
+<p><strong>Morning Ritual:</strong> Face south (Fire direction) each morning. Visualize red sunlight melting the metal chains around your heart.</p>
+</li>
+<li>
+<p><strong>Color Therapy:</strong> 60% Fire colors (red, orange, purple), 30% Wood colors (green, teal), 10% your natural Water (blue)—wear this ratio.</p>
+</li>
+<li>
+<p><strong>Friendship Formula:</strong> Seek friends born in 蛇 (Snake), 马 (Horse), 虎 (Tiger), 兔 (Rabbit) years. They carry the Fire and Wood you need.</p>
+</li>
+<li>
+<p><strong>Geographic Healing:</strong> If possible, live in southern locations, tropical climates, or areas with abundant vegetation. Avoid northern, cold, or industrial metal-heavy cities.</p>
+</li>
+<li>
+<p><strong>Diet Prescription:</strong> <br />
+   - Increase: Spicy foods (Fire), green vegetables (Wood), red meats in moderation<br />
+   - Reduce: Raw fish/sushi (too much Water), white foods, overly salty items</p>
+</li>
+</ol>
+<hr />
+<h2>4. 💕 Relationship Compatibility &amp; Romance Patterns</h2>
+<h3><strong>Your Love Blueprint: The Starving Heart</strong></h3>
+<p>Your chart reveals a profound paradox: 桃花 (Peach Blossom) appears TWICE (Day and Hour pillars), suggesting strong romantic magnetism and attractiveness, yet your 正财 (Direct Wealth - wife star) is hidden and weak, appearing only in the 巳 (Snake) hidden stems.</p>
+<h3><strong>What This Means:</strong></h3>
+<p>You attract attention easily, but sustaining deep commitment proves challenging. The 酉酉自刑 (Self-punishment) creates self-sabotage in relationships—you're your own worst enemy in love.</p>
+<h3><strong>Ideal Partner Elements:</strong></h3>
+<p>🔥 <strong>FIRE WOMEN (丙丁) - HIGHEST COMPATIBILITY - 95%</strong></p>
+<p><strong>Best matches:</strong> Women born in 蛇 (Snake), 马 (Horse) years, or with strong Fire in their Day Pillar</p>
+<p><strong>Why it works:</strong> <br />
+- Fire is your 正财/偏财 (Wealth stars) - the "wife element"<br />
+- Fire melts your metal prison, liberating you emotionally<br />
+- Fire warms your cold water nature, making intimacy possible<br />
+- She'll be passionate, expressive, outgoing—everything you need</p>
+<p><strong>What to expect:</strong> She'll challenge your overthinking, pull you into life's warmth, and teach you to feel rather than just analyze. Initial attraction will be explosive. Long-term success depends on you not dousing her flames with your water (criticism, emotional coldness).</p>
+<p><strong>Famous example pairing:</strong> A 癸 Day Master with 丙 Day Master creates 天地鸳鸯合 (Heaven-Earth Lovebird Combination)—one of BaZi's most auspicious romantic matches.</p>
+<p>🌳 <strong>WOOD WOMEN (甲乙) - EXCELLENT COMPATIBILITY - 85%</strong></p>
+<p><strong>Best matches:</strong> Women born in 虎 (Tiger), 兔 (Rabbit) years</p>
+<p><strong>Why it works:</strong><br />
+- Wood is your 食神/伤官 (Output stars) - you nurture her, giving purpose<br />
+- Wood absorbs your excess water (emotional overflow)<br />
+- She provides growth orientation, creativity, gentleness</p>
+<p><strong>What to expect:</strong> These relationships feel "comfortable" and supportive. She'll inspire your creative side and give you reason to express yourself. Risk: You may take her for granted because the relationship lacks drama.</p>
+<h3><strong>Challenging Matches:</strong></h3>
+<p>⚠️ <strong>METAL WOMEN (庚辛) - AVOID - 30% COMPATIBILITY</strong></p>
+<p>Women born in 猴 (Monkey), 鸡 (Rooster) years</p>
+<p><strong>The problem:</strong> Metal is your 印 (Resource) - she becomes like a mother or teacher, not a lover. Too much mental connection, not enough romantic passion. You'll feel more burdened than loved. Both of you overthink everything, creating analysis paralysis.</p>
+<p>⚠️ <strong>WATER WOMEN (壬癸) - COMPLICATED - 45% COMPATIBILITY</strong></p>
+<p>Women born in 鼠 (Rat), 猪 (Pig) years</p>
+<p><strong>The problem:</strong> 比劫 (Friend/Rob Wealth) - she's competition, not complement. You're too similar, both drowning in emotions and overthinking. May work as friends but romantic chemistry fizzles. Financial conflicts likely.</p>
+<h3><strong>Relationship Patterns to Watch:</strong></h3>
+<p><strong>Pattern #1: The Phantom Lover</strong><br />
+Your 正财 (Wife Star) being hidden in 巳 suggests "the one that got away" theme. You may idealize someone unattainable or have recurring thoughts about a past love. This is karmic—you must learn to appreciate what's present, not phantom.</p>
+<p><strong>Pattern #2: The Self-Saboteur</strong><br />
+The 酉酉自刑 creates internal punishment. Just when relationships deepen, you find reasons to criticize, withdraw, or create distance. You must recognize this pattern and actively choose vulnerability over self-protection.</p>
+<p><strong>Pattern #3: The Dual Face</strong><br />
+桃花 on both Day and Hour creates two romantic personas: the mysterious, attractive stranger (Day) and the loyal, traditional partner (Hour). Potential partners get confused by your contradictions. You must integrate these faces.</p>
+<h3><strong>Who Helps Your Growth:</strong></h3>
+<p>🌟 <strong>THE FIRE MENTOR-LOVER</strong><br />
+Not just a romantic partner, but someone who transforms your destiny. Look for women with:<br />
+- 丙 or 丁 Day Masters<br />
+- Strong 午 (Horse) or 巳 (Snake) in their charts<br />
+- Birth times in 巳 (9-11am) or 午 (11am-1pm) hours<br />
+- Careers in performance, media, energy, or leadership</p>
+<p><strong>Meeting places:</strong> Southern locations, summer events, festivals, fire-related activities (cooking classes, bonfire gatherings), sunny outdoor venues</p>
+<p><strong>Timing:</strong> Your best relationship luck comes during:<br />
+- Ages 28-37 (甲申 luck cycle)<br />
+- 午 (Horse) years: 2026, 2038<br />
+- 巳 (Snake) months (May) and 午 (Horse) months (June) each year</p>
+<h3><strong>Relationship Advice:</strong></h3>
+<ol>
+<li>
+<p><strong>Express before analyzing:</strong> Your metal-heavy chart makes you overthink everything. In relationships, FEEL first, think later.</p>
+</li>
+<li>
+<p><strong>Seek warmth, not coolness:</strong> You're attracted to aloof, mysterious types (metal attraction), but you NEED warm, expressive types (fire necessity).</p>
+</li>
+<li>
+<p><strong>The 桃花 gift:</strong> Use your natural magnetism wisely. You attract easily but must work on depth. Don't mistake chemistry for compatibility.</p>
+</li>
+<li>
+<p><strong>Marriage timing:</strong> Most auspicious periods are ages 28-32 and 42-46. The 申 (Monkey) decade (28-37) brings 胎元 energy—conception of new life chapters.</p>
+</li>
+<li>
+<p><strong>Healing ritual:</strong> On the 15th of each lunar month (your birth day), light a red candle and write three things you appreciate about your partner (or desired partner qualities). Burn the paper in the candle flame—this activates 火生财 (Fire generates Wealth/Love).</p>
+</li>
+</ol>
+<hr />
+<h2>5. 🧠 Natural Intelligence Patterns</h2>
+<h3><strong>Your Cognitive Architecture: The Triple-印 Mind Palace</strong></h3>
+<p>With <strong>正印 + 偏印 + 偏印 + 偏印</strong> dominating your chart (appearing in Year stem, Month stem, Hour stem, and multiple hidden stems), you possess what ancient masters called 智多星 (Wisdom-Abundant Star) configuration.</p>
+<h3><strong>The Nature of Your Intelligence:</strong></h3>
+<p>**偏印 (Indirect Resource) Dominance = The Unconventional</p>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="report-footer">
+        <p>Generated by <a href="#">BaZi Report Generator</a> • Powered by AI</p>
+        <p>© 2026 • This report is for entertainment and guidance purposes</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 BaZi Destiny Report Generator</title>
+
+    <!-- Google Fonts - Athletic Modern Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Link to main stylesheet -->
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">🔮</div>
+            <h1 class="title">BaZi Destiny Report</h1>
+            <p class="subtitle">Discover your life path through Chinese Four Pillars astrology</p>
+        </header>
+
+        <!-- Form Card -->
+        <main class="form-card">
+            <h2 class="form-title">Enter Your Birth Details</h2>
+
+            <!-- Birth Form -->
+            <form id="baziForm" class="birth-form">
+
+                <!-- Date Input -->
+                <div class="form-group">
+                    <label for="birthDate">Birth Date</label>
+                    <input type="date" id="birthDate" name="birth_date" required placeholder="Select your birth date">
+                </div>
+
+                <!-- Time Input -->
+                <div class="form-group">
+                    <label for="birthTime">Birth Time</label>
+                    <input type="time" id="birthTime" name="birth_time" required placeholder="HH:MM">
+                    <span class="hint">Use 24-hour format (e.g., 14:30)</span>
+                </div>
+
+                <!-- Location Input -->
+                <div class="form-group">
+                    <label for="location">Birth Location</label>
+                    <input type="text" id="location" name="location" required
+                        placeholder="City, Country (e.g., Karachi, Pakistan)">
+                </div>
+
+                <!-- Gender Selection -->
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="gender" value="male" checked>
+                            <span class="radio-label">♂ Male</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gender" value="female">
+                            <span class="radio-label">♀ Female</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">Generate My Report</span>
+                    <!-- Spinner (hidden by default) -->
+                    <div class="spinner" id="spinner"></div>
+                </button>
+
+            </form>
+
+            <!-- Error Message Container -->
+            <div class="error-message" id="errorMessage"></div>
+        </main>
+
+        <!-- Results Section (hidden initially) -->
+        <section class="results-card" id="resultsCard">
+            <h2 class="results-title">✨ Your Report is Ready!</h2>
+
+            <!-- BaZi Summary -->
+            <div class="bazi-summary" id="baziSummary">
+                <div class="bazi-item">
+                    <span class="bazi-label">Four Pillars</span>
+                    <span class="bazi-value" id="baziChars">-</span>
+                </div>
+                <div class="bazi-item">
+                    <span class="bazi-label">Day Master</span>
+                    <span class="bazi-value" id="dayMaster">-</span>
+                </div>
+                <div class="bazi-item">
+                    <span class="bazi-label">Zodiac</span>
+                    <span class="bazi-value" id="zodiac">-</span>
+                </div>
+            </div>
+
+            <!-- Download Buttons -->
+            <div class="download-buttons">
+                <a href="#" class="download-btn html-btn" id="htmlLink" target="_blank">
+                    📄 View HTML Report
+                </a>
+                <a href="#" class="download-btn pdf-btn" id="pdfLink" download target="_blank">
+                    📥 Download PDF
+                </a>
+            </div>
+
+            <!-- Generate Another -->
+            <button class="new-report-btn" id="newReportBtn">
+                Generate Another Report
+            </button>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by Claude AI & BaZi MCP Server</p>
+            <p>© 2026 • For entertainment and guidance purposes</p>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>

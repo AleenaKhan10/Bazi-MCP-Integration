@@ -1,0 +1,478 @@
+/* =========================================
+   BaZi Report Generator - Main Styles
+   Athletic, Clean, Modern Design
+   ========================================= */
+
+/* CSS Variables - Easy to customize */
+:root {
+    --primary: #6366f1;
+    /* Indigo - Main accent */
+    --primary-dark: #4f46e5;
+    /* Darker shade for hover */
+    --secondary: #f59e0b;
+    /* Amber - Secondary accent */
+    --bg-dark: #0f172a;
+    /* Dark navy background */
+    --bg-card: #1e293b;
+    /* Card background */
+    --bg-input: #334155;
+    /* Input background */
+    --text-primary: #f1f5f9;
+    /* Light text */
+    --text-secondary: #94a3b8;
+    /* Muted text */
+    --text-dim: #64748b;
+    /* Dim text */
+    --border: #475569;
+    /* Border color */
+    --success: #22c55e;
+    /* Green for success */
+    --error: #ef4444;
+    /* Red for errors */
+    --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+
+    /* Subtle background pattern */
+    background-image:
+        radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+}
+
+/* =========================================
+   Container
+   ========================================= */
+.container {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* =========================================
+   Header
+   ========================================= */
+.header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 3rem;
+    margin-bottom: 12px;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Floating animation for logo */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+/* =========================================
+   Form Card
+   ========================================= */
+.form-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 32px 28px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.form-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+/* =========================================
+   Form Elements
+   ========================================= */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+/* Input styling */
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+/* Input focus state */
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Hint text */
+.hint {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 6px;
+}
+
+/* Radio buttons */
+.radio-group {
+    display: flex;
+    gap: 16px;
+}
+
+.radio-option {
+    flex: 1;
+    cursor: pointer;
+}
+
+.radio-option input {
+    display: none;
+}
+
+.radio-label {
+    display: block;
+    padding: 12px 16px;
+    text-align: center;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+/* Selected radio */
+.radio-option input:checked+.radio-label {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    font-weight: 500;
+}
+
+.radio-option:hover .radio-label {
+    border-color: var(--primary);
+}
+
+/* =========================================
+   Submit Button
+   ========================================= */
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Disabled state (during loading) */
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Hide button text when loading */
+.submit-btn.loading .btn-text {
+    display: none;
+}
+
+.submit-btn.loading .spinner {
+    display: block;
+}
+
+/* =========================================
+   Spinner Animation
+   ========================================= */
+.spinner {
+    display: none;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================
+   Error Message
+   ========================================= */
+.error-message {
+    display: none;
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--error);
+    border-radius: 10px;
+    color: var(--error);
+    font-size: 0.9rem;
+}
+
+.error-message.visible {
+    display: block;
+}
+
+/* Invalid Input State */
+.form-group input.invalid {
+    border-color: var(--error);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+/* =========================================
+   Results Card
+   ========================================= */
+.results-card {
+    display: none;
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 32px 28px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.4s ease;
+}
+
+.results-card.visible {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.results-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--secondary);
+}
+
+/* BaZi Summary */
+.bazi-summary {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.bazi-item {
+    flex: 1;
+    min-width: 100px;
+    background: var(--bg-input);
+    padding: 16px 12px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.bazi-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bazi-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* =========================================
+   Download Buttons
+   ========================================= */
+.download-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.download-btn {
+    flex: 1;
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.html-btn {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--success);
+    border: 1px solid var(--success);
+}
+
+.html-btn:hover {
+    background: var(--success);
+    color: white;
+}
+
+.pdf-btn {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+}
+
+.pdf-btn:hover {
+    background: var(--secondary);
+    color: var(--bg-dark);
+}
+
+/* New Report Button */
+.new-report-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: inherit;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.new-report-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+.footer p {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+@media (max-width: 480px) {
+    .container {
+        padding: 24px 16px;
+    }
+
+    .form-card,
+    .results-card {
+        padding: 24px 20px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .bazi-summary {
+        flex-direction: column;
+    }
+
+    .download-buttons {
+        flex-direction: column;
+    }
+}
