@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔮 BaZi Destiny Report - {{ bazi_chars }}</title>
+    <title>🔮 {{ name }}'s BaZi Destiny Report</title>
 
     <!-- Google Fonts -->
     <link
@@ -31,6 +31,18 @@
             /* Very light slate */
             --border-color: #e2e8f0;
             /* Light gray border */
+
+            /* Element Colors */
+            --wood-color: #22c55e;
+            /* Green */
+            --fire-color: #ef4444;
+            /* Red */
+            --earth-color: #a16207;
+            /* Brown/Yellow */
+            --metal-color: #f59e0b;
+            /* Gold */
+            --water-color: #3b82f6;
+            /* Blue */
         }
 
         /* Base Reset */
@@ -48,6 +60,7 @@
             color: var(--text-main);
             line-height: 1.8;
             -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
             /* Force colors in print */
         }
 
@@ -101,23 +114,30 @@
 
         .report-title {
             font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
+            font-size: 2rem;
             letter-spacing: 2px;
             color: var(--primary-gold);
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .report-subtitle {
             font-family: 'Lato', sans-serif;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
             letter-spacing: 1px;
-            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        .report-meta {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 15px;
         }
 
         /* ===========================================
-           🔮 BaZi Chart Card (The "Box")
+           🔮 Four Pillars Display (Elemental Colors)
            =========================================== */
         .bazi-dashboard {
             background: white;
@@ -133,31 +153,91 @@
                 0 20px 40px rgba(0, 0, 0, 0.05);
         }
 
-        .chart-grid {
+        .pillars-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
             text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
-        .eight-chars {
-            font-family: 'Cinzel', serif;
-            /* Or a Chinese font if available */
-            font-size: 3rem;
-            color: var(--primary-dark);
-            letter-spacing: 0.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto 25px;
         }
+
+        .pillar {
+            text-align: center;
+            padding: 15px 10px;
+            border-radius: 8px;
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+        }
+
+        .pillar-label {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.7rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .pillar-year {
+            font-size: 0.65rem;
+            color: var(--text-light);
+        }
+
+        .stem {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+            display: block;
+        }
+
+        .stem-name {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .branch {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+            display: block;
+        }
+
+        .branch-name {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            display: block;
+        }
+
+        /* Element Colors for Stems/Branches */
+        .wood { color: var(--wood-color); }
+        .fire { color: var(--fire-color); }
+        .earth { color: var(--earth-color); }
+        .metal { color: var(--metal-color); }
+        .water { color: var(--water-color); }
 
         .meta-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
             border-top: 1px solid var(--border-color);
-            padding-top: 20px;
+            padding: 20px 10px 10px;
             margin-top: 20px;
         }
 
         .meta-item {
             text-align: center;
+            padding: 5px;
         }
 
         .meta-label {
@@ -172,10 +252,58 @@
 
         .meta-value {
             font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary-gold);
             font-weight: 700;
         }
+
+        /* ===========================================
+           🌊 Five Element Cycle (for Section 3)
+           =========================================== */
+        .element-cycle {
+            text-align: center;
+            margin: 30px auto;
+            max-width: 450px;
+            padding: 20px;
+            background: var(--bg-accent);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .element-cycle-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .element-cycle svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .cycle-legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .legend-arrow {
+            width: 20px;
+            height: 2px;
+        }
+
+        .legend-arrow.productive { background: var(--wood-color); }
+        .legend-arrow.destructive { background: var(--fire-color); }
 
         /* ===========================================
            📖 Main Content
@@ -253,6 +381,46 @@
             color: var(--text-light);
         }
 
+        /* ===========================================
+           📊 Table Styling (for generated content)
+           =========================================== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            background: white;
+        }
+
+        thead {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        th {
+            padding: 12px 15px;
+            text-align: left;
+            font-family: 'Lato', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        tbody tr:nth-child(even) {
+            background: var(--bg-accent);
+        }
+
+        tbody tr:hover {
+            background: rgba(180, 142, 62, 0.1);
+        }
+
         hr {
             border: 0;
             height: 1px;
@@ -301,17 +469,35 @@
             }
 
             .bazi-dashboard,
-            blockquote {
+            blockquote,
+            .element-cycle {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
 
             /* Avoid breaking inside components */
             .bazi-dashboard,
-            blockquote,
-            h1,
-            h2,
-            li {
+            .pillars-grid,
+            .element-cycle,
+            blockquote {
+                page-break-inside: avoid;
+            }
+
+            /* Tables can break but rows shouldn't */
+            table {
+                page-break-inside: auto;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+
+            h1, h2, h3, li {
                 page-break-inside: avoid;
             }
 
@@ -327,30 +513,143 @@
         <!-- Header -->
         <header class="report-header">
             <span class="header-logo">🔮</span>
-            <h1 class="report-title">BaZi Destiny Report</h1>
-            <p class="report-subtitle">Personalized analysis for {{ birth_date }}</p>
+            <h1 class="report-title">{{ name }}'s BaZi Destiny Report</h1>
+            <p class="report-subtitle">– Prepared By Chi Manifestation BaZi Master –</p>
+            <p class="report-meta">Birth: {{ birth_date }} at {{ birth_time }} | {{ location }} | {{ gender }}</p>
         </header>
 
-        <!-- BaZi Chart Dashboard -->
+        <!-- Four Pillars Display with Elemental Colors -->
         <section class="bazi-dashboard">
-            <div class="chart-grid">
-                <div class="eight-chars">{{ bazi_chars }}</div>
-
-                <div class="meta-grid">
-                    <div class="meta-item">
-                        <span class="meta-label">Day Master</span>
-                        <div class="meta-value">{{ day_master }}</div>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Zodiac</span>
-                        <div class="meta-value">{{ zodiac }}</div>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-label">Year</span>
-                        <div class="meta-value">{{ current_year }}</div>
-                    </div>
+            <h2 class="pillars-title">四柱 – The Four Pillars of Destiny</h2>
+            
+            <div class="pillars-grid">
+                <!-- Hour Pillar -->
+                <div class="pillar">
+                    <div class="pillar-label">Hour</div>
+                    <span class="stem {{ hour_stem_element }}">{{ hour_stem }}</span>
+                    <span class="stem-name">{{ hour_stem_name }}</span>
+                    <span class="branch {{ hour_branch_element }}">{{ hour_branch }}</span>
+                    <span class="branch-name">{{ hour_branch_name }}</span>
+                </div>
+                
+                <!-- Day Pillar -->
+                <div class="pillar">
+                    <div class="pillar-label">Day</div>
+                    <span class="stem {{ day_stem_element }}">{{ day_stem }}</span>
+                    <span class="stem-name">{{ day_stem_name }}</span>
+                    <span class="branch {{ day_branch_element }}">{{ day_branch }}</span>
+                    <span class="branch-name">{{ day_branch_name }}</span>
+                </div>
+                
+                <!-- Month Pillar -->
+                <div class="pillar">
+                    <div class="pillar-label">Month</div>
+                    <span class="stem {{ month_stem_element }}">{{ month_stem }}</span>
+                    <span class="stem-name">{{ month_stem_name }}</span>
+                    <span class="branch {{ month_branch_element }}">{{ month_branch }}</span>
+                    <span class="branch-name">{{ month_branch_name }}</span>
+                </div>
+                
+                <!-- Year Pillar -->
+                <div class="pillar">
+                    <div class="pillar-label">Year</div>
+                    <div class="pillar-year">{{ birth_year }}</div>
+                    <span class="stem {{ year_stem_element }}">{{ year_stem }}</span>
+                    <span class="stem-name">{{ year_stem_name }}</span>
+                    <span class="branch {{ year_branch_element }}">{{ year_branch }}</span>
+                    <span class="branch-name">{{ year_branch_name }}</span>
                 </div>
             </div>
+
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span class="meta-label">Day Master</span>
+                    <div class="meta-value">{{ day_master }}</div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Zodiac</span>
+                    <div class="meta-value">{{ zodiac }}</div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Gender</span>
+                    <div class="meta-value">{{ gender }}</div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Report Year</span>
+                    <div class="meta-value">{{ current_year }}</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Five Element Cycle Diagram (Injected before Section 3) -->
+        <section class="element-cycle">
+            <h3 class="element-cycle-title">🌊 Feng Shui Elemental Cycle</h3>
+            <svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+                <!-- Pentagon shape for 5 elements -->
+                <!-- Water (Top) -->
+                <circle cx="150" cy="40" r="30" fill="#3b82f6" opacity="0.15"/>
+                <text x="150" y="35" text-anchor="middle" fill="#3b82f6" font-size="11" font-weight="bold">Water</text>
+                <text x="150" y="50" text-anchor="middle" font-size="20">💧</text>
+                
+                <!-- Wood (Top Right) -->
+                <circle cx="250" cy="100" r="30" fill="#22c55e" opacity="0.15"/>
+                <text x="250" y="95" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="bold">Wood</text>
+                <text x="250" y="115" text-anchor="middle" font-size="20">🌳</text>
+                
+                <!-- Fire (Bottom Right) -->
+                <circle cx="220" cy="200" r="30" fill="#ef4444" opacity="0.15"/>
+                <text x="220" y="195" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="bold">Fire</text>
+                <text x="220" y="215" text-anchor="middle" font-size="20">🔥</text>
+                
+                <!-- Earth (Bottom Left) -->
+                <circle cx="80" cy="200" r="30" fill="#a16207" opacity="0.15"/>
+                <text x="80" y="195" text-anchor="middle" fill="#a16207" font-size="11" font-weight="bold">Earth</text>
+                <text x="80" y="215" text-anchor="middle" font-size="20">🌍</text>
+                
+                <!-- Metal (Top Left) -->
+                <circle cx="50" cy="100" r="30" fill="#f59e0b" opacity="0.15"/>
+                <text x="50" y="95" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="bold">Metal</text>
+                <text x="50" y="115" text-anchor="middle" font-size="20">⚙️</text>
+                
+                <!-- Productive Cycle (Green arrows - clockwise outer) -->
+                <defs>
+                    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/>
+                    </marker>
+                    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/>
+                    </marker>
+                </defs>
+                
+                <!-- Productive: Water → Wood -->
+                <path d="M175 50 Q 210 60 235 85" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+                <!-- Productive: Wood → Fire -->
+                <path d="M255 125 Q 250 160 235 180" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+                <!-- Productive: Fire → Earth -->
+                <path d="M195 210 Q 150 225 110 210" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+                <!-- Productive: Earth → Metal -->
+                <path d="M60 180 Q 45 150 45 125" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+                <!-- Productive: Metal → Water -->
+                <path d="M65 80 Q 95 50 125 45" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+                
+                <!-- Destructive Cycle (Red arrows - star pattern) -->
+                <!-- Water → Fire -->
+                <path d="M160 60 L 200 180" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+                <!-- Fire → Metal -->
+                <path d="M195 195 L 75 115" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+                <!-- Metal → Wood -->
+                <path d="M75 95 L 225 95" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+                <!-- Wood → Earth -->
+                <path d="M235 120 L 100 185" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+                <!-- Earth → Water -->
+                <path d="M90 175 L 140 60" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+                
+                <!-- Legend -->
+                <text x="150" y="265" text-anchor="middle" font-size="9" fill="#666">
+                    <tspan fill="#22c55e">━━━ Productive Cycle</tspan>
+                    <tspan dx="20" fill="#ef4444">┅┅┅ Destructive Cycle</tspan>
+                </text>
+            </svg>
         </section>
 
         <!-- Dynamic Content -->
@@ -360,7 +659,7 @@
 
         <!-- Footer -->
         <footer class="report-footer">
-            <p class="footer-text">Generated by AI BaZi Master • Confidential Destiny Report</p>
+            <p class="footer-text">Generated by Chi Manifestation BaZi Master • Confidential Destiny Report • {{ current_year }}</p>
         </footer>
     </div>
 </body>

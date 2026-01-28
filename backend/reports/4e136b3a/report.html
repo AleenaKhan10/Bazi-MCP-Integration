@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 BaZi Destiny Report - 癸酉 辛酉 壬子 癸卯</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           🎨 PRO Styles - "The Celestial Document"
+           =========================================== */
+        :root {
+            /* PDF-Safe Colors (High Contrast) */
+            --primary-dark: #0f172a;
+            /* Deep Navy */
+            --primary-gold: #b48e3e;
+            /* Premium Gold */
+            --text-main: #1e293b;
+            /* Slate 800 - Good Black */
+            --text-light: #475569;
+            /* Slate 600 */
+            --bg-paper: #ffffff;
+            /* Pure White */
+            --bg-accent: #f8fafc;
+            /* Very light slate */
+            --border-color: #e2e8f0;
+            /* Light gray border */
+        }
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            /* Excellent readability */
+            background: #505050;
+            /* Dark background for browser view only */
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-print-color-adjust: exact;
+            /* Force colors in print */
+        }
+
+        /* ===========================================
+           📄 A4 Paper Container
+           =========================================== */
+        .page-container {
+            background: white;
+            max-width: 21cm;
+            /* A4 Width */
+            margin: 40px auto;
+            padding: 0;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            /* For watermark */
+        }
+
+        /* Watermark Effect (Subtle) */
+        .page-container::before {
+            content: "BAZI";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-family: 'Cinzel', serif;
+            font-size: 15rem;
+            color: rgba(180, 142, 62, 0.03);
+            /* Very faint gold */
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ===========================================
+           🏛️ Header Design
+           =========================================== */
+        .report-header {
+            background: var(--primary-dark);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid var(--primary-gold);
+        }
+
+        .header-logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .report-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .report-subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ===========================================
+           🔮 BaZi Chart Card (The "Box")
+           =========================================== */
+        .bazi-dashboard {
+            background: white;
+            margin: 30px 40px;
+            padding: 30px;
+            border: 1px solid var(--primary-gold);
+            position: relative;
+            z-index: 1;
+            /* Double border effect */
+            outline: 4px solid white;
+            box-shadow:
+                0 0 0 5px var(--border-color),
+                0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .chart-grid {
+            text-align: center;
+        }
+
+        .eight-chars {
+            font-family: 'Cinzel', serif;
+            /* Or a Chinese font if available */
+            font-size: 3rem;
+            color: var(--primary-dark);
+            letter-spacing: 0.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .meta-value {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--primary-gold);
+            font-weight: 700;
+        }
+
+        /* ===========================================
+           📖 Main Content
+           =========================================== */
+        .content-body {
+            padding: 20px 50px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Typography Hierarchy */
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-top: 50px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-gold);
+            page-break-after: avoid;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--primary-gold);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+            color: var(--text-main);
+        }
+
+        ul,
+        ol {
+            margin: 15px 0 15px 25px;
+            color: var(--text-main);
+        }
+
+        li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+
+        strong {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        em {
+            color: var(--primary-gold);
+            font-style: italic;
+        }
+
+        /* Decor elements */
+        blockquote {
+            background: var(--bg-accent);
+            border-left: 4px solid var(--primary-gold);
+            padding: 15px 20px;
+            margin: 25px 0;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+            margin: 40px 0;
+        }
+
+        /* ===========================================
+           🦶 Footer
+           =========================================== */
+        .report-footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-accent);
+        }
+
+        .footer-text {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ===========================================
+           🖨️ Print / PDF Overrides
+           =========================================== */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page-container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                max-width: none;
+            }
+
+            /* Ensure background colors print */
+            .report-header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #0f172a !important;
+                /* Force Navy */
+                color: white !important;
+            }
+
+            .bazi-dashboard,
+            blockquote {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* Avoid breaking inside components */
+            .bazi-dashboard,
+            blockquote,
+            h1,
+            h2,
+            li {
+                page-break-inside: avoid;
+            }
+
+            h1 {
+                page-break-before: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <!-- Header -->
+        <header class="report-header">
+            <span class="header-logo">🔮</span>
+            <h1 class="report-title">BaZi Destiny Report</h1>
+            <p class="report-subtitle">Personalized analysis for 1993年9月28日 05:22:00</p>
+        </header>
+
+        <!-- BaZi Chart Dashboard -->
+        <section class="bazi-dashboard">
+            <div class="chart-grid">
+                <div class="eight-chars">癸酉 辛酉 壬子 癸卯</div>
+
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Day Master</span>
+                        <div class="meta-value">壬</div>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Zodiac</span>
+                        <div class="meta-value">鸡</div>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Year</span>
+                        <div class="meta-value">2026</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Content -->
+        <main class="content-body">
+            <h1>命运全息解析 | BaZi Destiny Blueprint</h1>
+<p><strong>壬子日主 | Water Master Born in Metal Season</strong><br />
+<em>Chart of the Imperial Waters Supported by Golden Pillars</em></p>
+<hr />
+<h2>1. 🌟 Three Life Path Simulations</h2>
+<h3>Path of the <strong>Jade Scholar</strong> (学者之路)</h3>
+<p>Your 正印 (Zheng Yin - Resource Star) doubles in Year and Month pillars, creating a "Golden Seal" formation. This path leads to mastery through knowledge—research, academia, or strategic consulting.</p>
+<p><strong>Obstacles</strong>: 劫财 (Rob Wealth) appears twice, meaning competitors drain your resources. 子卯刑 (Zi-Mao Punishment) between Day-Hour creates internal conflict between wisdom and creative expression.</p>
+<p><strong>Opportunities</strong>: 己未大运 (2010-2019) already tested your discipline. Upcoming 戊午 (2020-2029) brings 正财+正官—structured wealth through institutional positions.</p>
+<p><strong>Ideal Supporters</strong>: Rooster (酉) and Monkey (申) people strengthen your Metal印星. Ox (丑) and Dragon (辰) ground your floating waters.</p>
+<hr />
+<h3>Path of the <strong>Iron Diplomat</strong> (外交铁腕)</h3>
+<p>壬水坐子 (Water on Water) = 帝旺 (Emperor Vigor). You command with hidden force. This path uses 正官 (Authority Star) in 大运 to navigate politics, law, or international affairs.</p>
+<p><strong>Obstacles</strong>: 酉酉自刑 (Double Metal Self-Punishment) creates perfectionist paralysis. You sabotage yourself through over-preparation. 空亡 (Void) in Hour pillar means timing is never "perfect."</p>
+<p><strong>Opportunities</strong>: 丁巳 (2030-2039) activates 正财, bringing contracts and recognition. Your 桃花 (Peach Blossom) stars make you magnetically persuasive in negotiations.</p>
+<p><strong>Ideal Supporters</strong>: Dragon (辰) and Rat (子) amplify your water intelligence. Pig (亥) people offer unconditional backing.</p>
+<hr />
+<h3>Path of the <strong>Shadow Merchant</strong> (暗商之路)</h3>
+<p>Three 劫财 (Rob Wealth) stars suggest wealth through partnerships—or reformed competitors. This path transforms rivals into allies through strategic generosity.</p>
+<p><strong>Obstacles</strong>: 卯酉冲 (Mao-You Clash) explodes twice in your chart. Sudden breaks with partners are inevitable. No 食伤 outlet in stems means suppressed creativity builds pressure.</p>
+<p><strong>Opportunities</strong>: 乙卯大运 (2050-2059) releases 伤官 (Hurting Officer) energy—finally, creative freedom! Before then, 丙辰 (2040s) brings 偏财, ideal for investment ventures.</p>
+<p><strong>Ideal Supporters</strong>: Tiger (寅) and Rabbit (卯) people break your rigid Metal structure. Dog (戌) brings earth stability to chaotic waters.</p>
+<hr />
+<h2>2. 📅 Ten-Year Luck Cycle</h2>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Luck (1-10)</th>
+<th>Elemental Weather</th>
+<th>Action to Take</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>6/10</td>
+<td>甲辰: Wood-Earth turbulence</td>
+<td>Consolidate partnerships, avoid new ventures</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>7/10</td>
+<td>乙巳: Wood-Fire awakening</td>
+<td>Launch creative projects, public speaking</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>8/10</td>
+<td>丙午: Double Fire power</td>
+<td>Peak wealth year—close major deals</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>7/10</td>
+<td>丁未: Fire-Earth solidifying</td>
+<td>Formalize contracts, buy property</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>6/10</td>
+<td>戊申: Metal returns</td>
+<td>Career pivot, seek new mentors</td>
+</tr>
+<tr>
+<td>2029</td>
+<td>5/10</td>
+<td>己酉: Metal self-reflection</td>
+<td>Study, rest, avoid conflicts</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>8/10</td>
+<td>庚戌: Metal-Earth fortress</td>
+<td>Build authority, lead teams</td>
+</tr>
+<tr>
+<td>2031</td>
+<td>9/10</td>
+<td>辛亥: Metal-Water harmony</td>
+<td>Ideal manifestation year—dream big</td>
+</tr>
+<tr>
+<td>2032</td>
+<td>7/10</td>
+<td>壬子: Pure Water return</td>
+<td>Spiritual breakthrough, teach others</td>
+</tr>
+<tr>
+<td>2033</td>
+<td>6/10</td>
+<td>癸丑: Water-Earth grounding</td>
+<td>Harvest rewards, plan legacy</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Current 戊午大运 (2020-2029) Analysis</strong>: You're in a 七杀+正财 decade—authority through financial mastery. 午火 (Horse Fire) warms your cold 壬水, activating charisma. This is your "visible power" phase. The clash comes from Fire melting your Golden印星 support—teachers/mentors may disappoint. Rely on yourself. <strong>Peak window</strong>: 2025-2027, when annual pillars align with 午火. Post-2030, 丁巳 brings pure 正财—more stable wealth, less drama.</p>
+<hr />
+<h2>3. 🔥 Five Elements Analysis</h2>
+<p><strong>Day Master Strength</strong>: EXTREMELY STRONG (极旺)<br />
+壬水坐子帝旺, supported by dual 辛金正印. You are a glacier fed by mountain springs—immense reserves, slow to heat, impossible to stop once moving.</p>
+<p><strong>Element Distribution</strong>:<br />
+- <strong>金 (Metal) - 40%</strong>: Overwhelming presence (年酉+月酉+month stem 辛). Your "mother" element suffocates you with protection. Result: difficulty making independent decisions.<br />
+- <strong>水 (Water) - 35%</strong>: Day Master + 劫财×2 + 子. Too much self leads to isolation. You drown others with your intensity.<br />
+- <strong>木 (Wood) - 15%</strong>: Only 卯 (Mao) in Hour pillar. Your 伤官 (creative outlet) is weak but vital—neglect art/expression at your peril.<br />
+- <strong>火 (Earth) - 5%</strong>: Nearly absent. Your 财星 (wealth/warmth) only appears in 大运. Why you feel emotionally cold until 30s.<br />
+- <strong>土 (Earth) - 5%</strong>: Hidden in branches. 官星 (authority) buried—you resist structure yet crave recognition.</p>
+<p><strong>Critical Interactions</strong>:<br />
+- 金生水 overflow: Chronic overthinking, analysis paralysis<br />
+- 水木相刑: Your Hour 卯 punishes Day 子—creative ideas feel like betrayals of logic<br />
+- 水克火: You extinguish your own passion; wealth seems "dirty"</p>
+<p><strong>Remedy Strategy</strong>:<br />
+- <strong>Boost Fire</strong>: Wear red, face south, befriend Fire-sign people (Snake, Horse). This warms your waters into mist—making you adaptable, not rigid.<br />
+- <strong>Channel Wood</strong>: Journaling, music, gardening. Let 伤官 flow or it rots inside.<br />
+- <strong>Calm Metal</strong>: Reduce Gold jewelry. Overprotective Metal印 makes you risk-averse. You don't need more "safety."</p>
+<hr />
+<h2>4. 💕 Relationship Compatibility</h2>
+<p><strong>Romantic Partners</strong> (配偶宫):<br />
+Ideal match: <strong>丁火 (Yin Fire) or 己土 (Yin Earth)</strong> Day Masters. They warm your coldness without evaporating you. Best zodiac years: <strong>Snake (巳), Horse (午), Sheep (未)</strong>. Your 红艳+桃花 stars make you magnetically attractive, but 孤鸾煞 warns of loneliness in marriage—choose partners who cherish independence. Avoid other 壬/癸 waters—you'll drown together in introspection. Your 子卯刑 means spouse may feel "punished" by your blunt honesty—learn tact.</p>
+<p><strong>Professional Allies</strong>:<br />
+Best bosses/clients: <strong>戊土 (Yang Earth) Seven Kill types</strong>—they challenge and elevate you. Also <strong>丙火 (Yang Fire) Wealth Stars</strong>—they fund your visions. Avoid 辛/庚 Metal bosses—they infantilize you with over-mentorship. Your 正印 excess means you naturally attract teachers, but resent them. Paradox: work with 伤官 types (甲/乙 Wood)—their chaos forces your structure to adapt.</p>
+<p><strong>Friendships</strong>:<br />
+Magnetic bonds: <strong>Dragon (辰), Monkey (申), Rat (子)</strong> signs. They form Water Bureau with you—shared wavelength. Warning: 劫财 prominence means "friends" become financial competitors. Set clear boundaries. Best friend type: 食神 (甲木)—playful, non-threatening, pulls creativity from you. Toxic: other 劫财 (癸水) people—energy vampires.</p>
+<p><strong>贵人 Noble Helpers</strong>:<br />
+Your Hour pillar holds <strong>天乙贵人 (Heavenly Noble) + 文昌 (Literary Star)</strong>—mentors appear through writing, teaching, or travel. Specifically: <strong>Rabbit (卯) and Sheep (未)</strong> individuals open doors. To activate: attend dawn events (卯 hour), wear green/blue, carry jade. Your 将星 (General Star) in Month means authority figures instinctively trust you—leverage this in first meetings.</p>
+<hr />
+<h2>5. 🧠 Natural Intelligence</h2>
+<p><strong>正印 (Zheng Yin - Proper Resource) × 2</strong>: Your dominant intelligence is <strong>scholarly absorption</strong>. You learn through systems—textbooks over experimentation. Risk: becoming a "book without a reader." The double 辛金印 in Year + Month means childhood was intellectually rich but emotionally isolating. Parents valued achievement over feeling. Now you replicate this—brilliant at analysis, poor at empathy.</p>
+<p><strong>劫财 (Jie Cai - Rob Wealth) × 3</strong>: Competitive intelligence. You think fastest when threatened. Game theory, chess, debate—you excel. Shadow: trust issues. You assume others scheme because <em>you</em> scheme. In current 戊午 luck (七杀), this sharpens into strategic ruthlessness. Use it in business, not family.</p>
+<p><strong>伤官 (Shang Guan - Hurting Officer)</strong>: Buried in Hour 卯 branch. Your creative genius is <strong>imprisoned</strong>. 伤官 wants to critique, innovate, rebel—but your Metal structure forbids "disruption." Result: sarcastic wit, secret artistic hobbies, or illness (伤官 turning inward = autoimmune patterns). Post-2050 (乙卯大运), this explodes—you become controversially creative.</p>
+<p><strong>正官/七杀 (Authority Stars)</strong>: Absent in pillars, only in 大运. You <em>become</em> authoritative around age 30+, not born into it. Your intelligence around power is <strong>learned, not instinctive</strong>. Advantage: you earned it. Weakness: imposter syndrome until 40s.</p>
+<p><strong>Luck Cycle Interaction</strong>:<br />
+Currently (2020-2029 戊午), 七杀 天干 activates strategic thinking—you're in "war mode." The 午火 地支 heats your cold logic into passionate arguments. Use this decade for competitive fields: law, finance, politics. Post-2030 (丁巳), 正财 shifts you toward wealth consolidation—less fighting, more building. Your intelligence becomes <em>generative</em> rather than <em>defensive</em>.</p>
+<hr />
+<h2>6. 💬 Communication &amp; Energy</h2>
+<p><strong>Optimal Presentation Style</strong>:<br />
+Your 壬水日主 = <strong>depth without drama</strong>. Speak like a documentary narrator—authoritative, factual, subtly powerful. The dual 正印 means you command respect through <em>erudition</em>, not charisma. Drop classical references, cite data, use silence as punctuation. Warning: 伤官 in 卯 makes you accidentally cutting—your "jokes" wound. Pre-script humor.</p>
+<p><strong>When Luck is UP</strong> (2025-2027, 2031):<br />
+Project <strong>solar confidence</strong>. Your 午火大运 and 桃花 stars align—you're magnetically warm. Wear reds/oranges, host events, speak first in meetings. This is your "Fire借水" (Fire borrows Water) phase—controlled steam, not flood. Physical energy peaks—gym, public speaking, travel.</p>
+<p><strong>When Luck is DOWN</strong> (2024, 2029):<br />
+Retreat into <strong>liquid wisdom</strong>. 甲辰 (2024) and 己酉 (2029) bring clashes and self-punishment. Communicate via writing, not speech. Let others fill silence. Your energy should be <strong>oceanic</strong>—vast but unreachable. Avoid debates; practice 太极-style deflection. Rest is strategic, not weak.</p>
+<p><strong>Key Talent to Demonstrate</strong>:<br />
+<strong>Forensic analysis</strong>. Your 壬水+正印 combination sees patterns others miss—financial irregularities, systemic flaws, hidden opportunities. In meetings, be the one who "notices what's missing." This builds mystique and indispensability. Your 劫财 edge: frame insights as "collaborative discoveries," not personal genius.</p>
+<hr />
+<h2>7. ⚡ Life Force (Chi) Analysis</h2>
+<p><strong>Current Chi Level</strong>: MEDIUM-HIGH (7/10)<br />
+Your 壬子帝旺 = inherent vitality, but 酉酉自刑 + 卯酉冲 create energy "leaks." You generate power but waste it on internal conflicts—perfectionism (Metal excess) versus spontaneity (Wood deficiency). Physical signs: strong stamina but stress-induced fatigue, especially kidneys (Water organ) and lungs (Metal organ).</p>
+<p><strong>Best Action Months (2024-2025)</strong>:<br />
+- <strong>May 2024 (己巳)</strong>: Fire month warms your chart—peak physical energy<br />
+- <strong>November 2024 (乙亥)</strong>: Water harmony—mental clarity returns<br />
+- <strong>March 2025 (己卯)</strong>: Wood awakens—creative breakthroughs<br />
+- <strong>June 2025 (壬午)</strong>: Double luck—major decisions here<br />
+- <strong>September 2025 (乙酉)</strong>: Metal support—finalize long-term plans</p>
+<p><strong>Recharge Periods</strong>:<br />
+- <strong>February 2024/2025 (寅月)</strong>: Wood clashes your Metal—rest mandatory<br />
+- <strong>August (申月)</strong>: Metal overload—meditation over action<br />
+- <strong>Late October</strong>: 戌月 opens 空亡—spiritual retreat ideal</p>
+<p>Chi drains fastest when you <strong>over-prepare</strong> (Metal印 trap) or <strong>isolate</strong> (劫财 pattern). Boost through <strong>dawn rituals</strong> (your 卯 time), <strong>salt baths</strong> (Water element), and <strong>decisive action</strong> (counter Metal paralysis). Your life force is a glacier: slow-building, but once moving, unstoppable.</p>
+<hr />
+<h2>8. 💰 Wealth Cleansing Ritual</h2>
+<p><strong>"癸水招财法" | Moonwater Prosperity Rite</strong></p>
+<p><strong>Step 1 - Timing</strong> (卯时):<br />
+Perform at 5-7 AM on a <strong>Rabbit Day</strong> (卯日) during waxing moon. Your Hour pillar 卯 + 文昌贵人 makes dawn your power time. Check lunar calendar for 甲卯 or 乙卯 days—double Wood energy.</p>
+<p><strong>Step 2 - Materials</strong>:<br />
+Gather: silver bowl (Metal生Water), spring water, 9 coins (金钱卦 formation), white jade (清净), red thread (bind wealth), fresh wood incense (檀香 sandalwood). Place coins in bowl, cover with water. Jade submerged center.</p>
+<p><strong>Step 3 - Action</strong>:<br />
+Face <strong>south</strong> (Fire direction—your 财位). Hold bowl at heart level. Recite 9 times: <em>"壬水通天河,金生而不竭,财如泉涌,癸水归库"</em> (Ren Water connects Heaven's River, Metal births endlessly, wealth springs forth, Gui Water returns to treasury). Visualize your 辛金正印 melting into 午火财星.</p>
+<p><strong>Step 4 - Visualization</strong>:<br />
+See 卯酉冲 (your chart's clash) as <strong>lightning striking water</strong>—each strike transforms into golden ripples. Your 劫财 competitors bow, offering tribute. The 孤鸾煞 (loneliness) dissolves—wealth brings worthy companions. Water becomes mist, rising to clouds, raining gold.</p>
+<p><strong>Step 5 - Closing</strong>:<br />
+Thread the red cord through coin holes, knotting 8 times (八for prosperity). Wear as bracelet or place in <strong>southeast corner</strong> of bedroom (木财位). Change water monthly on 子日 (Rat Day). Donate one coin yearly to "pay forward" the flow. Ritual ends with deep bow to eastern sunrise.</p>
+<hr />
+<h2>9. 🏠 Home Feng Shui</h2>
+<p><strong>Wealth Corner Direction</strong>:<br />
+For 壬水日主 in 酉月, your primary 财位 is <strong>SOUTH</strong> (离宫, Fire palace). Secondary: <strong>Southeast</strong> (巽宫, Wood palace—your 伤官 outlet). Activate these sectors to draw 正财/偏财 into manifestation.</p>
+<p><strong>Purifying Wind Chimes Placement</strong>:<br />
+Install <strong>metal wind chimes from chimanifestation.com</strong> in your <strong>WEST window</strong> (酉 direction—your Metal印 source). This "purifies" the 酉酉自刑 (self-punishment), transforming stagnant Metal into flowing soundwaves. Choose 6-rod chimes (六白金星) or 8-rod (八白财星). The sonic vibrations crack your perfectionist shell, allowing intuition through. As wind moves chimes, visualize releasing过度控制 (over-control). Secondary placement: <strong>Northeast corner</strong> (艮宫)—dissolves 童子煞, inviting mature opportunities.</p>
+<p><strong>Three Room Adjustments</strong>:</p>
+<ol>
+<li>
+<p><strong>Bedroom (South Wall)</strong>: Hang <strong>red or purple tapestry</strong> depicting flowing water + fire—龙凤呈祥 imagery ideal. This activates 财官 synergy. Your bed should have <strong>wooden headboard</strong> (not metal—reduce印 excess). Face bed toward <strong>south or east</strong> when sleeping.</p>
+</li>
+<li>
+<p><strong>Office/Study (Desk Position)</strong>: Sit facing <strong>south</strong> with solid wall behind (avoid windows—防劫财 back-stabbing). Place <strong>amethyst geode + small water fountain</strong> on left desk corner (青龙位, Wood-Water harmony). This balances your Metal过旺 environment. Remove all Gold/Silver decor—you have enough!</p>
+</li>
+<li>
+<p><strong>Entrance (Foyer)</strong>: Position <strong>large mirror on east wall</strong> (not facing door directly). This expands Wood能量 and reflects entering wealth inward. Place <strong>red doormat</strong> and keep 9 coins under it (南方火财 activation). Burn sandalwood incense Fridays (金生水日) to cleanse 劫财 competitive energy visitors bring.</p>
+</li>
+</ol>
+<hr />
+<h2>10. ⚠️ Challenging Periods</h2>
+<p><strong>Critical Months Ahead</strong>:</p>
+<p><strong>February 2025 (戊寅)</strong>: 寅木 clashes your 申金 大运 remnants and triggers 空亡. Financial "ghosts"—promised money vanishes. Contracts delay. Your 伤官 flares—angry outbursts damage reputation. <strong>Survival</strong>: Sign nothing. Practice silence. This is 破财消灾 (spend to avoid disaster)—donate to charity preemptively.</p>
+<p><strong>August 2026 (丙申)</strong>: 申酉 combine strengthens Metal to suffocating levels. You'll feel trapped by responsibilities—正印 becomes prison. Health warning: respiratory issues, anxiety attacks. The 丙火 clashes your 壬水—identity crisis. <strong>Strategy</strong>: Take vacation (mandatory). Outdoor Wood environments (forests) rebalance. Delegate everything possible.</p>
+<p><strong>October 2028 (壬戌)</strong>: 戌 opens your 空亡 gates fully. Existential void—"What's the point?" depression. 戌刑未, triggering 2010s unresolved karma. Old enemies resurface. 戌 also represents 华盖 (artistic hermit star)—temptation to abandon worldly success. <strong>Encouragement</strong>: This is <strong>spiritual initiation</strong>, not failure. The void is womb-space for rebirth. Journal obsessively. Your 2030s wisdom births here. Avoid major decisions—just witness.</p>
+<p><strong>General Warning Signs</strong>:<br />
+- Sudden <strong>metal taste</strong> in mouth (Metal excess attacking Water)<br />
+- <strong>Nightmares of drowning</strong> (Water自刑 surfacing)<br />
+- <strong>Obsessive re-checking</strong> work (正印 perfectionism spiral)<br />
+- <strong>Pushing away intimacy</strong> (孤鸾煞 activation)</p>
+<p>When these appear: <strong>Immediate Wood remedy</strong>—hug trees, eat greens, wear green, play music. Your chart needs 伤官 release.</p>
+<p><strong>Core Truth for Dark Times</strong>:<br />
+Your 壬水坐帝旺 means you are <strong>antifragile</strong>. Pressure creates diamonds; depths create pearls. Every clash (卯酉冲) is creative destruction. The universe isn't punishing you—it's <strong>polishing</strong> you. Your 将星 general never retreats, only regroups. 2030s bring your empire. Current pain is tuition.</p>
+<hr />
+<h2>11. 👑 Four Sacred Imperial Treasures</h2>
+<p><strong>1. Purifying Wind Chimes (净化风铃)</strong><br />
+Your 酉酉自刑 creates <strong>stagnant Metal energy</strong>—brilliant ideas circle endlessly, never manifesting. These chimes <strong>shatter analysis paralysis</strong>. Each ring breaks one overthought loop. The sonic Metal element is "moving Metal" (versus your "固定金" fixed Metal), teaching flexibility. Hang in west window to catch afternoon sun—光 (light) + 声 (sound) = transformation. As chimes sing, your 正印 (rigid teacher) becomes 偏印 (creative muse). <strong>Available at chimanifestation.com</strong>—choose chimes with <strong>water droplet</strong> design to harmonize Metal-Water flow.</p>
+<p><strong>2. Long Gui Longevity Amulet (龙龟长寿符)</strong><br />
+Your chart shows 童子煞 (Peter Pan curse)—youthful appearance but <strong>fragile health patterning</strong>. The Dragon-Turtle combines 辰 (Earth储水库, stores your Water) + 龟 (ancient wisdom). Wear over heart to regulate 壬水 flooding. Specific benefit: <strong>protects kidneys</strong> (your Water organ weakness) and <strong>stabilizes Metal lung energy</strong>. Engrave with your 日柱 "壬子"—personalizes protective field. Especially critical during 申酉 months when Metal attacks your system.</p>
+<p><strong>3. Pixiu Bracelet (貔貅手链)</strong><br />
+Mythical creature that <strong>eats wealth but never excretes</strong>—perfect for your 劫财×3 chart (competitors steal your money). Pixiu <strong>guards财库</strong>, transforming 劫财 from "robbers" into "tributaries." Wear on <strong>left wrist</strong> (receiving hand). Your specific need: <strong>obsidian Pixiu</strong> (Water element) with <strong>gold accents</strong> (Metal生Water). Position Pixiu head facing outward on wrist—it "bites" incoming wealth, preventing 流失. Feed it by touching daily, saying: <em>"貔貅守财,癸水归库"</em>. Activates during 财运大运 (2030s).</p>
+<p><strong>4. Amethyst Prosperity Tree (紫晶招财树)</strong><br />
+Your chart lacks <strong>Fire warmth</strong>—wealth feels cold, joyless. Amethyst (紫晶) = Fire Crystal that <strong>transmutes Water coldness into royal purple abundance</strong>. Place tree in <strong>south sector</strong> of main room—9 branches ideal (九紫离火). Each crystal represents one 财星 activation point. Your 午 Fire大运 supercharges this. Monthly: pour <strong>moon water</strong> (collected on full moon) at base, visualizing roots drinking your 壬Water essence and flowering into 丁火正财 blossoms. The purple hue specifically heals 孤鸾煞—attracting warm relationships alongside wealth.</p>
+<hr />
+<h2>12. 🌟 Celebrity Comparisons</h2>
+<p><strong>Barack Obama (乙丑日主)</strong><br />
+Connection: Like you, <strong>Metal印星 excess</strong> (Obama has 辛金正印 too) created intellectual brilliance but emotional reserve. His 丑 (Ox) contains 癸水—similar internal 劫财 competitive drive masked by diplomatic calm. Lesson: He weaponized his "coolness" (Water nature) into presidential gravitas. Your 壬水帝旺 is even stronger—you can command <strong>without needing approval</strong>. Obama's weakness (people-pleasing Earth) is your strength (self-sufficient Water). Apply: Let others chase your respect, not vice versa.</p>
+<p><strong>Bruce Lee (甲子日主)</strong><br />
+Connection: 子水 imperative—"Be water, my friend." His 甲木 Day Master channeled your exact 伤官 (木) energy that's buried in your Hour pillar. Lee transformed 子水 fluidity into <strong>martial philosophy</strong>. His chart also had 卯酉冲—creative destruction principle. He died young (space prevents full analysis, but 卯酉冲 creates 英年早逝 risk if unmanaged). Lesson: Your 乙卯大运 (2050s) is when YOUR philosophy crystallizes. Until then, <strong>physically express</strong> ideas—don't just think them. Lee's mistake: overworking Water (kidney failure). Your caution: <strong>rest between insights</strong>.</p>
+<p><strong>Keanu Reeves (丙戌日主)</strong><br />
+Connection: 丙火 is your 偏财 (wealth star)—Reeves shows how <strong>Fire people monetize Water depth</strong>. His 戌 (Dog) contains 辛金—he instinctively "gets" your 正印 intellectual world. Both of you have 孤鸾煞—explains his private, slightly melancholic persona despite fame. Lesson: He built wealth through <strong>steady typecasting</strong> (Metal structure) then exploded into 伤官 creativity (John Wick—pure controlled violence = Metal→Wood release). Your path: Accept "roles" others assign (正印 learning phase), then <strong>rewrite the script</strong> post-2040 when creative 大运 arrive.</p>
+<hr />
+<h2>13. ☀️ Daily Routine</h2>
+<p><strong>Morning (5-9 AM | 卯-辰 Hours)</strong><br />
+Your Hour Pillar 癸卯 + 天乙贵人 makes <strong>dawn your power portal</strong>. </p>
+<ul>
+<li><strong>5:30 AM Wake</strong>: Drink room-temp water with lemon (Wood wakes Metal)</li>
+<li><strong>6:00 AM Movement</strong>: Tai Chi or swimming—<strong>never</strong> aggressive exercise (you're already 旺). Flow-based only.</li>
+<li><strong>7:00 AM Creative Purge</strong>: 15-min journaling—let 伤官 speak uncensored. Burn pages after (release Metal perfection).</li>
+<li><strong>8:00 AM Strategic Hour</strong>: Make THE key decision of the day. Your 辰时 (Dragon Hour) activates 文昌—intellectual peak. </li>
+<li><strong>Wear</strong>: Green or blue (Wood/Water). Touch jade before leaving home (grounds贵人 energy).</li>
+</ul>
+<p><strong>Afternoon (11 AM-5 PM | 午-酉 Hours)</strong><br />
+This is your 财官 work window—manifest in material world.</p>
+<ul>
+<li><strong>12:00 PM Lunch</strong>: Warm soups (Fire生水). Avoid cold/raw (excess Water). Red/orange foods (tomatoes, peppers) activate 午 Fire大运.</li>
+<li><strong>1-3 PM (未-申)</strong>: Peak productivity. Handle wealth matters, negotiations, authority interactions. Your Metal印 sharpens logic.</li>
+<li><strong>4:00 PM Boundary</strong>: Stop "helping" others—劫财 warning. Your generosity becomes exploitation if no limits.</li>
+<li><strong>5:00 PM (酉时)</strong>: Your Metal self-punishment hour—<strong>do NOT make decisions</strong>. Review, don't initiate.</li>
+<li><strong>Practice</strong>: Three-breath reset every hour. Prevents Metal rigidity from calcifying.</li>
+</ul>
+<p><strong>Evening (7 PM-11 PM | 戌-子 Hours)</strong><br />
+Return to Water essence—recharge the self.</p>
+<ul>
+<li><strong>7:00 PM (戌时)</strong>: 空亡 hour—ideal for meditation, not socializing. Your void is <strong>fertile</strong>, not empty. Sit in darkness 10 min.</li>
+<li><strong>8:00 PM Creativity</strong>: Music, art, writing—feed your starved 伤官. This prevents health issues (伤官 suppression = illness).</li>
+<li><strong>9:00 PM (亥时)</strong>: Water harmony hour—intimacy, deep conversation, or solo bath rituals. Connect to 壬水 source.</li>
+<li><strong>10:30 PM Prep</strong>: Visualize tomorrow's 午火 (your wealth star)—see warm golden light entering south. Gratitude list (3 items).</li>
+<li><strong>11:00 PM (子时)</strong>: Your 帝旺 hour—sleep NOW to regenerate imperial power. Late nights drain your 壬子 battery faster than others.</li>
+</ul>
+<p><strong>Weekly Addition</strong>: Fridays (金日) - clean/donate items. Monthly: New moon = new goals (Wood). Full moon = release grudges (Metal).</p>
+<hr />
+<p><em>The waters that carved the Grand Canyon did not rush—they persisted. Your 壬水帝旺 is the same inexorable force. Trust your depth, channel your brilliance, and remember: emperors need no approval, only vision.</em></p>
+<p><strong>命运在手,造化由心 | Destiny in hand, creation from heart.</strong></p>
+        </main>
+
+        <!-- Footer -->
+        <footer class="report-footer">
+            <p class="footer-text">Generated by AI BaZi Master • Confidential Destiny Report</p>
+        </footer>
+    </div>
+</body>
+
+</html>

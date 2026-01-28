@@ -60,6 +60,13 @@ class ReportRequest(BaseModel):
         description="Gender for BaZi calculations"
     )
     
+    # Name - optional, for personalized report title
+    name: Optional[str] = Field(
+        default=None,
+        description="Person's name for report title (e.g., 'Aleena'). If not provided, uses city from location.",
+        max_length=50
+    )
+    
     # Output format
     output_format: Literal["html", "pdf", "both"] = Field(
         default="both",

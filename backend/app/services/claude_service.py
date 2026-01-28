@@ -5,8 +5,7 @@ Claude Service - AI Report Generation with Retry Logic
 Features:
 - Retry logic with exponential backoff (tenacity)
 - 13 sections verification
-- 8000 max tokens for complete reports
-- Manager-approved section format
+- Manager-approved detailed prompt (Updated Jan 2026)
 """
 
 import anthropic
@@ -43,8 +42,8 @@ REQUIRED_SECTIONS = [
     "communication",       # 6. Communication & Energy
     "life force",          # 7. Life Force (Chi)
     "wealth",              # 8. Wealth Cleansing
-    "furniture",           # 9. Home Furniture
-    "death",               # 10. Death Particle
+    "feng shui",           # 9. Home Feng Shui
+    "challenging",         # 10. Challenging Periods
     "treasure",            # 11. Imperial Treasures
     "celebrity",           # 12. Celebrity Comparisons
     "routine"              # 13. Daily Routine
@@ -58,168 +57,163 @@ class ClaudeService:
     Features:
     - Retry with exponential backoff
     - Section verification
-    - Optimized prompt for all 13 sections
+    - Manager-approved detailed prompt (Updated Jan 2026)
     """
     
     # ===========================================
-    # System Prompt - Claude's Personality
+    # System Prompt - Manager Approved (Optimized)
     # ===========================================
     SYSTEM_PROMPT = """You are a master BaZi (八字) astrologer with decades of experience in Chinese metaphysics.
+Generate ONLY Markdown text for a BaZi report.
 
-Your task is to generate the text content of a comprehensive BaZi report in Markdown format.
+**CRITICAL WORD BUDGET - MUST FOLLOW EXACTLY:**
+Total output: approximately 5,500 words. Budget per section:
+- Section 1 (Life Paths): 600 words (200 per path)
+- Section 2 (10-Year Table): 500 words (table + analysis)
+- Section 3 (Elements): 450 words
+- Section 4 (Relationships): 500 words (125 per type)
+- Section 5 (Intelligence): 400 words
+- Sections 6-13: 300 words EACH
 
-CRITICAL RULES:
-1. You MUST include ALL 13 sections - no exceptions
-2. Do NOT generate any HTML, CSS, or styling
-3. Use Markdown formatting (headers, bold, italics, lists)
-4. Be mystical, engaging, and personalized
-5. Base everything on the actual chart data provided
-6. Each section should be 150-250 words - detailed but CONCISE
-7. Return ONLY Markdown content
-8. COMPLETE ALL 13 SECTIONS - if running low on space, make sections shorter but NEVER skip sections
+**NON-NEGOTIABLE RULES:**
+1. NO section exceeds its word limit
+2. You MUST complete ALL 13 sections - stopping early is FAILURE
+3. Finish Section 13 (Daily Routine) before output ends
+4. Use bullet points for efficiency
+5. Chinese terms (正印, 七杀) with brief English meaning
+6. Be mystical yet concise - quality over quantity
 
-IMPORTANT: Completing all 13 sections is MORE important than making each section extremely long."""
+Output clean Markdown only, no HTML."""
 
     # ===========================================
-    # Manager-Approved 13 Sections Prompt
+    # Optimized 13 Sections (Manager Requirements)
     # ===========================================
-    SECTION_TEMPLATE = """Based on the following BaZi birth chart, generate a COMPLETE personalized destiny report.
+    SECTION_TEMPLATE = """Based on this BaZi chart, generate a complete personalized destiny report:
 
-## Birth Chart Data
+## Chart Data
 {bazi_json}
 
-## CRITICAL INSTRUCTION
-You MUST generate ALL 13 sections below. Missing any section is NOT acceptable.
+---
+
+## Complete 13 Sections (All Required)
+
+### 1. 🌟 Three Life Path Simulations [600 words]
+3 possible life trajectories using Day Master (200 words each):
+- **Allegorical Path Name** (poetic title)
+- Obstacles, challenges using BaZi terms (explain in context)
+- Opportunities from luck cycle
+- Who helps: zodiac/element supporters
+- Connect to 大运 luck phases
 
 ---
 
-# 🔮 Your Personalized BaZi Destiny Report
+### 2. 📅 Ten-Year Luck Cycle [500 words]
+Create 10-row table:
 
-*For a {zodiac} born on {birth_date}*
+| Year | Luck (1-10) | Elemental Analysis | Action to Take |
+|------|-------------|-------------------|----------------|
+| 2024 | X/10 | [element weather] | [action] |
+... continue to 2033
 
----
-
-## 1. 🌟 Three Life Path Simulations
-Dive into the hidden intricacies that lie before you – map out:
-- **Obstacles** that will test your resolve
-- **Challenges** you must overcome  
-- **Opportunities** waiting to be seized
-Generate 3 distinct possible life paths based on different choices.
+After table: Current 大运 analysis, peak periods, good/bad year feelings.
 
 ---
 
-## 2. 📅 Ten-Year Luck Cycle Analysis
-Analyze the 大运 (Major Luck Cycles):
-- Your current 10-year luck cycle and its meaning
-- The upcoming cycle and what to expect
-- **PEAK LUCK periods in the next 12 months** - specific months to watch
-- How to maximize these favorable windows
+### 3. 🔥 Five Elements Analysis [450 words]
+- Day Master strength (strong/weak)
+- Each element (金木水火土): % present, manifestation
+- Element interactions (mood, energy, productivity)
+- Which to boost, which to calm
 
 ---
 
-## 3. 🔥 Five Elements Analysis
-Examine the 5 elements (木火土金水) in this chart:
-- Which elements **nourish** your Day Master
-- Which elements **clash** with your energetic fingerprints
-- Signs of elemental deficiency and what bad luck it brings
-- Practical ways to balance your elements (colors, foods, directions)
+### 4. 💕 Relationship Compatibility [500 words]
+4 types (125 words each):
+1. **Romantic**: Ideal partner elements + zodiac years
+2. **Professional** (Boss & Clients): How to navigate work
+3. **Friends**: Supportive peer elements
+4. **贵人 (Gui Ren)**: How to attract noble helpers/mentors
 
 ---
 
-## 4. 💕 Relationship Compatibility
-Reveal the spooky relationship truths:
-- Who is **right for you** - ideal partner elements
-- Who is **meant to stay** in your life
-- Who is **secretly trying to help you**
-- Traits that reveal who's really on your side
-- Warning signs of incompatible people
+### 5. 🧠 Natural Intelligence [400 words]
+10 Gods in chart:
+- 正印/偏印 (Resource Stars): learning style
+- 正官/七杀 (Authority Stars): power dynamics
+- 正财/偏财 (Wealth Stars): money patterns
+- 伤官/食神 (Output Stars): creativity
+- 比肩/劫财 (Friend Stars): competition
+
+How they interact with current luck cycle.
 
 ---
 
-## 5. 🧠 Natural Intelligence Patterns
-Unlock your mental potential:
-- Your natural thinking style based on Ten Gods (十神)
-- The **BEST ways to use your intelligence**
-- How working with your natural patterns can increase income (like our users who see up to 25% increase in 1 month)
-- Specific career and learning recommendations
+### 6. 💬 Communication & Energy [300 words]
+- Best self-presentation for Day Master
+- Energy when luck UP vs DOWN
+- Key talents to demonstrate
 
 ---
 
-## 6. 💬 Communication & Energy Adjustments
-Simple adjustments to **how you talk, move, and act**:
-- Speaking patterns that charge you with right energies
-- Body language adjustments for better reception
-- How to attract the right people who provide gifts, guidance & wisdom
-- Daily energy optimization techniques
+### 7. ⚡ Life Force (Chi) Analysis [300 words]
+- Current Chi level (Ganzhi based)
+- Best months to take action
+- When to rest and recharge
+- Planning for when to "strike"
 
 ---
 
-## 7. ⚡ Life Force (Chi) Analysis
-If you feel **uninspired, stuck, or trapped** in old patterns:
-- Signs that you're low on Life Force (Chi)
-- How clashing energies drain hundreds of thousands of people yearly
-- **The way out** if you feel stuck and lethargic
-- Specific Chi-building exercises for this chart
+### 8. 💰 Wealth Cleansing Ritual [300 words]
+5-step personalized ritual for Day Master:
+1. Timing (days/hours)
+2. Materials
+3. Actions
+4. Visualization
+5. Closing
 
 ---
 
-## 8. 💰 Wealth Cleansing Ritual
-A simple wealth cleansing tailored to your **specific Day Master**:
-- Step-by-step ritual instructions
-- How to replenish wealth blocks
-- Clearing clashing energies around money
-- Best timing for performing this ritual
+### 9. 🏠 Home Feng Shui [300 words]
+- Wealth corner direction for this chart
+- Purifying Wind Chimes (chimanifestation.com) placement
+- 3 room adjustments
 
 ---
 
-## 9. 🏠 Home Furniture Adjustments
-Feng Shui for abundance:
-- Specific furniture placements for your chart
-- How to nourish abundance-creating energies
-- The shocking changes people experience at full potential
-- Room-by-room recommendations
+### 10. ⚠️ Challenging Periods [300 words]
+- 2-3 difficult months/periods ahead
+- Warning signs
+- Encouragement and survival strategies
+- 10x effort reminder
 
 ---
 
-## 10. ⚠️ Death Particle Detection
-Detect the little-known **death particle (死氣)** from your chart:
-- Methods to identify this particle
-- How it invites misfortune
-- People to **stay away from** who carry this particle
-- How it creates a "hanging noose" around your cash cows
+### 11. 👑 Four Sacred Imperial Treasures [300 words]
+Brief on each (75 words each):
+1. **Purifying Wind Chimes** - energy flow
+2. **Long Gui Longevity Amulet** - health
+3. **Pixiu Bracelet** - wealth attraction
+4. **Amethyst Prosperity Tree** - abundance
 
 ---
 
-## 11. 👑 Four Sacred Imperial Treasures
-Instructions for 4 treasures tailored to YOUR chart:
-- What each treasure does for your Day Master
-- How they **scare away death particles**
-- How they welcome correct energies
-- Specific activation instructions
+### 12. 🌟 Celebrity Comparisons [300 words]
+2-3 celebrities with similar Day Master/elements:
+- Why similar, what to learn from them
 
 ---
 
-## 12. 🌟 Celebrity Comparisons
-Discover who you could become:
-- 2-3 **rich, powerful, celebrity-status** individuals similar to you
-- What gifts they expressed from their BaZi
-- What you share with them
-- How to fully express YOUR true hidden gifts
+### 13. ☀️ Daily Routine [300 words]
+Daily practices for balance:
+- **Morning**: specific practice
+- **Afternoon**: energy management
+- **Evening**: restoration
+- How this maintains elemental harmony
 
 ---
 
-## 13. ☀️ Daily Routine Adjustments
-Simple daily practices to:
-- **Energize weak elements** in your chart
-- Feel refreshed from the moment you wake
-- Tune your mind to the frequency of abundance in seconds
-- Morning, afternoon, and evening routines
-
----
-
-Write in English with occasional Chinese terms for authenticity. 
-Be engaging, mystical, and SPECIFIC to this individual's chart.
-Return ONLY the Markdown content - no HTML, no extra formatting."""
+Write English with Chinese terms (正印, 七杀). Be mystical, practical, complete.
+Return ONLY Markdown. COMPLETE ALL 13 SECTIONS."""
 
     def __init__(self, api_key: Optional[str] = None):
         """Initialize Claude Service"""
@@ -248,22 +242,32 @@ Return ONLY the Markdown content - no HTML, no extra formatting."""
     )
     def _call_claude(self, user_prompt: str) -> str:
         """
-        Call Claude API with retry logic
+        Call Claude API with STREAMING for large token requests
+        
+        Streaming is REQUIRED by Anthropic for requests >10 minutes
+        (28K tokens = ~10-15 min generation time)
         
         Retries on:
         - Connection errors
         - Rate limits (429)
         - Server errors (5xx)
         """
-        message = self.client.messages.create(
-            model=self.model,
-            max_tokens=12000,  # Optimized for speed while keeping all sections
-            system=self.SYSTEM_PROMPT.replace("150-250 words", "150-200 words"),  # Enforce conciseness
-            messages=[{"role": "user", "content": user_prompt}]
-        )
+        collected_text = []
         
-        if message.content and len(message.content) > 0:
-            return message.content[0].text
+        # Use streaming context manager
+        with self.client.messages.stream(
+            model=self.model,
+            max_tokens=20000,  # Reduced as requested, still ensures all 13 sections complete
+            system=self.SYSTEM_PROMPT,
+            messages=[{"role": "user", "content": user_prompt}]
+        ) as stream:
+            for text in stream.text_stream:
+                collected_text.append(text)
+        
+        full_response = "".join(collected_text)
+        
+        if full_response:
+            return full_response
         else:
             raise ClaudeServiceError("Empty response from Claude")
     

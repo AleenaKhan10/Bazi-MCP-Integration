@@ -53,47 +53,33 @@ class MCPClient:
     
     def _get_timezone_offset(self, location: str) -> str:
         """
-        Get timezone offset for a location
+        Get timezone offset for any location worldwide.
         
-        🎓 LEARNING POINT:
-        BaZi needs exact local time with timezone.
-        "14:30 in Karachi" ≠ "14:30 in Beijing"
+        🎓 NOW USES DYNAMIC GEOCODING:
+        - Nominatim API for any location
+        - Smart caching (no repeated API calls)
+        - Falls back to UTC if geocoding fails
         
         Args:
-            location: City, Country (e.g., "Karachi, Pakistan")
+            location: City, Country (e.g., "Berlin, Germany")
             
         Returns:
             Timezone offset string (e.g., "+05:00")
         """
-        # Common cities with their approximate coordinates
-        # In production, use a geocoding API like Google Maps
-        city_coords = {
-            "karachi": (24.8607, 67.0011),
-            "lahore": (31.5204, 74.3587),
-            "islamabad": (33.6844, 73.0479),
-            "beijing": (39.9042, 116.4074),
-            "shanghai": (31.2304, 121.4737),
-            "hong kong": (22.3193, 114.1694),
-            "tokyo": (35.6762, 139.6503),
-            "new york": (40.7128, -74.0060),
-            "london": (51.5074, -0.1278),
-            "dubai": (25.2048, 55.2708),
-        }
+        # Import here to avoid circular imports
+        from app.services.geocoding_service import geocoding_service
         
-        # Extract city name (first part before comma)
-        city = location.lower().split(",")[0].strip()
+        # Get timezone using dynamic geocoding
+        result = geocoding_service.get_timezone(location)
+        tz_name = result["timezone"]
         
-        if city in city_coords:
-            lat, lng = city_coords[city]
-            tz_name = self.tf.timezone_at(lng=lng, lat=lat)
-            if tz_name:
-                tz = pytz.timezone(tz_name)
-                offset = datetime.now(tz).strftime('%z')
-                # Format: +0500 → +05:00
-                return f"{offset[:3]}:{offset[3:]}"
-        
-        # Default to Pakistan timezone
-        return "+05:00"
+        try:
+            tz = pytz.timezone(tz_name)
+            offset = datetime.now(tz).strftime('%z')
+            # Format: +0500 → +05:00
+            return f"{offset[:3]}:{offset[3:]}"
+        except Exception:
+            return "+00:00"  # UTC fallback
     
     def _format_datetime_iso(
         self, 

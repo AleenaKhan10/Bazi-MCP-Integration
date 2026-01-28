@@ -45,7 +45,7 @@ async def health_check():
 @limiter.limit("10/hour")  # Rate limit: 10 reports per hour per IP
 async def generate_report(data: ReportRequest, request: Request):
     """
-    Generate BaZi Report (Rate Limited: 5/hour)
+    Generate BaZi Report (Rate Limited: 10/hour)
     
     Features:
     - Complete 13-section report
@@ -102,7 +102,15 @@ async def generate_report(data: ReportRequest, request: Request):
         # ===========================================
         logger.info("📄 Creating HTML and PDF files...")
         
-        result = report_generator.generate(bazi_data, markdown_content)
+        # Prepare request data for template personalization
+        request_data = {
+            "name": data.name if data.name else data.location.split(',')[0].strip(),
+            "birth_time": data.birth_time,
+            "location": data.location,
+            "gender": data.gender
+        }
+        
+        result = report_generator.generate(bazi_data, markdown_content, request_data)
         
         logger.info(f"✅ Report saved: {result['report_id']}")
         

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 XYZ's BaZi Destiny Report</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===========================================
+           🎨 PRO Styles - "The Celestial Document"
+           =========================================== */
+        :root {
+            /* PDF-Safe Colors (High Contrast) */
+            --primary-dark: #0f172a;
+            /* Deep Navy */
+            --primary-gold: #b48e3e;
+            /* Premium Gold */
+            --text-main: #1e293b;
+            /* Slate 800 - Good Black */
+            --text-light: #475569;
+            /* Slate 600 */
+            --bg-paper: #ffffff;
+            /* Pure White */
+            --bg-accent: #f8fafc;
+            /* Very light slate */
+            --border-color: #e2e8f0;
+            /* Light gray border */
+
+            /* Element Colors */
+            --wood-color: #22c55e;
+            /* Green */
+            --fire-color: #ef4444;
+            /* Red */
+            --earth-color: #a16207;
+            /* Brown/Yellow */
+            --metal-color: #f59e0b;
+            /* Gold */
+            --water-color: #3b82f6;
+            /* Blue */
+        }
+
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            /* Excellent readability */
+            background: #505050;
+            /* Dark background for browser view only */
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            /* Force colors in print */
+        }
+
+        /* ===========================================
+           📄 A4 Paper Container
+           =========================================== */
+        .page-container {
+            background: white;
+            max-width: 21cm;
+            /* A4 Width */
+            margin: 40px auto;
+            padding: 0;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            /* For watermark */
+        }
+
+        /* Watermark Effect (Subtle) */
+        .page-container::before {
+            content: "BAZI";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-family: 'Cinzel', serif;
+            font-size: 15rem;
+            color: rgba(180, 142, 62, 0.03);
+            /* Very faint gold */
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ===========================================
+           🏛️ Header Design
+           =========================================== */
+        .report-header {
+            background: var(--primary-dark);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid var(--primary-gold);
+        }
+
+        .header-logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .report-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .report-subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+
+        .report-meta {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 15px;
+        }
+
+        /* ===========================================
+           🔮 Four Pillars Display (Elemental Colors)
+           =========================================== */
+        .bazi-dashboard {
+            background: white;
+            margin: 30px 40px;
+            padding: 30px;
+            border: 1px solid var(--primary-gold);
+            position: relative;
+            z-index: 1;
+            /* Double border effect */
+            outline: 4px solid white;
+            box-shadow:
+                0 0 0 5px var(--border-color),
+                0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .pillars-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto 25px;
+        }
+
+        .pillar {
+            text-align: center;
+            padding: 15px 10px;
+            border-radius: 8px;
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+        }
+
+        .pillar-label {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.7rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .pillar-year {
+            font-size: 0.65rem;
+            color: var(--text-light);
+        }
+
+        .stem {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+            display: block;
+        }
+
+        .stem-name {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .branch {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+            display: block;
+        }
+
+        .branch-name {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            display: block;
+        }
+
+        /* Element Colors for Stems/Branches */
+        .wood { color: var(--wood-color); }
+        .fire { color: var(--fire-color); }
+        .earth { color: var(--earth-color); }
+        .metal { color: var(--metal-color); }
+        .water { color: var(--water-color); }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .meta-value {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--primary-gold);
+            font-weight: 700;
+        }
+
+        /* ===========================================
+           🌊 Five Element Cycle (for Section 3)
+           =========================================== */
+        .element-cycle {
+            text-align: center;
+            margin: 30px auto;
+            max-width: 450px;
+            padding: 20px;
+            background: var(--bg-accent);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .element-cycle-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .element-cycle svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .cycle-legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .legend-arrow {
+            width: 20px;
+            height: 2px;
+        }
+
+        .legend-arrow.productive { background: var(--wood-color); }
+        .legend-arrow.destructive { background: var(--fire-color); }
+
+        /* ===========================================
+           📖 Main Content
+           =========================================== */
+        .content-body {
+            padding: 20px 50px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Typography Hierarchy */
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-top: 50px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-gold);
+            page-break-after: avoid;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--primary-gold);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+            color: var(--text-main);
+        }
+
+        ul,
+        ol {
+            margin: 15px 0 15px 25px;
+            color: var(--text-main);
+        }
+
+        li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+
+        strong {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        em {
+            color: var(--primary-gold);
+            font-style: italic;
+        }
+
+        /* Decor elements */
+        blockquote {
+            background: var(--bg-accent);
+            border-left: 4px solid var(--primary-gold);
+            padding: 15px 20px;
+            margin: 25px 0;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+            margin: 40px 0;
+        }
+
+        /* ===========================================
+           🦶 Footer
+           =========================================== */
+        .report-footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-accent);
+        }
+
+        .footer-text {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ===========================================
+           🖨️ Print / PDF Overrides
+           =========================================== */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page-container {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                max-width: none;
+            }
+
+            /* Ensure background colors print */
+            .report-header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #0f172a !important;
+                /* Force Navy */
+                color: white !important;
+            }
+
+            .bazi-dashboard,
+            blockquote,
+            .element-cycle {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            /* Avoid breaking inside components */
+            .bazi-dashboard,
+            .pillars-grid,
+            .element-cycle,
+            blockquote,
+            h1,
+            h2,
+            li {
+                page-break-inside: avoid;
+            }
+
+            h1 {
+                page-break-before: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <!-- Header -->
+        <header class="report-header">
+            <span class="header-logo">🔮</span>
+            <h1 class="report-title">XYZ's BaZi Destiny Report</h1>
+            <p class="report-subtitle">– Prepared By Chi Manifestation BaZi Master –</p>
+            <p class="report-meta">Birth: 1993年9月28日 05:22:00 at 02:22 | Singapore | Male</p>
+        </header>
+
+        <!-- Four Pillars Display with Elemental Colors -->
+        <section class="bazi-dashboard">
+            <h2 class="pillars-title">四柱 – The Four Pillars of Destiny</h2>
+            
+            <div class="pillars-grid">
+                <!-- Hour Pillar -->
+                <div class="pillar">
+                    <div class="pillar-label">Hour</div>
+                    <span class="stem water">癸</span>
+                    <span class="stem-name">Gui</span>
+                    <span class="branch wood">卯</span>
+                    <span class="branch-name">Mao (Rabbit)</span>
+                </div>
+                
+                <!-- Day Pillar -->
+                <div class="pillar">
+                    <div class="pillar-label">Day</div>
+                    <span class="stem water">壬</span>
+                    <span class="stem-name">Ren</span>
+                    <span class="branch water">子</span>
+                    <span class="branch-name">Zi (Rat)</span>
+                </div>
+                
+                <!-- Month Pillar -->
+                <div class="pillar">
+                    <div class="pillar-label">Month</div>
+                    <span class="stem metal">辛</span>
+                    <span class="stem-name">Xin</span>
+                    <span class="branch metal">酉</span>
+                    <span class="branch-name">You (Rooster)</span>
+                </div>
+                
+                <!-- Year Pillar -->
+                <div class="pillar">
+                    <div class="pillar-label">Year</div>
+                    <div class="pillar-year">1993</div>
+                    <span class="stem water">癸</span>
+                    <span class="stem-name">Gui</span>
+                    <span class="branch metal">酉</span>
+                    <span class="branch-name">You (Rooster)</span>
+                </div>
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span class="meta-label">Day Master</span>
+                    <div class="meta-value">壬</div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Zodiac</span>
+                    <div class="meta-value">鸡</div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Gender</span>
+                    <div class="meta-value">Male</div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Report Year</span>
+                    <div class="meta-value">2026</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Five Element Cycle Diagram (Injected before Section 3) -->
+        <section class="element-cycle">
+            <h3 class="element-cycle-title">🌊 Feng Shui Elemental Cycle</h3>
+            <svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+                <!-- Pentagon shape for 5 elements -->
+                <!-- Water (Top) -->
+                <circle cx="150" cy="40" r="30" fill="#3b82f6" opacity="0.15"/>
+                <text x="150" y="35" text-anchor="middle" fill="#3b82f6" font-size="11" font-weight="bold">Water</text>
+                <text x="150" y="50" text-anchor="middle" font-size="20">💧</text>
+                
+                <!-- Wood (Top Right) -->
+                <circle cx="250" cy="100" r="30" fill="#22c55e" opacity="0.15"/>
+                <text x="250" y="95" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="bold">Wood</text>
+                <text x="250" y="115" text-anchor="middle" font-size="20">🌳</text>
+                
+                <!-- Fire (Bottom Right) -->
+                <circle cx="220" cy="200" r="30" fill="#ef4444" opacity="0.15"/>
+                <text x="220" y="195" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="bold">Fire</text>
+                <text x="220" y="215" text-anchor="middle" font-size="20">🔥</text>
+                
+                <!-- Earth (Bottom Left) -->
+                <circle cx="80" cy="200" r="30" fill="#a16207" opacity="0.15"/>
+                <text x="80" y="195" text-anchor="middle" fill="#a16207" font-size="11" font-weight="bold">Earth</text>
+                <text x="80" y="215" text-anchor="middle" font-size="20">🌍</text>
+                
+                <!-- Metal (Top Left) -->
+                <circle cx="50" cy="100" r="30" fill="#f59e0b" opacity="0.15"/>
+                <text x="50" y="95" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="bold">Metal</text>
+                <text x="50" y="115" text-anchor="middle" font-size="20">⚙️</text>
+                
+                <!-- Productive Cycle (Green arrows - clockwise outer) -->
+                <defs>
+                    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/>
+                    </marker>
+                    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/>
+                    </marker>
+                </defs>
+                
+                <!-- Productive: Water → Wood -->
+                <path d="M175 50 Q 210 60 235 85" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+                <!-- Productive: Wood → Fire -->
+                <path d="M255 125 Q 250 160 235 180" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+                <!-- Productive: Fire → Earth -->
+                <path d="M195 210 Q 150 225 110 210" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+                <!-- Productive: Earth → Metal -->
+                <path d="M60 180 Q 45 150 45 125" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+                <!-- Productive: Metal → Water -->
+                <path d="M65 80 Q 95 50 125 45" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+                
+                <!-- Destructive Cycle (Red arrows - star pattern) -->
+                <!-- Water → Fire -->
+                <path d="M160 60 L 200 180" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+                <!-- Fire → Metal -->
+                <path d="M195 195 L 75 115" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+                <!-- Metal → Wood -->
+                <path d="M75 95 L 225 95" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+                <!-- Wood → Earth -->
+                <path d="M235 120 L 100 185" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+                <!-- Earth → Water -->
+                <path d="M90 175 L 140 60" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+                
+                <!-- Legend -->
+                <text x="150" y="265" text-anchor="middle" font-size="9" fill="#666">
+                    <tspan fill="#22c55e">━━━ Productive Cycle</tspan>
+                    <tspan dx="20" fill="#ef4444">┅┅┅ Destructive Cycle</tspan>
+                </text>
+            </svg>
+        </section>
+
+        <!-- Dynamic Content -->
+        <main class="content-body">
+            <h1>🌟 Complete BaZi Destiny Report</h1>
+<h2>壬水日主 · 鸡年生人 · 1993年9月28日</h2>
+<hr />
+<h2>1. 🌟 Three Life Path Simulations</h2>
+<h3>Path One: The Scholar's Ascension (学者之升)</h3>
+<p>Your chart presents a water-dominant consciousness seeking knowledge and depth. With <strong>正印</strong> (Resource Star) in Month pillar, intellectual cultivation becomes your natural sanctuary. This path flows through academic excellence, research, writing, or spiritual study. The 壬水 Day Master gains strength through 正印 nourishment, creating a personality drawn to wisdom-gathering and truth-seeking.</p>
+<p><strong>Obstacles &amp; Challenges:</strong> The multiple <strong>酉金</strong> placements create <em>金水相生</em> (Metal-Water generation), yet also rigidity. You may experience analysis paralysis—endless studying without action. The <strong>七杀</strong> (Seven Killings) in earthly branches challenges authority figures and creates restlessness. Academic achievement alone feels hollow without real-world application.</p>
+<p><strong>Opportunities from Luck Cycle:</strong> The <strong>己未</strong> cycle (2010-2019) brought <strong>正官</strong> (Proper Authority), enabling institutional recognition. Current <strong>戊午</strong> (2020-2029) introduces <strong>七杀</strong>, activating power-seeking. This transforms scholar into mentor or strategist—teaching, publishing, or leadership roles emerge naturally.</p>
+<p><strong>Helper Zodiac/Elements:</strong> Rat (鼠) and Pig (猪) natives strengthen your water essence. Metal supporters (Monkeys, Roosters) amplify your resources. Earth elements ground your abstract thinking into practical solutions. Seek mentors born in these years; they unlock your potential.</p>
+<p><strong>Connection to Fortune:</strong> Early 大运 strengthened survival instincts. Mid-cycle (2020-2039) demands you step into authority—resist the urge to hide in libraries. Late cycle returns to resource gathering, suggesting retirement into wisdom-keeper roles.</p>
+<hr />
+<h3>Path Two: The Warrior's Conquest (战士之勇)</h3>
+<p>Alternatively, your <strong>七杀</strong> (Seven Killings) in Hour pillar suggests military temperament, competitive drive, and martial discipline. This path embraces challenge, combat, and dominance. The <strong>羊刃</strong> (Blade of Sheep) indicates sharpness—you cut through confusion with clarity.</p>
+<p><strong>Obstacles &amp; Challenges:</strong> Aggressive energy alienates gentler souls. Multiple 酉金 creates cold, cutting communication style. Relationships suffer from dominance-seeking. The <strong>孤鸾</strong> (Solitary Phoenix) suggests loneliness despite achievements. Success comes at relationship cost. You may sabotage closeness unconsciously.</p>
+<p><strong>Opportunities from Luck Cycle:</strong> <strong>戊午</strong> (2020-2029) perfectly activates warrior energy with <strong>七杀</strong> in heaven stem. Business conquest, competitive sports, military/law enforcement advancement peaks here. Your 30s are your "wartime"—aggressive expansion works.</p>
+<p><strong>Helper Zodiac/Elements:</strong> Dragon (龙), Monkey (猴), Snake (蛇) natives activate your competitive fire. Fire elements spark transformation. These supporters challenge you, preventing stagnation. Avoid passive supporters; they enable weakness.</p>
+<p><strong>Connection to Fortune:</strong> This path requires external enemies to thrive. Without competition, you implode. Career choices must involve hierarchy-climbing, winning, proving superiority. Retirement destroys this path.</p>
+<hr />
+<h3>Path Three: The Diplomat's Balance (外交官之衡)</h3>
+<p>Your <strong>天乙贵人</strong> (Heavenly Noble) and multiple auspicious stars suggest diplomatic genius. This path uses your analytical mind toward negotiation, mediation, counseling, or international work. <strong>文昌贵人</strong> indicates eloquence; <strong>福星贵人</strong> attracts fortuitous connections.</p>
+<p><strong>Obstacles &amp; Challenges:</strong> The constant <strong>酉酉相刑</strong> (Self-punishment of Metal) within your chart creates internal conflict—two parts of you war endlessly. <strong>酉卯相冲</strong> (Metal-Wood clash) suggests relationship breakdowns and communication sabotage. You know what to say but contradict yourself emotionally.</p>
+<p><strong>Opportunities from Luck Cycle:</strong> <strong>己未</strong> (2010-2019) was ideal diplomatic terrain—正官 invites public trust. Current <strong>戊午</strong> challenges diplomacy with martial energy, yet you're learning to balance force with finesse. <strong>丁巳</strong> (2030-2039) restores diplomatic advantage, ideal for senior counsel roles.</p>
+<p><strong>Helper Zodiac/Elements:</strong> Rooster (鸡), Ox (牛), Snake (蛇) stabilize your wavering nature. Water supporters amplify your natural flexibility. Fire elements add passion to negotiations. These allies see beyond your contradictions.</p>
+<p><strong>Connection to Fortune:</strong> This path succeeds through <em>wu wei</em> (non-action)—allowing solutions to emerge rather than forcing them. Your 40s-50s become your diplomatic apex. International work, cultural bridge-building, peace-making suit your destiny.</p>
+<hr />
+<h2>2. 📅 Ten-Year Luck Cycle (2024-2033)</h2>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Luck</th>
+<th>Elemental Analysis</th>
+<th>Action to Take</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>6/10</td>
+<td>甲辰: Wood-Earth clash; Water dampened</td>
+<td>Consolidate 2023 gains; avoid new ventures</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>7/10</td>
+<td>乙巳: Wood strengthens; Fire emerges</td>
+<td>Launch creative projects; romance possible</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>8/10</td>
+<td>丙午: Fire peak; Water challenged directly</td>
+<td>Career peak; marriage/commitment decisions</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>6/10</td>
+<td>丁未: Fire-Earth harmony; stagnation risk</td>
+<td>Maintain status quo; internal work preferred</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>5/10</td>
+<td>戊申: Earth-Metal; restrictive period</td>
+<td>Financial caution; health monitoring needed</td>
+</tr>
+<tr>
+<td>2029</td>
+<td>7/10</td>
+<td>己酉: Earth-Metal harmony; Self-harm risk</td>
+<td>Final push of 大运; competitive advantage</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>6/10</td>
+<td>庚戌: Metal-Earth; transition begins</td>
+<td>Prepare mindset for丁巳 cycle ahead</td>
+</tr>
+<tr>
+<td>2031</td>
+<td>7/10</td>
+<td>辛亥: Metal-Water harmony; recovery mode</td>
+<td>Relationships heal; inner peace returns</td>
+</tr>
+<tr>
+<td>2032</td>
+<td>8/10</td>
+<td>壬子: Water doubles; emotional clarity</td>
+<td>Major financial gains; partnership success</td>
+</tr>
+<tr>
+<td>2033</td>
+<td>7/10</td>
+<td>癸丑: Water-Earth; mixed signals</td>
+<td>Harvest phase; consolidate before decline</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Current 大运 Analysis:</strong> You're in <strong>戊午</strong> (2020-2029), the <strong>七杀</strong> period—peak warrior/executive energy. This decade activates your deepest competitive drives. 2026 represents absolute zenith: career ascension, financial breakthrough, relationship culmination all possible. However, <strong>七杀</strong> without <strong>正官</strong> (Proper Authority) creates moral hazard—success through cutthroat methods. Navigate carefully.</p>
+<p><strong>Peak Periods:</strong> 2025-2026 (Fire season), 2031-2032 (Water harmony). These months demand aggressive action, maximum effort. Your chi surges; opportunity windows close quickly.</p>
+<p><strong>Challenging Feelings:</strong> 2024, 2027-2028 feel like "holding pattern" years—frustrating when you sense greater capability. Resist impulsive moves; these are <em>consolidation</em> years. Your nervous system needs rest, even if ego protests.</p>
+<hr />
+<h2>3. 🔥 Five Elements Analysis</h2>
+<p><strong>Day Master Strength: MODERATE-STRONG</strong></p>
+<p>Your <strong>壬水</strong> sits in 帝旺 (Emperor's Flourishing), the strongest position. However, you lack Water supporters in sky—no 壬 or 癸 in heaven stems except 癸. This creates paradox: inwardly powerful, externally dependent on Metal nourishment. You're a mighty river channeled through stone banks.</p>
+<p><strong>Element Distribution:</strong></p>
+<ul>
+<li>
+<p><strong>金 (Metal): 45%</strong> — Excessive. Four Metal placements (癸酉年, 辛酉月, plus hidden 庚 in 大运) create rigidity, coldness, cutting edge. Positive: discipline, precision, clarity. Negative: emotional distance, over-analysis, relationship freezing.</p>
+</li>
+<li>
+<p><strong>水 (Water): 35%</strong> — Your core. Three Water placements harmonize beautifully—流动性 (fluidity). Yet isolation threat looms; Water alone stagnates. Positive: adaptability, wisdom, depth perception. Negative: passivity, emotional drowning, unclear boundaries.</p>
+</li>
+<li>
+<p><strong>木 (Wood): 12%</strong> — Scarcely present. 乙 hidden in Hour suggests untapped creativity, potential growth. Currently dormant. Activating Wood through <em>5-element nutrition</em> (creative hobbies, spiritual practice) unleashes hidden talents.</p>
+</li>
+<li>
+<p><strong>火 (Fire): 5%</strong> — Critically deficient. No direct Fire presence except through 大运. This explains social withdrawal, emotional coldness, charisma deficit. Fire ignites inspiration, warmth, visibility. Your chart literally lacks "glow."</p>
+</li>
+<li>
+<p><strong>土 (Earth): 3%</strong> — Nearly absent. Grounding principle missing. Abstract thoughts float untethered. Practical implementation difficult.</p>
+</li>
+</ul>
+<p><strong>Element Interactions:</strong></p>
+<p>Metal-Water combination creates the "scholar archetype"—brilliant analysis, terrible action-taking. You see problems clearly but hesitate executing solutions. The 金水相生 (Metal-Water generation) flows well intellectually but generates emotional numbness. You understand human nature intellectually; you struggle emotionally.</p>
+<p>Wood deficiency means creative self-expression atrophies. Multiple Metal placements suppress Wood ruthlessly. Your wit sharpens; your laughter dies. Creative hobbies feel frivolous, yet they're your salvation.</p>
+<p>Fire absence explains difficulty attracting notice. Even remarkable achievements feel invisible. You're the genius in the corner; rooms forget you're present.</p>
+<p><strong>Which to Boost:</strong></p>
+<p><strong>FIRE (priority #1):</strong> Add red clothing (南方), practice public speaking (ignites Fire), take leadership roles visibly. Fire transforms you from invisible scholar to recognized authority. Morning exposure to sunlight strengthens this.</p>
+<p><strong>WOOD (priority #2):</strong> Pursue creative projects—painting, music, writing non-academic work. Spend time in forests (东方). Develop playfulness; learn to laugh easily. Wood softens Metal's harshness.</p>
+<p><strong>EARTH (supplementary):</strong> Ground yourself through martial arts, yoga, pottery. Touch soil literally (gardening). This stabilizes floating Water-Metal abstraction.</p>
+<p><strong>Which to Calm:</strong></p>
+<p><strong>METAL:</strong> Reduce cold logic's dominance. Don't analyze every feeling. Trust instinct over reasoning. Wear less white/gray; prefer warm tones. Minimize sharp, angular environments.</p>
+<hr />
+<h2>4. 💕 Relationship Compatibility</h2>
+<h3>Romantic Love</h3>
+<p>Your ideal partner possesses <strong>complementary Metal-Water</strong> or <strong>balancing Fire-Wood</strong> elements. Specifically:</p>
+<p><strong>Best Zodiac Matches:</strong> Rat (鼠—同水), Monkey (猴—三合), Dragon (龙—半合). Roosters appeal intellectually but recreate your rigidity; avoid same-element stagnation.</p>
+<p><strong>Best Birth Elements:</strong> Fire or Wood partners soften your metallic coldness. Fire brings warmth, visibility, social brilliance. Wood provides creativity, playfulness, softness. Avoid pure Metal/Water natives—you'll create beautiful but sterile partnerships.</p>
+<p><strong>The Challenge:</strong> Your <strong>孤鸾</strong> (Solitary Phoenix) and <strong>童子煞</strong> (Child Star) suggest relationship difficulty. Part of you fears intimacy—your armor runs too deep. Partners feel eternally locked outside. The <strong>红艳</strong> (Red Ardor) star promises passion yet also indicates infidelity risk or jealousy complications.</p>
+<p><strong>Strategy:</strong> Deliberately court vulnerability. Your 20s-30s were emotionally defended (庚申, 己未 cycles). Current <strong>戊午</strong> (Warrior) cycle amplifies emotional armor. Recognize this. Choose partners explicitly for <em>emotional safety</em>, not intellectual challenge. A warm, patient Earth or Fire sign who doesn't demand logic unlocks your heart.</p>
+<p><strong>Timing:</strong> 2025-2026 brings <strong>火旺</strong> (Fire flourishing)—relationship peaks possible. 2032 (Water doubling) restores emotional access. Don't fight these rhythms.</p>
+<hr />
+<h3>Professional Relations (Boss &amp; Clients)</h3>
+<p><strong>With Superiors:</strong> Your <strong>正官</strong> in 己未 luck and <strong>七杀</strong> in current cycle create complicated authority dynamics. You respect only genuinely capable leaders. Mediocre bosses trigger your contempt—visible, damaging contempt. Strategic humility saves careers.</p>
+<p><strong>With Clients:</strong> Your <strong>天乙贵人</strong> attracts clients; <strong>文昌贵人</strong> impresses through communication. You build trust through expertise, not warmth. Position yourself as <em>trusted expert</em>, not friend. Clients sense your analytical honesty and respect it.</p>
+<p><strong>Team Dynamics:</strong> Metal-Water natives make excellent independent contributors but struggling team members. Friction erupts with Fire/Earth types who find you cold. Pair with fellow Metal-Water natives or Fire partners who appreciate your clarity and provide warmth you lack.</p>
+<p><strong>Strategy:</strong> Deliberately develop emotional intelligence. Your natural state—detached analysis—alienates half your workplace. Practice asking personal questions, remembering details about lives. This minor adjustment prevents sabotage.</p>
+<hr />
+<h3>Friendships</h3>
+<p>Your chart struggles with lightweight friendship. Deep, intellectual friendships thrive; casual socializing exhausts you. <strong>童子煞</strong> suggests you never fully relax in groups.</p>
+<p><strong>Ideal Friends:</strong> Water natives (Rats, Pigs) who don't demand constant socializing. Metal natives (Monkeys, Roosters) who appreciate silence and sarcasm. Wood natives (Tigers, Rabbits) who stimulate creativity without demanding emotional availability.</p>
+<p><strong>The Challenge:</strong> You exhaust from constant engagement. People feel rejected when you withdraw—they can't see it's energy management, not rejection. Cultivate <em>one or two</em> genuinely close friends rather than wide social circles.</p>
+<p><strong>Timing:</strong> 2031-2032 (Metal-Water harmony) restores social energy. Don't force friendships during low cycles.</p>
+<hr />
+<h3>贵人 (Gui Ren) - Attracting Noble Helpers</h3>
+<p>Your chart explodes with noble star combinations: <strong>天乙贵人</strong>, <strong>文昌贵人</strong>, <strong>福星贵人</strong>, <strong>天厨贵人</strong>, <strong>德秀贵人</strong>, <strong>将星</strong>.</p>
+<p><strong>How They Manifest:</strong> Mentors, patrons, unexpected benefactors appear during vulnerable moments. These aren't friends—they're cosmic sponsors. Your job: <em>recognize them and accept help gracefully</em>.</p>
+<p><strong>How to Attract Them:</strong><br />
+- <strong>Demonstrate integrity relentlessly.</strong> Gui Ren appear to the morally consistent. Cut corners, they vanish.<br />
+- <strong>Accept help without ego.</strong> Your pride says "I'll figure it myself." This blocks Gui Ren. Practice gratitude, ask for guidance explicitly.<br />
+- <strong>Give generously first.</strong> Gui Ren respond to those who give before receiving. Mentor younger people. Share knowledge freely. Abundance returns multiplied.<br />
+- <strong>Pursue noble goals.</strong> They ignore petty desires. Your purpose must serve beyond personal gain—this activates 德秀 (Virtue Star).</p>
+<p><strong>Current Activation:</strong> <strong>戊午</strong> (2020-2029) suppresses Gui Ren temporarily—you're meant to be the authority now, not the student. <strong>丁巳</strong> (2030-2039) restores Gui Ren prominence as you mentor others. Structure your future accordingly.</p>
+<hr />
+<h2>5. 🧠 Natural Intelligence</h2>
+<p>Your <strong>十神</strong> configuration reveals a brilliant but conflicted mind:</p>
+<p><strong>正印 (Resource Star):</strong> Appears in Year and Month—dominant influence. This grants <strong>conceptual thinking, systems understanding, theoretical brilliance</strong>. You see patterns invisible to others. Academic excellence, research capability, wisdom-absorption come naturally. Weakness: implementation. Your mind circles endlessly in abstraction.</p>
+<p><strong>七杀 (Seven Killings):</strong> In Hour pillar and current <strong>戊午</strong> cycle. This provides <strong>decisive power, competitive drive, strategic thinking</strong>. You cut through confusion with surgical precision. In decision-making, 七杀 overrides正印's hesitation. Weakness: ruthlessness without mercy. You achieve goals by any means necessary.</p>
+<p><strong>劫财 (Robbery/Peer Star):</strong> In Year, Hour, and future cycles. This explains <strong>competitive comparison with peers, financial volatility, partnership complexity</strong>. You measure yourself constantly against others. Money flows to you then out again. Partnerships breed conflict. This star demands you transcend comparison and embrace sufficiency.</p>
+<p><strong>伤官 (Wounding Officer):</strong> Hidden in Hour, prominent in future <strong>乙卯</strong> and <strong>甲寅</strong> cycles. This awakens <strong>creativity, rebelliousness, unconventional thinking</strong>. Currently suppressed by dominant Metal. As you age, suppressed creativity explodes—expect reinvention, especially after age 58.</p>
+<p><strong>The Interaction:</strong> Your chart is a civil war between:<br />
+- <strong>正印 (学)</strong> wanting endless study<br />
+- <strong>七杀 (战)</strong> demanding dominance<br />
+- <strong>伤官 (创)</strong> seeking creative expression<br />
+- <strong>劫财 (比)</strong> measuring against peers</p>
+<p>This internal conflict generates anxiety and inertia. Integration is your lifetime work. Young years favor 七杀 (warrior phase). Middle years integrate 正印 (mentor phase). Late years finally express 伤官 (creator phase).</p>
+<p><strong>With Current 大运:</strong> <strong>戊午</strong> amplifies 七杀 conflicts with 正印. You feel torn between mastery/power-seeking and wisdom-seeking. Trust the warrior impulse now; wisdom comes later. Fighting this cycle wastes 2020-2029.</p>
+<hr />
+<h2>6. 💬 Communication &amp; Energy</h2>
+<p><strong>Self-Presentation for 壬水 Day Master:</strong></p>
+<p>You naturally project <strong>calm intellectualism</strong>—people perceive you as analytical, deep, possibly cold. This is accurate but incomplete. Strategic presentation layers warmth onto your natural coolness:</p>
+<ul>
+<li>
+<p><strong>Add visible warmth:</strong> Smile deliberately, especially in professional settings. Your default face appears severe/contemplative. This intimidates or bores people. Smiling feels false; do it anyway. It's not dishonesty; it's translation.</p>
+</li>
+<li>
+<p><strong>Explain your silence:</strong> People misread your pauses as judgment or disinterest. Say explicitly: "I'm thinking—I value getting this right" or "I'm listening carefully." This reframes silence as respect, not rejection.</p>
+</li>
+<li>
+<p><strong>Use humor deliberately:</strong> Your wit is cutting; soften it with self-deprecating humor. Show you laugh at yourself, not just others. This humanizes your intelligence.</p>
+</li>
+</ul>
+<p><strong>Energy When Luck UP (2025, 2026, 2031-2032):</strong></p>
+<p>When Fire surges or Water harmonizes, you become animated, communicative, almost social. Leverage these periods: give presentations, initiate projects, propose ideas, lead teams. Your natural charisma peaks. Don't waste surge-energy on routine tasks.</p>
+<p><strong>Energy When Luck DOWN (2024, 2027-2028):</strong></p>
+<p>Metal restricts, Earth dampens. You feel like explaining is pointless; no one understands anyway. Withdraw strategically: deep work, solo projects, learning. Communication stalls; accept this. Don't force networking or leadership. Your energy correctly redirects inward.</p>
+<p><strong>Key Talents to Demonstrate:</strong></p>
+<ul>
+<li><strong>Systems thinking:</strong> Show how parts connect. People desperately need your perspective on complexity.</li>
+<li><strong>Honest assessment:</strong> Your analysis sees uncomfortable truths others avoid. Deliver these diplomatically, not brutally.</li>
+<li><strong>Patience with process:</strong> Unlike impulsive types, you understand that good results require proper sequencing. Emphasize your thoroughness as strength, not slowness.</li>
+</ul>
+<hr />
+<h2>7. ⚡ Life Force (Chi) Analysis</h2>
+<p><strong>Current Chi Level: BUILDING (2020-2029)</strong></p>
+<p>Your <strong>戊午</strong> cycle activates 七杀 at maximum intensity. Metaphorically: a coiled spring, compressed potential, readiness to strike. Your chi is <em>gathered</em>, not dispersed. This creates intensity but also pressure—like holding your breath.</p>
+<p><strong>Physical manifestation:</strong> Tightness, especially shoulders/neck. Jaw clenching. Sleep disruption. This isn't weakness; it's power storage. The danger: holding too long creates hypertension, stress injury.</p>
+<p><strong>Best Months for Action:</strong></p>
+<ul>
+<li><strong>Spring (Wood season: Feb-Apr):</strong> Chi rises naturally; your projects launch with momentum. This is prime execution time.</li>
+<li><strong>Summer (Fire season: May-Jul):</strong> Fire amplifies your visibility and luck. Leadership moves, public announcements, competitive events favor you heavily. 2025-2026 summers are golden.</li>
+<li><strong>Fall (Metal season: Aug-Oct):</strong> Your native season, but dangerous. Metal reinforces rigidity. Use carefully for consolidation, not expansion. Your 9/28 birthday (Metal peak) means your chi peaks in death-energy autumn. Paradoxical: most powerful when others weaken.</li>
+<li><strong>Winter (Water season: Nov-Jan):</strong> Chi scatters; preservation mode. Large projects stall. Rest, reflect, plan for spring launch.</li>
+</ul>
+<p><strong>When to Rest &amp; Recharge:</strong></p>
+<p>Contrary to warrior energy, you need <em>mandatory rest</em> in Months 6 (Metal-Earth clash), 12 (Earth-Water conflict). Your type ignores fatigue signals until collapse. Calendar these rest months; no negotiations.</p>
+<p><strong>Planning for When to Strike:</strong></p>
+<p>Mark calendars: <strong>2025-2026 (absolute peak), 2031-2032 (second peak)</strong>. These windows offer 24 months of enhanced luck each. Major decisions—career leaps, marriage proposals, business launches—time them here. The years outside these windows still work but require triple effort for equivalent results. Respect the rhythm; don't waste fire-season energy on routine tasks.</p>
+<hr />
+<h2>8. 💰 Wealth Cleansing Ritual</h2>
+<p>Personalized for <strong>壬水 Day Master in 戊午 Cycle:</strong></p>
+<p><strong>Step 1: Timing (金木结合)</strong></p>
+<p>Perform <strong>first day of Lunar Month's Rabbit hour (5-7 AM)</strong> when Moon waxes. Water element responds to lunar cycles. Rabbit (木) hour generates Wood, which controls Metal's rigidity and releases your wealth. Avoid Metal hours (7-9 AM, 3-5 PM).</p>
+<p>Ideal dates: 2024 Fall Equinox (wealth turning point), every New Moon thereafter.</p>
+<p><strong>Step 2: Materials</strong></p>
+<p>Gather:<br />
+- <strong>Fresh flowing water</strong> (not stagnant): represents your element's movement, releasing blocked wealth<br />
+- <strong>Green cloth or paper</strong> (Wood element): for growth, expansion, creativity<br />
+- <strong>Three copper coins</strong> (Metal controlled by Water, becomes valuable): represents your ability to transform limitation into gain<br />
+- <strong>Osmanthus flowers or jasmine incense</strong> (Metal + sweetness): honors heaven while grounding earth; prosperity marker<br />
+- <strong>Mirror or reflective surface</strong> (Water element reflection): reveals hidden opportunities</p>
+<p><strong>Step 3: Actions</strong></p>
+<ol>
+<li>Face East (Wood direction). Sit in lotus or comfortable position.</li>
+<li>Fill bowl with fresh water; add three coins, letting them sink slowly (7 times—numerology of the Warrior).</li>
+<li>Light incense; circle smoke counterclockwise (releasing stagnation), then clockwise (spiraling prosperity inward).</li>
+<li>Hold green cloth; state intention three times: <em>"Water flows, wealth grows. Rigidity dissolves. Opportunity reveals itself through my clarity and action."</em></li>
+<li>Visualize blockages (as dark silt) washing away in flowing water. See coins at bottom shining bright—your wealth, currently hidden, becoming visible.</li>
+<li>Splash water on hands, face (activation); let flowers float in water (grace + wealth union).</li>
+</ol>
+<p><strong>Step 4: Visualization</strong></p>
+<p>Close eyes. Imagine <strong>戊午 energy as golden light</strong> igniting behind your heart. This fire represents current luck—peaking now, temporary. Watch this light illuminate hidden pathways (木). See blockages (金 rigidity) soften and flow like wax. Feel yourself becoming a channel—wealth flows <em>through</em> you, not getting stuck.</p>
+<p><strong>Step 5: Closing</strong></p>
+<p>Thank heavens, earth, your ancestors. Keep coins on altar 27 days (3 x 9—power numbers). Dispose of flowers in flowing water (river/stream). Return completed ritual by repeating yearly on anniversary.</p>
+<hr />
+<h2>9. 🏠 Home Feng Shui</h2>
+<p><strong>Wealth Corner Direction: NORTH-EAST (Earth)</strong></p>
+<p>Your chart's Missing Element is Earth. Wealth corner (traditionally Southeast for Fire-based charts) shifts for you to <strong>North-East</strong>, where Earth grounds Water's fluidity and creates solid wealth accumulation. This is non-traditional but aligned with your actual elemental needs.</p>
+<p><strong>Setup:</strong> North-East corner of home (or bedroom). Place:<br />
+- <strong>Large Earth-element object</strong>: rock, clay vase, crystal cluster (not just small; must be substantial, grounding)<br />
+- <strong>Color:</strong> Warm earth tones (beige, terracotta, dark yellow)<br />
+- <strong>Water feature</strong> (secondary): small fountain or water feature near Earth—Water feeds Earth harmoniously in this context</p>
+<p><strong>Purifying Wind Chimes Placement:</strong></p>
+<p>Your metal-heavy chart creates <em>stagnant energy channels</em>—opportunities sit blocked. Wind chimes mobilize this stuck chi.</p>
+<p><strong>Primary placement: NORTH (Water sector)</strong><br />
+Hang <strong>metal chimes</strong> (your native element, but mobilized by sound). Six tubes ideal (Water number 1, Metal number 6—combination). This activates water flow in your home—metaphorically and energetically. It prevents Water stagnation.</p>
+<p><strong>Secondary placement: EAST (Wood sector)</strong><br />
+Hang <strong>wooden chimes with metal tops</strong> (Wood controls Metal, creating balance). This weakens Metal's excessive rigidity gradually, allowing Wood creativity to emerge. Wood chimes alone feel too weak; combine with Metal.</p>
+<p><strong>Placement height:</strong> 6-7 feet (Metal number territory). Chimes should catch breezes without forced manipulation. Let wind decide their voice—surrendering control activates Gui Ren luck.</p>
+<hr />
+<p><strong>Three Room Adjustments:</strong></p>
+<p><strong>1. Bedroom (Southwest):</strong><br />
+Remove all sharp objects, angles, mirrors reflecting bed. Your natural coldness intensifies in bedroom—sharp items amplify this. Replace with <strong>soft fabrics, rounded edges, warm lighting</strong>. Add <strong>red or pink accents</strong> (Fire element, warming). This prevents relationship cold-shoulder, improves sleep quality. Chime position: not above bed (too active), but window where breeze naturally moves it.</p>
+<p><strong>2. Workspace (North-East or East if possible):</strong><br />
+Create <strong>clear, organized, minimalist</strong> aesthetic—your natural preference. However, add <strong>one plant</strong> (Wood) to left side of desk. This redirects your energy from pure analysis toward creative problem-solving. Water fountain on right side (North) supports Metal-Water harmony, preventing isolation feeling.</p>
+<p><strong>3. Entryway:</strong><br />
+Your chart lacks visibility (Earth/Fire deficit). Make entryway <strong>bright, warm, inviting</strong>—opposite of your natural aesthetic preference. Add <strong>golden lighting</strong> (Fire/Earth), <strong>welcome mat</strong> (Wood floor contact), <strong>mirror</strong> (Water reflection, multiplying luck). This invites Gui Ren; lack of inviting entryway literally blocks mentors.</p>
+<hr />
+<h2>10. ⚠️ Challenging Periods</h2>
+<p><strong>Most Difficult Months Ahead:</strong></p>
+<p><strong>October 2024 (Metal-Fire conflict):</strong><br />
+Your birthday month, but challenging. Metal peaks, Fire suppresses. Decision-making becomes confused—logic vs. instinct clash openly. Relationship irritations surface. Don't make permanent decisions this month. Delay major choices to November.</p>
+<p><strong>July 2025 (Metal-Wood clash):</strong><br />
+Fire season should help, but underlying Metal-Wood disharmony (your chart's permanent condition) activates. Unexpected expenses, relationship arguments, competitive setbacks. Someone challenges your authority. Don't react immediately; wait until August for clarity.</p>
+<p><strong>March-April 2027 (Earth-Wood transition):</strong><br />
+Transition between Earthly Branches creates confusion. Plans go sideways unexpectedly. You feel directionless despite effort. This is natural cycle, not personal failure. Wait for May when clarity returns.</p>
+<hr />
+<p><strong>Warning Signs:</strong></p>
+<ul>
+<li><strong>Sleep disruption (can't fall or wake at 3 AM):</strong> Water element crying for help. Reduce mental stimulation after 9 PM; add Earth grounding practice.</li>
+<li><strong>Relationship coldness intensifying:</strong> Your natural tendency peaks. Consciously warm up. Schedule connection time explicitly; don't assume partners know you care.</li>
+<li><strong>Financial unexpected losses:</strong> 劫财 (Robbery Star) active. Avoid new financial commitments; focus on preservation.</li>
+<li><strong>Health: Digestion, spine, kidney issues:</strong> These map to Water/Metal organs. Early warning signs; address with practitioners before crisis.</li>
+</ul>
+<hr />
+<p><strong>Survival Strategies:</strong></p>
+<ol>
+<li>
+<p><strong>Deepen solitude practice:</strong> Don't fight the urge to withdraw. Instead, make it intentional meditation, not depression. Distinguish between healthy solitude and isolating withdrawal.</p>
+</li>
+<li>
+<p><strong>10x Effort Reminder:</strong> When luck flows against you (challenging periods), normal effort yields poor returns. This doesn't mean you're failing—it means <em>the season requires more</em>. 10x effort during difficult months generates normal results. This isn't punishment; it's physics. Accept it.</p>
+</li>
+<li>
+<p><strong>Seek Gui Ren explicitly:</strong> During crisis periods, don't suffer silently. Reach out to mentors, elder figures, trusted advisors. Your noble stars activate when you ask for help, not when you hide problems.</p>
+</li>
+<li>
+<p><strong>Anchor to 2025-2026:</strong> When 2024/2027 periods feel unbearable, remember: you're in training for your peak years 2025-2026. These difficult months <em>prepare</em> you for opportunity. Without struggle, you wouldn't have capacity for peak luck.</p>
+</li>
+</ol>
+<hr />
+<h2>11. 👑 Four Sacred Imperial Treasures</h2>
+<h3>1. Purifying Wind Chimes (45招德之音)</h3>
+<p><strong>Purpose:</strong> Mobilize stuck chi, allowing wealth/opportunity to circulate rather than stagnate.</p>
+<p>Your Water element flows naturally, but Metal rigidity creates dams. Wind chimes act as <em>energetic pumps</em>—when they sound, they push chi forward. For your chart specifically, chimes convert static Water potential into dynamic movement.</p>
+<p><strong>Your specific benefit:</strong> Chimes activate the <strong>Gui Ren luck constellation</strong>. Noble helpers remain dormant until invoked; chimes serve as cosmic call-bell. When Wind Chimes sound, mentors, patrons, benefactors mysteriously "think of you" and reach out. This isn't superstition—it's tuning frequency synchronization.</p>
+<p><strong>Placement:</strong> North window (Water activation), East window (Wood creativity release). Six or eight tubes. Metal preferred for your chart (controlling Metal through Metal paradoxically).</p>
+<hr />
+<h3>2. Long Gui Longevity Amulet (龙龟长寿)</h3>
+<p><strong>Purpose:</strong> Longevity, stability, grounding energy that prevents burnout during warrior phases.</p>
+<p>Your <strong>七杀</strong> cycle (2020-2029) burns chi intensely like rocket fuel. Without grounding, you experience health collapse by 30s—burnout, autoimmune issues, early aging. Dragon-Turtle combines:</p>
+<ul>
+<li><strong>Dragon (木):</strong> Your missing element, providing growth, vitality, creative renewal</li>
+<li><strong>Turtle (北水):</strong> Your native element, providing depth, wisdom, endurance</li>
+</ul>
+<p>Together: they provide <em>sustainable intensity</em>. You can activate 七杀 fully without self-destruction.</p>
+<p><strong>Your specific benefit:</strong> Prevents the common fate of 七杀 natives—brilliant career, destroyed body. This amulet preserves your vessel while your spirit achieves greatness.</p>
+<p><strong>Activation:</strong> Wear close to heart (pendant) or carry. Touch it when feeling exhausted—it reminds you of sustainable pace and longevity. Your warrior phase is marathon, not sprint.</p>
+<hr />
+<h3>3. Pixiu Bracelet (貔貅招财)</h3>
+<p><strong>Purpose:</strong> Wealth attraction and retention.</p>
+<p>Pixiu (mystical beast) has peculiar power: mouth <em>consumes</em> obstacles while hoarding wealth inside. For <strong>劫财</strong> natives (you), this is crucial. Your money naturally <em>leaves</em>—Pixiu reverses this. It also attracts new wealth streams like magnetic attraction.</p>
+<p><strong>Your specific benefit:</strong> 劫财 means money comes easily but disperses equally fast. Partnerships breed financial conflict. Pixiu doesn't prevent loss entirely (that would deny your chart's nature) but makes retention more likely. Each 100 earned, instead of 60 leaving, maybe only 30 leaves. That difference compounds dramatically.</p>
+<p><strong>Placement:</strong> Left wrist (receiving hand for men, traditionally). Pixiu faces outward (consuming obstacles, attracting wealth to return). Don't let others touch it (breaks personalization).</p>
+<p><strong>Activation:</strong> Feed it symbolically—rub its belly and say gratitude for unexpected money. This sounds silly; doing it anyway maintains energetic connection that actually works.</p>
+<hr />
+<h3>4. Amethyst Prosperity Tree (紫晶生财树)</h3>
+<p><strong>Purpose:</strong> Crystalline amplification of your natural Water-Metal harmony, attracting steadily-growing long-term wealth.</p>
+<p>Amethyst (紫晶) holds Water frequency naturally—it's purple (mixture of blue/red), representing water-fire balance. The "tree" shape symbolizes organic growth—wealth isn't captured forcefully but cultivated patiently.</p>
+<p>Your chart reaches peak luck 2025-2026, but <em>after</em> that cycle, you need long-term wealth building (2030-2039, 2040-2049). Amethyst Tree supports this cultivation. It transforms short-term warrior-phase gains into permanent wealth.</p>
+<p><strong>Your specific benefit:</strong> Prevents the crash after peak luck. Many warriors peak young, then decline. Amethyst Tree creates <em>compound effect</em>—initial success multiplies as you age rather than diminishes. At 50+, your wealth continues growing even as energy wanes.</p>
+<p><strong>Placement:</strong> Home altar, South-East (traditional wealth corner, secondary to your North-East primary). Let natural sunlight touch it periodically (charges crystal charge). Amethyst grows more powerful the longer you keep it.</p>
+<p><strong>Activation:</strong> Touch it monthly during Full Moon. Set intention: <em>"My wealth grows steadily, sustainably, benefiting all I touch."</em> Long-term orientation prevents 劫财's impulsive dispersal.</p>
+<hr />
+<h2>12. 🌟 Celebrity Comparisons</h2>
+<h3>Comparison 1: Steve Jobs (Day Master: 癸水 Yin Water)</h3>
+<p><strong>Similarities:</strong><br />
+- Water natives like you, with similar intellectual depth and systems-thinking genius<br />
+- Heavy Metal influence (disciplined, minimalist aesthetic, cold presentation)<br />
+- <strong>七杀</strong> and <strong>正印</strong> dominance: perfect mentor-warrior combination<br />
+- Both struggled with emotional coldness, warmth-lack in relationships</p>
+<p><strong>What to Learn:</strong><br />
+Jobs obsessed over <em>presentation</em>—making cold technology feel warm. You're identical: brilliant mind, icy presentation. His evolution toward public warmth (later Apple presentations) mirrors your needed development. Investment in communication skills yields disproportionate returns for your type. His story says: <em>emotional intelligence is learnable, worth the effort</em>.</p>
+<p>Jobs' weakness: burnout through 七杀 overextension (cancer-related stress). Learn here: <strong>sustainability matters</strong>. Peak performance 2025-2026 must not destroy your health. Plan recovery cycles deliberately.</p>
+<hr />
+<h3>Comparison 2: Elon Musk (Day Master: 壬水 Yang Water, similar to you)</h3>
+<p><strong>Similarities:</strong><br />
+- Identical Day Master (壬水), suggesting similar cognitive structure—systems genius, emotional distance<br />
+- Massive 七杀 expression—competitive, dominating, seemingly ruthless<br />
+- Both operate at intellectual frequency most people can't track<br />
+- Both struggle with communication despite intelligence (Musk's Twitter reveals this)</p>
+<p><strong>What to Learn:</strong><br />
+Musk succeeds <em>despite</em> emotional coldness, not because of it. His greatest failures involve relationship aspects—team turnover, partnership dissolution, public perception damage. Your path: integrate warmth intentionally, or repeat his mistakes.</p>
+<p>Musk's strength: ruthless focus on mission. His 七杀 never wavers. <em>This</em> is your superpower in 2025-2026 window—don't dilute focus with relationship concerns. But after peak, rebalance toward warmth or face Musk-style isolation.</p>
+<hr />
+<h3>Comparison 3: Carl Jung (Day Master: Similar Metal-Water structure)</h3>
+<p><strong>Similarities:</strong><br />
+- Brilliant theorist (正印 mastery), pioneer thinker<br />
+- Struggled with emotional coldness despite understanding human psyche intellectually<br />
+- Later life emphasis on integrating shadow side—your future 伤官 awakening<br />
+- Both understand paradox: knowing something intellectually doesn't grant emotional access</p>
+<p><strong>What to Learn:</strong><br />
+Jung's work on <strong>integrating opposite sides</strong> of personality applies directly to you. Your chart is internal civil war: warrior vs. scholar, feeling vs. thinking, output vs. wisdom-gathering. Jung shows this integration is <em>lifetime work</em>, not quick fix. His later years found peace through acceptance of internal contradiction. Your path: stop trying to <em>choose</em> between sides; learn to <em>flow</em> between them fluidly. This is the enlightenment your chart points toward.</p>
+<hr />
+<h2>13. ☀️ Daily Routine for Elemental Harmony</h2>
+<p><strong>Morning Practice (6-7 AM, Wood hour): Activation</strong></p>
+<p>Begin with <strong>5-minute facing East (Wood direction)</strong>, palms pressed together, bowing slightly. This honors coming day and activates suppressed Wood creativity.</p>
+<p>Then <strong>10-minute cold shower</strong> (Water element activation): shocking, yes, but critical for your chart. Cold water stimulates nervous system toward action rather than paralysis. Your natural tendency: overthinking before acting. Cold activates instinctive response, bypasssing analysis. Do this even if it feels uncomfortable—especially then.</p>
+<p>Follow with <strong>stretching emphasizing spine extension and twisting</strong> (Wood movement, releasing Metal rigidity). Focus on deep breathing throughout—diaphragm expansion, not shallow chest breathing. Your Metal nature creates tight breathing; conscious expansion prevents anxiety/stagnation.</p>
+<p>Eat <strong>cooked grains</strong> (Wood-Earth balance: oatmeal with cinnamon, rice porridge). Avoid raw food, coffee (too metal-cold). Your water-metal system needs warmth input.</p>
+<hr />
+<p><strong>Afternoon Practice (1-3 PM, Fire hour): Visibility &amp; Warmth</strong></p>
+<p>By afternoon, your metal-water coldness returns naturally. Counter it deliberately:</p>
+<p><strong>Spend 15 minutes outside</strong>, preferably in sunlight (Fire element direct transmission). No sunglasses. Let light hit eyes—this activates vision, creativity, Fire perception. Vitamin D is secondary benefit; energetic warming is primary.</p>
+<p><strong>Engage one person in genuine conversation</strong>—not shallow, not social obligation, but asking one real question about their life and listening fully to answer. Your tendency: avoid people-interaction. Small deliberate effort here prevents social atrophy. This is <strong>practice warmth</strong>.</p>
+<p><strong>Physical activity</strong> (even 10-minute walk, preferably with slight competition—beat yesterday's pace, reach destination ahead of schedule). <strong>七杀</strong> needs expression; regular structured competition prevents explosion into destructive channels.</p>
+<p>Before returning to indoor work, <strong>five minutes standing, arms overhead, stretching toward sky</strong>. Feel yourself as tree-bridge between heaven and earth (Wood nature). This restores perspective during afternoon slump.</p>
+<hr />
+<p><strong>Evening Practice (7-9 PM, Metal hour): Integration &amp; Restoration</strong></p>
+<p>As darkness approaches, your natural tendency toward introspection activates. Channel it:</p>
+<p><strong>Journaling for 10-15 minutes</strong> (not morning pages—evening reflection). Ask: <em>"What did I achieve today? What blocked me? What did I learn?"</em> This converts warrior-phase intensity into wisdom accumulation. <strong>正印</strong> needs this intellectual processing.</p>
+<p><strong>Brief meditation (5-10 minutes)</strong>, focusing on <strong>water imagery</strong>: rivers flowing toward ocean, no resistance to currents, dissolving into vastness. This prevents nighttime anxiety spirals. Your Metal nature contracts; this meditation releases contraction.</p>
+<p><strong>Light stretching/yoga emphasizing hip-openers, forward folds</strong> (releasing warrior tension, restoring softness). Your body carries day's metal-sharpness; evening practice melts it.</p>
+<p><strong>Dinner emphasizing Earth element</strong>: soup or stew (warm, grounded, nourishing). Include roots—carrots, potatoes, sweet potatoes. Add ginger (warming). Your system needs this grounded finish after day's intensity.</p>
+<hr />
+<p><strong>Sleep Preparation (9-10:30 PM): Surrender</strong></p>
+<p><strong>No screens after 9 PM.</strong> Blue light activates Metal/Fire opposition; you'll lie awake analyzing. Instead:</p>
+<ul>
+<li><strong>Read physical books</strong> (preferably poetry or spiritual texts, not technical work—let mind wander, not compute)</li>
+<li><strong>Listen to calming music</strong> (gentle, flowing, nothing driving)</li>
+<li><strong>Aromatherapy: sandalwood or lavender diffuser</strong> (calming, grounding)</li>
+<li><strong>Body scan meditation</strong> (5 minutes): mentally travel from head to toe, releasing tension noticed. Your Water nature pools tension in lower back, kidneys; specifically notice and release here</li>
+</ul>
+<p>Aim for <strong>10-11 PM sleep for 7-8 hours</strong>. Your chart naturally wants late-night activity (Water element nocturnal tendency, plus Mutable preference). Resist this during week; allow flexibility weekends.</p>
+<hr />
+<p><strong>Seasonal Adjustments:</strong></p>
+<ul>
+<li><strong>Spring (Feb-Apr):</strong> Emphasize Wood practices—outdoors, creativity, softness. Reduce Metal/Water practices temporarily.</li>
+<li><strong>Summer (May-Jul):</strong> Maximize Fire exposure. Peak outdoor time, public engagement, visibility-building. This is your luck season; daily routine should support it.</li>
+<li><strong>Fall (Aug-Oct):</strong> Emphasize Metal grounding practices—structure, discipline, deep work. Reduce social demands. Your birthday month (9/28): explicit reflection, gratitude practice.</li>
+<li><strong>Winter (Nov-Jan):</strong> Maximize Water-Metal harmony—stillness, study, internal work. Minimal external pushing. Restoration focus. Spring launching requires winter recovery.</li>
+</ul>
+<hr />
+<p><strong>Weekly Rhythm:</strong></p>
+<ul>
+<li><strong>Monday-Friday (Work days):</strong> Strict 6 AM cold shower, afternoon outdoor time, evening journaling. This maintains warrior-phase equilibrium.</li>
+<li><strong>Saturday (Flexibility):</strong> Allow later wake, indulgent breakfast. One social engagement (friend, activity). Creativity-focused activity (painting, music, writing). One competitive activity (sports, gaming, challenge).</li>
+<li><strong>Sunday (Restoration):</strong> Slow morning, meditation-heavy, no productivity demands. This prevents burnout. Your chart tends overwork; Sunday enforced rest is non-negotiable.</li>
+</ul>
+<hr />
+<p><strong>This Daily Routine Achieves:</strong></p>
+<p>✓ <strong>Energizes Water</strong> through cold exposure, morning activation<br />
+✓ <strong>Weakens Metal</strong> through stretching, warmth intake, flexibility emphasis<br />
+✓ <strong>Awakens Wood</strong> through outdoor time, creativity practice, laughter-seeking<br />
+✓ <strong>Adds Fire</strong> through visibility practices, social engagement, competitive activity<br />
+✓ <strong>Grounds Earth</strong> through nourishing food, stability practices, evening reflection  </p>
+<p>The overall effect: your natural chart imbalance corrects gradually through consistent small efforts. After 3-6 months of this practice, you'll notice:<br />
+- Improved sleep and energy stability<br />
+- Warmer social relationships without effort<br />
+- Greater creative ideas emerging (suppressed before)<br />
+- Better decision-making (warrior-scholar balance)<br />
+- Reduced anxiety (Metal tension released)</p>
+<p>This is <strong>not</strong> mystical perfection. This is <strong>elemental engineering</strong>—respecting your chart's natural tendencies while gently steering toward balance. Consistency matters more than intensity; small daily practices compound into destiny-shift.</p>
+<hr />
+<h1>🌟 Final Word</h1>
+<p>Your <strong>壬水</strong> nature runs deep, thinks clearly, loves with difficulty, and succeeds through relentless intellectual effort. Your chart promises peak achievement 2025-2026; prepare now through daily practice and strategic choices. Your life path offers three valid directions—choose consciously, not by default. The warrior, scholar, and diplomat all live within you. Which will you become?</p>
+<p><strong>Destiny is written in your stars but rewritten by your choices. Choose wisely. Act boldly. Warm your coldness. This is your path forward.</strong></p>
+        </main>
+
+        <!-- Footer -->
+        <footer class="report-footer">
+            <p class="footer-text">Generated by Chi Manifestation BaZi Master • Confidential Destiny Report • 2026</p>
+        </footer>
+    </div>
+</body>
+
+</html>
