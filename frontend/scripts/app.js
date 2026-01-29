@@ -160,6 +160,7 @@ form.addEventListener('submit', async (e) => {
     // Get form data
     const formData = new FormData(form);
     const data = {
+        name: formData.get('name')?.trim() || null,  // Optional name for personalized title
         birth_date: formData.get('birth_date'),
         birth_time: formData.get('birth_time'),
         location: formData.get('location')?.trim(),
@@ -215,21 +216,42 @@ form.addEventListener('submit', async (e) => {
    Display Results
    ========================================= */
 function displayResults(result) {
-    // Update BaZi summary
-    baziChars.textContent = result.bazi_summary['八字'] || '-';
-    dayMaster.textContent = result.bazi_summary['日主'] || '-';
-    zodiac.textContent = result.bazi_summary['生肖'] || '-';
+    console.log('📊 displayResults called with:', result);
+    
+    try {
+        // Update BaZi summary
+        baziChars.textContent = result.bazi_summary?.['八字'] || '-';
+        dayMaster.textContent = result.bazi_summary?.['日主'] || '-';
+        zodiac.textContent = result.bazi_summary?.['生肖'] || '-';
 
-    // Set download links - Use backend URL for static files
-    htmlLink.href = `${API_BASE_URL}${result.files.html}`;
-    pdfLink.href = `${API_BASE_URL}${result.files.pdf}`;
+        // Set download links - Use backend URL for static files
+        const htmlUrl = `${API_BASE_URL}${result.files.html}`;
+        const pdfUrl = `${API_BASE_URL}${result.files.pdf}`;
+        
+        console.log('📎 HTML Link:', htmlUrl);
+        console.log('📎 PDF Link:', pdfUrl);
+        
+        htmlLink.href = htmlUrl;
+        pdfLink.href = pdfUrl;
 
-    // Show results, hide form
-    formCard.style.display = 'none';
-    resultsCard.classList.add('visible');
+        // Hide form first
+        formCard.style.display = 'none';
+        
+        // Show results card
+        resultsCard.style.display = 'block';
+        resultsCard.classList.add('visible');
+        
+        console.log('✅ Results displayed successfully');
 
-    // Scroll to results
-    resultsCard.scrollIntoView({ behavior: 'smooth' });
+        // Scroll to results after short delay
+        setTimeout(() => {
+            resultsCard.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+        
+    } catch (err) {
+        console.error('❌ Error in displayResults:', err);
+        throw err;
+    }
 }
 
 /* =========================================
@@ -281,7 +303,9 @@ function hideError() {
    Hide Results
    ========================================= */
 function hideResults() {
+    console.log('🔄 hideResults called');
     resultsCard.classList.remove('visible');
+    resultsCard.style.display = 'none';
 }
 
 /* =========================================
