@@ -4,9 +4,6 @@ MCP Client Service - BaZi Server Communication
 
 This service allow our FastAPI Backend to communicate with BaZi MCP Server.
 
-Architecture:
-    Frontend → FastAPI → MCP Client → BaZi MCP Server
-                         (this file)
 
 httpx library?
 - Async support

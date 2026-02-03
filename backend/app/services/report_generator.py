@@ -287,51 +287,72 @@ class ReportGenerator:
                 margin-bottom: 15px;
             }
             
-            .pillars-grid {
-                display: flex;
-                justify-content: center;
-                gap: 10px;
-                margin-bottom: 15px;
+            /* BaZi Table for PDF */
+            .bazi-table {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto 15px;
+                border-collapse: collapse;
             }
             
-            .pillar {
+            .bazi-table th,
+            .bazi-table td {
+                padding: 8px 5px;
                 text-align: center;
-                padding: 10px 15px;
-                background: white;
                 border: 1px solid #e2e8f0;
-                border-radius: 5px;
-                min-width: 80px;
             }
             
-            .pillar-label {
+            .header-row th {
+                background: #0f172a;
+                color: white;
+                font-size: 9pt;
+                font-weight: 600;
+            }
+            
+            .header-detail {
+                font-size: 7pt;
+                font-weight: 400;
+                opacity: 0.8;
+            }
+            
+            .label-cell {
+                background: #f8fafc;
                 font-size: 8pt;
+                font-weight: 700;
+                width: 50px;
+            }
+            
+            .label-chinese {
+                font-size: 6pt;
                 color: #475569;
-                text-transform: uppercase;
-                margin-bottom: 5px;
             }
             
-            .stem {
-                font-size: 16pt;
+            .element-cell {
+                background: white;
+            }
+            
+            .chinese-char {
+                font-size: 14pt;
                 font-weight: bold;
-                display: block;
             }
             
-            .stem-name, .branch-name {
+            .romanized {
                 font-size: 7pt;
                 color: #475569;
             }
             
-            .branch {
-                font-size: 14pt;
-                font-weight: 600;
-                display: block;
-            }
+            /* Element cell backgrounds for PDF */
+            .element-cell.wood { color: #22c55e; background: #f0fdf4; }
+            .element-cell.fire { color: #ef4444; background: #fef2f2; }
+            .element-cell.earth { color: #d97706; background: #fffbeb; }
+            .element-cell.metal { color: #6b7280; background: #f9fafb; }
+            .element-cell.water { color: #3b82f6; background: #eff6ff; }
             
-            /* Element Colors */
-            .wood { color: #22c55e; }
+            /* Element Colors - CORRECT as per Manager */
+            .wood { color: #22c55e; }  /* Green */
             .fire { color: #ef4444; }
-            .earth { color: #a16207; }
-            .metal { color: #f59e0b; }
+            .earth { color: #d97706; }  /* Orangey-Yellow */
+            .metal { color: #6b7280; }  /* Grey */
             .water { color: #3b82f6; }
             
             .meta-grid {

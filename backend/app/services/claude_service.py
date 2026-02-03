@@ -32,21 +32,21 @@ class ClaudeServiceError(Exception):
 
 
 # Required 13 sections - Check for these patterns in report
-# Using flexible keywords that match Claude's actual output
+# Using flexible keywords that match Claude's actual output (Manager Feb 2026)
 REQUIRED_SECTIONS = [
     "life path",           # 1. Three Life Path Simulations
-    "luck cycle",          # 2. Ten-Year Luck Cycle
+    "luck cycle",          # 2. Ten-Year Luck Cycle Analysis
     "element",             # 3. Five Elements Analysis
-    "relationship",        # 4. Relationship Compatibility
-    "intelligence",        # 5. Natural Intelligence
-    "communication",       # 6. Communication & Energy
-    "life force",          # 7. Life Force (Chi)
-    "wealth",              # 8. Wealth Cleansing
-    "feng shui",           # 9. Home Feng Shui
-    "challenging",         # 10. Challenging Periods
-    "treasure",            # 11. Imperial Treasures
+    "relationship",        # 4. Relationship Compatibility (includes 贵人)
+    "intelligence",        # 5. Natural Intelligence Patterns
+    "communication",       # 6. Communication & Energy Adjustments
+    "life force",          # 7. Life Force (Chi) Analysis
+    "wealth",              # 8. Wealth Cleansing Ritual
+    "home",                # 9. Home Furniture Adjustments (or Feng Shui)
+    "challenging",         # 10. Death Particle / Challenging Periods
+    "treasure",            # 11. Four Sacred Imperial Treasures
     "celebrity",           # 12. Celebrity Comparisons
-    "routine"              # 13. Daily Routine
+    "routine"              # 13. Daily Routine Adjustments
 ]
 
 
@@ -61,159 +61,236 @@ class ClaudeService:
     """
     
     # ===========================================
-    # System Prompt - Manager Approved (Optimized)
+    # System Prompt - Manager Updated (Feb 2026) v2
     # ===========================================
-    SYSTEM_PROMPT = """You are a master BaZi (八字) astrologer with decades of experience in Chinese metaphysics.
-Generate ONLY Markdown text for a BaZi report.
+    SYSTEM_PROMPT = """You are a master BaZi (八字) astrologer. Generate a complete BaZi report in Markdown.
 
-**CRITICAL WORD BUDGET - MUST FOLLOW EXACTLY:**
-Total output: approximately 5,500 words. Budget per section:
-- Section 1 (Life Paths): 600 words (200 per path)
-- Section 2 (10-Year Table): 500 words (table + analysis)
-- Section 3 (Elements): 450 words
-- Section 4 (Relationships): 500 words (125 per type)
-- Section 5 (Intelligence): 400 words
-- Sections 6-13: 300 words EACH
+**CRITICAL INSTRUCTIONS:**
+1. TODAY IS FEBRUARY 2026 - all dates must reflect this
+2. Complete ALL 13 sections - do NOT skip any
+3. Markdown only - NO HTML/CSS
+4. Be mystical and engaging, but CONCISE
+5. Use Chinese terms with brief explanations
 
-**NON-NEGOTIABLE RULES:**
-1. NO section exceeds its word limit
-2. You MUST complete ALL 13 sections - stopping early is FAILURE
-3. Finish Section 13 (Daily Routine) before output ends
-4. Use bullet points for efficiency
-5. Chinese terms (正印, 七杀) with brief English meaning
-6. Be mystical yet concise - quality over quantity
+**STRICT WORD LIMITS (Total: ~5,500 words / ~25 pages):**
+| Section | Words |
+|---------|-------|
+| Introduction | 350 |
+| Section 1-5 | 400 each |
+| Section 6-13 | 250 each |
 
-Output clean Markdown only, no HTML."""
+STAY WITHIN LIMITS - Quality over quantity. One powerful sentence beats three weak ones."""
 
     # ===========================================
-    # Optimized 13 Sections (Manager Requirements)
+    # Manager's Detailed 13 Sections (Feb 2026) v2
     # ===========================================
-    SECTION_TEMPLATE = """Based on this BaZi chart, generate a complete personalized destiny report:
-
-## Chart Data
+    SECTION_TEMPLATE = """## BIRTH CHART DATA
 {bazi_json}
 
 ---
 
-## Complete 13 Sections (All Required)
+## REPORT STRUCTURE
 
-### 1. 🌟 Three Life Path Simulations [600 words]
-3 possible life trajectories using Day Master (200 words each):
-- **Allegorical Path Name** (poetic title)
-- Obstacles, challenges using BaZi terms (explain in context)
-- Opportunities from luck cycle
-- Who helps: zodiac/element supporters
-- Connect to 大运 luck phases
-
----
-
-### 2. 📅 Ten-Year Luck Cycle [500 words]
-Create 10-row table:
-
-| Year | Luck (1-10) | Elemental Analysis | Action to Take |
-|------|-------------|-------------------|----------------|
-| 2024 | X/10 | [element weather] | [action] |
-... continue to 2033
-
-After table: Current 大运 analysis, peak periods, good/bad year feelings.
+### INTRODUCTION [350 words]
+Cover these 4 points concisely:
+A) **Bazi History:** Xu Ziping (Song Dynasty ~960 CE) shifted from Year Branch to Day Master analysis. Ganzhi Calendar = 10 Heavenly Stems + 12 Earthly Branches = 60-year cycle.
+B) **Five Elements (Wu Xing):**
+   - Generating: Wood→Fire→Earth→Metal→Water→Wood
+   - Controlling: Wood→Earth→Water→Fire→Metal→Wood
+C) **Four Pillars:** Year (ancestry), Month (career), Day (self), Hour (legacy)
+D) **Elements Quick Guide:** Wood=growth, Fire=passion, Earth=stability, Metal=precision, Water=wisdom
 
 ---
 
-### 3. 🔥 Five Elements Analysis [450 words]
-- Day Master strength (strong/weak)
-- Each element (金木水火土): % present, manifestation
-- Element interactions (mood, energy, productivity)
-- Which to boost, which to calm
+### 1. THREE LIFE PATHS [400 words]
+Create 3 allegorical life trajectories based on Day Master:
+- **Path A (Conservative):** Safe route - obstacles, supporters, outcome
+- **Path B (Balanced):** Middle path - challenges, helpers, outcome  
+- **Path C (Ambitious):** Bold route - risks, allies needed, outcome
+
+For each path: Name it poetically, show obstacles tied to clashing elements, identify zodiac/element allies. Connect to their 大运 luck phases. Explain feng shui terms in context.
 
 ---
 
-### 4. 💕 Relationship Compatibility [500 words]
-4 types (125 words each):
-1. **Romantic**: Ideal partner elements + zodiac years
-2. **Professional** (Boss & Clients): How to navigate work
-3. **Friends**: Supportive peer elements
-4. **贵人 (Gui Ren)**: How to attract noble helpers/mentors
+### 2. TEN-YEAR LUCK CYCLE [400 words]
+Create this EXACT table (2026-2035):
+
+| Year | Luck (1-10) | Element Energy | Key Action |
+|------|-------------|----------------|------------|
+| 2026 | X | [element] | [action] |
+| ... | ... | ... | ... |
+| 2035 | X | [element] | [action] |
+
+Then add:
+- Current 大运 pillar analysis
+- Peak luck months in next 12 months
+- How good years FEEL vs bad years FEEL
 
 ---
 
-### 5. 🧠 Natural Intelligence [400 words]
-10 Gods in chart:
-- 正印/偏印 (Resource Stars): learning style
-- 正官/七杀 (Authority Stars): power dynamics
-- 正财/偏财 (Wealth Stars): money patterns
-- 伤官/食神 (Output Stars): creativity
-- 比肩/劫财 (Friend Stars): competition
+### 3. FIVE ELEMENTS ANALYSIS [400 words]
+Based on Day Master, create:
 
-How they interact with current luck cycle.
+| Element | % in Chart | Status | Manifestation |
+|---------|------------|--------|---------------|
+| Wood | X% | Strong/Weak/Balanced | [how it shows in life] |
+| Fire | X% | ... | ... |
+| Earth | X% | ... | ... |
+| Metal | X% | ... | ... |
+| Water | X% | ... | ... |
 
----
-
-### 6. 💬 Communication & Energy [300 words]
-- Best self-presentation for Day Master
-- Energy when luck UP vs DOWN
-- Key talents to demonstrate
-
----
-
-### 7. ⚡ Life Force (Chi) Analysis [300 words]
-- Current Chi level (Ganzhi based)
-- Best months to take action
-- When to rest and recharge
-- Planning for when to "strike"
+Then explain:
+- Which elements to BOOST (and how)
+- Which elements to CALM (and how)
+- Visualization exercise for balance
+- Frame as "control, insight, clarity" over their emotional states
 
 ---
 
-### 8. 💰 Wealth Cleansing Ritual [300 words]
-5-step personalized ritual for Day Master:
-1. Timing (days/hours)
-2. Materials
-3. Actions
-4. Visualization
-5. Closing
+### 4. RELATIONSHIPS [400 words]
+Analyze 4 relationship types based on Day Master + current luck cycle:
 
----
-
-### 9. 🏠 Home Feng Shui [300 words]
-- Wealth corner direction for this chart
-- Purifying Wind Chimes (chimanifestation.com) placement
-- 3 room adjustments
-
----
-
-### 10. ⚠️ Challenging Periods [300 words]
-- 2-3 difficult months/periods ahead
+**A) Romantic Partners**
+- Ideal element combinations
+- Zodiac compatibility
 - Warning signs
-- Encouragement and survival strategies
-- 10x effort reminder
+
+**B) Professional (Boss/Clients)**
+- How to navigate based on their likely elements
+- Power dynamics
+
+**C) Friends/Peers**
+- Supportive vs draining elements
+- Who to invest time in
+
+**D) 贵人 Benefactors/Mentors**
+- How to attract noble helpers
+- What they look like (element signatures)
 
 ---
 
-### 11. 👑 Four Sacred Imperial Treasures [300 words]
-Brief on each (75 words each):
-1. **Purifying Wind Chimes** - energy flow
-2. **Long Gui Longevity Amulet** - health
-3. **Pixiu Bracelet** - wealth attraction
-4. **Amethyst Prosperity Tree** - abundance
+### 5. NATURAL INTELLIGENCE (10 Gods) [400 words]
+Analyze their 10 Gods configuration:
+
+| God Type | Present? | Meaning for You |
+|----------|----------|-----------------|
+| 正印 Direct Resource | Y/N | Learning style |
+| 偏印 Indirect Resource | Y/N | Hidden talents |
+| 正官 Direct Officer | Y/N | Authority relationship |
+| 七杀 Seven Killings | Y/N | Power/conflict |
+| 正财 Direct Wealth | Y/N | Stable income patterns |
+| 偏财 Indirect Wealth | Y/N | Windfall opportunities |
+| 伤官 Hurting Officer | Y/N | Creativity/rebellion |
+| 食神 Eating God | Y/N | Enjoyment/output |
+| 比肩 Friend | Y/N | Competition |
+| 劫财 Rob Wealth | Y/N | Resource sharing |
+
+Show patterns emerging from 10 Gods + Day Master + Luck Cycle interaction.
 
 ---
 
-### 12. 🌟 Celebrity Comparisons [300 words]
-2-3 celebrities with similar Day Master/elements:
-- Why similar, what to learn from them
+### 6. COMMUNICATION & ENERGY [250 words]
+Based on Day Master:
+- How to present yourself to the world
+- Talents you must demonstrate
+- Energy to project when luck is UP (expand, take risks)
+- Energy to project when luck is DOWN (consolidate, conserve)
 
 ---
 
-### 13. ☀️ Daily Routine [300 words]
-Daily practices for balance:
-- **Morning**: specific practice
-- **Afternoon**: energy management
-- **Evening**: restoration
-- How this maintains elemental harmony
+### 7. LIFE FORCE (CHI) ANALYSIS [250 words]
+- Current Chi level (high/medium/low)
+- Best months to "strike" and take action
+- Months to rest and recover
+- How energy will shift through the year
 
 ---
 
-Write English with Chinese terms (正印, 七杀). Be mystical, practical, complete.
-Return ONLY Markdown. COMPLETE ALL 13 SECTIONS."""
+### 8. WEALTH CLEANSING RITUAL [250 words]
+Based on Day Master element, provide the SPECIFIC ritual:
+
+**[Day Master Element] Wealth Ritual:**
+- **Wealth Element:** [what Day Master controls]
+- **Ceremony Name:** [specific name]
+- **Items Needed:** [list]
+- **Placement:** [direction/corner]
+- **Best Timing:** [season + time of day]
+- **5 Steps:**
+  1. [specific step]
+  2. [specific step]
+  3. [specific step]
+  4. [specific step]
+  5. [visualization]
+
+---
+
+### 9. HOME FENG SHUI [250 words]
+**Sha Qi (Suffocating Energy):**
+Explain how negative energy collects in homes and must be cleansed.
+
+**Recommendations:**
+1. **Bronze Wind Chimes** - Place at [direction] to cleanse Sha Qi
+2. **Wealth Corner** - For your Day Master, activate the [direction] corner
+3. **3 Quick Adjustments:**
+   - [Room 1 adjustment]
+   - [Room 2 adjustment]
+   - [Room 3 adjustment]
+
+---
+
+### 10. CHALLENGING PERIODS (Death Particle) [250 words]
+Warning periods ahead:
+- **Period 1:** [Month-Month 2026] - Challenge: [what], Strategy: [how to survive]
+- **Period 2:** [Month-Month 2026/27] - Challenge: [what], Strategy: [how to survive]
+- **Period 3:** [Month-Month 2027] - Challenge: [what], Strategy: [how to survive]
+
+During these times: Work 10x harder. Warning signs to watch. Encouraging message.
+
+---
+
+### 11. FOUR SACRED IMPERIAL TREASURES [250 words]
+Introduce these 4 protective items tailored to their chart:
+
+1. **Purifying Wind Chimes** (Bronze) - Removes suffocating Sha Qi energy
+2. **Long Gui Longevity Amulet** (Himalayan Resin) - Desk item for health & longevity
+3. **Pixiu Bracelet - Obsidian** - Wealth attraction & negative energy absorption
+4. **Pixiu Bracelet - Tiger Eye** - Protection & courage
+
+Explain which is MOST important for their specific Day Master.
+
+---
+
+### 12. CELEBRITY COMPARISONS [250 words]
+2-3 famous individuals with similar Day Master or element configuration:
+- **Celebrity 1:** [Name] - Similarity: [what], Lesson: [what to learn]
+- **Celebrity 2:** [Name] - Similarity: [what], Lesson: [what to learn]
+- **Celebrity 3:** [Name] - Similarity: [what], Lesson: [what to learn]
+
+---
+
+### 13. DAILY ROUTINE ADJUSTMENTS [250 words]
+Personalized daily practices based on Day Master + weak elements:
+
+**Morning Ritual:**
+- [Specific practice to energize weak element]
+
+**Afternoon Practice:**
+- [Energy management technique]
+
+**Evening Restoration:**
+- [Balance/recovery practice]
+
+**Weekly Power Day:**
+- [Best day of week for this Day Master and why]
+
+---
+
+## OUTPUT RULES
+- Return ONLY Markdown
+- Complete ALL 13 sections
+- Stay within word limits
+- Be mystical but practical
+- End with an encouraging closing message"""
 
     def __init__(self, api_key: Optional[str] = None):
         """Initialize Claude Service"""
@@ -257,7 +334,7 @@ Return ONLY Markdown. COMPLETE ALL 13 SECTIONS."""
         # Use streaming context manager
         with self.client.messages.stream(
             model=self.model,
-            max_tokens=20000,  # Reduced as requested, still ensures all 13 sections complete
+            max_tokens=25000,  # Optimized for complete 13 sections (~4000 words)
             system=self.SYSTEM_PROMPT,
             messages=[{"role": "user", "content": user_prompt}]
         ) as stream:

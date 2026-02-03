@@ -32,15 +32,15 @@
             --border-color: #e2e8f0;
             /* Light gray border */
 
-            /* Element Colors */
+            /* Element Colors - CORRECT as per Manager */
             --wood-color: #22c55e;
             /* Green */
             --fire-color: #ef4444;
             /* Red */
-            --earth-color: #a16207;
-            /* Brown/Yellow */
-            --metal-color: #f59e0b;
-            /* Gold */
+            --earth-color: #d97706;
+            /* Orangey-Yellow */
+            --metal-color: #6b7280;
+            /* Grey */
             --water-color: #3b82f6;
             /* Blue */
         }
@@ -137,7 +137,7 @@
         }
 
         /* ===========================================
-           🔮 Four Pillars Display (Elemental Colors)
+           🔮 Four Pillars Display - TABLE FORMAT
            =========================================== */
         .bazi-dashboard {
             background: white;
@@ -162,61 +162,101 @@
             letter-spacing: 1px;
         }
 
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            max-width: 500px;
+        /* BaZi Table Styles */
+        .bazi-table {
+            width: 100%;
+            max-width: 600px;
             margin: 0 auto 25px;
+            border-collapse: collapse;
+            font-family: 'Lato', sans-serif;
         }
 
-        .pillar {
+        .bazi-table th,
+        .bazi-table td {
+            padding: 12px 8px;
             text-align: center;
-            padding: 15px 10px;
-            border-radius: 8px;
-            background: var(--bg-accent);
             border: 1px solid var(--border-color);
         }
 
-        .pillar-label {
-            font-family: 'Lato', sans-serif;
-            font-size: 0.7rem;
-            color: var(--text-light);
+        /* Header Row */
+        .header-row th {
+            background: var(--primary-dark);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 8px;
         }
 
-        .pillar-year {
-            font-size: 0.65rem;
-            color: var(--text-light);
+        .pillar-header {
+            min-width: 80px;
         }
 
-        .stem {
-            font-size: 1.8rem;
+        .header-detail {
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.8;
+            display: block;
+            margin-top: 3px;
+        }
+
+        /* Label Column (HS/EB) */
+        .label-cell {
+            background: var(--bg-accent);
+            font-size: 0.8rem;
             font-weight: 700;
-            margin-bottom: 3px;
-            display: block;
+            color: var(--primary-dark);
+            width: 60px;
+            line-height: 1.4;
         }
 
-        .stem-name {
-            font-size: 0.7rem;
-            color: var(--text-light);
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .branch {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 3px;
-            display: block;
-        }
-
-        .branch-name {
-            font-size: 0.7rem;
+        .label-chinese {
+            font-size: 0.65rem;
+            font-weight: 400;
             color: var(--text-light);
             display: block;
+        }
+
+        /* Element Cells */
+        .element-cell {
+            background: white;
+            position: relative;
+        }
+
+        .chinese-char {
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .romanized {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            display: block;
+            margin-top: 3px;
+        }
+
+        /* Element Colors - Applied to cells */
+        .element-cell.wood {
+            color: var(--wood-color);
+            background: rgba(34, 197, 94, 0.08);
+        }
+        .element-cell.fire {
+            color: var(--fire-color);
+            background: rgba(239, 68, 68, 0.08);
+        }
+        .element-cell.earth {
+            color: var(--earth-color);
+            background: rgba(217, 119, 6, 0.08);
+        }
+        .element-cell.metal {
+            color: var(--metal-color);
+            background: rgba(107, 114, 128, 0.08);
+        }
+        .element-cell.water {
+            color: var(--water-color);
+            background: rgba(59, 130, 246, 0.08);
         }
 
         /* Element Colors for Stems/Branches */
@@ -518,48 +558,63 @@
             <p class="report-meta">Birth: {{ birth_date }} at {{ birth_time }} | {{ location }} | {{ gender }}</p>
         </header>
 
-        <!-- Four Pillars Display with Elemental Colors -->
+        <!-- Four Pillars Display - TABLE FORMAT (Manager Requested) -->
         <section class="bazi-dashboard">
             <h2 class="pillars-title">四柱 – The Four Pillars of Destiny</h2>
             
-            <div class="pillars-grid">
-                <!-- Hour Pillar -->
-                <div class="pillar">
-                    <div class="pillar-label">Hour</div>
-                    <span class="stem {{ hour_stem_element }}">{{ hour_stem }}</span>
-                    <span class="stem-name">{{ hour_stem_name }}</span>
-                    <span class="branch {{ hour_branch_element }}">{{ hour_branch }}</span>
-                    <span class="branch-name">{{ hour_branch_name }}</span>
-                </div>
-                
-                <!-- Day Pillar -->
-                <div class="pillar">
-                    <div class="pillar-label">Day</div>
-                    <span class="stem {{ day_stem_element }}">{{ day_stem }}</span>
-                    <span class="stem-name">{{ day_stem_name }}</span>
-                    <span class="branch {{ day_branch_element }}">{{ day_branch }}</span>
-                    <span class="branch-name">{{ day_branch_name }}</span>
-                </div>
-                
-                <!-- Month Pillar -->
-                <div class="pillar">
-                    <div class="pillar-label">Month</div>
-                    <span class="stem {{ month_stem_element }}">{{ month_stem }}</span>
-                    <span class="stem-name">{{ month_stem_name }}</span>
-                    <span class="branch {{ month_branch_element }}">{{ month_branch }}</span>
-                    <span class="branch-name">{{ month_branch_name }}</span>
-                </div>
-                
-                <!-- Year Pillar -->
-                <div class="pillar">
-                    <div class="pillar-label">Year</div>
-                    <div class="pillar-year">{{ birth_year }}</div>
-                    <span class="stem {{ year_stem_element }}">{{ year_stem }}</span>
-                    <span class="stem-name">{{ year_stem_name }}</span>
-                    <span class="branch {{ year_branch_element }}">{{ year_branch }}</span>
-                    <span class="branch-name">{{ year_branch_name }}</span>
-                </div>
-            </div>
+            <table class="bazi-table">
+                <thead>
+                    <tr class="header-row">
+                        <th class="label-cell"></th>
+                        <th class="pillar-header">Hour<br><span class="header-detail">{{ birth_time }}</span></th>
+                        <th class="pillar-header">Day<br><span class="header-detail">{{ birth_date }}</span></th>
+                        <th class="pillar-header">Month</th>
+                        <th class="pillar-header">Year<br><span class="header-detail">{{ birth_year }}</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Heavenly Stem Row -->
+                    <tr class="stem-row">
+                        <td class="label-cell">HS<br><span class="label-chinese">天干</span></td>
+                        <td class="element-cell {{ hour_stem_element }}">
+                            <span class="chinese-char">{{ hour_stem }}</span>
+                            <span class="romanized">{{ hour_stem_name }}</span>
+                        </td>
+                        <td class="element-cell {{ day_stem_element }}">
+                            <span class="chinese-char">{{ day_stem }}</span>
+                            <span class="romanized">{{ day_stem_name }}</span>
+                        </td>
+                        <td class="element-cell {{ month_stem_element }}">
+                            <span class="chinese-char">{{ month_stem }}</span>
+                            <span class="romanized">{{ month_stem_name }}</span>
+                        </td>
+                        <td class="element-cell {{ year_stem_element }}">
+                            <span class="chinese-char">{{ year_stem }}</span>
+                            <span class="romanized">{{ year_stem_name }}</span>
+                        </td>
+                    </tr>
+                    <!-- Earthly Branch Row -->
+                    <tr class="branch-row">
+                        <td class="label-cell">EB<br><span class="label-chinese">地支</span></td>
+                        <td class="element-cell {{ hour_branch_element }}">
+                            <span class="chinese-char">{{ hour_branch }}</span>
+                            <span class="romanized">{{ hour_branch_name }}</span>
+                        </td>
+                        <td class="element-cell {{ day_branch_element }}">
+                            <span class="chinese-char">{{ day_branch }}</span>
+                            <span class="romanized">{{ day_branch_name }}</span>
+                        </td>
+                        <td class="element-cell {{ month_branch_element }}">
+                            <span class="chinese-char">{{ month_branch }}</span>
+                            <span class="romanized">{{ month_branch_name }}</span>
+                        </td>
+                        <td class="element-cell {{ year_branch_element }}">
+                            <span class="chinese-char">{{ year_branch }}</span>
+                            <span class="romanized">{{ year_branch_name }}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
             <div class="meta-grid">
                 <div class="meta-item">
@@ -581,76 +636,8 @@
             </div>
         </section>
 
-        <!-- Five Element Cycle Diagram (Injected before Section 3) -->
-        <section class="element-cycle">
-            <h3 class="element-cycle-title">🌊 Feng Shui Elemental Cycle</h3>
-            <svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
-                <!-- Pentagon shape for 5 elements -->
-                <!-- Water (Top) -->
-                <circle cx="150" cy="40" r="30" fill="#3b82f6" opacity="0.15"/>
-                <text x="150" y="35" text-anchor="middle" fill="#3b82f6" font-size="11" font-weight="bold">Water</text>
-                <text x="150" y="50" text-anchor="middle" font-size="20">💧</text>
-                
-                <!-- Wood (Top Right) -->
-                <circle cx="250" cy="100" r="30" fill="#22c55e" opacity="0.15"/>
-                <text x="250" y="95" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="bold">Wood</text>
-                <text x="250" y="115" text-anchor="middle" font-size="20">🌳</text>
-                
-                <!-- Fire (Bottom Right) -->
-                <circle cx="220" cy="200" r="30" fill="#ef4444" opacity="0.15"/>
-                <text x="220" y="195" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="bold">Fire</text>
-                <text x="220" y="215" text-anchor="middle" font-size="20">🔥</text>
-                
-                <!-- Earth (Bottom Left) -->
-                <circle cx="80" cy="200" r="30" fill="#a16207" opacity="0.15"/>
-                <text x="80" y="195" text-anchor="middle" fill="#a16207" font-size="11" font-weight="bold">Earth</text>
-                <text x="80" y="215" text-anchor="middle" font-size="20">🌍</text>
-                
-                <!-- Metal (Top Left) -->
-                <circle cx="50" cy="100" r="30" fill="#f59e0b" opacity="0.15"/>
-                <text x="50" y="95" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="bold">Metal</text>
-                <text x="50" y="115" text-anchor="middle" font-size="20">⚙️</text>
-                
-                <!-- Productive Cycle (Green arrows - clockwise outer) -->
-                <defs>
-                    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                        <path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/>
-                    </marker>
-                    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                        <path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/>
-                    </marker>
-                </defs>
-                
-                <!-- Productive: Water → Wood -->
-                <path d="M175 50 Q 210 60 235 85" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
-                <!-- Productive: Wood → Fire -->
-                <path d="M255 125 Q 250 160 235 180" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
-                <!-- Productive: Fire → Earth -->
-                <path d="M195 210 Q 150 225 110 210" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
-                <!-- Productive: Earth → Metal -->
-                <path d="M60 180 Q 45 150 45 125" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
-                <!-- Productive: Metal → Water -->
-                <path d="M65 80 Q 95 50 125 45" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
-                
-                <!-- Destructive Cycle (Red arrows - star pattern) -->
-                <!-- Water → Fire -->
-                <path d="M160 60 L 200 180" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
-                <!-- Fire → Metal -->
-                <path d="M195 195 L 75 115" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
-                <!-- Metal → Wood -->
-                <path d="M75 95 L 225 95" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
-                <!-- Wood → Earth -->
-                <path d="M235 120 L 100 185" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
-                <!-- Earth → Water -->
-                <path d="M90 175 L 140 60" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
-                
-                <!-- Legend -->
-                <text x="150" y="265" text-anchor="middle" font-size="9" fill="#666">
-                    <tspan fill="#22c55e">━━━ Productive Cycle</tspan>
-                    <tspan dx="20" fill="#ef4444">┅┅┅ Destructive Cycle</tspan>
-                </text>
-            </svg>
-        </section>
+        <!-- Five Element Cycle Diagram - REMOVED as per Manager request -->
+        <!-- TODO: Add back when manager approves the design -->
 
         <!-- Dynamic Content -->
         <main class="content-body">
