@@ -1,654 +1,690 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🔮 {{ name }}'s BaZi Destiny Report</title>
 
     <!-- Google Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Lato:wght@400;700&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
-        /* ===========================================
+      /* ===========================================
            🎨 PRO Styles - "The Celestial Document"
            =========================================== */
-        :root {
-            /* PDF-Safe Colors (High Contrast) */
-            --primary-dark: #0f172a;
-            /* Deep Navy */
-            --primary-gold: #b48e3e;
-            /* Premium Gold */
-            --text-main: #1e293b;
-            /* Slate 800 - Good Black */
-            --text-light: #475569;
-            /* Slate 600 */
-            --bg-paper: #ffffff;
-            /* Pure White */
-            --bg-accent: #f8fafc;
-            /* Very light slate */
-            --border-color: #e2e8f0;
-            /* Light gray border */
+      :root {
+        /* PDF-Safe Colors (High Contrast) */
+        --primary-dark: #0f172a;
+        /* Deep Navy */
+        --primary-gold: #b48e3e;
+        /* Premium Gold */
+        --text-main: #1e293b;
+        /* Slate 800 - Good Black */
+        --text-light: #475569;
+        /* Slate 600 */
+        --bg-paper: #ffffff;
+        /* Pure White */
+        --bg-accent: #f8fafc;
+        /* Very light slate */
+        --border-color: #e2e8f0;
+        /* Light gray border */
 
-            /* Element Colors - CORRECT as per Manager */
-            --wood-color: #22c55e;
-            /* Green */
-            --fire-color: #ef4444;
-            /* Red */
-            --earth-color: #d97706;
-            /* Orangey-Yellow */
-            --metal-color: #6b7280;
-            /* Grey */
-            --water-color: #3b82f6;
-            /* Blue */
-        }
+        /* Element Colors - CORRECT as per Manager */
+        --wood-color: #22c55e;
+        /* Green */
+        --fire-color: #ef4444;
+        /* Red */
+        --earth-color: #d97706;
+        /* Orangey-Yellow */
+        --metal-color: #6b7280;
+        /* Grey */
+        --water-color: #3b82f6;
+        /* Blue */
+      }
 
-        /* Base Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      /* Base Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Merriweather', Georgia, serif;
-            /* Excellent readability */
-            background: #505050;
-            /* Dark background for browser view only */
-            color: var(--text-main);
-            line-height: 1.8;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-            /* Force colors in print */
-        }
+      body {
+        font-family: "Merriweather", Georgia, serif;
+        /* Excellent readability */
+        background: #505050;
+        /* Dark background for browser view only */
+        color: var(--text-main);
+        line-height: 1.8;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        /* Force colors in print */
+      }
 
-        /* ===========================================
+      /* ===========================================
            📄 A4 Paper Container
            =========================================== */
-        .page-container {
-            background: white;
-            max-width: 21cm;
-            /* A4 Width */
-            margin: 40px auto;
-            padding: 0;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-            /* For watermark */
-        }
+      .page-container {
+        background: white;
+        max-width: 21cm;
+        /* A4 Width */
+        margin: 40px auto;
+        padding: 0;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        position: relative;
+        overflow: hidden;
+        /* For watermark */
+      }
 
-        /* Watermark Effect (Subtle) */
-        .page-container::before {
-            content: "BAZI";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            font-family: 'Cinzel', serif;
-            font-size: 15rem;
-            color: rgba(180, 142, 62, 0.03);
-            /* Very faint gold */
-            z-index: 0;
-            pointer-events: none;
-        }
+      /* Watermark Effect (Subtle) */
+      .page-container::before {
+        content: "BAZI";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        font-family: "Cinzel", serif;
+        font-size: 15rem;
+        color: rgba(180, 142, 62, 0.03);
+        /* Very faint gold */
+        z-index: 0;
+        pointer-events: none;
+      }
 
-        /* ===========================================
+      /* ===========================================
            🏛️ Header Design
            =========================================== */
-        .report-header {
-            background: var(--primary-dark);
-            color: white;
-            padding: 50px 40px;
-            text-align: center;
-            position: relative;
-            border-bottom: 4px solid var(--primary-gold);
-        }
+      .report-header {
+        background: var(--primary-dark);
+        color: white;
+        padding: 50px 40px;
+        text-align: center;
+        position: relative;
+        border-bottom: 4px solid var(--primary-gold);
+      }
 
-        .header-logo {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            display: block;
-        }
+      .header-logo {
+        font-size: 3rem;
+        margin-bottom: 10px;
+        display: block;
+      }
 
-        .report-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            letter-spacing: 2px;
-            color: var(--primary-gold);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
+      .report-title {
+        font-family: "Cinzel", serif;
+        font-size: 2rem;
+        letter-spacing: 2px;
+        color: var(--primary-gold);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
 
-        .report-subtitle {
-            font-family: 'Lato', sans-serif;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            letter-spacing: 1px;
-            font-style: italic;
-        }
+      .report-subtitle {
+        font-family: "Lato", sans-serif;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 1px;
+        font-style: italic;
+      }
 
-        .report-meta {
-            font-family: 'Lato', sans-serif;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 15px;
-        }
+      .report-meta {
+        font-family: "Lato", sans-serif;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 15px;
+      }
 
-        /* ===========================================
+      /* ===========================================
            🔮 Four Pillars Display - TABLE FORMAT
            =========================================== */
-        .bazi-dashboard {
-            background: white;
-            margin: 30px 40px;
-            padding: 30px;
-            border: 1px solid var(--primary-gold);
-            position: relative;
-            z-index: 1;
-            /* Double border effect */
-            outline: 4px solid white;
-            box-shadow:
-                0 0 0 5px var(--border-color),
-                0 20px 40px rgba(0, 0, 0, 0.05);
-        }
+      .bazi-dashboard {
+        background: white;
+        margin: 30px 40px;
+        padding: 30px;
+        border: 1px solid var(--primary-gold);
+        position: relative;
+        z-index: 1;
+        /* Double border effect */
+        outline: 4px solid white;
+        box-shadow:
+          0 0 0 5px var(--border-color),
+          0 20px 40px rgba(0, 0, 0, 0.05);
+      }
 
-        .pillars-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            color: var(--primary-dark);
-            text-align: center;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
+      .pillars-title {
+        font-family: "Cinzel", serif;
+        font-size: 1.1rem;
+        color: var(--primary-dark);
+        text-align: center;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+      }
 
-        /* BaZi Table Styles */
-        .bazi-table {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto 25px;
-            border-collapse: collapse;
-            font-family: 'Lato', sans-serif;
-        }
+      /* BaZi Table Styles */
+      .bazi-table {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto 25px;
+        border-collapse: collapse;
+        font-family: "Lato", sans-serif;
+      }
 
-        .bazi-table th,
-        .bazi-table td {
-            padding: 12px 8px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-        }
+      .bazi-table th,
+      .bazi-table td {
+        padding: 12px 8px;
+        text-align: center;
+        border: 1px solid var(--border-color);
+      }
 
-        /* Header Row */
-        .header-row th {
-            background: var(--primary-dark);
-            color: white;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+      /* Header Row */
+      .header-row th {
+        background: var(--primary-dark);
+        color: white;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
 
-        .pillar-header {
-            min-width: 80px;
-        }
+      .pillar-header {
+        min-width: 80px;
+      }
 
-        .header-detail {
-            font-size: 0.7rem;
-            font-weight: 400;
-            opacity: 0.8;
-            display: block;
-            margin-top: 3px;
-        }
+      .header-detail {
+        font-size: 0.7rem;
+        font-weight: 400;
+        opacity: 0.8;
+        display: block;
+        margin-top: 3px;
+      }
 
-        /* Label Column (HS/EB) */
-        .label-cell {
-            background: var(--bg-accent);
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-            width: 60px;
-            line-height: 1.4;
-        }
+      /* Label Column (HS/EB) */
+      .label-cell {
+        background: var(--bg-accent);
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        width: 60px;
+        line-height: 1.4;
+      }
 
-        .label-chinese {
-            font-size: 0.65rem;
-            font-weight: 400;
-            color: var(--text-light);
-            display: block;
-        }
+      .label-chinese {
+        font-size: 0.65rem;
+        font-weight: 400;
+        color: var(--text-light);
+        display: block;
+      }
 
-        /* Element Cells */
-        .element-cell {
-            background: white;
-            position: relative;
-        }
+      /* Element Cells */
+      .element-cell {
+        background: white;
+        position: relative;
+      }
 
-        .chinese-char {
-            font-size: 1.6rem;
-            font-weight: 700;
-            display: block;
-            line-height: 1.2;
-        }
+      .chinese-char {
+        font-size: 1.6rem;
+        font-weight: 700;
+        display: block;
+        line-height: 1.2;
+      }
 
-        .romanized {
-            font-size: 0.7rem;
-            color: var(--text-light);
-            display: block;
-            margin-top: 3px;
-        }
+      .romanized {
+        font-size: 0.7rem;
+        color: var(--text-light);
+        display: block;
+        margin-top: 3px;
+      }
 
-        /* Element Colors - Applied to cells */
-        .element-cell.wood {
-            color: var(--wood-color);
-            background: rgba(34, 197, 94, 0.08);
-        }
-        .element-cell.fire {
-            color: var(--fire-color);
-            background: rgba(239, 68, 68, 0.08);
-        }
-        .element-cell.earth {
-            color: var(--earth-color);
-            background: rgba(217, 119, 6, 0.08);
-        }
-        .element-cell.metal {
-            color: var(--metal-color);
-            background: rgba(107, 114, 128, 0.08);
-        }
-        .element-cell.water {
-            color: var(--water-color);
-            background: rgba(59, 130, 246, 0.08);
-        }
+      /* Element Colors - Applied to cells */
+      .element-cell.wood {
+        color: var(--wood-color);
+        background: rgba(34, 197, 94, 0.08);
+      }
+      .element-cell.fire {
+        color: var(--fire-color);
+        background: rgba(239, 68, 68, 0.08);
+      }
+      .element-cell.earth {
+        color: var(--earth-color);
+        background: rgba(217, 119, 6, 0.08);
+      }
+      .element-cell.metal {
+        color: var(--metal-color);
+        background: rgba(107, 114, 128, 0.08);
+      }
+      .element-cell.water {
+        color: var(--water-color);
+        background: rgba(59, 130, 246, 0.08);
+      }
 
-        /* Element Colors for Stems/Branches */
-        .wood { color: var(--wood-color); }
-        .fire { color: var(--fire-color); }
-        .earth { color: var(--earth-color); }
-        .metal { color: var(--metal-color); }
-        .water { color: var(--water-color); }
+      /* Element Colors for Stems/Branches */
+      .wood {
+        color: var(--wood-color);
+      }
+      .fire {
+        color: var(--fire-color);
+      }
+      .earth {
+        color: var(--earth-color);
+      }
+      .metal {
+        color: var(--metal-color);
+      }
+      .water {
+        color: var(--water-color);
+      }
 
-        .meta-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            border-top: 1px solid var(--border-color);
-            padding: 20px 10px 10px;
-            margin-top: 20px;
-        }
+      .meta-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        border-top: 1px solid var(--border-color);
+        padding: 20px 10px 10px;
+        margin-top: 20px;
+      }
 
-        .meta-item {
-            text-align: center;
-            padding: 5px;
-        }
+      .meta-item {
+        text-align: center;
+        padding: 5px;
+      }
 
-        .meta-label {
-            font-family: 'Lato', sans-serif;
-            font-size: 0.75rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 5px;
-        }
+      .meta-label {
+        font-family: "Lato", sans-serif;
+        font-size: 0.75rem;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: block;
+        margin-bottom: 5px;
+      }
 
-        .meta-value {
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            color: var(--primary-gold);
-            font-weight: 700;
-        }
+      .meta-value {
+        font-family: "Cinzel", serif;
+        font-size: 1.1rem;
+        color: var(--primary-gold);
+        font-weight: 700;
+      }
 
-        /* ===========================================
+      /* ===========================================
            🌊 Five Element Cycle (for Section 3)
            =========================================== */
-        .element-cycle {
-            text-align: center;
-            margin: 30px auto;
-            max-width: 450px;
-            padding: 20px;
-            background: var(--bg-accent);
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-        }
+      .element-cycle {
+        text-align: center;
+        margin: 30px auto;
+        max-width: 450px;
+        padding: 20px;
+        background: var(--bg-accent);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+      }
 
-        .element-cycle-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1rem;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-        }
+      .element-cycle-title {
+        font-family: "Cinzel", serif;
+        font-size: 1rem;
+        color: var(--primary-dark);
+        margin-bottom: 15px;
+      }
 
-        .element-cycle svg {
-            max-width: 100%;
-            height: auto;
-        }
+      .element-cycle svg {
+        max-width: 100%;
+        height: auto;
+      }
 
-        .cycle-legend {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 15px;
-            font-size: 0.75rem;
-            color: var(--text-light);
-        }
+      .cycle-legend {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 15px;
+        font-size: 0.75rem;
+        color: var(--text-light);
+      }
 
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
 
-        .legend-arrow {
-            width: 20px;
-            height: 2px;
-        }
+      .legend-arrow {
+        width: 20px;
+        height: 2px;
+      }
 
-        .legend-arrow.productive { background: var(--wood-color); }
-        .legend-arrow.destructive { background: var(--fire-color); }
+      .legend-arrow.productive {
+        background: var(--wood-color);
+      }
+      .legend-arrow.destructive {
+        background: var(--fire-color);
+      }
 
-        /* ===========================================
+      /* ===========================================
            📖 Main Content
            =========================================== */
-        .content-body {
-            padding: 20px 50px 60px;
-            position: relative;
-            z-index: 1;
-        }
+      .content-body {
+        padding: 20px 50px 60px;
+        position: relative;
+        z-index: 1;
+      }
 
-        /* Typography Hierarchy */
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: var(--primary-dark);
-            margin-top: 50px;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-gold);
-            page-break-after: avoid;
-        }
+      /* Typography Hierarchy */
+      h1 {
+        font-family: "Cinzel", serif;
+        font-size: 1.8rem;
+        color: var(--primary-dark);
+        margin-top: 50px;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--primary-gold);
+        page-break-after: avoid;
+      }
 
-        h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            color: var(--primary-gold);
-            margin-top: 40px;
-            margin-bottom: 15px;
-            page-break-after: avoid;
-        }
+      h2 {
+        font-family: "Cinzel", serif;
+        font-size: 1.4rem;
+        color: var(--primary-gold);
+        margin-top: 40px;
+        margin-bottom: 15px;
+        page-break-after: avoid;
+      }
 
-        h3 {
-            font-family: 'Lato', sans-serif;
-            font-size: 1.1rem;
-            color: var(--primary-dark);
-            font-weight: 700;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
+      h3 {
+        font-family: "Lato", sans-serif;
+        font-size: 1.1rem;
+        color: var(--primary-dark);
+        font-weight: 700;
+        margin-top: 25px;
+        margin-bottom: 10px;
+      }
 
-        p {
-            margin-bottom: 16px;
-            text-align: justify;
-            color: var(--text-main);
-        }
+      p {
+        margin-bottom: 16px;
+        text-align: justify;
+        color: var(--text-main);
+      }
 
-        ul,
-        ol {
-            margin: 15px 0 15px 25px;
-            color: var(--text-main);
-        }
+      ul,
+      ol {
+        margin: 15px 0 15px 25px;
+        color: var(--text-main);
+      }
 
-        li {
-            margin-bottom: 8px;
-            padding-left: 5px;
-        }
+      li {
+        margin-bottom: 8px;
+        padding-left: 5px;
+      }
 
-        strong {
-            color: var(--primary-dark);
-            font-weight: 700;
-        }
+      strong {
+        color: var(--primary-dark);
+        font-weight: 700;
+      }
 
-        em {
-            color: var(--primary-gold);
-            font-style: italic;
-        }
+      em {
+        color: var(--primary-gold);
+        font-style: italic;
+      }
 
-        /* Decor elements */
-        blockquote {
-            background: var(--bg-accent);
-            border-left: 4px solid var(--primary-gold);
-            padding: 15px 20px;
-            margin: 25px 0;
-            font-style: italic;
-            color: var(--text-light);
-        }
+      /* Decor elements */
+      blockquote {
+        background: var(--bg-accent);
+        border-left: 4px solid var(--primary-gold);
+        padding: 15px 20px;
+        margin: 25px 0;
+        font-style: italic;
+        color: var(--text-light);
+      }
 
-        /* ===========================================
+      /* ===========================================
            📊 Table Styling (for generated content)
            =========================================== */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.9rem;
+        background: white;
+      }
+
+      thead {
+        background: var(--primary-dark);
+        color: white;
+      }
+
+      th {
+        padding: 12px 15px;
+        text-align: left;
+        font-family: "Lato", sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+      }
+
+      td {
+        padding: 10px 15px;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-main);
+      }
+
+      tbody tr:nth-child(even) {
+        background: var(--bg-accent);
+      }
+
+      tbody tr:hover {
+        background: rgba(180, 142, 62, 0.1);
+      }
+
+      hr {
+        border: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--border-color),
+          transparent
+        );
+        margin: 40px 0;
+      }
+
+      /* ===========================================
+           🦶 Footer
+           =========================================== */
+      .report-footer {
+        text-align: center;
+        padding: 30px;
+        border-top: 1px solid var(--border-color);
+        background: var(--bg-accent);
+      }
+
+      .footer-text {
+        font-family: "Lato", sans-serif;
+        font-size: 0.8rem;
+        color: var(--text-light);
+      }
+
+      /* ===========================================
+           🖨️ Print / PDF Overrides
+           =========================================== */
+      @media print {
+        body {
+          background: white;
+        }
+
+        .page-container {
+          box-shadow: none;
+          margin: 0;
+          width: 100%;
+          max-width: none;
+        }
+
+        /* Ensure background colors print */
+        .report-header {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          background-color: #0f172a !important;
+          /* Force Navy */
+          color: white !important;
+        }
+
+        .bazi-dashboard,
+        blockquote,
+        .element-cycle {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        /* Avoid breaking inside components */
+        .bazi-dashboard,
+        .pillars-grid,
+        .element-cycle,
+        blockquote {
+          page-break-inside: avoid;
+        }
+
+        /* Tables can break but rows shouldn't */
         table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 0.9rem;
-            background: white;
+          page-break-inside: auto;
         }
 
         thead {
-            background: var(--primary-dark);
-            color: white;
+          display: table-header-group;
         }
 
-        th {
-            padding: 12px 15px;
-            text-align: left;
-            font-family: 'Lato', sans-serif;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
+        tr {
+          page-break-inside: avoid;
+          page-break-after: auto;
         }
 
-        td {
-            padding: 10px 15px;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--text-main);
+        h1,
+        h2,
+        h3,
+        li {
+          page-break-inside: avoid;
         }
 
-        tbody tr:nth-child(even) {
-            background: var(--bg-accent);
+        h1 {
+          page-break-before: auto;
         }
-
-        tbody tr:hover {
-            background: rgba(180, 142, 62, 0.1);
-        }
-
-        hr {
-            border: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
-            margin: 40px 0;
-        }
-
-        /* ===========================================
-           🦶 Footer
-           =========================================== */
-        .report-footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid var(--border-color);
-            background: var(--bg-accent);
-        }
-
-        .footer-text {
-            font-family: 'Lato', sans-serif;
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        /* ===========================================
-           🖨️ Print / PDF Overrides
-           =========================================== */
-        @media print {
-            body {
-                background: white;
-            }
-
-            .page-container {
-                box-shadow: none;
-                margin: 0;
-                width: 100%;
-                max-width: none;
-            }
-
-            /* Ensure background colors print */
-            .report-header {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                background-color: #0f172a !important;
-                /* Force Navy */
-                color: white !important;
-            }
-
-            .bazi-dashboard,
-            blockquote,
-            .element-cycle {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            /* Avoid breaking inside components */
-            .bazi-dashboard,
-            .pillars-grid,
-            .element-cycle,
-            blockquote {
-                page-break-inside: avoid;
-            }
-
-            /* Tables can break but rows shouldn't */
-            table {
-                page-break-inside: auto;
-            }
-
-            thead {
-                display: table-header-group;
-            }
-
-            tr {
-                page-break-inside: avoid;
-                page-break-after: auto;
-            }
-
-            h1, h2, h3, li {
-                page-break-inside: avoid;
-            }
-
-            h1 {
-                page-break-before: auto;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="page-container">
-        <!-- Header -->
-        <header class="report-header">
-            <span class="header-logo">🔮</span>
-            <h1 class="report-title">{{ name }}'s BaZi Destiny Report</h1>
-            <p class="report-subtitle">– Prepared By Chi Manifestation BaZi Master –</p>
-            <p class="report-meta">Birth: {{ birth_date }} at {{ birth_time }} | {{ location }} | {{ gender }}</p>
-        </header>
+      <!-- Header -->
+      <header class="report-header">
+        <span class="header-logo">🔮</span>
+        <h1 class="report-title">{{ name }}'s BaZi Destiny Report</h1>
+        <p class="report-subtitle">
+          – Prepared By Chi Manifestation BaZi Master –
+        </p>
+        <p class="report-meta">
+          Birth: {{ birth_date }} at {{ birth_time }} | {{ location }} | {{
+          gender }}
+        </p>
+      </header>
 
-        <!-- Four Pillars Display - TABLE FORMAT (Manager Requested) -->
-        <section class="bazi-dashboard">
-            <h2 class="pillars-title">四柱 – The Four Pillars of Destiny</h2>
-            
-            <table class="bazi-table">
-                <thead>
-                    <tr class="header-row">
-                        <th class="label-cell"></th>
-                        <th class="pillar-header">Hour<br><span class="header-detail">{{ birth_time }}</span></th>
-                        <th class="pillar-header">Day<br><span class="header-detail">{{ birth_date }}</span></th>
-                        <th class="pillar-header">Month</th>
-                        <th class="pillar-header">Year<br><span class="header-detail">{{ birth_year }}</span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Heavenly Stem Row -->
-                    <tr class="stem-row">
-                        <td class="label-cell">HS<br><span class="label-chinese">天干</span></td>
-                        <td class="element-cell {{ hour_stem_element }}">
-                            <span class="chinese-char">{{ hour_stem }}</span>
-                            <span class="romanized">{{ hour_stem_name }}</span>
-                        </td>
-                        <td class="element-cell {{ day_stem_element }}">
-                            <span class="chinese-char">{{ day_stem }}</span>
-                            <span class="romanized">{{ day_stem_name }}</span>
-                        </td>
-                        <td class="element-cell {{ month_stem_element }}">
-                            <span class="chinese-char">{{ month_stem }}</span>
-                            <span class="romanized">{{ month_stem_name }}</span>
-                        </td>
-                        <td class="element-cell {{ year_stem_element }}">
-                            <span class="chinese-char">{{ year_stem }}</span>
-                            <span class="romanized">{{ year_stem_name }}</span>
-                        </td>
-                    </tr>
-                    <!-- Earthly Branch Row -->
-                    <tr class="branch-row">
-                        <td class="label-cell">EB<br><span class="label-chinese">地支</span></td>
-                        <td class="element-cell {{ hour_branch_element }}">
-                            <span class="chinese-char">{{ hour_branch }}</span>
-                            <span class="romanized">{{ hour_branch_name }}</span>
-                        </td>
-                        <td class="element-cell {{ day_branch_element }}">
-                            <span class="chinese-char">{{ day_branch }}</span>
-                            <span class="romanized">{{ day_branch_name }}</span>
-                        </td>
-                        <td class="element-cell {{ month_branch_element }}">
-                            <span class="chinese-char">{{ month_branch }}</span>
-                            <span class="romanized">{{ month_branch_name }}</span>
-                        </td>
-                        <td class="element-cell {{ year_branch_element }}">
-                            <span class="chinese-char">{{ year_branch }}</span>
-                            <span class="romanized">{{ year_branch_name }}</span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+      <!-- Four Pillars Display - TABLE FORMAT (Manager Requested) -->
+      <section class="bazi-dashboard">
+        <h2 class="pillars-title">四柱 – The Four Pillars of Destiny</h2>
 
-            <div class="meta-grid">
-                <div class="meta-item">
-                    <span class="meta-label">Day Master</span>
-                    <div class="meta-value">{{ day_master }}</div>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Zodiac</span>
-                    <div class="meta-value">{{ zodiac }}</div>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Gender</span>
-                    <div class="meta-value">{{ gender }}</div>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Report Year</span>
-                    <div class="meta-value">{{ current_year }}</div>
-                </div>
-            </div>
-        </section>
+        <table class="bazi-table">
+          <thead>
+            <tr class="header-row">
+              <th class="label-cell"></th>
+              <th class="pillar-header">
+                Hour<br /><span class="header-detail">{{ birth_time }}</span>
+              </th>
+              <th class="pillar-header">
+                Day<br /><span class="header-detail">{{ birth_day }}</span>
+              </th>
+              <th class="pillar-header">
+                Month<br /><span class="header-detail">{{ birth_month }}</span>
+              </th>
+              <th class="pillar-header">
+                Year<br /><span class="header-detail">{{ birth_year }}</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Heavenly Stem Row -->
+            <tr class="stem-row">
+              <td class="label-cell">
+                HS<br /><span class="label-chinese">天干</span>
+              </td>
+              <td class="element-cell {{ hour_stem_element }}">
+                <span class="chinese-char">{{ hour_stem }}</span>
+                <span class="romanized">{{ hour_stem_name }}</span>
+              </td>
+              <td class="element-cell {{ day_stem_element }}">
+                <span class="chinese-char">{{ day_stem }}</span>
+                <span class="romanized">{{ day_stem_name }}</span>
+              </td>
+              <td class="element-cell {{ month_stem_element }}">
+                <span class="chinese-char">{{ month_stem }}</span>
+                <span class="romanized">{{ month_stem_name }}</span>
+              </td>
+              <td class="element-cell {{ year_stem_element }}">
+                <span class="chinese-char">{{ year_stem }}</span>
+                <span class="romanized">{{ year_stem_name }}</span>
+              </td>
+            </tr>
+            <!-- Earthly Branch Row -->
+            <tr class="branch-row">
+              <td class="label-cell">
+                EB<br /><span class="label-chinese">地支</span>
+              </td>
+              <td class="element-cell {{ hour_branch_element }}">
+                <span class="chinese-char">{{ hour_branch }}</span>
+                <span class="romanized">{{ hour_branch_name }}</span>
+              </td>
+              <td class="element-cell {{ day_branch_element }}">
+                <span class="chinese-char">{{ day_branch }}</span>
+                <span class="romanized">{{ day_branch_name }}</span>
+              </td>
+              <td class="element-cell {{ month_branch_element }}">
+                <span class="chinese-char">{{ month_branch }}</span>
+                <span class="romanized">{{ month_branch_name }}</span>
+              </td>
+              <td class="element-cell {{ year_branch_element }}">
+                <span class="chinese-char">{{ year_branch }}</span>
+                <span class="romanized">{{ year_branch_name }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-        <!-- Five Element Cycle Diagram - REMOVED as per Manager request -->
-        <!-- TODO: Add back when manager approves the design -->
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Day Master</span>
+            <div class="meta-value">{{ day_master }}</div>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Zodiac</span>
+            <div class="meta-value">{{ zodiac }}</div>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Gender</span>
+            <div class="meta-value">{{ gender }}</div>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Report Year</span>
+            <div class="meta-value">{{ report_year }}</div>
+          </div>
+        </div>
+      </section>
 
-        <!-- Dynamic Content -->
-        <main class="content-body">
-            {{ report_content | safe }}
-        </main>
+      <!-- Dynamic Content (includes Five Elements SVG injected after 'The Five Elements' text) -->
+      <main class="content-body">{{ report_content | safe }}</main>
 
-        <!-- Footer -->
-        <footer class="report-footer">
-            <p class="footer-text">Generated by Chi Manifestation BaZi Master • Confidential Destiny Report • {{ current_year }}</p>
-        </footer>
+      <!-- Footer -->
+      <footer class="report-footer">
+        <p class="footer-text">
+          Generated by Chi Manifestation BaZi Master • Confidential Destiny
+          Report • {{ current_year }}
+        </p>
+      </footer>
     </div>
-</body>
-
+  </body>
 </html>

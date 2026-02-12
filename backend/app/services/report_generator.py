@@ -123,6 +123,87 @@ class ReportGenerator:
             'branch_element': self._get_element_class(branch_data.get('五行', '土')),
         }
     
+    def _get_day_master_element(self, day_master: str) -> str:
+        """Get the element name for the Day Master (日主)
+        
+        Maps: 甲乙=Wood, 丙丁=Fire, 戊己=Earth, 庚辛=Metal, 壬癸=Water
+        Returns: 'Water 水' format for use in caption
+        """
+        element_map = {
+            '甲': 'Wood 木', '乙': 'Wood 木',
+            '丙': 'Fire 火', '丁': 'Fire 火',
+            '戊': 'Earth 土', '己': 'Earth 土',
+            '庚': 'Metal 金', '辛': 'Metal 金',
+            '壬': 'Water 水', '癸': 'Water 水'
+        }
+        return element_map.get(day_master, 'Unknown')
+    
+    def _inject_five_elements_svg(self, html_content: str, day_master: str) -> str:
+        """Inject Five Elements SVG diagram into the Introduction section.
+        
+        CHANGE 4 FIX: The SVG must appear INSIDE the Introduction section,
+        after the text 'The Five Elements (五行 Wu Xing)' as shown in image-1.png.
+        """
+        import re
+        
+        # Load SVG from file
+        svg_path = Path(__file__).parent.parent / "templates" / "five_elements_cycle.svg"
+        try:
+            svg_content = svg_path.read_text(encoding='utf-8')
+        except Exception:
+            svg_content = ""
+        
+        # Get Day Master element for caption
+        day_master_element = self._get_day_master_element(day_master)
+        
+        # Create the Five Elements block to inject
+        five_elements_block = f'''
+<div class="five-elements-diagram" style="text-align: center; margin: 1.5rem auto; padding: 1rem; max-width: 450px; background: linear-gradient(135deg, #fef9e7 0%, #fff8e1 100%); border-radius: 12px; border: 1px solid #d4a574;">
+{svg_content}
+<p style="color: #666; font-size: 0.85rem; margin-top: 0.8rem; font-style: italic;">
+<strong style="color: #059669;">Green arrows</strong> = Generating Cycle (相生) • 
+<strong style="color: #dc2626;">Red dashed</strong> = Controlling Cycle (相克)
+</p>
+<p style="color: #8b4513; font-size: 0.95rem; margin-top: 0.4rem; font-weight: 600;">
+🌊 Your Day Master: <strong>{day_master}</strong> ({day_master_element})
+</p>
+</div>
+'''
+        
+        # Pattern to find the Wu Xing / Five Elements section and insert SVG after it
+        # The AI-generated content has: <h3>Wu Xing - The Five Element Dance</h3>
+        # followed by paragraphs about Generating and Controlling cycles
+        # We want to insert the SVG AFTER the paragraph containing "Controlling Cycle"
+        
+        patterns = [
+            # Pattern 1: After paragraph containing "Controlling Cycle" WITH inner tags allowed
+            r'(<p>.*?Controlling Cycle.*?相剋.*?</p>)',
+            # Pattern 2: After paragraph containing "相剋" (Chinese for controlling)
+            r'(<p>.*?相剋.*?</p>)',
+            # Pattern 3: After paragraph containing both cycle types
+            r'(<p>.*?Generating Cycle.*?Controlling Cycle.*?</p>)',
+            # Pattern 4: After any paragraph containing "Generating Cycle"
+            r'(<p>.*?Generating Cycle.*?</p>)',
+            # Pattern 5: After paragraph mentioning Wu Xing
+            r'(<p>.*?Wu Xing.*?</p>)',
+            # Pattern 6: After h3 containing "Wu Xing" followed by first paragraph
+            r'(<h3>.*?Wu Xing.*?</h3>\s*<p>.*?</p>)',
+            # Pattern 7: After any mention of Five Elements with closing tag
+            r'(<p>.*?Five Elements?.*?</p>)',
+            # Pattern 8: After h3 containing "INTRODUCTION" followed by content
+            r'(<h2>INTRODUCTION</h2>.*?</p>)',
+        ]
+        
+        for pattern in patterns:
+            match = re.search(pattern, html_content, re.IGNORECASE | re.DOTALL)
+            if match:
+                # Insert the diagram after the matched content
+                insert_pos = match.end()
+                html_content = html_content[:insert_pos] + five_elements_block + html_content[insert_pos:]
+                break
+        
+        return html_content
+    
     def _convert_markdown_to_html(self, markdown_content: str) -> str:
         """Convert Markdown to HTML"""
         return markdown.markdown(
@@ -150,13 +231,37 @@ class ReportGenerator:
         name = request_data.get('name', location.split(',')[0].strip()) if request_data else 'Your'
         
         # Extract birth year from birth_date
-        birth_date = bazi_data.get('阳历', 'N/A')
-        birth_year = birth_date.split('-')[0] if '-' in str(birth_date) else birth_date[:4] if len(str(birth_date)) >= 4 else 'N/A'
+        birth_date_raw = bazi_data.get('阳历', 'N/A')
+        # CHANGE 2: Remove time from birth_date to avoid repetition
+        # e.g., "1993年9月28日 13:55:00" -> "1993年9月28日"
+        birth_date_only = birth_date_raw.split(' ')[0] if ' ' in str(birth_date_raw) else birth_date_raw
+        birth_year = birth_date_raw.split('-')[0] if '-' in str(birth_date_raw) else birth_date_raw[:4] if len(str(birth_date_raw)) >= 4 else 'N/A'
+        
+        # CHANGE 4: Extract birth_day, birth_month, and format report_year
+        # Chinese date format: "1993年9月28日" -> day=28, month=9
+        import re
+        birth_day = 'N/A'
+        birth_month = 'N/A'
+        
+        # Try to parse Chinese date format (e.g., "1993年9月28日")
+        chinese_match = re.search(r'(\d+)年(\d+)月(\d+)日', str(birth_date_raw))
+        if chinese_match:
+            birth_month = chinese_match.group(2)  # e.g., "9"
+            birth_day = chinese_match.group(3)    # e.g., "28"
+        else:
+            # Try ISO format (e.g., "1993-09-28")
+            iso_match = re.search(r'(\d{4})-(\d{2})-(\d{2})', str(birth_date_raw))
+            if iso_match:
+                birth_month = str(int(iso_match.group(2)))  # Remove leading zero
+                birth_day = str(int(iso_match.group(3)))    # Remove leading zero
+        
+        # CHANGE 4: Format report_year as "Mmm-YYYY" (e.g., "Feb-2026")
+        report_year = datetime.now().strftime("%b-%Y")  # e.g., "Feb-2026"
         
         return template.render(
             # Header info
             name=name,
-            birth_date=bazi_data.get('阳历', 'N/A'),
+            birth_date=birth_date_only,  # CHANGE 2: Date only, no time
             birth_time=request_data.get('birth_time', 'N/A') if request_data else 'N/A',
             location=location,
             gender=request_data.get('gender', 'Male').capitalize() if request_data else 'N/A',
@@ -198,8 +303,17 @@ class ReportGenerator:
             bazi_chars=bazi_data.get('八字', 'N/A'),
             day_master=bazi_data.get('日主', 'N/A'),
             zodiac=bazi_data.get('生肖', 'N/A'),
-            report_content=html_content,
-            current_year=datetime.now().year
+            # CHANGE 4 FIX: Inject Five Elements SVG into content BEFORE template rendering
+            report_content=self._inject_five_elements_svg(html_content, bazi_data.get('日主', '')),
+            current_year=datetime.now().year,
+            
+            # CHANGE 4: New header format variables
+            birth_day=birth_day,      # Just the day number (e.g., "28")
+            birth_month=birth_month,  # Just the month number (e.g., "9")
+            report_year=report_year,  # Formatted as "Feb-2026"
+            
+            # Dynamic Five Elements caption
+            day_master_element=self._get_day_master_element(bazi_data.get('日主', ''))
         )
     
     def _save_html(self, report_dir: Path, html_content: str) -> Path:
