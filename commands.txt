@@ -3,3 +3,12 @@ python -m uvicorn app.main:app --reload
 
 RUN MCP Server:
 node dist/httpServer.js
+
+{
+  "name": "Ben",
+  "birth_date": "1993-09-28",
+  "birth_time": "13:55",
+  "location": "Singapore",
+  "gender": "male",
+  "output_format": "both"
+}

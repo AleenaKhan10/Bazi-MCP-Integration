@@ -1,21 +1,25 @@
 """
-Reports Router - Single Endpoint with Rate Limiting
-====================================================
+Reports Router - API Endpoints with Rate Limiting
+==================================================
 
 Features:
 - Rate limiting: 10 requests/hour per IP
 - Complete 13-section reports
 - HTML + PDF file generation
+- Email delivery via Resend
 """
 
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field
+from typing import Optional
 import logging
 
 from app.schemas.report import ReportRequest, HealthResponse
 from app.services.mcp_client import mcp_client, MCPClientError
 from app.services.claude_service import get_claude_service, ClaudeServiceError
 from app.services.report_generator import report_generator, ReportGeneratorError
+from app.services.email_service import email_service, EmailServiceError
 from app.core.limiter import limiter  # Rate limiter
 
 
@@ -115,7 +119,29 @@ async def generate_report(data: ReportRequest, request: Request):
         logger.info(f"✅ Report saved: {result['report_id']}")
         
         # ===========================================
-        # Step 4: Return Response
+        # Step 4: Send Report via Email (if email provided)
+        # ===========================================
+        email_sent = False
+        email_error = None
+        
+        if data.email:
+            try:
+                # pdf_file = full disk path (e.g., "D:/...reports/abc123/report.pdf")
+                email_result = email_service.send_report(
+                    to_email=data.email,
+                    name=request_data["name"],
+                    pdf_path=result["pdf_file"]
+                )
+                email_sent = email_result["success"]
+                logger.info(f"📧 Email: {email_result['message']}")
+            except EmailServiceError as e:
+                # Email failure should NOT block report delivery
+                # User can still download the PDF directly
+                email_error = str(e)
+                logger.warning(f"⚠️ Email failed (non-blocking): {e}")
+        
+        # ===========================================
+        # Step 5: Return Response
         # ===========================================
         return {
             "success": True,
@@ -131,6 +157,8 @@ async def generate_report(data: ReportRequest, request: Request):
                 "阳历": bazi_data.get('阳历', 'N/A')
             },
             "sections_verified": sections_complete,
+            "email_sent": email_sent,
+            "email_error": email_error,
             "message": "Report generated successfully! All 13 sections included."
         }
         
@@ -184,7 +212,7 @@ async def get_bazi_only(data: ReportRequest, request: Request):
     Useful for:
     - Testing MCP connection
     - Quick BaZi lookup
-    - Debugging
+    - Loading page (get Day Master quickly)
     """
     try:
         bazi_data = await mcp_client.get_bazi_detail(
@@ -201,3 +229,74 @@ async def get_bazi_only(data: ReportRequest, request: Request):
         
     except MCPClientError as e:
         raise HTTPException(status_code=503, detail=str(e))
+
+
+# ===========================================
+# Send Report Email (Standalone)
+# ===========================================
+
+# Request model for the email endpoint
+class SendEmailRequest(BaseModel):
+    """Request body for sending a report email"""
+    report_id: str = Field(..., description="ID of the generated report")
+    email: str = Field(..., description="Email address to send the report to")
+    name: str = Field(default="Customer", description="Recipient name for email subject")
+
+
+@router.post("/send-report-email")
+@limiter.limit("20/hour")
+async def send_report_email(data: SendEmailRequest, request: Request):
+    """
+    Send an already-generated report to an email address.
+    
+    Use this when:
+    - Report was generated but email wasn't provided
+    - Customer wants the report re-sent
+    - ClickFunnels webhook triggers email delivery
+    
+    Args:
+        report_id: The report ID (e.g., "abc12345")
+        email: Destination email address
+        name: Recipient name (for subject line)
+    """
+    from pathlib import Path
+    
+    # -------------------------------------------
+    # Step 1: Find the PDF file on disk
+    # -------------------------------------------
+    reports_dir = Path(__file__).parent.parent.parent / "reports"
+    pdf_path = reports_dir / data.report_id / "report.pdf"
+    
+    if not pdf_path.exists():
+        raise HTTPException(
+            status_code=404,
+            detail={
+                "error": "Report not found",
+                "message": f"No report found with ID: {data.report_id}"
+            }
+        )
+    
+    # -------------------------------------------
+    # Step 2: Send via email service
+    # -------------------------------------------
+    try:
+        result = email_service.send_report(
+            to_email=data.email,
+            name=data.name,
+            pdf_path=str(pdf_path)
+        )
+        
+        return {
+            "success": result["success"],
+            "message": result["message"],
+            "resend_id": result["resend_id"]
+        }
+        
+    except EmailServiceError as e:
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "error": "Email sending failed",
+                "message": str(e)
+            }
+        )

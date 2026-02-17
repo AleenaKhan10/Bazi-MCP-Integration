@@ -1,0 +1,583 @@
+/* ===========================================
+   BaZi Quiz Funnel — Premium Cosmic Theme
+   ===========================================
+   DESIGN: Rich cosmic background image + floating
+   Chinese chars + contained form with white inputs
+   + vibrant CTA + benefits section
+   =========================================== */
+
+@import "tailwindcss";
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* Tailwind v4 Theme Tokens */
+@theme {
+  --color-bg-primary: #080d1a;
+  --color-bg-secondary: #111827;
+  --color-bg-card: #141b2d;
+  --color-bg-input: #0d1220;
+  --color-accent-gold: #d4a843;
+  --color-accent-gold-light: #f0d78c;
+  --color-accent-teal: #14b8a6;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-pink: #ec4899;
+  --color-accent-magenta: #d946ef;
+  --color-text-primary: #f1f5f9;
+  --color-text-muted: #94a3b8;
+  --color-text-dim: #64748b;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-focus: #d4a843;
+  --color-error: #ef4444;
+  --color-success: #22c55e;
+
+  --color-wood: #22c55e;
+  --color-fire: #ef4444;
+  --color-earth: #d97706;
+  --color-metal: #eab308;
+  --color-water: #3b82f6;
+}
+
+/* ===========================================
+   GLOBAL
+   =========================================== */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #050a15;
+  color: #f1f5f9;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===========================================
+   COSMIC BACKGROUND — Multiple Layers
+   1. Base: dark navy 
+   2. Nebula clouds (radial gradients)
+   3. Star field (tiny dots)
+   4. Glow accents
+   =========================================== */
+.cosmic-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Layer 1: Deep space base + nebula gradients */
+.cosmic-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    /* Nebula cloud 1 — large purple top-right */
+    radial-gradient(ellipse 600px 400px at 75% 20%, rgba(120, 60, 220, 0.25) 0%, transparent 60%),
+    /* Nebula cloud 2 — blue center-left */
+    radial-gradient(ellipse 500px 350px at 20% 40%, rgba(30, 70, 180, 0.22) 0%, transparent 55%),
+    /* Nebula cloud 3 — teal bottom */
+    radial-gradient(ellipse 700px 300px at 50% 85%, rgba(20, 140, 160, 0.12) 0%, transparent 50%),
+    /* Nebula cloud 4 — pink hot spot */
+    radial-gradient(ellipse 300px 300px at 65% 50%, rgba(180, 40, 160, 0.1) 0%, transparent 50%),
+    /* Nebula cloud 5 — subtle gold */
+    radial-gradient(ellipse 400px 200px at 30% 70%, rgba(180, 140, 40, 0.06) 0%, transparent 50%),
+    /* Base gradient */
+    linear-gradient(180deg, #050a18 0%, #0a1535 25%, #0d1a3d 50%, #0a1230 75%, #050a18 100%);
+}
+
+/* Layer 2: Dense star field */
+.cosmic-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* Bright stars */
+    radial-gradient(2px 2px at 8% 12%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2px 2px at 88% 8%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 45% 15%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(2px 2px at 72% 30%, rgba(240,215,140,0.55), transparent),
+    radial-gradient(1.5px 1.5px at 15% 55%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(2px 2px at 92% 45%, rgba(180,160,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 52% 68%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(2px 2px at 25% 82%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1.5px 1.5px at 78% 75%, rgba(240,215,140,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 38% 40%, rgba(255,255,255,0.3), transparent),
+    /* Medium stars */
+    radial-gradient(1px 1px at 60% 22%, rgba(255,255,255,0.25), transparent),
+    radial-gradient(1px 1px at 18% 35%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 82% 60%, rgba(255,255,255,0.2), transparent),
+    radial-gradient(1px 1px at 42% 90%, rgba(255,255,255,0.22), transparent),
+    radial-gradient(1px 1px at 95% 25%, rgba(255,255,255,0.18), transparent),
+    radial-gradient(1px 1px at 5% 70%, rgba(255,255,255,0.15), transparent),
+    radial-gradient(1px 1px at 65% 85%, rgba(180,160,255,0.2), transparent),
+    /* Dim stars */
+    radial-gradient(0.8px 0.8px at 30% 25%, rgba(255,255,255,0.12), transparent),
+    radial-gradient(0.8px 0.8px at 55% 55%, rgba(255,255,255,0.1), transparent),
+    radial-gradient(0.8px 0.8px at 75% 15%, rgba(255,255,255,0.1), transparent),
+    radial-gradient(0.8px 0.8px at 10% 90%, rgba(255,255,255,0.08), transparent),
+    radial-gradient(0.8px 0.8px at 85% 85%, rgba(255,255,255,0.1), transparent),
+    radial-gradient(0.8px 0.8px at 48% 45%, rgba(255,255,255,0.08), transparent);
+  animation: twinkle 5s ease-in-out infinite alternate;
+}
+
+/* Layer 3: Extra glow spots — separate div in markup */
+.cosmic-glow-1 {
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(100, 60, 200, 0.15) 0%, transparent 65%);
+  top: -10%;
+  right: -5%;
+  filter: blur(40px);
+  animation: float 12s ease-in-out infinite;
+}
+.cosmic-glow-2 {
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(30, 80, 200, 0.12) 0%, transparent 65%);
+  bottom: 10%;
+  left: -8%;
+  filter: blur(50px);
+  animation: float 15s ease-in-out infinite reverse;
+}
+.cosmic-glow-3 {
+  position: absolute;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(212, 168, 67, 0.06) 0%, transparent 60%);
+  top: 45%;
+  left: 40%;
+  filter: blur(30px);
+  animation: float 18s ease-in-out infinite;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* ===========================================
+   FONTS
+   =========================================== */
+.font-mystical {
+  font-family: 'Cinzel', Georgia, serif;
+  letter-spacing: 0.02em;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f0d78c 0%, #d4a843 40%, #f5e6b8 60%, #d4a843 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===========================================
+   FLOATING CHINESE CHARACTERS — More visible
+   =========================================== */
+.floating-chars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.floating-char {
+  position: absolute;
+  font-weight: 800;
+  animation: floatChar 18s ease-in-out infinite;
+  user-select: none;
+  color: rgba(255, 255, 255, 0.035);
+  text-shadow: 0 0 40px rgba(139, 92, 246, 0.08);
+}
+.floating-char.bright {
+  color: rgba(139, 92, 246, 0.06);
+  text-shadow: 0 0 50px rgba(139, 92, 246, 0.12);
+}
+.floating-char.gold-tint {
+  color: rgba(212, 168, 67, 0.05);
+  text-shadow: 0 0 40px rgba(212, 168, 67, 0.08);
+}
+
+/* ===========================================
+   ORNAMENT DIVIDER
+   =========================================== */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.4), transparent);
+}
+.ornament-divider span {
+  color: rgba(212, 168, 67, 0.6);
+  font-size: 14px;
+}
+
+/* ===========================================
+   FORM INPUTS — Clean white/light containers
+   Visible, modern, with proper contrast
+   =========================================== */
+.input-mystical {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  backdrop-filter: blur(8px);
+}
+.input-mystical::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+.input-mystical:focus {
+  border-color: rgba(139, 92, 246, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 0 0 3px rgba(139, 92, 246, 0.1),
+    0 4px 16px rgba(139, 92, 246, 0.08);
+}
+.input-mystical:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.input-mystical.input-error {
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+/* Select fields */
+.select-mystical {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b5cf6' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+/* Fix for dropdown options visibility */
+.input-mystical option,
+.select-mystical option {
+  background-color: #0d1220; /* Dark navy background */
+  color: #f1f5f9; /* Light text */
+}
+
+/* ===========================================
+   BUTTONS
+   =========================================== */
+.btn-mystical {
+  background: linear-gradient(135deg, #d946ef 0%, #a855f7 40%, #8b5cf6 100%);
+  background-size: 200% auto;
+  color: white;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  padding: 18px 40px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 6px 30px rgba(168, 85, 247, 0.35),
+    0 2px 10px rgba(217, 70, 239, 0.2);
+  text-transform: uppercase;
+}
+.btn-mystical::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: btnSheen 3s ease-in-out infinite;
+}
+.btn-mystical:hover {
+  background-position: right center;
+  box-shadow:
+    0 10px 40px rgba(168, 85, 247, 0.5),
+    0 4px 15px rgba(217, 70, 239, 0.35);
+  transform: translateY(-3px);
+}
+.btn-mystical:active {
+  transform: translateY(-1px);
+}
+
+.btn-reveal {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%);
+  color: white;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 10px;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.2);
+}
+.btn-reveal:hover {
+  box-shadow: 0 6px 30px rgba(139, 92, 246, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ===========================================
+   GLASS CARD — for other pages
+   =========================================== */
+.glass-card {
+  background: rgba(15, 22, 41, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(139, 92, 246, 0.03);
+}
+.glass-card-inner {
+  background: rgba(10, 17, 40, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+}
+
+/* ===========================================
+   ELEMENT PILLS
+   =========================================== */
+.element-pill { padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; display: inline-block; }
+.element-pill-wood  { background: rgba(34,197,94,0.12); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
+.element-pill-fire  { background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+.element-pill-earth { background: rgba(217,119,6,0.12); color: #fbbf24; border: 1px solid rgba(217,119,6,0.2); }
+.element-pill-metal { background: rgba(234,179,8,0.12); color: #facc15; border: 1px solid rgba(234,179,8,0.2); }
+.element-pill-water { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+
+/* ===========================================
+   TRAIT TAGS
+   =========================================== */
+.trait-tag {
+  padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500;
+  background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.15);
+  color: #c4b5fd; display: inline-block;
+}
+
+/* ===========================================
+   PROGRESS BAR
+   =========================================== */
+.progress-mystical { height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.06); overflow: hidden; }
+.progress-mystical-fill {
+  height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, #8b5cf6, #d946ef, #8b5cf6);
+  background-size: 200% 100%;
+  animation: progressShimmer 2s ease-in-out infinite;
+  transition: width 0.5s ease;
+  position: relative;
+}
+.progress-mystical-fill::after {
+  content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #d946ef; box-shadow: 0 0 12px rgba(217, 70, 239, 0.6);
+}
+
+/* CHINESE CHARACTERS */
+.chinese-char { font-size: 80px; line-height: 1; text-shadow: 0 0 30px rgba(139, 92, 246, 0.3); }
+.chinese-char-small { font-size: 42px; line-height: 1; text-shadow: 0 0 20px rgba(139, 92, 246, 0.2); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #050a15; }
+::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.35); }
+
+/* ===========================================
+   KEYFRAMES
+   =========================================== */
+@keyframes twinkle {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.08); }
+  50%      { box-shadow: 0 0 35px rgba(139, 92, 246, 0.18); }
+}
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes progressShimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes floatChar {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%      { transform: translateY(-18px) rotate(2deg); }
+  50%      { transform: translateY(-6px) rotate(-1.5deg); }
+  75%      { transform: translateY(-22px) rotate(3deg); }
+}
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(139, 92, 246, 0.08); }
+  50%      { border-color: rgba(139, 92, 246, 0.2); }
+}
+@keyframes btnSheen {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ANIMATION UTILITIES */
+.animate-fade-in-up { animation: fadeInUp 0.7s ease-out both; }
+.animate-fade-in-up-delay-1 { animation: fadeInUp 0.7s ease-out 0.15s both; }
+.animate-fade-in-up-delay-2 { animation: fadeInUp 0.7s ease-out 0.3s both; }
+.animate-fade-in-up-delay-3 { animation: fadeInUp 0.7s ease-out 0.45s both; }
+.animate-fade-in-up-delay-4 { animation: fadeInUp 0.7s ease-out 0.6s both; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+.animate-rotate-slow { animation: rotateSlow 30s linear infinite; }
+.animate-fade-in-scale { animation: fadeInScale 0.5s ease-out both; }
+.animate-border-pulse { animation: borderPulse 3s ease-in-out infinite; }
+
+/* ===========================================
+   LANDING PAGE — Full-Screen Hero
+   =========================================== */
+.landing-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px 40px;
+  text-align: center;
+}
+
+/* Headline glow effect */
+.headline-glow {
+  position: absolute;
+  width: 600px;
+  height: 350px;
+  background: radial-gradient(ellipse, rgba(139, 92, 246, 0.1) 0%, rgba(217, 70, 239, 0.04) 40%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(20px);
+}
+
+/* Content wrapper */
+.landing-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 720px;
+}
+
+/* Subtitle */
+.landing-subtitle {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Form container — semi-transparent glass panel */
+.landing-form-container {
+  margin-top: 40px;
+  padding: 36px 32px;
+  border-radius: 16px;
+  background: rgba(10, 16, 36, 0.65);
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  backdrop-filter: blur(16px);
+  text-align: left;
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.3),
+    0 0 1px rgba(139, 92, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* Form label */
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(212, 168, 67, 0.9);
+  margin-bottom: 8px;
+}
+
+/* 2-column row */
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ===========================================
+   BENEFITS SECTION
+   =========================================== */
+.benefits-section {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 50px 20px 80px;
+}
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.benefit-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d946ef;
+  font-size: 14px;
+  margin-top: 2px;
+}
+.benefit-text {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+@media (max-width: 768px) {
+  .form-row-2col {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .landing-content {
+    max-width: 100%;
+  }
+  .landing-form-container {
+    padding: 24px 18px;
+  }
+  .headline-glow {
+    width: 300px;
+    height: 200px;
+  }
+}

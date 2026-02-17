@@ -145,6 +145,12 @@ async def startup_event():
         logger.info("   ✅ Claude API: Key configured")
     else:
         logger.warning("   ⚠️ Claude API: Key not set!")
+    
+    # Check Resend API key
+    if settings.RESEND_API_KEY:
+        logger.info("   ✅ Resend Email: Key configured")
+    else:
+        logger.warning("   ⚠️ Resend Email: Key not set (emails disabled)")
 
  
 # ===========================================

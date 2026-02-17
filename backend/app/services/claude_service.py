@@ -32,7 +32,7 @@ class ClaudeServiceError(Exception):
 
 
 # Required 13 sections - Check for these patterns in report
-# Using flexible keywords that match Claude's actual output (Manager Feb 2026)
+# Using flexible keywords that match Claude's actual output 
 REQUIRED_SECTIONS = [
     "life path",           # 1. Three Life Path Simulations
     "luck cycle",          # 2. Ten-Year Luck Cycle Analysis
@@ -61,8 +61,8 @@ class ClaudeService:
     """
     
     # ===========================================
-    # System Prompt - Manager Updated (Feb 2026) v2
-    # NOW WITH DYNAMIC DATE (Change 1)
+    # System Prompt - Updated
+    # NOW WITH DYNAMIC DATE 
     # ===========================================
     @property
     def SYSTEM_PROMPT(self) -> str:

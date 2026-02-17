@@ -32,3 +32,6 @@ mcp-server/node_modules/
 *.log
 
 bazi_mcp_claude_integration.md
+
+# Generated reports
+backend/reports

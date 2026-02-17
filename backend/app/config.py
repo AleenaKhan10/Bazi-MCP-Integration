@@ -25,6 +25,11 @@ class Settings(BaseSettings):
     CLAUDE_MODEL: str = "claude-sonnet-4-5-20250929"
     
     # ===========================================
+    # Email Service (Resend)
+    # ===========================================
+    RESEND_API_KEY: Optional[str] = None
+    
+    # ===========================================
     # Pydantic Configuration
     # ===========================================
     class Config:

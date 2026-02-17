@@ -36,3 +36,6 @@ slowapi>=0.1.9
 
 # Development
 python-dotenv>=1.0.0
+
+# Email Service (Resend)
+resend>=2.0.0

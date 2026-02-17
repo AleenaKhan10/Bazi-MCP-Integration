@@ -67,6 +67,13 @@ class ReportRequest(BaseModel):
         max_length=50
     )
     
+    # Email - optional, for sending report via email
+    email: Optional[str] = Field(
+        default=None,
+        description="Email address to send the generated report to",
+        max_length=100
+    )
+    
     # Output format
     output_format: Literal["html", "pdf", "both"] = Field(
         default="both",
