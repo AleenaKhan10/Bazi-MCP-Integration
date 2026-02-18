@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { useQuiz } from '../context/QuizContext'
 import { generateFullReport } from '../api/client'
 import DAY_MASTERS from '../data/dayMasters'
+import MysticalLoader from '../components/MysticalLoader'
 
 const ELEMENT_STYLES = {
   Wood: { text: 'text-wood', pill: 'element-pill-wood' },
@@ -15,6 +16,19 @@ const ELEMENT_STYLES = {
   Metal: { text: 'text-metal', pill: 'element-pill-metal' },
   Water: { text: 'text-water', pill: 'element-pill-water' },
 }
+
+const REPORT_MESSAGES = [
+  "Initiating Quantum BaZi Analysis...",
+  "Calculating 10-Year Luck Cycles (大运)...",
+  "Analyzing Wealth Vaults & Hidden Potentials...",
+  "Checking for Void Stars (空亡)...",
+  "Consulting the I-Ching for Strategic Guidance...",
+  "Generating Life Path Simulations...",
+  "Balancing Five Elements Algorithm...",
+  "Extracting Golden Wisdom from Ancient Texts...",
+  "Polishing Report Headings & Formatting...",
+  "Finalizing Your Destiny Blueprint..."
+]
 
 export default function ClosingPage() {
   const navigate = useNavigate()
@@ -162,21 +176,18 @@ export default function ClosingPage() {
               Including life path simulations, luck cycles, career guidance, wealth strategies, health zones, and feng shui recommendations.
             </p>
 
-            {/* Generate Button or Result */}
-            {!reportResult ? (
+            {/* Generate Button, Loader, or Result */}
+            {generating ? (
+                <MysticalLoader 
+                    messages={REPORT_MESSAGES} 
+                    duration={210} // 3.5 minutes target
+                />
+            ) : !reportResult ? (
               <button
                 onClick={handleGenerateReport}
-                disabled={generating}
-                className={`btn-mystical text-base tracking-wider ${generating ? 'opacity-60 cursor-wait' : ''}`}
+                className="btn-mystical text-base tracking-wider transition-all duration-300 transform hover:scale-105"
               >
-                {generating ? (
-                  <>
-                    <span className="animate-spin inline-block mr-2">☯</span>
-                    Generating Report...
-                  </>
-                ) : (
-                  '✦ GENERATE MY FULL DESTINY REPORT'
-                )}
+                ✦ GENERATE MY FULL DESTINY REPORT
               </button>
             ) : (
               <div className="space-y-4 animate-fade-in-scale">
@@ -219,7 +230,7 @@ export default function ClosingPage() {
             )}
 
             {/* Error */}
-            {error && (
+            {error && !generating && (
               <div className="mt-4 bg-error/10 border border-error/20 rounded-xl p-4">
                 <p className="text-error text-sm">{error}</p>
                 <button
@@ -236,7 +247,7 @@ export default function ClosingPage() {
         {/* Bottom decoration */}
         <div className="text-center mt-10 opacity-20">
           <span className="text-accent-gold text-xs tracking-[0.3em] font-mystical">
-            ☰ 調整 · ADJUSTMENTS ☰
+            ☰ 调整 · ADJUSTMENTS ☰
           </span>
         </div>
       </div>

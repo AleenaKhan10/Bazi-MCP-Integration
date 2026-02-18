@@ -90,7 +90,7 @@ async def generate_report(data: ReportRequest, request: Request):
         logger.info("🤖 Generating 13-section report with Claude...")
         
         claude_service = get_claude_service()
-        markdown_content = claude_service.generate_report(bazi_data)
+        markdown_content = await claude_service.generate_report(bazi_data)
         
         # Check if all 13 sections were generated
         missing_sections = claude_service.verify_sections(markdown_content)
