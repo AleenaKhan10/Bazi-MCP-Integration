@@ -42,9 +42,9 @@ export async function getBaziOnly(formData) {
   const response = await api.post('/bazi-only', {
     birth_date: formData.birthDate,
     birth_time: formData.birthTime,
-    location: formData.location,
+    location: formData.location || "Unknown Location",
     gender: formData.gender,
-    name: formData.firstName,
+    name: formData.firstName || formData.name || "Valued User",
   })
   return response.data
 }
@@ -58,9 +58,9 @@ export async function generateFullReport(formData) {
   const response = await api.post('/generate-report', {
     birth_date: formData.birthDate,
     birth_time: formData.birthTime,
-    location: formData.location,
+    location: formData.location || "Unknown Location",
     gender: formData.gender,
-    name: formData.firstName,
+    name: formData.firstName || formData.name || "Valued User",
     email: formData.email || null,
   })
   return response.data

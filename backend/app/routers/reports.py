@@ -159,7 +159,11 @@ async def generate_report(data: ReportRequest, request: Request):
             "sections_verified": sections_complete,
             "email_sent": email_sent,
             "email_error": email_error,
-            "message": "Report generated successfully! All 13 sections included."
+            "message": "Report generated successfully! All 13 sections included.",
+            # Frontend expects these keys at root level
+            # Use absolute URLs to bypass frontend proxy issues (fixes redirect to landing)
+            "html_url": f"{str(request.base_url).rstrip('/')}{result['html_path']}",
+            "pdf_url": f"{str(request.base_url).rstrip('/')}{result['pdf_path']}"
         }
         
     except MCPClientError as e:

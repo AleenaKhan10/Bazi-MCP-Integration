@@ -111,9 +111,8 @@ class EmailService:
         # Sender address configuration
         # ===========================================
         # IMPORTANT: This must match a verified domain in Resend
-        # Until domain is verified, use: "onboarding@resend.dev"
-        # After verification, change to: "reports@chimanifestation.com"
-        self.from_address = "Chi Manifestation <onboarding@resend.dev>"
+        # Domain verified! Using production address.
+        self.from_address = "Chi Manifestation <support@chimanifestation.com>"
     
     
     def _build_html_body(self, name: str) -> str:

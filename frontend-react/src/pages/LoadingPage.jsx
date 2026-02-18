@@ -65,7 +65,9 @@ export default function LoadingPage() {
       gender: formData.gender,
       birthDate: `${formData.birthYear}-${formData.birthMonth.padStart(2, '0')}-${formData.birthDay.padStart(2, '0')}`,
       birthTime: formData.birthTime,
-      location: `${formData.city}, ${formData.country}`,
+      location: (formData.city && formData.country) 
+        ? `${formData.city}, ${formData.country}` 
+        : 'Unknown Location',
     })
       .then((result) => {
         clearInterval(progressInterval)

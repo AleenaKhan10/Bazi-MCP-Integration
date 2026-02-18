@@ -456,7 +456,7 @@ Expected Outcomes by Day 100:
         # Use streaming context manager
         with self.client.messages.stream(
             model=self.model,
-            max_tokens=25000,  # Optimized for complete 13 sections (~4000 words)
+            max_tokens=27000,  # Optimized for complete 13 sections (~4000 words)
             system=self.SYSTEM_PROMPT,
             messages=[{"role": "user", "content": user_prompt}]
         ) as stream:

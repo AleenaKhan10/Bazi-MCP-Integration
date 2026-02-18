@@ -65,6 +65,8 @@ app = FastAPI(
 # ===========================================
 app.state.limiter = limiter
 
+from fastapi.exceptions import RequestValidationError
+
 # Custom rate limit error handler
 @app.exception_handler(RateLimitExceeded)
 async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
@@ -76,6 +78,16 @@ async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
             "message": "You've reached your limit of 5 reports per hour. Please try again later.",
             "detail": str(exc.detail)
         }
+    )
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    """Log validation errors for debugging"""
+    error_details = exc.errors()
+    logger.error(f"❌ Validation Error: {error_details}")
+    return JSONResponse(
+        status_code=422,
+        content={"detail": error_details}
     )
 
 # ===========================================
