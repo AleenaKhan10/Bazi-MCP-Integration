@@ -54,14 +54,14 @@ export default function LoadingPage() {
         }
 
         setIsComplete(true) // Triggers 100% in loader
-        setTimeout(() => navigate('/reading'), 1500)
+        setTimeout(() => navigate('/intro'), 1500)
       })
       .catch((err) => {
         setError(err.message)
         // Fallback: still navigate with mock if needed
         setBaziResult({ '日主': '庚', '八字': 'N/A' })
         setIsComplete(true)
-        setTimeout(() => navigate('/reading'), 1500)
+        setTimeout(() => navigate('/intro'), 1500)
       })
   }, [])
 

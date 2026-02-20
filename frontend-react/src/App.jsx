@@ -21,6 +21,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { QuizProvider } from './context/QuizContext'
 import LandingPage from './pages/LandingPage'
 import LoadingPage from './pages/LoadingPage'
+import IntroReadingPage from './pages/IntroReadingPage'
 import ReadingPage from './pages/ReadingPage'
 import ClosingPage from './pages/ClosingPage'
 
@@ -37,7 +38,10 @@ export default function App() {
           {/* Step 2: Loading (Progress + API) */}
           <Route path="/loading" element={<LoadingPage />} />
 
-          {/* Step 3: Reading (Day Master) */}
+          {/* Step 3: Intro Reading (Personalized Intro) */}
+          <Route path="/intro" element={<IntroReadingPage />} />
+
+          {/* Step 4: Reading (Full Day Master Detail) */}
           <Route path="/reading" element={<ReadingPage />} />
 
           {/* Step 4: Closing (CTA + Report) */}

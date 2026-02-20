@@ -563,6 +563,45 @@ body {
 }
 
 /* ===========================================
+   INTRO READING PAGE — Long-form Content
+   =========================================== */
+
+/* Reading content typography */
+.intro-reading-content p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.intro-reading-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Bullet lists with gold markers */
+.intro-reading-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+.intro-reading-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+  line-height: 1.75;
+}
+.intro-reading-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: rgba(212, 168, 67, 0.8);
+  font-size: 10px;
+  line-height: 1.75;
+}
+
+/* ===========================================
    RESPONSIVE
    =========================================== */
 @media (max-width: 768px) {
