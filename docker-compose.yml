@@ -1,0 +1,63 @@
+# ================================================
+# BaZi MCP — Docker Compose
+# ================================================
+# Runs all 3 services with one command:
+#   docker compose up --build
+#
+# Access:
+#   Frontend → http://localhost
+#   Backend API → http://localhost:8000/docs
+#   MCP Server → http://localhost:3000
+
+services:
+  # ---- MCP Server (BaZi Calculator) ----
+  mcp-server:
+    build:
+      context: ./mcp-server/bazi-mcp
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ---- Backend (FastAPI + Claude + WeasyPrint) ----
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - RESEND_API_KEY=${RESEND_API_KEY:-}
+      - MCP_SERVER_URL=http://mcp-server:3000
+      - HOST=0.0.0.0
+      - PORT=8000
+      - DEBUG=false
+    volumes:
+      # Persist generated reports outside the container
+      - reports_data:/app/reports
+    depends_on:
+      mcp-server:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ---- Frontend (React + Nginx) ----
+  frontend:
+    build:
+      context: ./frontend-react
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+# ---- Named Volumes ----
+volumes:
+  reports_data:
+    driver: local
