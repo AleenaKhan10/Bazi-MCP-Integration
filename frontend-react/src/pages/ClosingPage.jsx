@@ -1,21 +1,36 @@
 /* ===========================================
-   Closing Page — Premium Mystical Design
-   =========================================== */
+   Closing Page — 4-Step Sales Funnel
+   ===========================================
+   
+   ARCHITECTURE:
+   Single /closing route with internal step state (1-4).
+   Each step shows a section of content with a CTA 
+   button to advance to the next step.
+   
+   STEP 1: Clashing Energies Attack (Fear/Urgency)
+   STEP 2: Soul Seed + Report Pitch (Solution)
+   STEP 3: 4 Report Pillars (Value Stack)
+   STEP 4: Pricing + Testimonials + Guarantee (Close)
+   
+   DATA SOURCES:
+   - closingPageContent.js → all sales copy text
+   - dayMasters.js → element data + attacking element
+   - QuizContext → user name + BaZi result
+   
+   PLACEHOLDERS: {name}, {dayMaster}, {attacking}
+   are replaced at render time using the replacePlaceholders() helper.
 
-import { useState } from 'react'
+   STRIPE: handleAddToCart() is prepared for future
+   Stripe integration. Currently shows a placeholder.
+*/
+
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuiz } from '../context/QuizContext'
 import { generateFullReport } from '../api/client'
 import DAY_MASTERS from '../data/dayMasters'
+import CLOSING_CONTENT from '../data/closingPageContent'
 import MysticalLoader from '../components/MysticalLoader'
-
-const ELEMENT_STYLES = {
-  Wood: { text: 'text-wood', pill: 'element-pill-wood' },
-  Fire: { text: 'text-fire', pill: 'element-pill-fire' },
-  Earth: { text: 'text-earth', pill: 'element-pill-earth' },
-  Metal: { text: 'text-metal', pill: 'element-pill-metal' },
-  Water: { text: 'text-water', pill: 'element-pill-water' },
-}
 
 const REPORT_MESSAGES = [
   "Initiating Quantum BaZi Analysis...",
@@ -33,223 +48,661 @@ const REPORT_MESSAGES = [
 export default function ClosingPage() {
   const navigate = useNavigate()
   const { formData, baziResult } = useQuiz()
-  const [revealStep, setRevealStep] = useState(1)
+  const [step, setStep] = useState(1)
   const [generating, setGenerating] = useState(false)
   const [reportResult, setReportResult] = useState(null)
-  const [error, setError] = useState(null)
+  const [reportError, setReportError] = useState(null)
 
-  // Guard
+  // Guard: redirect if no data
   if (!formData.firstName || !baziResult) {
     navigate('/')
     return null
   }
 
+  // --- Data Extraction ---
   const dayMasterChar = baziResult['日主'] || '庚'
   const master = DAY_MASTERS[dayMasterChar] || DAY_MASTERS['庚']
-  const elemStyle = ELEMENT_STYLES[master.element] || ELEMENT_STYLES.Metal
-  const attackStyle = ELEMENT_STYLES[master.attackedBy] || ELEMENT_STYLES.Fire
+  const userName = formData.firstName
+  const dayMasterName = `${master.polarity} ${master.element}`
+  const attackingName = master.attackedBy
 
-  const handleReveal = () => {
-    setRevealStep((prev) => Math.min(prev + 1, 3))
+  // --- Placeholder Replacement Helper ---
+  // Replaces {name}, {dayMaster}, {attacking} in any string
+  const r = (text) => {
+    if (!text) return ''
+    return text
+      .replace(/\{name\}/g, userName)
+      .replace(/\{dayMaster\}/g, dayMasterName)
+      .replace(/\{attacking\}/g, attackingName)
   }
 
-  const handleGenerateReport = async () => {
-    setGenerating(true)
-    setError(null)
-    try {
-      const result = await generateFullReport({
-        name: formData.firstName,
-        email: formData.email,
-        gender: formData.gender,
-        birthDate: `${formData.birthYear}-${formData.birthMonth.padStart(2, '0')}-${formData.birthDay.padStart(2, '0')}`,
-        birthTime: formData.birthTime,
-        location: (formData.city && formData.country) 
-          ? `${formData.city}, ${formData.country}` 
-          : 'Unknown Location',
-      })
-      setReportResult(result)
-    } catch (err) {
-      setError(err.message || 'Failed to generate report')
-    } finally {
-      setGenerating(false)
-    }
+  // --- Scroll to top on step change ---
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [step])
+
+  // --- Step Navigation ---
+  const goNext = () => setStep((prev) => Math.min(prev + 1, 4))
+
+  // --- Stripe Placeholder ---
+  const handleAddToCart = (tier) => {
+    // TODO: Integrate Stripe Checkout here
+    // tier will be 'standard' or 'vip'
+    alert(`✨ ${tier === 'vip' ? 'VIP Experience' : 'Essential Report'} selected! Stripe checkout coming soon.`)
   }
+
+  // --- Shorthand for content ---
+  const c = CLOSING_CONTENT
 
   return (
     <div className="min-h-screen px-4 py-12">
       <div className="max-w-2xl mx-auto">
 
-        {/* ====== Header ====== */}
-        <div className="text-center mb-10 animate-fade-in-up">
-          <h1 className="text-3xl md:text-4xl font-mystical font-bold text-gold-gradient mb-3">
-            The Hidden Challenge in Your Chart
-          </h1>
-          <p className="text-text-muted text-sm">
-            Understanding the elemental forces at play
-          </p>
-          <div className="ornament-divider max-w-xs mx-auto mt-4">
-            <span>⚡</span>
-          </div>
-        </div>
+        {/* ============================================================
+            STEP 1: Clashing Energies Attack + Rock Paper Scissors
+            Purpose: Create urgency — "your energy is under attack!"
+            ============================================================ */}
+        {step === 1 && (
+          <div className="animate-fade-in-up">
+            {/* Badge */}
+            <div className="text-center mb-4">
+              <span className="text-accent-gold text-xs tracking-[0.3em] font-mystical uppercase">
+                ✦ Your Life Energy Chart Reading ✦
+              </span>
+            </div>
 
-        {/* ====== Segment 1: Destructive Cycle ====== */}
-        <div className="glass-card-inner p-6 mb-6 animate-fade-in-up-delay-1">
-          <h3 className="text-lg font-mystical text-accent-gold mb-4 flex items-center gap-2">
-            <span>⚡</span> The Destructive Cycle
-          </h3>
-          <p className="text-text-muted leading-relaxed text-[15px] mb-4">
-            In BaZi, every element has a natural enemy — an element that disrupts its energy. This is called the <span className="text-accent-gold underline underline-offset-4 decoration-accent-gold/30">Destructive Cycle (相剋)</span>.
-          </p>
+            {/* Title */}
+            <h1 className="closing-section-heading text-center mb-8">
+              {r(c.step1.title)}
+            </h1>
 
-          {/* Element clash visualization */}
-          <div className="bg-bg-primary/50 rounded-xl p-5 border border-border text-center">
-            <p className="text-text-primary font-medium mb-1">
-              Your <span className={elemStyle.text}>{master.element}</span> element is being attacked by{' '}
-              <span className={attackStyle.text}>{master.attackedBy}</span>
-            </p>
-            <p className="text-text-dim text-xs">
-              {master.element} → attacks {master.attackingElement} | {master.attackedBy} → attacks {master.element}
-            </p>
-          </div>
-        </div>
+            {/* Main paragraphs */}
+            <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <div className="closing-paragraph">
+                {c.step1.paragraphs.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
 
-        {/* ====== Segment 2: What This Means (revealed on click) ====== */}
-        {revealStep >= 2 && (
-          <div className="glass-card-inner p-6 mb-6 animate-fade-in-scale">
-            <h3 className="text-lg font-mystical text-accent-gold mb-4 flex items-center gap-2">
-              <span>🔍</span> What This Means For {formData.firstName}
-            </h3>
-            <p className="text-text-muted leading-relaxed text-[15px] mb-4">
-              When the <span className={attackStyle.text}>{master.attackedBy}</span> element is too strong in your chart, it can manifest as:
-            </p>
-            <ul className="space-y-2.5">
-              {[
-                'Blocked opportunities and stagnant career growth',
-                'Relationship friction and miscommunication',
-                'Financial instability or unexpected losses',
-                'Persistent fatigue and health concerns',
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-text-muted text-[15px]">
-                  <span className="text-accent-gold mt-0.5 text-xs">✦</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+              {/* Bullet list */}
+              <ul className="closing-bullet-list">
+                {c.step1.bulletList.map((b, i) => (
+                  <li key={i}>
+                    <span className="text-accent-gold mr-2">●</span>
+                    {r(b)}
+                  </li>
+                ))}
+              </ul>
 
-        {/* ====== Segment 3: The Adjustments (revealed on 2nd click) ====== */}
-        {revealStep >= 3 && (
-          <div className="glass-card-inner p-6 mb-6 animate-fade-in-scale">
-            <h3 className="text-lg font-mystical text-accent-gold mb-4 flex items-center gap-2">
-              <span>✨</span> The Adjustments
-            </h3>
-            <p className="text-text-muted leading-relaxed text-[15px] mb-5">
-              The good news is that BaZi provides <span className="text-accent-gold underline underline-offset-4 decoration-accent-gold/30">specific adjustments</span> you can make to harmonize these opposing forces. These include:
-            </p>
-            <div className="grid grid-cols-2 gap-3">
-              {['Feng Shui Placement', 'Career Direction', 'Color Therapy', 'Timing Strategy'].map((adj) => (
-                <div key={adj} className="bg-bg-primary/50 rounded-xl p-4 border border-border text-center">
-                  <span className="text-text-primary text-sm font-medium">{adj}</span>
-                </div>
-              ))}
+              {/* More paragraphs */}
+              <div className="closing-paragraph mt-6">
+                {c.step1.paragraphs2.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+            </div>
+
+            {/* Rock Paper Scissors section */}
+            <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <h2 className="closing-subheading text-center mb-6">
+                {r(c.step1.rpsTitle)}
+              </h2>
+              <div className="closing-paragraph">
+                {c.step1.rpsParagraphs.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className="text-center mt-8 mb-6">
+              <button onClick={goNext} className="btn-mystical text-base tracking-wider px-8 py-4">
+                ✨ {r(c.step1.ctaText)}
+              </button>
             </div>
           </div>
         )}
 
-        {/* ====== Reveal CTA ====== */}
-        {revealStep < 3 && (
-          <div className="text-center mb-8">
-            <button onClick={handleReveal} className="btn-reveal text-sm">
-              ✨ Dive Deeper Into My Reading & Tell Me More About The Adjustments!
-            </button>
+        {/* ============================================================
+            STEP 2: Soul Seed + Report Introduction
+            Purpose: Introduce the report as the solution
+            ============================================================ */}
+        {step === 2 && (
+          <div className="animate-fade-in-up">
+            {/* Soul Seed Title */}
+            <h1 className="closing-section-heading text-center mb-8">
+              {r(c.step2.title)}
+            </h1>
+
+            {/* Intro paragraphs */}
+            <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <div className="closing-paragraph">
+                {c.step2.paragraphs.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+
+              {/* Numbered list */}
+              <ol className="closing-numbered-list">
+                {c.step2.numberedList.map((item, i) => (
+                  <li key={i}>{r(item)}</li>
+                ))}
+              </ol>
+
+              <div className="closing-paragraph mt-4">
+                {c.step2.paragraphs2.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+            </div>
+
+            {/* Report Pitch */}
+            <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <h2 className="closing-subheading text-center mb-4">
+                {r(c.step2.reportTitle)}
+              </h2>
+              <p className="text-accent-gold text-center text-lg font-medium mb-6 italic">
+                {r(c.step2.reportSubtitle)}
+              </p>
+              <div className="closing-paragraph">
+                {c.step2.reportParagraphs.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+            </div>
+
+            {/* Adjustments */}
+            <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <h2 className="closing-subheading text-center mb-6">
+                {r(c.step2.adjustmentsTitle)}
+              </h2>
+              <div className="closing-paragraph">
+                {c.step2.adjustmentsParagraphs.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+            </div>
+
+            {/* Direct Forces */}
+            <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <h2 className="closing-subheading text-center mb-6">
+                {r(c.step2.directTitle)}
+              </h2>
+              <div className="closing-paragraph">
+                {c.step2.directParagraphs.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="text-center mt-8 mb-6">
+              <button onClick={goNext} className="btn-mystical text-base tracking-wider px-8 py-4">
+                ✨ {r(c.step2.ctaText)}
+              </button>
+            </div>
           </div>
         )}
 
-        {/* ====== Generate Report Section ====== */}
-        {revealStep >= 3 && (
-          <div className="glass-card p-7 text-center glow-gold animate-fade-in-scale">
-            <h3 className="text-xl font-mystical font-bold text-gold-gradient mb-3">
-              Get Your Complete 13-Section BaZi Report
-            </h3>
-            <p className="text-text-muted text-sm mb-6 max-w-md mx-auto">
-              Including life path simulations, luck cycles, career guidance, wealth strategies, health zones, and feng shui recommendations.
-            </p>
+        {/* ============================================================
+            STEP 3: 4 Report Pillars + Software Simulation
+            Purpose: Show the value — what the report covers
+            ============================================================ */}
+        {step === 3 && (
+          <div className="animate-fade-in-up">
+            {/* Harness Title */}
+            <h1 className="closing-section-heading text-center mb-8">
+              {r(c.step3.harnessTitle)}
+            </h1>
 
-            {/* Generate Button, Loader, or Result */}
-            {generating ? (
-                <MysticalLoader 
-                    messages={REPORT_MESSAGES} 
-                    duration={210} // 3.5 minutes target
-                />
-            ) : !reportResult ? (
-              <button
-                onClick={handleGenerateReport}
-                className="btn-mystical text-base tracking-wider transition-all duration-300 transform hover:scale-105"
-              >
-                ✦ GENERATE MY FULL DESTINY REPORT
-              </button>
-            ) : (
-              <div className="space-y-4 animate-fade-in-scale">
-                {/* Success message */}
-                <div className="bg-success/10 border border-success/20 rounded-xl p-4">
-                  <p className="text-success font-medium">✅ Report Generated!</p>
+            {/* Harness content */}
+            <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <div className="closing-paragraph">
+                {c.step3.harnessParagraphs.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+              <ul className="closing-bullet-list">
+                {c.step3.harnessBullets.map((b, i) => (
+                  <li key={i}>
+                    <span className="text-accent-gold mr-2">●</span>
+                    {r(b)}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Beginning of report */}
+            <h2 className="closing-subheading text-center mb-6">
+              {r(c.step3.beginningTitle)}
+            </h2>
+
+            <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <div className="closing-paragraph">
+                {c.step3.beginningParagraphs.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+            </div>
+
+            {/* 4 Pillars */}
+            {c.step3.pillars.map((pillar) => (
+              <div key={pillar.number} className="glass-card-inner p-6 md:p-8 mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-8 h-8 rounded-full bg-accent-gold/20 flex items-center justify-center text-accent-gold font-bold text-sm">
+                    {pillar.number}
+                  </span>
+                  <h3 className="text-lg md:text-xl font-mystical text-accent-gold">
+                    {r(pillar.title)}
+                  </h3>
+                </div>
+                
+                {pillar.intro && (
+                  <p className="text-text-muted text-sm italic mb-4">{r(pillar.intro)}</p>
+                )}
+
+                <div className="closing-paragraph">
+                  {pillar.paragraphs.map((p, i) => (
+                    <p key={i}>{r(p)}</p>
+                  ))}
                 </div>
 
-                {/* Download links */}
-                <div className="flex justify-center gap-3">
-                  {reportResult.html_url && (
-                    <a
-                      href={reportResult.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-5 py-2.5 rounded-xl bg-accent-teal/10 border border-accent-teal/20 text-accent-teal text-sm font-medium hover:bg-accent-teal/20 transition-all"
-                    >
-                      📄 View HTML
-                    </a>
-                  )}
-                  {reportResult.pdf_url && (
-                    <a
-                      href={reportResult.pdf_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-5 py-2.5 rounded-xl bg-accent-gold/10 border border-accent-gold/20 text-accent-gold text-sm font-medium hover:bg-accent-gold/20 transition-all"
-                    >
-                      📥 Download PDF
-                    </a>
-                  )}
-                </div>
+                {pillar.subtitle && (
+                  <p className="text-accent-gold font-medium mt-4 mb-3">{r(pillar.subtitle)}</p>
+                )}
 
-                {/* Email confirmation */}
-                {reportResult.email_sent && (
-                  <p className="text-text-dim text-xs">
-                    ✉️ Report also sent to {formData.email}
-                  </p>
+                {pillar.bullets && (
+                  <ul className="closing-bullet-list">
+                    {pillar.bullets.map((b, i) => (
+                      <li key={i}>
+                        <span className="text-accent-gold mr-2">●</span>
+                        {r(b)}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {pillar.closingParagraphs && (
+                  <div className="closing-paragraph mt-4">
+                    {pillar.closingParagraphs.map((p, i) => (
+                      <p key={i}>{r(p)}</p>
+                    ))}
+                  </div>
                 )}
               </div>
-            )}
+            ))}
 
-            {/* Error */}
-            {error && !generating && (
-              <div className="mt-4 bg-error/10 border border-error/20 rounded-xl p-4">
-                <p className="text-error text-sm">{error}</p>
-                <button
-                  onClick={handleGenerateReport}
-                  className="text-accent-gold text-xs mt-2 underline cursor-pointer"
-                >
-                  Try again
-                </button>
+            {/* Simulation */}
+            <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <h2 className="closing-subheading text-center mb-6">
+                {r(c.step3.simulationTitle)}
+              </h2>
+              <div className="closing-paragraph">
+                {c.step3.simulationParagraphs.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
               </div>
-            )}
+            </div>
+
+            {/* Recommendations */}
+            <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <h2 className="closing-subheading text-center mb-6">
+                {r(c.step3.recommendationsTitle)}
+              </h2>
+              <p className="text-text-muted mb-4">You'd be able to...</p>
+              <ul className="closing-bullet-list">
+                {c.step3.recommendationsBullets.map((b, i) => (
+                  <li key={i}>
+                    <span className="text-accent-gold mr-2">●</span>
+                    {r(b)}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-text-muted leading-relaxed text-[15px] mt-4">
+                {r(c.step3.socialProof)}
+              </p>
+            </div>
+
+            {/* CTA */}
+            <div className="text-center mt-8 mb-6">
+              <button onClick={goNext} className="btn-mystical text-base tracking-wider px-8 py-4">
+                🛒 {r(c.step3.ctaText)}
+              </button>
+            </div>
           </div>
         )}
 
-        {/* Bottom decoration */}
-        <div className="text-center mt-10 opacity-20">
-          <span className="text-accent-gold text-xs tracking-[0.3em] font-mystical">
-            ☰ 调整 · ADJUSTMENTS ☰
-          </span>
+        {/* ============================================================
+            STEP 4: Pricing + Inclusions + Testimonials + Guarantee
+            Purpose: Close the sale — pricing cards + social proof
+            ============================================================ */}
+        {step === 4 && (
+          <div className="animate-fade-in-up">
+            {/* Pricing Intro */}
+            <h1 className="closing-section-heading text-center mb-2">
+              {r(c.step4.pricingTitle)}
+            </h1>
+            <p className="text-center text-text-muted mb-8 italic">
+              {r(c.step4.pricingSubtitle)}
+            </p>
+
+            <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <div className="closing-paragraph">
+                {c.step4.pricingParagraphs.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+
+              <blockquote className="border-l-4 border-accent-gold pl-4 my-6 text-accent-gold italic text-lg">
+                {r(c.step4.billionaireQuote)}
+              </blockquote>
+
+              <div className="closing-paragraph">
+                {c.step4.pricingClose.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+            </div>
+
+            {/* ====== PRICING CARDS (Side by side like Box.com) ====== */}
+            <div className="pricing-cards-grid">
+              {/* Standard Tier */}
+              <div className="pricing-card pricing-card-standard">
+                <div className="pricing-card-header">
+                  <span className="pricing-tier-label">{c.step4.standardTier.name}</span>
+                  <div className="pricing-price">
+                    <span className="pricing-currency">$</span>
+                    <span className="pricing-amount">{c.step4.standardTier.price}</span>
+                  </div>
+                  <p className="pricing-description">{c.step4.standardTier.description}</p>
+                </div>
+                <button 
+                  onClick={() => handleAddToCart('standard')}
+                  className="pricing-btn pricing-btn-standard"
+                >
+                  {c.step4.standardTier.buttonText}
+                </button>
+                <ul className="pricing-feature-list">
+                  {c.step4.standardTier.features.map((f, i) => (
+                    <li key={i}>
+                      <span className="pricing-check">✓</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* VIP Tier */}
+              <div className="pricing-card pricing-card-vip">
+                {c.step4.vipTier.badge && (
+                  <div className="pricing-badge">{c.step4.vipTier.badge}</div>
+                )}
+                <div className="pricing-card-header">
+                  <span className="pricing-tier-label">{c.step4.vipTier.name}</span>
+                  <div className="pricing-price">
+                    <span className="pricing-currency">$</span>
+                    <span className="pricing-amount">{c.step4.vipTier.price}</span>
+                  </div>
+                  <p className="pricing-description">{c.step4.vipTier.description}</p>
+                </div>
+                <button 
+                  onClick={() => handleAddToCart('vip')}
+                  className="pricing-btn pricing-btn-vip"
+                >
+                  {c.step4.vipTier.buttonText}
+                </button>
+                <ul className="pricing-feature-list">
+                  {c.step4.vipTier.features.map((f, i) => (
+                    <li key={i}>
+                      <span className="pricing-check pricing-check-gold">✓</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Bonuses */}
+                <div className="pricing-bonuses">
+                  <p className="pricing-bonuses-header">
+                    + 3 EXCLUSIVE BONUSES (WORTH ${c.step4.vipTier.bonusTotal})
+                  </p>
+                  {c.step4.vipTier.bonuses.map((bonus, i) => (
+                    <div key={i} className="pricing-bonus-item">
+                      <span className="text-accent-gold">🎁</span>
+                      <div>
+                        <span className="text-text-primary text-sm">{bonus.name}</span>
+                        <span className="text-text-dim text-xs ml-2">Value: ${bonus.value}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="text-center text-text-dim text-xs mt-3">
+                  Save $100 · Most people choose this
+                </p>
+              </div>
+            </div>
+
+            {/* ====== INCLUSIONS LIST ====== */}
+            <div className="glass-card-inner p-6 md:p-8 mb-6 mt-8">
+              <h2 className="closing-subheading text-center mb-6">
+                {r(c.step4.inclusionsTitle)}
+              </h2>
+              <ul className="closing-inclusions-list">
+                {c.step4.inclusions.map((item, i) => (
+                  <li key={i}>
+                    <span className="text-accent-gold mr-2 flex-shrink-0">●</span>
+                    <span>{r(item)}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* ====== TESTIMONIALS ====== */}
+            <h2 className="closing-subheading text-center mb-6 mt-10">
+              And This Is Why We've Been Able To Get Results For Hundreds of Our Clients Who Trust Us With Their Growth...
+            </h2>
+
+            <div className="space-y-5 mb-8">
+              {c.step4.testimonials.map((t, i) => (
+                <div key={i} className="testimonial-card">
+                  <div className="testimonial-header">
+                    <div className="testimonial-avatar">
+                      {t.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="text-text-primary font-bold text-sm">{t.name}</p>
+                      <p className="text-text-dim text-xs">{t.title}</p>
+                    </div>
+                  </div>
+                  <p className="text-text-muted leading-relaxed text-[14px] italic">
+                    "{t.quote}"
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* ====== ANCIENT SCIENCES ====== */}
+            <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <h2 className="closing-subheading text-center mb-6">
+                {r(c.step4.scienceTitle)}
+              </h2>
+              <div className="closing-paragraph">
+                {c.step4.scienceParagraphs.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+              <ul className="closing-bullet-list mt-4">
+                {c.step4.scienceBullets.map((b, i) => (
+                  <li key={i}>
+                    <span className="text-accent-gold mr-2">●</span>
+                    {r(b)}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-text-muted leading-relaxed text-[15px] mt-4 font-medium">
+                {r(c.step4.scienceClosing)}
+              </p>
+            </div>
+
+            {/* Mid-page CTA */}
+            <div className="text-center my-8">
+              <button 
+                onClick={() => handleAddToCart('standard')}
+                className="btn-mystical text-base tracking-wider px-8 py-4"
+              >
+                🛒 Add To Cart
+              </button>
+            </div>
+
+            {/* ====== 60-DAY GUARANTEE ====== */}
+            <div className="guarantee-section">
+              <div className="guarantee-badge-icon">🛡️</div>
+              <h2 className="closing-subheading text-center mb-4">
+                {r(c.step4.guaranteeTitle)}
+              </h2>
+              <div className="closing-paragraph">
+                {c.step4.guaranteeParagraphs.map((p, i) => (
+                  <p key={i}>{r(p)}</p>
+                ))}
+              </div>
+            </div>
+
+            {/* Final CTA */}
+            <div className="text-center my-10">
+              <button 
+                onClick={() => handleAddToCart('standard')}
+                className="btn-mystical text-lg tracking-wider px-10 py-5"
+              >
+                🛒 Add To Cart — Get Your Report Now
+              </button>
+              <p className="text-text-dim text-xs mt-3">
+                Secure checkout · 60-day money-back guarantee
+              </p>
+            </div>
+
+            {/* ====== OR — FREE REPORT PREVIEW (Working Backend) ====== */}
+            <div className="text-center my-8">
+              <div className="ornament-divider max-w-xs mx-auto mb-4">
+                <span>OR</span>
+              </div>
+              <p className="text-text-muted text-sm mb-4">
+                Not ready to purchase yet? Generate a FREE preview of your report!
+              </p>
+            </div>
+
+            <div className="glass-card p-7 text-center glow-gold animate-fade-in-scale">
+              <h3 className="text-xl font-mystical font-bold text-gold-gradient mb-3">
+                Get Your Complete 13-Section BaZi Report
+              </h3>
+              <p className="text-text-muted text-sm mb-6 max-w-md mx-auto">
+                Including life path simulations, luck cycles, career guidance, wealth strategies, health zones, and feng shui recommendations.
+              </p>
+
+              {generating ? (
+                <MysticalLoader 
+                  messages={REPORT_MESSAGES} 
+                  duration={210}
+                />
+              ) : !reportResult ? (
+                <button
+                  onClick={async () => {
+                    setGenerating(true)
+                    setReportError(null)
+                    try {
+                      const result = await generateFullReport({
+                        name: userName,
+                        email: formData.email,
+                        gender: formData.gender,
+                        birthDate: `${formData.birthYear}-${formData.birthMonth.padStart(2, '0')}-${formData.birthDay.padStart(2, '0')}`,
+                        birthTime: formData.birthTime,
+                        location: (formData.city && formData.country) 
+                          ? `${formData.city}, ${formData.country}` 
+                          : 'Unknown Location',
+                      })
+                      setReportResult(result)
+                    } catch (err) {
+                      setReportError(err.message || 'Failed to generate report')
+                    } finally {
+                      setGenerating(false)
+                    }
+                  }}
+                  className="btn-mystical text-base tracking-wider transition-all duration-300 transform hover:scale-105"
+                >
+                  ✦ GENERATE MY FREE REPORT PREVIEW
+                </button>
+              ) : (
+                <div className="space-y-4 animate-fade-in-scale">
+                  <div className="bg-success/10 border border-success/20 rounded-xl p-4">
+                    <p className="text-success font-medium">✅ Report Generated!</p>
+                  </div>
+                  <div className="flex justify-center gap-3">
+                    {reportResult.html_url && (
+                      <a
+                        href={reportResult.html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2.5 rounded-xl bg-accent-teal/10 border border-accent-teal/20 text-accent-teal text-sm font-medium hover:bg-accent-teal/20 transition-all"
+                      >
+                        📄 View HTML
+                      </a>
+                    )}
+                    {reportResult.pdf_url && (
+                      <a
+                        href={reportResult.pdf_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2.5 rounded-xl bg-accent-gold/10 border border-accent-gold/20 text-accent-gold text-sm font-medium hover:bg-accent-gold/20 transition-all"
+                      >
+                        📥 Download PDF
+                      </a>
+                    )}
+                  </div>
+                  {reportResult.email_sent && (
+                    <p className="text-text-dim text-xs">
+                      ✉️ Report also sent to {formData.email}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {reportError && !generating && (
+                <div className="mt-4 bg-error/10 border border-error/20 rounded-xl p-4">
+                  <p className="text-error text-sm">{reportError}</p>
+                  <button
+                    onClick={() => { setReportError(null) }}
+                    className="text-accent-gold text-xs mt-2 underline cursor-pointer"
+                  >
+                    Try again
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Bottom decoration */}
+            <div className="text-center mt-10 opacity-20">
+              <span className="text-accent-gold text-xs tracking-[0.3em] font-mystical">
+                ☰ 命理 · DESTINY ☰
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* ====== Step Indicator ====== */}
+        <div className="flex justify-center gap-2 mt-8">
+          {[1, 2, 3, 4].map((s) => (
+            <div
+              key={s}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                s === step 
+                  ? 'bg-accent-gold scale-125' 
+                  : s < step 
+                    ? 'bg-accent-gold/40' 
+                    : 'bg-border'
+              }`}
+            />
+          ))}
         </div>
+
       </div>
     </div>
   )
