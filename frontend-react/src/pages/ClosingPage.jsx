@@ -154,35 +154,19 @@ export default function ClosingPage() {
               </div>
             </div>
 
-            {/* CTA Button */}
-            <div className="text-center mt-8 mb-6">
-              <button onClick={goNext} className="btn-mystical text-base tracking-wider px-8 py-4">
-                ✨ {r(c.step1.ctaText)}
-              </button>
-            </div>
-          </div>
-        )}
 
-        {/* ============================================================
-            STEP 2: Soul Seed + Report Introduction
-            Purpose: Introduce the report as the solution
-            ============================================================ */}
-        {step === 2 && (
-          <div className="animate-fade-in-up">
-            {/* Soul Seed Title */}
-            <h1 className="closing-section-heading text-center mb-8">
-              {r(c.step2.title)}
-            </h1>
-
-            {/* Intro paragraphs */}
+            {/* --- Soul Seed Section (Change 7: moved from Step 2 title) --- */}
             <div className="glass-card-inner p-6 md:p-8 mb-6">
+              <h2 className="closing-subheading text-center mb-6">
+                {r(c.step2.title)}
+              </h2>
               <div className="closing-paragraph">
                 {c.step2.paragraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
                 ))}
               </div>
 
-              {/* Numbered list */}
+              {/* Numbered list 1) and 2) */}
               <ol className="closing-numbered-list">
                 {c.step2.numberedList.map((item, i) => (
                   <li key={i}>{r(item)}</li>
@@ -196,11 +180,27 @@ export default function ClosingPage() {
               </div>
             </div>
 
-            {/* Report Pitch */}
+            {/* Second CTA */}
+            <div className="text-center mt-8 mb-6">
+              <button onClick={goNext} className="btn-mystical text-base tracking-wider px-8 py-4">
+                ✨ {r(c.step2.ctaText)}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* ============================================================
+            STEP 2: Soul Seed + Report Introduction
+            Purpose: Introduce the report as the solution
+            ============================================================ */}
+        {step === 2 && (
+          <div className="animate-fade-in-up">
+            {/* Report Pitch Title (was step2.reportTitle) */}
+            <h1 className="closing-section-heading text-center mb-8">
+              {r(c.step2.reportTitle)}
+            </h1>
+
             <div className="glass-card-inner p-6 md:p-8 mb-6">
-              <h2 className="closing-subheading text-center mb-4">
-                {r(c.step2.reportTitle)}
-              </h2>
               <p className="text-accent-gold text-center text-lg font-medium mb-6 italic">
                 {r(c.step2.reportSubtitle)}
               </p>
@@ -288,14 +288,10 @@ export default function ClosingPage() {
             {/* 4 Pillars */}
             {c.step3.pillars.map((pillar) => (
               <div key={pillar.number} className="glass-card-inner p-6 md:p-8 mb-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="w-8 h-8 rounded-full bg-accent-gold/20 flex items-center justify-center text-accent-gold font-bold text-sm">
-                    {pillar.number}
-                  </span>
-                  <h3 className="text-lg md:text-xl font-mystical text-accent-gold">
-                    {r(pillar.title)}
-                  </h3>
-                </div>
+                {/* Full-width Google Doc style heading */}
+                <h3 className="text-lg md:text-xl font-mystical text-accent-gold text-center mb-5 leading-snug">
+                  {r(pillar.title)}
+                </h3>
                 
                 {pillar.intro && (
                   <p className="text-text-muted text-sm italic mb-4">{r(pillar.intro)}</p>
@@ -363,10 +359,10 @@ export default function ClosingPage() {
               </p>
             </div>
 
-            {/* CTA */}
+            {/* CTA — Dive Deeper (Change 10: no Add To Cart here) */}
             <div className="text-center mt-8 mb-6">
               <button onClick={goNext} className="btn-mystical text-base tracking-wider px-8 py-4">
-                🛒 {r(c.step3.ctaText)}
+                ✨ {r(c.step3.ctaText)}
               </button>
             </div>
           </div>
@@ -544,15 +540,7 @@ export default function ClosingPage() {
               </p>
             </div>
 
-            {/* Mid-page CTA */}
-            <div className="text-center my-8">
-              <button 
-                onClick={() => handleAddToCart('standard')}
-                className="btn-mystical text-base tracking-wider px-8 py-4"
-              >
-                🛒 Add To Cart
-              </button>
-            </div>
+
 
             {/* ====== 60-DAY GUARANTEE ====== */}
             <div className="guarantee-section">

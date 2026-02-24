@@ -63,7 +63,7 @@ export default function ReadingPage() {
             ✦ YOUR DAY MASTER READING ✦
           </p>
           <h1 className="text-3xl md:text-4xl font-mystical font-bold text-text-primary mb-2">
-            {reading.number}. {reading.name.toUpperCase()}
+            {reading.name.toUpperCase()}
           </h1>
           <p className="text-text-muted text-lg font-mystical">
             {reading.subtitle}
@@ -170,33 +170,8 @@ export default function ReadingPage() {
           ))}
         </div>
 
-        {/* ====== Four Pillars Summary ====== */}
-        {baziResult && (
-          <div className="glass-card-inner p-6 mb-6 intro-reading-content">
-            <h3 className="text-lg font-mystical text-accent-gold mb-4 flex items-center gap-2">
-              <span>☰</span> Your Four Pillars
-            </h3>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { label: '八字 (BaZi)', value: baziResult['八字'] },
-                { label: '生肖 (Zodiac)', value: baziResult['生肖'] },
-                { label: '日主 (Day Master)', value: dayMasterChar },
-                { label: '阳历 (Solar Date)', value: baziResult['阳历'] },
-              ].map((item) => (
-                <div key={item.label} className="bg-bg-primary/50 rounded-xl p-3 border border-border">
-                  <span className="text-text-dim text-xs block mb-1">{item.label}</span>
-                  <span className="text-text-primary font-mono text-sm">{item.value || 'N/A'}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* ====== Clashing Energies Teaser ====== */}
         <div className="glass-card p-6 text-center mb-8 border-accent-gold/20" style={{ animation: 'borderPulse 3s ease-in-out infinite' }}>
-          <p className="text-text-muted text-sm italic mb-3">
-            But there's something you need to know...
-          </p>
           <p className="text-text-primary leading-relaxed">
             {reading.clashingTeaser}
           </p>
@@ -210,9 +185,6 @@ export default function ReadingPage() {
           >
             ✦ DISCOVER WHAT'S ATTACKING YOUR DAY MASTER
           </button>
-          <p className="text-xs text-text-dim mt-3">
-            Discover the adjustments to harmonize your life energy
-          </p>
         </div>
 
         {/* Bottom decoration */}

@@ -116,9 +116,13 @@ export default function LandingPage() {
         {/* ====== CONTENT — Headline + Form ====== */}
         <div className="landing-content">
 
-          {/* Small yin-yang */}
-          <div className="animate-fade-in-up" style={{ marginBottom: '16px' }}>
-            <span style={{ fontSize: '36px', opacity: 0.7 }}>☯</span>
+          {/* Chi Manifestation Logo */}
+          <div className="animate-fade-in-up" style={{ marginBottom: '20px' }}>
+            <img 
+              src="/chi-logo.png" 
+              alt="Chi Manifestation" 
+              style={{ width: '80px', height: '80px', objectFit: 'contain', margin: '0 auto', display: 'block' }}
+            />
           </div>
 
           {/* Bold Headline */}
@@ -131,14 +135,14 @@ export default function LandingPage() {
               marginBottom: '16px',
             }}
           >
-            Unlock the Ancient Secrets<br />
-            Hidden in Your Birth Chart
+            Unlock Your "Life Energy" Signature<br />
+            And It's Invisible Imprint On The World
           </h1>
 
           {/* Subtitle */}
           <p className="landing-subtitle animate-fade-in-up-delay-1">
-            Discover your BaZi Life Energy through the Four Pillars of Destiny 
-            — your personalized cosmic blueprint awaits.
+            And discover simple <strong>"energy adjustments"</strong> that can <em>shift</em> you
+            to a <em>lifeline</em> of prosperity & abundance in just 5 minutes a day
           </p>
 
           {/* Ornamental divider */}
@@ -158,7 +162,7 @@ export default function LandingPage() {
                   id="firstName"
                   value={formData.firstName}
                   onChange={handleChange('firstName')}
-                  placeholder="Ahmed"
+                  placeholder="John"
                   className={`input-mystical ${errors.firstName ? 'input-error' : ''}`}
                 />
                 {errors.firstName && <p className="text-xs text-error mt-1">⚠ {errors.firstName}</p>}
@@ -170,7 +174,7 @@ export default function LandingPage() {
                   id="email"
                   value={formData.email}
                   onChange={handleChange('email')}
-                  placeholder="ahmed@example.com"
+                  placeholder="johndoe@example.com"
                   className={`input-mystical ${errors.email ? 'input-error' : ''}`}
                 />
                 {errors.email 

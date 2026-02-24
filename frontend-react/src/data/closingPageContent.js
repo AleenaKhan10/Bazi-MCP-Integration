@@ -173,7 +173,7 @@ const CLOSING_CONTENT = {
     pillars: [
       {
         number: 1,
-        title: 'Your "Life Force" – or Chi Levels',
+        title: 'The First Aspect of Your Life Energy That We\'ll Look At Is Your "Life Force" – or Chi Levels.',
         paragraphs: [
           'Some people call this motivation, energy, will, courage, or intention. It goes by many names, and it\'s why some people have the energy to \'create\' while others lag behind.',
           'That\'s why we\'ll look into the various factors based on your {dayMaster} Day Master that are affecting your \'Life Force\' levels.',
@@ -194,7 +194,7 @@ const CLOSING_CONTENT = {
       },
       {
         number: 2,
-        title: 'Your Natural Intellect & Intelligence Patterns',
+        title: 'Next, {name}\'s Full Report Will Also Dive Into... Your Natural Intellect & Intelligence Patterns.',
         paragraphs: [
           'The reason why it\'s important to discover what your \'intelligence patterns\' are... is because this gives you the confidence that you\'re taking the right paths to reach your goals.',
           'When you discover the specific Intelligence Patterns that you\'ve been given in the Life Energy Attunement Report...',
@@ -210,7 +210,7 @@ const CLOSING_CONTENT = {
       },
       {
         number: 3,
-        title: 'Redesign Your Relationships To Your Choosing',
+        title: 'Giving You The Power To Redesign Your Relationships To Your Choosing...',
         paragraphs: [
           'And closely linked to this... {name}\'s Life Energy Attunement Report will also go deep into your relationships!',
           'This means that whether you\'re trying to work through the problems in your marriage, office... or even with your children or peers...',
@@ -221,8 +221,8 @@ const CLOSING_CONTENT = {
       },
       {
         number: 4,
-        title: 'The "Peak Luck Periods" That Allow You To Make Leaps & Bounds In Just Days!',
-        intro: 'Most Importantly – The Biggest "Needle Mover" That You\'ll Get In Your Life Energy Attunement Report Is',
+        title: 'Most Importantly – The Biggest "Needle Mover" That You\'ll Get In Your Life Energy Attunement Report Is The "Peak Luck Periods" That Allow You To Make Leaps & Bounds In Just Days!',
+        intro: null,
         paragraphs: [
           'This pinnacle period is what allows some people to win the lottery, pick winning stocks, or to have that golden touch where it seems like success follows them wherever they go.',
           'It\'s people who are in these peak luck periods that feel like things are almost \'pre-arranged\' for them, by some higher power – as if there was a hand in the sky, placing one plank ahead of the next for someone who\'s crossing the river...',
@@ -263,7 +263,7 @@ const CLOSING_CONTENT = {
 
     socialProof: 'And this is why over 320,123 individuals across Asia use Bazi to find guidance and clarity in their life – as just one of these energy adjustments allows them to leapfrog and make years of progress in just moments, this could be a job promotion... a lucky contract coming through... or even a new business opportunity that finally takes off.',
 
-    ctaText: 'Add To Cart',
+    ctaText: 'Dive Deeper Into My Reading & Tell Me More About The Adjustments!',
   },
 
   // ==========================================

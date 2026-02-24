@@ -57,7 +57,7 @@ export default function IntroReadingPage() {
         </div>
 
         {/* ====== SECTION 2: Day Master Intro ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-6 animate-fade-in-up-delay-1 intro-reading-content">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 animate-fade-in-up-delay-1 intro-reading-content">
           <p>
             That's because your <span className="text-accent-gold font-semibold">{dayMasterName}</span> Day Master has unique qualities that can completely shift the way that you tap into the resources around you...
           </p>
@@ -254,27 +254,9 @@ export default function IntroReadingPage() {
           {/* ====== REVEAL Button ====== */}
           <button
             onClick={() => navigate('/reading')}
-            className="btn-mystical text-base tracking-wider mb-8"
+            className="btn-mystical text-base tracking-wider"
           >
             ✦ REVEAL MY DAYMASTER READING
-          </button>
-
-          {/* ====== Divider ====== */}
-          <div className="ornament-divider max-w-xs mx-auto my-6">
-            <span>☯</span>
-          </div>
-
-          {/* ====== Day Master Readings Link ====== */}
-          <h3 className="text-xl font-mystical font-bold text-gold-gradient mb-8">
-            DAY MASTER READINGS
-          </h3>
-
-          {/* ====== Attacking CTA ====== */}
-          <button
-            onClick={() => navigate('/reading')}
-            className="text-accent-gold hover:text-text-primary transition-colors text-sm font-mystical tracking-wider underline underline-offset-4"
-          >
-            {'>> Discover What\'s Attacking Your Day Master Immediately!'}
           </button>
         </div>
 
