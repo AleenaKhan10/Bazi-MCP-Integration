@@ -33,6 +33,12 @@ const QuizContext = createContext(null)
 // -------------------------------------------
 export function QuizProvider({ children }) {
   // Form data from Landing Page
+  // -------------------------------------------
+  // Form fields — collected on Landing Page
+  // state: NEW field for countries with states/provinces
+  //   e.g., "Texas" for US, "Sindh" for Pakistan
+  //   Empty string for countries without states (Singapore, etc.)
+  // -------------------------------------------
   const [formData, setFormData] = useState({
     firstName: '',
     email: '',
@@ -42,6 +48,7 @@ export function QuizProvider({ children }) {
     birthYear: '',
     birthTime: '',
     country: '',
+    state: '',     // NEW: state/province (empty if country has no states)
     city: '',
   })
 
@@ -69,12 +76,20 @@ export function QuizProvider({ children }) {
 
   // -------------------------------------------
   // Helper: Get location string for backend
-  // Backend expects "City, Country" format
+  // -------------------------------------------
+  // Backend uses this string for geocoding (Nominatim)
+  // More specific = better timezone accuracy!
+  //
+  // WITH state:    "Garden Ridge, Texas, United States"
+  // WITHOUT state: "Karachi, Pakistan"
   // -------------------------------------------
   const getLocationString = () => {
-    const { city, country } = formData
+    const { city, state, country } = formData
     if (!city || !country) return ''
-    return `${city}, ${country}`
+    // Include state in location string if available
+    return state
+      ? `${city}, ${state}, ${country}`
+      : `${city}, ${country}`
   }
 
   // -------------------------------------------
@@ -98,6 +113,7 @@ export function QuizProvider({ children }) {
       birthYear: '',
       birthTime: '',
       country: '',
+      state: '',
       city: '',
     })
     setBaziResult(null)

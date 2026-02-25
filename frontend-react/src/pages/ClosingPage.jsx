@@ -604,7 +604,9 @@ export default function ClosingPage() {
                         birthDate: `${formData.birthYear}-${formData.birthMonth.padStart(2, '0')}-${formData.birthDay.padStart(2, '0')}`,
                         birthTime: formData.birthTime,
                         location: (formData.city && formData.country) 
-                          ? `${formData.city}, ${formData.country}` 
+                          ? formData.state
+                            ? `${formData.city}, ${formData.state}, ${formData.country}`
+                            : `${formData.city}, ${formData.country}`
                           : 'Unknown Location',
                       })
                       setReportResult(result)

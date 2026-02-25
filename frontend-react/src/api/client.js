@@ -104,7 +104,7 @@ export async function getCountries() {
   }
 }
 
-// Get cities for a specific country
+// Get cities for a specific country (used when country has NO states)
 export async function getCities(country) {
   try {
     const response = await axios.post(
@@ -118,5 +118,67 @@ export async function getCities(country) {
   } catch (error) {
     console.error(`Failed to load cities for ${country}:`, error)
     return [] // Return empty — user can try again
+  }
+}
+
+// -------------------------------------------
+// Get states/provinces for a country
+// -------------------------------------------
+// HOW IT WORKS:
+//   1. User selects a country (e.g., "United States")
+//   2. We ask the API: "Does this country have states?"
+//   3. API returns a list of states/provinces
+//   4. If list is empty → country has no subdivisions (e.g., Singapore)
+//   5. If list has items → show State dropdown before City
+//
+// EXAMPLE RESPONSES:
+//   "United States"  → ["Alabama", "Alaska", "Arizona", ...]
+//   "Canada"         → ["Alberta", "British Columbia", ...]
+//   "Pakistan"       → ["Sindh", "Punjab", "KPK", ...]
+//   "Singapore"      → [] (empty — no states)
+export async function getStates(country) {
+  try {
+    const response = await axios.post(
+      'https://countriesnow.space/api/v0.1/countries/states',
+      { country }
+    )
+    if (response.data.error) {
+      throw new Error(response.data.msg)
+    }
+    // API returns objects like { name: "Texas", state_code: "TX" }
+    // We only need the name
+    const states = response.data.data.states || []
+    return states
+      .map((s) => s.name)
+      .sort((a, b) => a.localeCompare(b))
+  } catch (error) {
+    console.error(`Failed to load states for ${country}:`, error)
+    return [] // Empty = treat as "no states"
+  }
+}
+
+// -------------------------------------------
+// Get cities for a specific state in a country
+// -------------------------------------------
+// WHEN USED: Only after user picks both Country AND State
+// This returns a SMALL list of cities (not thousands!)
+//
+// EXAMPLE:
+//   getCitiesByState("United States", "Texas")
+//   → ["Austin", "Dallas", "Houston", "San Antonio", ...]
+//   (only ~100-200 cities instead of 20,000+)
+export async function getCitiesByState(country, state) {
+  try {
+    const response = await axios.post(
+      'https://countriesnow.space/api/v0.1/countries/state/cities',
+      { country, state }
+    )
+    if (response.data.error) {
+      throw new Error(response.data.msg)
+    }
+    return response.data.data.sort((a, b) => a.localeCompare(b))
+  } catch (error) {
+    console.error(`Failed to load cities for ${state}, ${country}:`, error)
+    return []
   }
 }

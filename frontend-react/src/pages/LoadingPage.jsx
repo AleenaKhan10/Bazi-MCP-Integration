@@ -42,8 +42,12 @@ export default function LoadingPage() {
       gender: formData.gender,
       birthDate: `${formData.birthYear}-${formData.birthMonth.padStart(2, '0')}-${formData.birthDay.padStart(2, '0')}`,
       birthTime: formData.birthTime,
+      // Location string — include state if available for better geocoding
+      // "Garden Ridge, Texas, United States" > "Garden Ridge, United States"
       location: (formData.city && formData.country) 
-        ? `${formData.city}, ${formData.country}` 
+        ? formData.state
+          ? `${formData.city}, ${formData.state}, ${formData.country}`
+          : `${formData.city}, ${formData.country}`
         : 'Unknown Location',
     })
       .then((result) => {

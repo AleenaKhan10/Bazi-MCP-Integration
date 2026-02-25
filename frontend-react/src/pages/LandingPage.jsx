@@ -40,14 +40,28 @@ export default function LandingPage() {
     }
   }
 
+  // When country changes → clear BOTH state AND city (cascade reset)
   const handleCountryChange = (e) => {
     setFormData((prev) => ({
       ...prev,
       country: e.target.value,
-      city: '',
+      state: '',   // Clear state when country changes
+      city: '',    // Clear city when country changes
     }))
     if (errors.country) {
       setErrors((prev) => ({ ...prev, country: null }))
+    }
+  }
+
+  // When state changes → clear city only
+  const handleStateChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      state: e.target.value,
+      city: '',    // Clear city when state changes
+    }))
+    if (errors.state) {
+      setErrors((prev) => ({ ...prev, state: null }))
     }
   }
 
@@ -255,11 +269,14 @@ export default function LandingPage() {
             <div style={{ marginBottom: '36px' }}>
               <CountryCityPicker
                 country={formData.country}
+                state={formData.state}
                 city={formData.city}
                 onCountryChange={handleCountryChange}
+                onStateChange={handleStateChange}
                 onCityChange={handleChange('city')}
                 errors={{
                   country: errors.country,
+                  state: errors.state,
                   city: errors.city,
                 }}
               />
