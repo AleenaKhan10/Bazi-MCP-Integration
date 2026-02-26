@@ -287,7 +287,7 @@ export default function LandingPage() {
               type="submit"
               className="btn-mystical w-full"
             >
-              ✦ REVEAL MY DESTINY
+              ✦ Begin Your Free “Life Energy Chart Reading” Now
             </button>
 
             {/* Trust badge */}

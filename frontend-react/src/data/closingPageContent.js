@@ -312,24 +312,25 @@ const CLOSING_CONTENT = {
     },
 
     vipTier: {
-      name: 'VIP Experience',
-      price: 47,
+      name: 'VIP',
+      price: 38.88,
       originalPrice: null,
       badge: 'MOST POPULAR — 78% Choose This',
-      description: 'Everything in Essential, PLUS:',
+      description: 'Your Personalized Life Energy Attunement Report + Destiny Activation Bundle',
+      recurringPrice: '$29/month after first month. Cancel anytime.',
       features: [
         'Everything in Essential, PLUS:',
-        'Express 12-Hour Delivery (not 72 hours)',
-        'Personally Reviewed by Master Sarah',
-        'Priority Email Support',
+        'Full Inner & Outer Feng Shui Course ($2,000+ value)',
+        'Monthly Coaching Calls (Live with Master Dom)',
+        '24-Hour Expert Support',
+        'Monthly BaZi Forecasts (Personalized to you)',
+        'Private Community',
+        'New Resources Monthly',
+        'Win Feng Shui Products',
       ],
-      bonuses: [
-        { name: 'Complete 12-Month Horse Year Calendar', value: 47 },
-        { name: 'Prosperity Blocker Removal Guide', value: 47 },
-        { name: 'Luck Amplification Meditation (Audio)', value: 53 },
-      ],
-      bonusTotal: 147,
-      buttonText: 'GET VIP + BONUSES →',
+      bonuses: [],
+      bonusTotal: 0,
+      buttonText: 'GET VIP ACCESS →',
     },
 
     // --- Inclusions List ---
