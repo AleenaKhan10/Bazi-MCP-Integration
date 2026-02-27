@@ -310,6 +310,16 @@ export default function LandingPage() {
           seen before...
         </h2>
 
+        {/* Five Elements Image */}
+        <div className="flex justify-center mb-8 animate-fade-in-up">
+          <img
+            src="/five-elements-icons.jpeg"
+            alt="Five Elements - Wood, Fire, Earth, Metal, Water"
+            className="rounded-2xl shadow-lg max-w-full"
+            style={{ maxHeight: '360px', objectFit: 'contain' }}
+          />
+        </div>
+
         <div className="animate-fade-in-up-delay-1">
           {[
             'Your hidden elemental strengths and which of the Five Elements (Wood, Fire, Earth, Metal, Water) dominates your life...',

@@ -239,6 +239,15 @@ export default function ClosingPage() {
               <h2 className="closing-subheading text-center mb-6">
                 {r(c.step1.rpsTitle)}
               </h2>
+              {/* Five Element Destructive Cycle Diagram */}
+              <div className="flex justify-center mb-6">
+                <img
+                  src="/destructive-cycle.jpeg"
+                  alt="Five Element Destructive Cycle - Wood, Fire, Earth, Metal, Water"
+                  className="rounded-xl shadow-lg"
+                  style={{ maxHeight: '400px', maxWidth: '100%', objectFit: 'contain' }}
+                />
+              </div>
               <div className="closing-paragraph">
                 {c.step1.rpsParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -273,6 +282,15 @@ export default function ClosingPage() {
                   <h2 className="closing-subheading text-center mb-6">
                     {r(c.step2.title)}
                   </h2>
+                  {/* Soul Seed Growth Metaphor */}
+                  <div className="flex justify-center mb-6">
+                    <img
+                      src="/soul-seed-growth.jpeg"
+                      alt="Soul Seed Growth - From seed to magnificent tree"
+                      className="rounded-xl shadow-lg w-full"
+                      style={{ maxHeight: '300px', objectFit: 'cover' }}
+                    />
+                  </div>
                   <div className="closing-paragraph">
                     {c.step2.paragraphs.map((p, i) => (
                       <p key={i}>{r(p)}</p>
@@ -327,6 +345,16 @@ export default function ClosingPage() {
             <h1 className="closing-section-heading text-center mb-8">
               {r(c.step2.reportTitle)}
             </h1>
+
+            {/* Steering Metaphor - Navigation Ship */}
+            <div className="flex justify-center mb-8">
+              <img
+                src="/steering-metaphor.jpeg"
+                alt="Steer Your Life's Path - Ancient ship navigating cosmic waters"
+                className="rounded-xl shadow-lg w-full"
+                style={{ maxHeight: '350px', objectFit: 'cover' }}
+              />
+            </div>
 
             <div className="glass-card-inner p-6 md:p-8 mb-6">
               <p className="text-accent-gold text-center text-lg font-medium mb-6 italic">
@@ -395,6 +423,16 @@ export default function ClosingPage() {
                   <p key={i}>{r(p)}</p>
                 ))}
               </div>
+            </div>
+
+            {/* Four Pillars Section Header Image */}
+            <div className="flex justify-center mb-8">
+              <img
+                src="/four-pillars-headers.jpeg"
+                alt="Four Pillars - Life Force, Natural Intellect, Relationships, Peak Luck"
+                className="rounded-xl shadow-lg"
+                style={{ maxHeight: '360px', maxWidth: '100%', objectFit: 'contain' }}
+              />
             </div>
 
             {/* 4 Pillars */}
@@ -572,6 +610,15 @@ export default function ClosingPage() {
                   <h2 className="closing-subheading text-center mb-6">
                     {r(c.step4.scienceTitle)}
                   </h2>
+                  {/* Ancient Sciences Historical Image */}
+                  <div className="flex justify-center mb-6">
+                    <img
+                      src="/ancient-sciences.jpeg"
+                      alt="Ancient Chinese Imperial Study - 10,000 Years of BaZi Wisdom"
+                      className="rounded-xl shadow-lg w-full"
+                      style={{ maxHeight: '320px', objectFit: 'cover' }}
+                    />
+                  </div>
                   <div className="closing-paragraph">
                     {c.step4.scienceParagraphs.map((p, i) => (
                       <p key={i}>{r(p)}</p>

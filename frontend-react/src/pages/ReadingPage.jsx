@@ -75,6 +75,16 @@ export default function ReadingPage() {
           className="glass-card p-8 text-center mb-8 animate-fade-in-up-delay-1 glow-gold-strong"
           style={{ background: `linear-gradient(135deg, ${elemStyle.glow}, rgba(15, 22, 41, 0.95))` }}
         >
+          {/* Day Master Illustration */}
+          <div className="mb-5">
+            <img
+              src="/day-master-illustration.jpeg"
+              alt={`${master.title} - Day Master Illustration`}
+              className="rounded-xl mx-auto shadow-lg"
+              style={{ maxHeight: '280px', objectFit: 'contain' }}
+            />
+          </div>
+
           {/* Chinese character — big and glowing */}
           <div className="mb-4">
             <span className="chinese-char text-text-primary">{master.chinese}</span>
@@ -126,6 +136,15 @@ export default function ReadingPage() {
 
         {/* ====== Talents Header ====== */}
         <div className="text-center my-8">
+          {/* Talents Section Icons */}
+          <div className="flex justify-center mb-5">
+            <img
+              src="/talents-icons.jpeg"
+              alt="Work Superpowers, Relationship Gifts, Natural Abilities"
+              className="rounded-xl shadow-lg max-w-full"
+              style={{ maxHeight: '240px', objectFit: 'contain' }}
+            />
+          </div>
           <h3 className="text-2xl font-mystical font-bold text-text-primary">
             And this is when your talents truly shine...
           </h3>
@@ -172,6 +191,15 @@ export default function ReadingPage() {
 
         {/* ====== Clashing Energies Teaser ====== */}
         <div className="glass-card p-6 text-center mb-8 border-accent-gold/20" style={{ animation: 'borderPulse 3s ease-in-out infinite' }}>
+          {/* Clashing Energies Banner */}
+          <div className="mb-5">
+            <img
+              src="/clashing-energies.jpeg"
+              alt="Clashing Elemental Energies"
+              className="rounded-xl mx-auto shadow-lg w-full"
+              style={{ maxHeight: '250px', objectFit: 'cover' }}
+            />
+          </div>
           <p className="text-text-primary leading-relaxed">
             {reading.clashingTeaser}
           </p>
