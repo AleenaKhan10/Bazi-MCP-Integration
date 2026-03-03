@@ -32,17 +32,15 @@ export default function MysticalLoader({ messages = [], duration = 60, progress 
     return () => clearInterval(timer)
   }, [duration, progress])
 
-  // 2. Message Carousel (Cycling)
+  // 2. Message Carousel (Sequential Cycling)
   useEffect(() => {
     if (!messages.length) return
+    let index = 0
 
     const messageInterval = setInterval(() => {
-      // Pick next message randomly or sequentially?
-      // Sequential is better for storytelling, Random is better for long waits.
-      // Let's do Random to avoid repetition feeling "stuck".
-      const randomIndex = Math.floor(Math.random() * messages.length)
-      setCurrentMessage(messages[randomIndex])
-    }, 4000) // Change every 4 seconds
+      index = (index + 1) % messages.length
+      setCurrentMessage(messages[index])
+    }, 5000) // Change every 5 seconds (sequential)
 
     return () => clearInterval(messageInterval)
   }, [messages])
@@ -70,7 +68,7 @@ export default function MysticalLoader({ messages = [], duration = 60, progress 
           ></div>
         </div>
         <span className="text-accent-gold font-mono text-xs tracking-widest">
-          {Math.round(displayProgress)}% COSMIC ALIGNMENT
+          {Math.round(displayProgress)}%
         </span>
       </div>
 
@@ -81,10 +79,6 @@ export default function MysticalLoader({ messages = [], duration = 60, progress 
          </p>
       </div>
 
-      {/* Wait Note */}
-      <p className="text-xs text-text-dim mt-4 italic opacity-60">
-        Please wait, consulting the stars takes time...
-      </p>
     </div>
   )
 }

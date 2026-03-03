@@ -130,14 +130,6 @@ export default function LandingPage() {
         {/* ====== CONTENT — Headline + Form ====== */}
         <div className="landing-content">
 
-          {/* Chi Manifestation Logo */}
-          <div className="animate-fade-in-up" style={{ marginBottom: '20px' }}>
-            <img 
-              src="/chi-logo.png" 
-              alt="Chi Manifestation" 
-              style={{ width: '80px', height: '80px', objectFit: 'contain', margin: '0 auto', display: 'block' }}
-            />
-          </div>
 
           {/* Bold Headline */}
           <h1
@@ -149,14 +141,13 @@ export default function LandingPage() {
               marginBottom: '16px',
             }}
           >
-            Unlock Your "Life Energy" Signature<br />
-            And It's Invisible Imprint On The World
+            Unlock Your "Life Energy" Signature And It's Invisible Imprint On The World
           </h1>
 
-          {/* Subtitle */}
-          <p className="landing-subtitle animate-fade-in-up-delay-1">
-            And discover simple <strong>"energy adjustments"</strong> that can <em>shift</em> you
-            to a <em>lifeline</em> of prosperity & abundance in just 5 minutes a day
+          {/* Subtitle — bigger font, bold+italic key words */}
+          <p className="landing-subtitle animate-fade-in-up-delay-1" style={{ fontSize: 'clamp(16px, 2.5vw, 22px)' }}>
+            And discover simple <strong>"Energy Adjustments"</strong> that can <strong><em>Shift</em></strong> you
+            to a <strong><em>Lifeline</em></strong> of prosperity & abundance in just 5 minutes a day
           </p>
 
           {/* Ornamental divider */}
@@ -295,51 +286,6 @@ export default function LandingPage() {
               🔒 Your information is 100% secure and will never be shared
             </p>
           </form>
-        </div>
-      </div>
-
-      {/* ====== BENEFITS SECTION ====== */}
-      <div className="benefits-section">
-        <h2
-          className="text-center font-mystical animate-fade-in-up"
-          style={{ fontSize: '22px', lineHeight: 1.5, marginBottom: '40px' }}
-        >
-          In your <span className="text-accent-pink font-bold">personalized BaZi report</span>, 
-          we'll reveal your Four Pillars of Destiny in ways you've 
-          <span className="text-accent-magenta font-bold"> NEVER </span> 
-          seen before...
-        </h2>
-
-        {/* Five Elements Image */}
-        <div className="flex justify-center mb-8 animate-fade-in-up">
-          <img
-            src="/five-elements-icons.jpeg"
-            alt="Five Elements - Wood, Fire, Earth, Metal, Water"
-            className="rounded-2xl shadow-lg max-w-full"
-            style={{ maxHeight: '360px', objectFit: 'contain' }}
-          />
-        </div>
-
-        <div className="animate-fade-in-up-delay-1">
-          {[
-            'Your hidden elemental strengths and which of the Five Elements (Wood, Fire, Earth, Metal, Water) dominates your life...',
-            'The cosmic timing of your fortune cycles — when to take bold action and when to wait...',
-            'Deep insights into your personality, career potential, and relationship compatibility based on your Day Master...',
-            'Secret patterns in your birth chart that reveal untapped talents and future opportunities...',
-            'Your personal Yin-Yang balance and how it shapes your health, wealth, and spiritual growth...',
-          ].map((text, i) => (
-            <div key={i} className="benefit-item">
-              <span className="benefit-icon">✦</span>
-              <p className="benefit-text">{text}</p>
-            </div>
-          ))}
-
-          <div className="benefit-item">
-            <span className="benefit-icon">✦</span>
-            <p className="benefit-text" style={{ color: '#d946ef', fontWeight: 600 }}>
-              And so much more...
-            </p>
-          </div>
         </div>
       </div>
     </>

@@ -18,6 +18,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuiz } from '../context/QuizContext'
 import DAY_MASTERS from '../data/dayMasters'
+import BaziTable from '../components/BaziTable'
 
 export default function IntroReadingPage() {
   const navigate = useNavigate()
@@ -43,14 +44,11 @@ export default function IntroReadingPage() {
 
         {/* ====== SECTION 1: Welcome Header ====== */}
         <div className="text-center mb-10 animate-fade-in-up">
-          <p className="text-accent-gold text-xs tracking-[0.25em] uppercase font-mystical mb-4">
-            ✦ YOUR LIFE ENERGY CHART READING ✦
-          </p>
-          <h1 className="text-2xl md:text-3xl font-mystical font-bold text-text-primary leading-snug mb-2">
-            Welcome To Your Life Energy Chart Reading {userName}.
+          <h1 className="text-2xl md:text-3xl font-mystical font-bold text-text-primary leading-snug mb-6">
+            Welcome to your life energy chart reading, {userName}.
           </h1>
-          <h2 className="text-xl md:text-2xl font-mystical font-bold text-gold-gradient leading-snug">
-            The First Aspect We'll Explore Is Your Day Master,
+          <h2 className="text-xl md:text-2xl font-mystical font-bold text-gold-gradient leading-relaxed">
+            The First Aspect We'll Explore Is Your <u>Day Master</u>,
             <br />
             Because It Reveals So Much About The Power Within You...
           </h2>
@@ -59,8 +57,14 @@ export default function IntroReadingPage() {
         {/* ====== SECTION 2: Day Master Intro ====== */}
         <div className="glass-card-inner p-6 md:p-8 mb-0 animate-fade-in-up-delay-1 intro-reading-content">
           <p>
-            That's because your <span className="text-accent-gold font-semibold">{dayMasterName}</span> Day Master has unique qualities that can completely shift the way that you tap into the resources around you...
+            That's because your <span className="text-accent-gold font-semibold">{dayMasterName}</span> <u>Day Master</u> has unique qualities that can completely shift the way that you tap into the resources around you...
           </p>
+
+          {/* ====== BaZi Table with Red Day Master Box ====== */}
+          <div className="text-center my-6">
+            <h3 className="text-xl font-mystical font-bold text-gold-gradient mb-2">Your Day Master is...</h3>
+          </div>
+          <BaziTable baziResult={baziResult} formData={formData} />
           <p>Unlike traditional personality readings, or even intelligence tests...</p>
           <p>
             Your Day Master offers you the key to a holistic and grounded system that can help you to see not just <em>how intelligent, lucky, or downright 'gifted'</em> you are...
@@ -92,7 +96,7 @@ export default function IntroReadingPage() {
         </div>
 
         {/* ====== SECTION 3: Core Engine + Frequencies ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-6 animate-fade-in-up-delay-2 intro-reading-content">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 animate-fade-in-up-delay-2 intro-reading-content">
           <p>It shows you how you create.</p>
           <p>It shows you how you make a real impact in the world.</p>
           <p>
@@ -127,7 +131,7 @@ export default function IntroReadingPage() {
         </div>
 
         {/* ====== SECTION 4: Gravitational Field ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-6 animate-fade-in-up-delay-3 intro-reading-content">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 animate-fade-in-up-delay-3 intro-reading-content">
           <p>Just as planets have gravitational fields that attract certain objects while repelling others...</p>
           <p>
             Your <span className="text-accent-gold font-semibold">{dayMasterName}</span> Day Master creates an invisible force field that draws specific experiences, people, and situations into your orbit.
@@ -149,7 +153,7 @@ export default function IntroReadingPage() {
         </div>
 
         {/* ====== SECTION 5: Now That's Just the Beginning ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-6 intro-reading-content">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 intro-reading-content">
           <h3 className="text-xl md:text-2xl font-mystical font-bold text-text-primary text-center mb-6">
             Now that's just the beginning, {userName}
           </h3>
@@ -174,19 +178,19 @@ export default function IntroReadingPage() {
         </div>
 
         {/* ====== SECTION 6: Ancient Masters ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-6 intro-reading-content">
-          <div className="text-center mb-6">
-            <h3 className="text-xl md:text-2xl font-mystical font-bold text-text-primary leading-snug">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 intro-reading-content">
+          <div className="text-center mb-6 px-4 md:px-12">
+            <h3 className="text-xl md:text-2xl font-mystical font-bold text-white leading-relaxed">
               What the Ancient Masters discovered
               <br />
-              <span className="text-gold-gradient">will give you chills that tingle down your spine, {userName}...</span>
+              will give you chills that tingle down your spine, {userName}...
             </h3>
           </div>
 
-          <p className="italic text-text-muted">
+          <p className="italic text-white">
             For over 2,000 years, Chinese emperors used your exact <span className="text-accent-gold">{dayMasterName}</span> Day Master pattern to make decisions that determined the fate of millions...
           </p>
-          <p className="italic text-text-muted">
+          <p className="italic text-white">
             The Imperial Astronomical Bureau identified that every person born carries one of ten "Heavenly Stems" that govern how they naturally transform energy into action.
           </p>
           <p>
@@ -204,7 +208,7 @@ export default function IntroReadingPage() {
         </div>
 
         {/* ====== SECTION 7: Xu Ziping's Discovery ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-6 intro-reading-content">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 intro-reading-content">
           <p>
             But Xu Ziping noticed something the imperial court records revealed: people with identical birth years often had completely different fates.
           </p>
@@ -240,12 +244,12 @@ export default function IntroReadingPage() {
         {/* ====== SECTION 8: Swimming Upstream + CTA ====== */}
         <div className="glass-card p-8 text-center mb-8 glow-gold-strong intro-reading-content">
           <div className="mb-8">
-            <p className="text-text-muted italic text-lg leading-relaxed mb-6">
+            <p className="text-text-muted italic leading-relaxed mb-6" style={{ fontSize: 'clamp(18px, 3vw, 24px)' }}>
               It's like discovering you've been
               <br />swimming upstream your entire life,
               <br />then finally turning around...
             </p>
-            <p className="text-text-primary leading-relaxed">
+            <p className="text-text-primary leading-relaxed" style={{ fontSize: 'clamp(16px, 2.5vw, 20px)' }}>
               And now, let's explore the powerful flow of energy
               <br />moving through your <span className="text-accent-gold font-semibold">{dayMasterName}</span> Day Master in breathtaking detail...
             </p>
@@ -263,7 +267,7 @@ export default function IntroReadingPage() {
         {/* Bottom decoration */}
         <div className="text-center mt-10 opacity-20">
           <span className="text-accent-gold text-xs tracking-[0.3em] font-mystical">
-            ☰ 命理分析 ☰
+            ☰ DESTINY ☰
           </span>
         </div>
       </div>

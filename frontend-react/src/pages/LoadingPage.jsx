@@ -1,6 +1,16 @@
 /* ===========================================
-   Loading Page — Mystical Celestial Design
-   =========================================== */
+   Loading Page — Dynamic User Data Messages
+   =========================================== 
+   
+   Changes from video feedback:
+   - Dynamic rotating text with actual user data
+   - Sequential message cycling (not random)
+   - Crystal ball GIF placeholder (user will provide final)
+   - Removed "cosmic alignment" + "consulting stars" (done in MysticalLoader)
+   - 3x thicker progress bar (done in CSS)
+   
+   BACKEND CONNECTIVITY: Unchanged. getBaziOnly() call identical.
+*/
 
 import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -8,14 +18,10 @@ import { useQuiz } from '../context/QuizContext'
 import { getBaziOnly } from '../api/client'
 import MysticalLoader from '../components/MysticalLoader'
 
-const LOADING_MESSAGES = [
-  "Aligning the cosmic energies...",
-  "Mapping the Four Pillars of Destiny 四柱命理...",
-  "Extracting your Day Master element...",
-  "Consulting the ancient wisdom of BaZi...",
-  "Calculating Heavenly Stems interactions...",
-  "Balancing Yin and Yang forces...",
-  "Determining the strength of your Chart..."
+// Month names for formatting
+const MONTH_NAMES = [
+  '', 'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
 ]
 
 export default function LoadingPage() {
@@ -24,6 +30,33 @@ export default function LoadingPage() {
   const [isComplete, setIsComplete] = useState(false)
   const [error, setError] = useState(null)
   const apiCalled = useRef(false)
+
+  // --- Build dynamic loading messages from user's form data ---
+  const firstName = formData.firstName || 'Your'
+  const monthNum = parseInt(formData.birthMonth) || 1
+  const monthName = MONTH_NAMES[monthNum] || 'January'
+  const day = formData.birthDay || '1'
+  const year = formData.birthYear || '1990'
+  const time = formData.birthTime || '12:00'
+  const country = formData.country || ''
+  const state = formData.state || ''
+  const city = formData.city || ''
+
+  // Build location string for message iii
+  const locationParts = [country, state, city].filter(Boolean)
+  const locationString = locationParts.join(', ')
+
+  // The 4 exact messages from the video/document:
+  // i)  Calculating %FIRSTNAME%'s "Life Energy Chart"...
+  // ii) Born on %MONTH-DAY-YEAR% at %BIRTH TIMING%...
+  // iii)Born in %BIRTH COUNTRY%, %BIRTH STATE%, %BIRTH CITY%...
+  // iv) Finalizing last few details...
+  const LOADING_MESSAGES = [
+    `Calculating ${firstName}'s "Life Energy Chart"...`,
+    `Born on ${monthName} ${day}, ${year} at ${time}...`,
+    `Born in ${locationString}...`,
+    `Finalizing last few details...`,
+  ]
 
   // Guard: redirect if no form data
   useEffect(() => {
@@ -36,14 +69,13 @@ export default function LoadingPage() {
     if (apiCalled.current || !formData.firstName) return
     apiCalled.current = true
 
-    // API call
+    // API call (UNCHANGED from before)
     getBaziOnly({
       name: formData.firstName,
       gender: formData.gender,
       birthDate: `${formData.birthYear}-${formData.birthMonth.padStart(2, '0')}-${formData.birthDay.padStart(2, '0')}`,
       birthTime: formData.birthTime,
       // Location string — include state if available for better geocoding
-      // "Garden Ridge, Texas, United States" > "Garden Ridge, United States"
       location: (formData.city && formData.country) 
         ? formData.state
           ? `${formData.city}, ${formData.state}, ${formData.country}`
@@ -73,6 +105,33 @@ export default function LoadingPage() {
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-md text-center">
         
+        {/* ====== Crystal Ball / GIF ====== */}
+        {/* Using provided reference GIF. User will replace with final version. */}
+        <div className="mb-8 flex justify-center animate-fade-in-up">
+          <img 
+            src="/crystal-ball.gif" 
+            alt="Crystal Ball" 
+            className="w-28 h-28 object-contain"
+            onError={(e) => {
+              // Fallback: if GIF not found, show emoji spinner
+              e.target.style.display = 'none'
+              e.target.nextSibling.style.display = 'flex'
+            }}
+          />
+          {/* Fallback spinner if GIF not found */}
+          <div 
+            className="relative w-24 h-24" 
+            style={{ display: 'none' }}
+          >
+            <div className="absolute inset-0 rounded-full border border-accent-gold/20 animate-rotate-slow"></div>
+            <div className="absolute inset-2 rounded-full border border-dashed border-accent-gold/10"
+                 style={{ animation: 'rotateSlow 15s linear infinite reverse' }}></div>
+            <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-2xl animate-pulse">🔮</span>
+            </div>
+          </div>
+        </div>
+
         {/* ====== Title ====== */}
         <h2 className="text-2xl font-mystical font-bold text-gold-gradient mb-8 animate-fade-in-up-delay-1">
           Preparing Your Reading...
@@ -81,7 +140,7 @@ export default function LoadingPage() {
         {/* ====== Mystical Loader ====== */}
         <MysticalLoader 
             messages={LOADING_MESSAGES} 
-            duration={25} // 25 seconds for Day Master calc
+            duration={25}
             progress={isComplete ? 100 : undefined} 
         />
 
@@ -93,13 +152,6 @@ export default function LoadingPage() {
             </p>
           </div>
         )}
-
-        {/* Bottom decoration */}
-        <div className="mt-12 opacity-20">
-          <p className="text-xs text-accent-gold tracking-[0.3em] font-mystical">
-            四柱命理 · FOUR PILLARS
-          </p>
-        </div>
       </div>
     </div>
   )
