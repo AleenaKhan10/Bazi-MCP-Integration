@@ -105,31 +105,14 @@ export default function LoadingPage() {
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-md text-center">
         
-        {/* ====== Crystal Ball / GIF ====== */}
-        {/* Using provided reference GIF. User will replace with final version. */}
+        {/* ====== Loading Animation GIF ====== */}
         <div className="mb-8 flex justify-center animate-fade-in-up">
           <img 
-            src="/crystal-ball.gif" 
-            alt="Crystal Ball" 
-            className="w-28 h-28 object-contain"
-            onError={(e) => {
-              // Fallback: if GIF not found, show emoji spinner
-              e.target.style.display = 'none'
-              e.target.nextSibling.style.display = 'flex'
-            }}
+            src="/loading_page.png" 
+            alt="Loading Animation" 
+            className="w-36 h-36 object-contain"
+            style={{ animation: 'rotateSlow 4s linear infinite' }}
           />
-          {/* Fallback spinner if GIF not found */}
-          <div 
-            className="relative w-24 h-24" 
-            style={{ display: 'none' }}
-          >
-            <div className="absolute inset-0 rounded-full border border-accent-gold/20 animate-rotate-slow"></div>
-            <div className="absolute inset-2 rounded-full border border-dashed border-accent-gold/10"
-                 style={{ animation: 'rotateSlow 15s linear infinite reverse' }}></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-2xl animate-pulse">🔮</span>
-            </div>
-          </div>
         </div>
 
         {/* ====== Title ====== */}

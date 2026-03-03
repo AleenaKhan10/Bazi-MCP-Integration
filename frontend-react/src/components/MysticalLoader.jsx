@@ -49,15 +49,6 @@ export default function MysticalLoader({ messages = [], duration = 60, progress 
 
   return (
     <div className="w-full max-w-md mx-auto text-center animate-fade-in-up">
-      {/* Mystical Spinner */}
-      <div className="relative mb-8 mx-auto w-24 h-24">
-        <div className="absolute inset-0 rounded-full border border-accent-gold/20 animate-rotate-slow"></div>
-        <div className="absolute inset-2 rounded-full border border-dashed border-accent-gold/10"
-             style={{ animation: 'rotateSlow 15s linear infinite reverse' }}></div>
-        <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-2xl animate-pulse">🔮</span>
-        </div>
-      </div>
 
       {/* Progress Bar */}
       <div className="mb-4">

@@ -28,7 +28,6 @@ const CLOSING_CONTENT = {
     
     paragraphs: [
       'Right now I\'ve calculated that your Day Master is getting attacked by {attacking} Elements!',
-      'It\'s exactly like Rock Paper Scissors.',
       'You\'re paper—and {attacking} is the scissors cutting straight through your natural strengths.',
       'And this can show up in a variety of ways...',
       'If you feel disconnected from your life\'s purpose...',
@@ -115,7 +114,7 @@ const CLOSING_CONTENT = {
     adjustmentsTitle: 'And As You Discover The Simple "Adjustments" That Take No Longer Than 5-Minutes In Your Life...',
 
     adjustmentsParagraphs: [
-      'You\'ll start to catch on to the \'wind of luck\' that will help you to move towards your goals...',
+      'You\'ll start to catch on to the \'winds of luck\' that will help you to move towards your goals...',
       'Turning even the most \'violent storms\' in your life into tailwinds that make your ship sail faster than you could\'ve ever imagined.',
       'And even if you\'re \'lost at sea\'... unsure of where \'treasure island\' is for you...',
       'Your Life Energy Attunement Report will show you where the hidden treasures of Gold are to be found in your life – so that you can reach it, by getting a \'ride\' from the universe...',
@@ -294,19 +293,17 @@ const CLOSING_CONTENT = {
 
     // --- Pricing Tiers ---
     standardTier: {
-      name: 'Essential',
+      name: 'ESSENTIAL',
       price: 18.88,
       originalPrice: null,
       badge: null,
-      description: 'Your personalized Life Energy Attunement Report',
+      description: 'Your Personalized Life Energy Attunement Report',
       features: [
-        'Complete Life Energy Attunement Report',
-        '10-Year Luck Cycle Analysis',
+        'Life Energy Report',
         '3 Life Path Simulations',
-        '5 Elements Analysis',
-        'Career & Wealth Insights',
-        'Relationship Compatibility Guide',
-        'PDF Report Delivery (72 hours)',
+        'Luck Cycle Analysis',
+        '5 Elements Deep Dive',
+        'All Report Features',
       ],
       buttonText: 'ADD TO CART',
     },
@@ -320,13 +317,13 @@ const CLOSING_CONTENT = {
       recurringPrice: '$29/month after first month. Cancel anytime.',
       features: [
         'Everything in Essential, PLUS:',
-        'Full Inner & Outer Feng Shui Course ($2,000+ value)',
-        'Monthly Coaching Calls (Live with Master Dom)',
-        '24-Hour Expert Support',
-        'Monthly BaZi Forecasts (Personalized to you)',
-        'Private Community',
-        'New Resources Monthly',
-        'Win Feng Shui Products',
+        'Full Inner & Outer Feng Shui Course ($1,888+ value)',
+        'Monthly Coaching Calls - Live with Master Dom ($388 value)',
+        '24-Hour Expert Support ($688 value)',
+        'Monthly BaZi Forecasts - Personalized to you ($188 value)',
+        'Private Community ($288 value)',
+        'New Resources Monthly ($188 value)',
+        'Win Feng Shui Products (Up to $288 value)',
       ],
       bonuses: [],
       bonusTotal: 0,

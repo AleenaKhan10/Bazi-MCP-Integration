@@ -35,23 +35,9 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuiz } from '../context/QuizContext'
-import { generateFullReport } from '../api/client'
 import DAY_MASTERS from '../data/dayMasters'
 import CLOSING_CONTENT from '../data/closingPageContent'
-import MysticalLoader from '../components/MysticalLoader'
 
-const REPORT_MESSAGES = [
-  "Initiating Quantum BaZi Analysis...",
-  "Calculating 10-Year Luck Cycles (大运)...",
-  "Analyzing Wealth Vaults & Hidden Potentials...",
-  "Checking for Void Stars (空亡)...",
-  "Consulting the I-Ching for Strategic Guidance...",
-  "Generating Life Path Simulations...",
-  "Balancing Five Elements Algorithm...",
-  "Extracting Golden Wisdom from Ancient Texts...",
-  "Polishing Report Headings & Formatting...",
-  "Finalizing Your Destiny Blueprint..."
-]
 
 export default function ClosingPage() {
   const navigate = useNavigate()
@@ -91,6 +77,13 @@ export default function ClosingPage() {
       .replace(/\{name\}/g, userName)
       .replace(/\{dayMaster\}/g, dayMasterName)
       .replace(/\{attacking\}/g, attackingName)
+  }
+
+  // --- Rich text helper: renders bold (**), underline (__), italic (_), yellow {{text}} ---
+  const renderRichText = (text) => {
+    const processed = r(text)
+    // Split by formatting markers and reconstruct with JSX
+    return processed
   }
 
   // --- Scroll to top on page change ---
@@ -196,20 +189,24 @@ export default function ClosingPage() {
             ============================================================ */}
         {step === 1 && (
           <div className="animate-fade-in-up">
-            {/* Badge */}
-            <div className="text-center mb-4">
-              <span className="text-accent-gold text-xs tracking-[0.3em] font-mystical uppercase">
-                ✦ Your Life Energy Chart Reading ✦
-              </span>
-            </div>
 
-            {/* Title */}
-            <h1 className="closing-section-heading text-center mb-8">
-              {r(c.step1.title)}
+            {/* Title — underline attacking element */}
+            <h1 className="closing-section-heading text-center mb-8 px-4 md:px-8">
+              A Crucial Part of Your {dayMasterName} Energy Flow Is Currently Being 'Suffocated' & Blocked... By Strong Clashing <u className="decoration-accent-gold">{attackingName}</u> Energies!
             </h1>
 
+            {/* Five Element Destructive Cycle Diagram — MOVED UP after heading */}
+            <div className="flex justify-center mb-8">
+              <img
+                src="/destructive-cycle.jpeg"
+                alt="Five Element Destructive Cycle - Wood, Fire, Earth, Metal, Water"
+                className="rounded-xl shadow-lg"
+                style={{ maxHeight: '400px', maxWidth: '100%', objectFit: 'contain' }}
+              />
+            </div>
+
             {/* Main paragraphs */}
-            <div className="glass-card-inner p-6 md:p-8 mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-0">
               <div className="closing-paragraph">
                 {c.step1.paragraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -235,19 +232,10 @@ export default function ClosingPage() {
             </div>
 
             {/* Rock Paper Scissors section */}
-            <div className="glass-card-inner p-6 md:p-8 mb-6">
-              <h2 className="closing-subheading text-center mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-6">
+              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step1.rpsTitle)}
               </h2>
-              {/* Five Element Destructive Cycle Diagram */}
-              <div className="flex justify-center mb-6">
-                <img
-                  src="/destructive-cycle.jpeg"
-                  alt="Five Element Destructive Cycle - Wood, Fire, Earth, Metal, Water"
-                  className="rounded-xl shadow-lg"
-                  style={{ maxHeight: '400px', maxWidth: '100%', objectFit: 'contain' }}
-                />
-              </div>
               <div className="closing-paragraph">
                 {c.step1.rpsParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -278,9 +266,9 @@ export default function ClosingPage() {
             {/* --- Soul Seed Section (EXPANDABLE — hidden until clicked) --- */}
             {showSoulSeed && (
               <div className="animate-fade-in-up">
-                <div className="glass-card-inner p-6 md:p-8 mb-6">
-                  <h2 className="closing-subheading text-center mb-6">
-                    {r(c.step2.title)}
+                <div className="closing-flow-section p-6 md:p-8 mb-6">
+                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+                    It's Like Finding The Perfect Soil, Water, Sunlight, Temperature & Fertilizer That Can Allow Your "<span className="text-accent-gold font-bold">Soul Seed</span>" To Naturally Flourish & To Manifest Talents That Bear Abundant, Heavy & Ripe Fruit For You... In All Aspects of Your Life...
                   </h2>
                   {/* Soul Seed Growth Metaphor */}
                   <div className="flex justify-center mb-6">
@@ -298,11 +286,14 @@ export default function ClosingPage() {
                   </div>
 
                   {/* Numbered list 1) and 2) */}
-                  <ol className="closing-numbered-list">
+                  <div className="space-y-3 my-6 pl-4">
                     {c.step2.numberedList.map((item, i) => (
-                      <li key={i}>{r(item)}</li>
+                      <div key={i} className="flex items-start gap-2">
+                        <span className="text-accent-gold font-bold flex-shrink-0">{i + 1})</span>
+                        <p className="text-text-muted leading-relaxed text-[15px]">{r(item)}</p>
+                      </div>
                     ))}
-                  </ol>
+                  </div>
 
                   <div className="closing-paragraph mt-4">
                     {c.step2.paragraphs2.map((p, i) => (
@@ -342,7 +333,7 @@ export default function ClosingPage() {
           <div className="animate-fade-in-up">
 
             {/* --- Report Pitch Title --- */}
-            <h1 className="closing-section-heading text-center mb-8">
+            <h1 className="closing-section-heading text-center mb-8 px-4 md:px-8">
               {r(c.step2.reportTitle)}
             </h1>
 
@@ -356,7 +347,7 @@ export default function ClosingPage() {
               />
             </div>
 
-            <div className="glass-card-inner p-6 md:p-8 mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-0">
               <p className="text-accent-gold text-center text-lg font-medium mb-6 italic">
                 {r(c.step2.reportSubtitle)}
               </p>
@@ -368,8 +359,8 @@ export default function ClosingPage() {
             </div>
 
             {/* Adjustments */}
-            <div className="glass-card-inner p-6 md:p-8 mb-6">
-              <h2 className="closing-subheading text-center mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-0">
+              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step2.adjustmentsTitle)}
               </h2>
               <div className="closing-paragraph">
@@ -380,8 +371,8 @@ export default function ClosingPage() {
             </div>
 
             {/* Direct Forces */}
-            <div className="glass-card-inner p-6 md:p-8 mb-6">
-              <h2 className="closing-subheading text-center mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-6">
+              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step2.directTitle)}
               </h2>
               <div className="closing-paragraph">
@@ -392,11 +383,11 @@ export default function ClosingPage() {
             </div>
 
             {/* --- Harness section --- */}
-            <h1 className="closing-section-heading text-center mb-8">
+            <h1 className="closing-section-heading text-center mb-8 px-4 md:px-8">
               {r(c.step3.harnessTitle)}
             </h1>
 
-            <div className="glass-card-inner p-6 md:p-8 mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-6">
               <div className="closing-paragraph">
                 {c.step3.harnessParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -413,11 +404,11 @@ export default function ClosingPage() {
             </div>
 
             {/* Beginning of report */}
-            <h2 className="closing-subheading text-center mb-6">
+            <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
               {r(c.step3.beginningTitle)}
             </h2>
 
-            <div className="glass-card-inner p-6 md:p-8 mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-6">
               <div className="closing-paragraph">
                 {c.step3.beginningParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -437,9 +428,15 @@ export default function ClosingPage() {
 
             {/* 4 Pillars */}
             {c.step3.pillars.map((pillar) => (
-              <div key={pillar.number} className="glass-card-inner p-6 md:p-8 mb-6">
-                <h3 className="text-lg md:text-xl font-mystical text-accent-gold text-center mb-5 leading-snug">
-                  {r(pillar.title)}
+              <div key={pillar.number} className="closing-flow-section p-6 md:p-8 mb-6">
+                <h3 className="text-lg md:text-xl font-mystical text-accent-gold text-center mb-5 leading-snug px-4 md:px-8">
+                  {pillar.number === 4 ? (
+                    <>
+                      Most Importantly – The Biggest "Needle Mover" That You'll Get In Your Life Energy Attunement Report Is The "<u>Peak Luck Periods</u>" That Allow You To Make Leaps & Bounds In Just Days!
+                    </>
+                  ) : (
+                    r(pillar.title)
+                  )}
                 </h3>
                 
                 {pillar.intro && (
@@ -478,8 +475,8 @@ export default function ClosingPage() {
             ))}
 
             {/* Simulation */}
-            <div className="glass-card-inner p-6 md:p-8 mb-6">
-              <h2 className="closing-subheading text-center mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-6">
+              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step3.simulationTitle)}
               </h2>
               <div className="closing-paragraph">
@@ -490,8 +487,8 @@ export default function ClosingPage() {
             </div>
 
             {/* Recommendations */}
-            <div className="glass-card-inner p-6 md:p-8 mb-6">
-              <h2 className="closing-subheading text-center mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-6">
+              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step3.recommendationsTitle)}
               </h2>
               <p className="text-text-muted mb-4">You'd be able to…</p>
@@ -509,14 +506,14 @@ export default function ClosingPage() {
             </div>
 
             {/* ====== PRICING INTRO ====== */}
-            <h1 className="closing-section-heading text-center mb-2">
+            <h1 className="closing-section-heading text-center mb-2 px-4 md:px-8">
               {r(c.step4.pricingTitle)}
             </h1>
             <p className="text-center text-text-muted mb-8 italic">
               {r(c.step4.pricingSubtitle)}
             </p>
 
-            <div className="glass-card-inner p-6 md:p-8 mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-6">
               <div className="closing-paragraph">
                 {c.step4.pricingParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -534,80 +531,219 @@ export default function ClosingPage() {
               </div>
             </div>
 
-            {/* ========================================
-                ADD TO CART — EXPAND button (not navigation!)
-                
-                Document line 285: First [Add To Cart].
-                Manager: "when the first add to cart appears, don't go
-                to the second page, instead show the text below it."
-                
-                This reveals: Inclusions, Pricing Tables, Testimonials,
-                Ancient Sciences, Guarantee, Final Pricing.
-                ======================================== */}
-            {!showPostCart && (
-              <div className="text-center mt-8 mb-6">
-                <button 
-                  onClick={() => setShowPostCart(true)}
-                  className="btn-mystical text-lg tracking-wider px-10 py-5"
-                >
-                  🛒 Add To Cart
-                </button>
-                <p className="text-text-dim text-xs mt-3">
-                  Secure checkout · 60-day money-back guarantee
-                </p>
-              </div>
-            )}
+            {/* ====== POST-CART CONTENT (always visible) ====== */}
+            <div>
 
-            {/* ====== POST-CART EXPANDABLE CONTENT ====== */}
-            {/* Everything below is hidden until user clicks "Add To Cart" */}
-            {showPostCart && (
-              <div className="animate-fade-in-up">
-
-                {/* ====== INCLUSIONS LIST ====== */}
-                <div className="glass-card-inner p-6 md:p-8 mb-6">
-                  <h2 className="closing-subheading text-center mb-6">
+                {/* ====== INCLUSIONS LIST — Numbered 1-13 ====== */}
+                <div className="closing-flow-section p-6 md:p-8 mb-6">
+                  <h1 className="closing-section-heading text-center mb-6 px-4 md:px-8">
                     {r(c.step4.inclusionsTitle)}
-                  </h2>
-                  <ul className="closing-inclusions-list">
+                  </h1>
+                  <ol className="closing-numbered-list">
                     {c.step4.inclusions.map((item, i) => (
                       <li key={i}>
-                        <span className="text-accent-gold mr-2 flex-shrink-0">●</span>
+                        <span className="text-accent-gold mr-2 font-bold flex-shrink-0">{i + 1}.</span>
                         <span>{r(item)}</span>
                       </li>
                     ))}
-                  </ul>
+                  </ol>
                 </div>
 
-                {/* ====== PRICING TABLE #1 (after inclusions) ====== */}
+                {/* ====== NEW: FENG SHUI IMMERSION BUNDLE SECTION ====== */}
+                <div className="closing-flow-section p-6 md:p-8 mb-8">
+                  <h2 className="text-base md:text-lg font-mystical font-bold text-accent-gold text-center mb-6 italic px-4 md:px-8 leading-relaxed">
+                    Special One Time Offer Only On This Page For SERIOUS FENG SHUI LEARNERS That Want To Use The FULL Bazi System – Using The "Inner & Outer" Feng Shui Method To Completely Transform Your Life For Just $20 More Dollars
+                  </h2>
+                  <h3 className="text-lg md:text-xl font-mystical font-bold text-text-primary text-center mb-8">
+                    Introducing 📿 THE COMPLETE FENG SHUI IMMERSION BUNDLE 📿
+                  </h3>
+
+                  <div className="space-y-5 text-text-muted leading-relaxed">
+                    {/* Checklist items */}
+                    <div className="flex items-start gap-3">
+                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
+                      <p className="text-sm"><strong className="text-text-primary">Everything in Your Life Energy Attunement Report ($18.88 value)</strong></p>
+                    </div>
+
+                    <p className="text-accent-gold font-bold text-center text-base">PLUS:</p>
+
+                    <div className="flex items-start gap-3">
+                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
+                      <div>
+                        <p className="text-sm"><strong className="text-text-primary">Full Unlimited Access to Chi Manifestation’s Proprietary Inner & Outer Feng Shui Program</strong></p>
+                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
+                          <li>The complete recorded lessons and activity worksheets created by the founder of Chi Manifestation, Ben, and a renowned veteran Feng Shui Master from Singapore – Master Dom.</li>
+                          <li>This is the EXACT system our private clients pay thousands to access.</li>
+                          <li>Now yours to study at your own pace.</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
+                      <div>
+                        <p className="text-sm"><strong className="text-text-primary">24-Hour Client Success Support</strong></p>
+                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
+                          <li>Questions about your worksheets? Confused about an activity?</li>
+                          <li>Message the Client Success team and get answers within 24 hours.</li>
+                          <li>It’s like having a Feng Shui coach walking alongside you.</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
+                      <div>
+                        <p className="text-sm"><strong className="text-text-primary">Outer Feng Shui Monthly Coaching Calls with Master Dom</strong></p>
+                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
+                          <li>Live Q&A sessions where you can ask Master Dom anything.</li>
+                          <li>First-come, first-served.</li>
+                          <li>Topics planned by Master Dom himself based on what his students need most.</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
+                      <div>
+                        <p className="text-sm"><strong className="text-text-primary">Customized BaZi Monthly Forecast</strong></p>
+                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
+                          <li>Master Dom personally shares which days are lucky for wealth, relationships, and conflict based on YOUR unique Bazi chart.</li>
+                          <li>It’s like having a radar that warns you of storms... and highlights golden opportunities.</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
+                      <div>
+                        <p className="text-sm"><strong className="text-text-primary">New Monthly Resources</strong></p>
+                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
+                          <li>Fresh lessons, soundtracks, and tools added every month.</li>
+                          <li>Designed to accelerate your results.</li>
+                          <li>Request a topic and you might see it covered next month.</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
+                      <div>
+                        <p className="text-sm"><strong className="text-text-primary">Private Community Access</strong></p>
+                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
+                          <li>Join like-minded individuals from around the world.</li>
+                          <li>Support each other. Learn and flourish together.</li>
+                          <li>Because you can only go so far by doing it alone. But when you do it together, the sky’s the limit.</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
+                      <div>
+                        <p className="text-sm"><strong className="text-text-primary">Monthly "Stand A Chance to Win" Events</strong></p>
+                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
+                          <li>Participate in the community, earn points, and win physical Feng Shui products.</li>
+                          <li>Shipping fully covered by us.</li>
+                          <li>The more you engage, the more you win.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* === What Most People Don't Realize === */}
+                <div className="closing-flow-section p-6 md:p-8 mb-8">
+                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8 whitespace-nowrap">
+                    ⚠️ HERE’S WHAT MOST PEOPLE DON’T REALIZE ⚠️
+                  </h2>
+                  <div className="closing-paragraph text-center">
+                    <p>Your Life Energy Attunement Report shows you WHAT needs to change.</p>
+                    <p>But the Feng Shui Immersion Bundle shows you HOW to change it.</p>
+                    <p>Without the "how"...</p>
+                    <p>You're holding a treasure map with no shovel.</p>
+                    <p>You'll know you're destined for wealth, love, and success...</p>
+                    <p>But you won't know how to claim it.</p>
+                    <p>That's the trap most people fall into.</p>
+                    <p>They get their Bazi read. Feel excited for a few days. Then slowly slip back into the same patterns.</p>
+                    <p>Because knowing isn't enough.</p>
+                    <p className="text-accent-gold font-bold mt-4">You need the tools. The guidance. The ongoing support.</p>
+                  </div>
+                </div>
+
+                {/* === The Investment === */}
+                <div className="closing-flow-section p-6 md:p-8 mb-8">
+                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+                    💰 HERE'S THE INVESTMENT 💰
+                  </h2>
+                  <div className="closing-paragraph text-center">
+                    <p>If you wanted to learn just Outer Feng Shui from Master Dom privately... You'd pay $2,000+ just for the initial consultation. Then $500/month for ongoing coaching.</p>
+                    <p>But because you're taking action TODAY...</p>
+                    <p className="text-text-primary font-bold text-lg">You're not paying $2,000. Not $500. Not even $200.</p>
+                    <p>Add the Complete Feng Shui Immersion Bundle to your order right now...</p>
+                    <p className="text-accent-gold font-bold text-xl mt-4">And pay just $38.88 for your first month.</p>
+                    <p className="text-text-muted text-sm mt-2">After your first month, you'll continue for just $29/month. Cancel anytime. No contracts. No commitments.</p>
+                  </div>
+                </div>
+
+                {/* === No-Brainer Decision === */}
+                <div className="closing-flow-section p-6 md:p-8 mb-8">
+                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+                    ⚡ THE NO-BRAINER DECISION ⚡
+                  </h2>
+                  <div className="closing-paragraph text-center">
+                    <p>You're already investing $18.88 in your Life Energy Attunement Report. That's smart.</p>
+                    <p className="text-text-primary font-bold">But for just $20 more today... You get EVERYTHING you need to actually transform your life.</p>
+                    <p className="text-accent-gold font-bold text-lg mt-4">$38.88 total for your first month.</p>
+                    <p>That's less than a dinner out. Less than a tank of gas.</p>
+                    <p>For the complete system that emperors used to build dynasties.</p>
+                    <p className="mt-4">And if after 30 days you don't feel the shift... If you don't see opportunities appearing... Just cancel. No hard feelings. You keep everything from your first month.</p>
+                    <p className="text-accent-gold font-bold mt-4">So there's zero risk. Only upside.</p>
+                  </div>
+                </div>
+
+                {/* ====== PRICING TABLE #1 (after bundle section) ====== */}
                 <PricingTable />
 
                 {/* ====== TESTIMONIALS ====== */}
-                <h2 className="closing-subheading text-center mb-6 mt-10">
+                <h2 className="closing-subheading text-center mb-6 mt-10 px-4 md:px-8">
                   And This Is Why We've Been Able To Get Results For Hundreds of Our Clients Who Trust Us With Their Growth…
                 </h2>
 
                 <div className="space-y-5 mb-8">
-                  {c.step4.testimonials.map((t, i) => (
-                    <div key={i} className="testimonial-card">
-                      <div className="testimonial-header">
-                        <div className="testimonial-avatar">
-                          {t.name.charAt(0)}
+                  {c.step4.testimonials.map((t, i) => {
+                    // Real US stock photos
+                    const avatarPhotos = [
+                      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
+                      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+                      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face'
+                    ]
+                    const avatarUrl = avatarPhotos[i] || avatarPhotos[0]
+                    
+                    return (
+                      <div key={i} className="testimonial-card">
+                        <div className="testimonial-header">
+                          <img 
+                            src={avatarUrl}
+                            alt={t.name}
+                            className="w-12 h-12 rounded-full object-cover border-2 border-accent-gold/30"
+                          />
+                          <div>
+                            <p className="text-text-primary font-bold text-sm">{t.name}</p>
+                            <p className="text-text-dim text-xs">{t.title}</p>
+                          </div>
                         </div>
-                        <div>
-                          <p className="text-text-primary font-bold text-sm">{t.name}</p>
-                          <p className="text-text-dim text-xs">{t.title}</p>
-                        </div>
+                        <p className="text-text-muted leading-relaxed text-[14px] italic">
+                          "{t.quote}"
+                        </p>
                       </div>
-                      <p className="text-text-muted leading-relaxed text-[14px] italic">
-                        "{t.quote}"
-                      </p>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
 
                 {/* ====== ANCIENT SCIENCES ====== */}
-                <div className="glass-card-inner p-6 md:p-8 mb-6">
-                  <h2 className="closing-subheading text-center mb-6">
+                <div className="closing-flow-section p-6 md:p-8 mb-6">
+                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                     {r(c.step4.scienceTitle)}
                   </h2>
                   {/* Ancient Sciences Historical Image */}
@@ -642,9 +778,15 @@ export default function ClosingPage() {
 
                 {/* ====== 60-DAY GUARANTEE ====== */}
                 <div className="guarantee-section">
-                  <div className="guarantee-badge-icon">🛡️</div>
-                  <h2 className="closing-subheading text-center mb-4">
-                    {r(c.step4.guaranteeTitle)}
+                  <div className="flex justify-center mb-4">
+                    <img 
+                      src="/money-back-guarantee.png" 
+                      alt="60-Day Money Back Guarantee"
+                      className="w-24 h-24 object-contain"
+                    />
+                  </div>
+                  <h2 className="closing-subheading text-center mb-4 px-4 md:px-8">
+                    {r(c.step4.guaranteeTitle)}.
                   </h2>
                   <div className="closing-paragraph">
                     {c.step4.guaranteeParagraphs.map((p, i) => (
@@ -656,115 +798,7 @@ export default function ClosingPage() {
                 {/* ====== PRICING TABLE #3 (final, after guarantee) ====== */}
                 <PricingTable />
 
-                {/* ====== OR — FREE REPORT PREVIEW (Working Backend) ====== */}
-                <div className="text-center my-8">
-                  <div className="ornament-divider max-w-xs mx-auto mb-4">
-                    <span>OR</span>
-                  </div>
-                  <p className="text-text-muted text-sm mb-4">
-                    Not ready to purchase yet? Generate a FREE preview of your report!
-                  </p>
-                </div>
-
-                {/* --- Backend Report Generator (CONNECTIVITY UNCHANGED) --- */}
-                <div className="glass-card p-7 text-center glow-gold animate-fade-in-scale">
-                  <h3 className="text-xl font-mystical font-bold text-gold-gradient mb-3">
-                    Get Your Complete 13-Section BaZi Report
-                  </h3>
-                  <p className="text-text-muted text-sm mb-6 max-w-md mx-auto">
-                    Including life path simulations, luck cycles, career guidance, wealth strategies, health zones, and feng shui recommendations.
-                  </p>
-
-                  {generating ? (
-                    <MysticalLoader 
-                      messages={REPORT_MESSAGES} 
-                      duration={210}
-                    />
-                  ) : !reportResult ? (
-                    <button
-                      onClick={async () => {
-                        setGenerating(true)
-                        setReportError(null)
-                        try {
-                          const result = await generateFullReport({
-                            name: userName,
-                            email: formData.email,
-                            gender: formData.gender,
-                            birthDate: `${formData.birthYear}-${formData.birthMonth.padStart(2, '0')}-${formData.birthDay.padStart(2, '0')}`,
-                            birthTime: formData.birthTime,
-                            location: (formData.city && formData.country) 
-                              ? formData.state
-                                ? `${formData.city}, ${formData.state}, ${formData.country}`
-                                : `${formData.city}, ${formData.country}`
-                              : 'Unknown Location',
-                          })
-                          setReportResult(result)
-                        } catch (err) {
-                          setReportError(err.message || 'Failed to generate report')
-                        } finally {
-                          setGenerating(false)
-                        }
-                      }}
-                      className="btn-mystical text-base tracking-wider transition-all duration-300 transform hover:scale-105"
-                    >
-                      ✦ GENERATE MY FREE REPORT PREVIEW
-                    </button>
-                  ) : (
-                    <div className="space-y-4 animate-fade-in-scale">
-                      <div className="bg-success/10 border border-success/20 rounded-xl p-4">
-                        <p className="text-success font-medium">✅ Report Generated!</p>
-                      </div>
-                      <div className="flex justify-center gap-3">
-                        {reportResult.html_url && (
-                          <a
-                            href={reportResult.html_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-5 py-2.5 rounded-xl bg-accent-teal/10 border border-accent-teal/20 text-accent-teal text-sm font-medium hover:bg-accent-teal/20 transition-all"
-                          >
-                            📄 View HTML
-                          </a>
-                        )}
-                        {reportResult.pdf_url && (
-                          <a
-                            href={reportResult.pdf_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-5 py-2.5 rounded-xl bg-accent-gold/10 border border-accent-gold/20 text-accent-gold text-sm font-medium hover:bg-accent-gold/20 transition-all"
-                          >
-                            📥 Download PDF
-                          </a>
-                        )}
-                      </div>
-                      {reportResult.email_sent && (
-                        <p className="text-text-dim text-xs">
-                          ✉️ Report also sent to {formData.email}
-                        </p>
-                      )}
-                    </div>
-                  )}
-
-                  {reportError && !generating && (
-                    <div className="mt-4 bg-error/10 border border-error/20 rounded-xl p-4">
-                      <p className="text-error text-sm">{reportError}</p>
-                      <button
-                        onClick={() => { setReportError(null) }}
-                        className="text-accent-gold text-xs mt-2 underline cursor-pointer"
-                      >
-                        Try again
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                {/* Bottom decoration */}
-                <div className="text-center mt-10 opacity-20">
-                  <span className="text-accent-gold text-xs tracking-[0.3em] font-mystical">
-                    ☰ 命理 · DESTINY ☰
-                  </span>
-                </div>
               </div>
-            )}
           </div>
         )}
 

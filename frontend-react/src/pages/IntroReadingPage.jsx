@@ -43,7 +43,7 @@ export default function IntroReadingPage() {
       <div className="max-w-2xl mx-auto">
 
         {/* ====== SECTION 1: Welcome Header ====== */}
-        <div className="text-center mb-10 animate-fade-in-up">
+        <div className="text-center mb-4 animate-fade-in-up">
           <h1 className="text-2xl md:text-3xl font-mystical font-bold text-text-primary leading-snug mb-6">
             Welcome to your life energy chart reading, {userName}.
           </h1>
@@ -264,12 +264,6 @@ export default function IntroReadingPage() {
           </button>
         </div>
 
-        {/* Bottom decoration */}
-        <div className="text-center mt-10 opacity-20">
-          <span className="text-accent-gold text-xs tracking-[0.3em] font-mystical">
-            ☰ DESTINY ☰
-          </span>
-        </div>
       </div>
     </div>
   )
