@@ -108,12 +108,12 @@ export default function ReadingPage() {
         </div>
 
         {/* ====== Intro Text ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-2 animate-fade-in-up-delay-2 intro-reading-content">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 animate-fade-in-up-delay-2 intro-reading-content">
           <p className="text-text-muted leading-relaxed">{reading.intro}</p>
         </div>
 
         {/* ====== Vital Sources of "Life Energy" ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-2 animate-fade-in-up-delay-3 intro-reading-content">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 animate-fade-in-up-delay-3 intro-reading-content">
           <h3 className="text-2xl font-mystical font-bold text-accent-gold mb-5 flex items-center gap-2">
             <span>✦</span> Your Vital Sources of "Life Energy"
           </h3>
@@ -123,8 +123,8 @@ export default function ReadingPage() {
         </div>
 
         {/* ====== Aligned Energies ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-2 intro-reading-content">
-          <h3 className="text-2xl font-mystical font-bold text-accent-gold mb-5">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 intro-reading-content">
+          <h3 className="text-2xl font-mystical font-bold text-white mb-5">
             {reading.alignedEnergies[0]}
           </h3>
           {reading.alignedEnergies.slice(1).map((paragraph, i) => (
@@ -133,14 +133,14 @@ export default function ReadingPage() {
         </div>
 
         {/* ====== Talents Transition ====== */}
-        <div className="text-center my-6">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 intro-reading-content">
           <h3 className="text-2xl font-mystical font-bold text-text-primary">
             And this is when your talents truly shine...
           </h3>
         </div>
 
         {/* ====== Work Superpowers ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-2 intro-reading-content">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 intro-reading-content">
           <h3 className="text-2xl font-mystical font-bold text-accent-gold mb-5 flex items-center gap-2">
             <span>⚡</span> Your Work Superpowers
           </h3>
@@ -153,7 +153,7 @@ export default function ReadingPage() {
         </div>
 
         {/* ====== Relationship Gifts ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-2 intro-reading-content">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 intro-reading-content">
           <h3 className="text-2xl font-mystical font-bold text-accent-gold mb-5 flex items-center gap-2">
             <span>💫</span> Your Relationship Gifts
           </h3>
@@ -166,7 +166,7 @@ export default function ReadingPage() {
         </div>
 
         {/* ====== Natural Abilities ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-2 intro-reading-content">
+        <div className="glass-card-inner p-6 md:p-8 mb-0 intro-reading-content">
           <h3 className="text-2xl font-mystical font-bold text-accent-gold mb-5 flex items-center gap-2">
             <span>🔮</span> Your Natural Abilities
           </h3>

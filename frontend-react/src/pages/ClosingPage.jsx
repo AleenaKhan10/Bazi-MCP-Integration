@@ -49,8 +49,7 @@ export default function ClosingPage() {
   // --- Expandable section states ---
   // Page 1: "Dive Deeper" button reveals Soul Seed section
   const [showSoulSeed, setShowSoulSeed] = useState(false)
-  // Page 2: "Add To Cart" button reveals inclusions, testimonials, etc.
-  const [showPostCart, setShowPostCart] = useState(false)
+
 
   // --- Report generation (backend connectivity — UNCHANGED) ---
   const [generating, setGenerating] = useState(false)
@@ -169,9 +168,7 @@ export default function ClosingPage() {
             </li>
           ))}
         </ul>
-        <p className="text-center text-accent-gold text-xs font-medium mt-3">
-          MOST POPULAR — 78% Choose This
-        </p>
+
       </div>
     </div>
   )
@@ -232,7 +229,7 @@ export default function ClosingPage() {
             </div>
 
             {/* Rock Paper Scissors section */}
-            <div className="closing-flow-section p-6 md:p-8 mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-1">
               <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step1.rpsTitle)}
               </h2>
@@ -266,7 +263,7 @@ export default function ClosingPage() {
             {/* --- Soul Seed Section (EXPANDABLE — hidden until clicked) --- */}
             {showSoulSeed && (
               <div className="animate-fade-in-up">
-                <div className="closing-flow-section p-6 md:p-8 mb-6">
+                <div className="closing-flow-section p-6 md:p-8 mb-1">
                   <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                     It's Like Finding The Perfect Soil, Water, Sunlight, Temperature & Fertilizer That Can Allow Your "<span className="text-accent-gold font-bold">Soul Seed</span>" To Naturally Flourish & To Manifest Talents That Bear Abundant, Heavy & Ripe Fruit For You... In All Aspects of Your Life...
                   </h2>
@@ -371,7 +368,7 @@ export default function ClosingPage() {
             </div>
 
             {/* Direct Forces */}
-            <div className="closing-flow-section p-6 md:p-8 mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-1">
               <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step2.directTitle)}
               </h2>
@@ -387,7 +384,7 @@ export default function ClosingPage() {
               {r(c.step3.harnessTitle)}
             </h1>
 
-            <div className="closing-flow-section p-6 md:p-8 mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-1">
               <div className="closing-paragraph">
                 {c.step3.harnessParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -408,7 +405,7 @@ export default function ClosingPage() {
               {r(c.step3.beginningTitle)}
             </h2>
 
-            <div className="closing-flow-section p-6 md:p-8 mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-1">
               <div className="closing-paragraph">
                 {c.step3.beginningParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -428,7 +425,7 @@ export default function ClosingPage() {
 
             {/* 4 Pillars */}
             {c.step3.pillars.map((pillar) => (
-              <div key={pillar.number} className="closing-flow-section p-6 md:p-8 mb-6">
+              <div key={pillar.number} className="closing-flow-section p-6 md:p-8 mb-1">
                 <h3 className="text-lg md:text-xl font-mystical text-accent-gold text-center mb-5 leading-snug px-4 md:px-8">
                   {pillar.number === 4 ? (
                     <>
@@ -475,7 +472,7 @@ export default function ClosingPage() {
             ))}
 
             {/* Simulation */}
-            <div className="closing-flow-section p-6 md:p-8 mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-1">
               <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step3.simulationTitle)}
               </h2>
@@ -487,7 +484,7 @@ export default function ClosingPage() {
             </div>
 
             {/* Recommendations */}
-            <div className="closing-flow-section p-6 md:p-8 mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-1">
               <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step3.recommendationsTitle)}
               </h2>
@@ -513,7 +510,7 @@ export default function ClosingPage() {
               {r(c.step4.pricingSubtitle)}
             </p>
 
-            <div className="closing-flow-section p-6 md:p-8 mb-6">
+            <div className="closing-flow-section p-6 md:p-8 mb-1">
               <div className="closing-paragraph">
                 {c.step4.pricingParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -534,171 +531,128 @@ export default function ClosingPage() {
             {/* ====== POST-CART CONTENT (always visible) ====== */}
             <div>
 
-                {/* ====== INCLUSIONS LIST — Numbered 1-13 ====== */}
-                <div className="closing-flow-section p-6 md:p-8 mb-6">
+                {/* ====== INCLUSIONS LIST — 13 Card Boxes ====== */}
+                <div className="closing-flow-section p-6 md:p-8 mb-2">
                   <h1 className="closing-section-heading text-center mb-6 px-4 md:px-8">
                     {r(c.step4.inclusionsTitle)}
                   </h1>
-                  <ol className="closing-numbered-list">
+                  <div>
                     {c.step4.inclusions.map((item, i) => (
-                      <li key={i}>
-                        <span className="text-accent-gold mr-2 font-bold flex-shrink-0">{i + 1}.</span>
-                        <span>{r(item)}</span>
-                      </li>
+                      <div key={i} className="inclusion-card">
+                        <div className="inclusion-card-icon">
+                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                          </svg>
+                        </div>
+                        <div className="inclusion-card-text">{r(item)}</div>
+                      </div>
                     ))}
-                  </ol>
-                </div>
-
-                {/* ====== NEW: FENG SHUI IMMERSION BUNDLE SECTION ====== */}
-                <div className="closing-flow-section p-6 md:p-8 mb-8">
-                  <h2 className="text-base md:text-lg font-mystical font-bold text-accent-gold text-center mb-6 italic px-4 md:px-8 leading-relaxed">
-                    Special One Time Offer Only On This Page For SERIOUS FENG SHUI LEARNERS That Want To Use The FULL Bazi System – Using The "Inner & Outer" Feng Shui Method To Completely Transform Your Life For Just $20 More Dollars
-                  </h2>
-                  <h3 className="text-lg md:text-xl font-mystical font-bold text-text-primary text-center mb-8">
-                    Introducing 📿 THE COMPLETE FENG SHUI IMMERSION BUNDLE 📿
-                  </h3>
-
-                  <div className="space-y-5 text-text-muted leading-relaxed">
-                    {/* Checklist items */}
-                    <div className="flex items-start gap-3">
-                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
-                      <p className="text-sm"><strong className="text-text-primary">Everything in Your Life Energy Attunement Report ($18.88 value)</strong></p>
-                    </div>
-
-                    <p className="text-accent-gold font-bold text-center text-base">PLUS:</p>
-
-                    <div className="flex items-start gap-3">
-                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
-                      <div>
-                        <p className="text-sm"><strong className="text-text-primary">Full Unlimited Access to Chi Manifestation’s Proprietary Inner & Outer Feng Shui Program</strong></p>
-                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
-                          <li>The complete recorded lessons and activity worksheets created by the founder of Chi Manifestation, Ben, and a renowned veteran Feng Shui Master from Singapore – Master Dom.</li>
-                          <li>This is the EXACT system our private clients pay thousands to access.</li>
-                          <li>Now yours to study at your own pace.</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
-                      <div>
-                        <p className="text-sm"><strong className="text-text-primary">24-Hour Client Success Support</strong></p>
-                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
-                          <li>Questions about your worksheets? Confused about an activity?</li>
-                          <li>Message the Client Success team and get answers within 24 hours.</li>
-                          <li>It’s like having a Feng Shui coach walking alongside you.</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
-                      <div>
-                        <p className="text-sm"><strong className="text-text-primary">Outer Feng Shui Monthly Coaching Calls with Master Dom</strong></p>
-                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
-                          <li>Live Q&A sessions where you can ask Master Dom anything.</li>
-                          <li>First-come, first-served.</li>
-                          <li>Topics planned by Master Dom himself based on what his students need most.</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
-                      <div>
-                        <p className="text-sm"><strong className="text-text-primary">Customized BaZi Monthly Forecast</strong></p>
-                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
-                          <li>Master Dom personally shares which days are lucky for wealth, relationships, and conflict based on YOUR unique Bazi chart.</li>
-                          <li>It’s like having a radar that warns you of storms... and highlights golden opportunities.</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
-                      <div>
-                        <p className="text-sm"><strong className="text-text-primary">New Monthly Resources</strong></p>
-                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
-                          <li>Fresh lessons, soundtracks, and tools added every month.</li>
-                          <li>Designed to accelerate your results.</li>
-                          <li>Request a topic and you might see it covered next month.</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
-                      <div>
-                        <p className="text-sm"><strong className="text-text-primary">Private Community Access</strong></p>
-                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
-                          <li>Join like-minded individuals from around the world.</li>
-                          <li>Support each other. Learn and flourish together.</li>
-                          <li>Because you can only go so far by doing it alone. But when you do it together, the sky’s the limit.</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <span className="text-accent-gold text-base flex-shrink-0">☑️</span>
-                      <div>
-                        <p className="text-sm"><strong className="text-text-primary">Monthly "Stand A Chance to Win" Events</strong></p>
-                        <ul className="mt-2 space-y-1 list-disc list-inside text-xs text-text-muted">
-                          <li>Participate in the community, earn points, and win physical Feng Shui products.</li>
-                          <li>Shipping fully covered by us.</li>
-                          <li>The more you engage, the more you win.</li>
-                        </ul>
-                      </div>
-                    </div>
                   </div>
                 </div>
 
-                {/* === What Most People Don't Realize === */}
-                <div className="closing-flow-section p-6 md:p-8 mb-8">
-                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8 whitespace-nowrap">
-                    ⚠️ HERE’S WHAT MOST PEOPLE DON’T REALIZE ⚠️
+                {/* ====== FENG SHUI IMMERSION BUNDLE SECTION (NEW CONTENT) ====== */}
+                <div className="closing-flow-section p-6 md:p-8 mb-1">
+                  <h2 className="closing-subheading text-center mb-6 italic px-4 md:px-8 leading-relaxed">
+                    Special One-Time Offer For Folks Who Want To Accelerate Their Transformation Using Both The FULL BaZi Report Together With Chi Manifestation's Proprietary "Inner &amp; Outer" Feng Shui System
                   </h2>
-                  <div className="closing-paragraph text-center">
+
+                  {/* Course preview image */}
+                  <div className="flex justify-center mb-6">
+                    <img 
+                      src="/course-preview.jpeg" 
+                      alt="Inner & Outer Feng Shui System Course Preview"
+                      className="rounded-xl mx-auto shadow-lg w-full"
+                      style={{ maxHeight: '350px', objectFit: 'cover' }}
+                    />
+                  </div>
+
+                  <div className="closing-paragraph">
+                    <p><strong className="text-text-primary">Here's the thing.</strong></p>
                     <p>Your Life Energy Attunement Report shows you WHAT needs to change.</p>
-                    <p>But the Feng Shui Immersion Bundle shows you HOW to change it.</p>
+                    <p>But the "Inner &amp; Outer" Feng Shui System shows you HOW to change it.</p>
                     <p>Without the "how"...</p>
                     <p>You're holding a treasure map with no shovel.</p>
                     <p>You'll know you're destined for wealth, love, and success...</p>
                     <p>But you won't know how to claim it.</p>
                     <p>That's the trap most people fall into.</p>
-                    <p>They get their Bazi read. Feel excited for a few days. Then slowly slip back into the same patterns.</p>
-                    <p>Because knowing isn't enough.</p>
-                    <p className="text-accent-gold font-bold mt-4">You need the tools. The guidance. The ongoing support.</p>
+                    <p>They get their BaZi read.</p>
+                    <p>Feel excited for a few days.</p>
+                    <p>Then slowly slip back into the same old patterns.</p>
+                    <p><strong className="text-text-primary">Because knowing isn't enough.</strong></p>
+                    <p>You need the tools. The guidance. The ongoing support.</p>
+                    <p>This isn't some watered-down Western interpretation of Feng Shui.</p>
+                    <p><strong className="text-text-primary">This is the real thing.</strong></p>
+                    <p>The ancient wisdom passed down through generations.</p>
+                    <p>The same system used by emperors to maintain power, accumulate wealth, and live long, prosperous lives.</p>
+                    <p>Master Dom studied Outer Feng Shui for YEARS under traditional masters.</p>
+                    <p>He's taken this complex, guarded knowledge...</p>
+                    <p>And made it accessible.</p>
+                    <p>Practical.</p>
+                    <p>Something you can easily act on.</p>
+                    <p>He shows you how to arrange your physical space.</p>
+                    <p>Your home, office, even your desk.</p>
+                    <p>To magnetize wealth, harmony, and opportunity.</p>
+                    <p>The Inner Feng Shui teachings, on the other hand, help you align and rewire your internal energy.</p>
+                    <p>Your thoughts, emotions, and vibration.</p>
+                    <p>Backed by decades of science and research.</p>
+                    <p>So you stop repelling the abundance that's trying to reach you.</p>
+                    <p>And set yourself up to harvest any opportunities that come your way.</p>
+                    <p><strong className="text-text-primary">When your Inner and Outer energy flow are aligned...</strong></p>
+                    <p>You'll find that 'luck' doesn't happen by chance. It's something you can engineer.</p>
+                    <p>Opportunities start appearing from nowhere.</p>
+                    <p>The right people start showing up at the right time.</p>
+                    <p>Money flows easier.</p>
+                    <p>Relationships deepen.</p>
+                    <p>Everything just... works.</p>
+                    <p><strong className="text-accent-gold">So here's the offer.</strong></p>
+                    <p>If you wanted to learn just Outer Feng Shui from Master Dom privately...</p>
+                    <p>You'd pay $2,000+ just for the basic course.</p>
+                    <p>Then $500/month for ongoing coaching.</p>
+                    <p>That's the reality for his private clients.</p>
+                    <p><strong className="text-text-primary">But because you're taking action TODAY...</strong></p>
+                    <p>And because Master Dom wants this authentic wisdom available to everyone who's serious about their transformation...</p>
+                    <p>You're not paying $2,000.</p>
+                    <p>Not $500.</p>
+                    <p>Not even $100.</p>
+                    <p className="text-accent-gold font-bold text-lg text-center my-4">Get the VIP Bundle right now and pay just $38.88 for your first month.</p>
+                    <p>That's your Life Energy Attunement Report… PLUS:</p>
                   </div>
-                </div>
 
-                {/* === The Investment === */}
-                <div className="closing-flow-section p-6 md:p-8 mb-8">
-                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
-                    💰 HERE'S THE INVESTMENT 💰
-                  </h2>
-                  <div className="closing-paragraph text-center">
-                    <p>If you wanted to learn just Outer Feng Shui from Master Dom privately... You'd pay $2,000+ just for the initial consultation. Then $500/month for ongoing coaching.</p>
-                    <p>But because you're taking action TODAY...</p>
-                    <p className="text-text-primary font-bold text-lg">You're not paying $2,000. Not $500. Not even $200.</p>
-                    <p>Add the Complete Feng Shui Immersion Bundle to your order right now...</p>
-                    <p className="text-accent-gold font-bold text-xl mt-4">And pay just $38.88 for your first month.</p>
-                    <p className="text-text-muted text-sm mt-2">After your first month, you'll continue for just $29/month. Cancel anytime. No contracts. No commitments.</p>
+                  {/* 7 VIP Inclusion Cards */}
+                  <div className="space-y-3 mt-6">
+                    <div className="inclusion-card">
+                      <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Full Unlimited Access to Chi Manifestation's Proprietary Inner &amp; Outer Feng Shui Program</strong></p><p className="text-text-muted text-xs mt-1">The complete recorded lessons and activity worksheets created by the founder of Chi Manifestation, Ben, and a renowned veteran Feng Shui Master from Singapore – Master Dom. This is the EXACT system our private clients pay thousands to access. Now yours to study at your own pace.</p></div>
+                    </div>
+                    <div className="inclusion-card">
+                      <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">24-Hour Client Success Support</strong></p><p className="text-text-muted text-xs mt-1">Questions about your worksheets? Confused about an activity? Message the Client Success team and get answers within 24 hours. It's like having a Feng Shui coach walking alongside you.</p></div>
+                    </div>
+                    <div className="inclusion-card">
+                      <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Outer Feng Shui Monthly Coaching Calls with Master Dom</strong></p><p className="text-text-muted text-xs mt-1">Live Q&amp;A sessions where you can ask Master Dom anything. First-come, first-served. Topics planned by Master Dom himself based on what his students need most.</p></div>
+                    </div>
+                    <div className="inclusion-card">
+                      <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Customized BaZi Monthly Forecast</strong></p><p className="text-text-muted text-xs mt-1">Master Dom personally shares which days are lucky for wealth, relationships, and conflict based on YOUR unique BaZi chart. It's like having a radar that warns you of storms... and highlights golden opportunities.</p></div>
+                    </div>
+                    <div className="inclusion-card">
+                      <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">New Monthly Resources</strong></p><p className="text-text-muted text-xs mt-1">Fresh lessons, soundtracks, and tools added every month. Designed to accelerate your results. Request a topic and you might see it covered next month.</p></div>
+                    </div>
+                    <div className="inclusion-card">
+                      <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Private Community Access</strong></p><p className="text-text-muted text-xs mt-1">Join like-minded individuals from around the world. Support each other. Learn and flourish together. Because you can only go so far by doing it alone. But when you do it together, the sky's the limit.</p></div>
+                    </div>
+                    <div className="inclusion-card">
+                      <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Monthly "Stand A Chance to Win" Events</strong></p><p className="text-text-muted text-xs mt-1">Participate in the community, earn points, and win physical Feng Shui products. Shipping fully covered by us. The more you engage, the more you win.</p></div>
+                    </div>
                   </div>
-                </div>
 
-                {/* === No-Brainer Decision === */}
-                <div className="closing-flow-section p-6 md:p-8 mb-8">
-                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
-                    ⚡ THE NO-BRAINER DECISION ⚡
-                  </h2>
-                  <div className="closing-paragraph text-center">
-                    <p>You're already investing $18.88 in your Life Energy Attunement Report. That's smart.</p>
-                    <p className="text-text-primary font-bold">But for just $20 more today... You get EVERYTHING you need to actually transform your life.</p>
-                    <p className="text-accent-gold font-bold text-lg mt-4">$38.88 total for your first month.</p>
-                    <p>That's less than a dinner out. Less than a tank of gas.</p>
-                    <p>For the complete system that emperors used to build dynasties.</p>
-                    <p className="mt-4">And if after 30 days you don't feel the shift... If you don't see opportunities appearing... Just cancel. No hard feelings. You keep everything from your first month.</p>
-                    <p className="text-accent-gold font-bold mt-4">So there's zero risk. Only upside.</p>
+                  <div className="closing-paragraph mt-6">
+                    <p className="text-text-muted text-sm">After your first month, you'll continue for just $29/month.</p>
+                    <p className="text-text-muted text-sm">Cancel anytime.</p>
                   </div>
                 </div>
 
@@ -742,7 +696,7 @@ export default function ClosingPage() {
                 </div>
 
                 {/* ====== ANCIENT SCIENCES ====== */}
-                <div className="closing-flow-section p-6 md:p-8 mb-6">
+                <div className="closing-flow-section p-6 md:p-8 mb-1">
                   <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                     {r(c.step4.scienceTitle)}
                   </h2>
