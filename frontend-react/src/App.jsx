@@ -24,6 +24,7 @@ import LoadingPage from './pages/LoadingPage'
 import IntroReadingPage from './pages/IntroReadingPage'
 import ReadingPage from './pages/ReadingPage'
 import ClosingPage from './pages/ClosingPage'
+import UpsellPage from './pages/UpsellPage'
 
 export default function App() {
   return (
@@ -46,6 +47,9 @@ export default function App() {
 
           {/* Step 4: Closing (CTA + Report) */}
           <Route path="/closing" element={<ClosingPage />} />
+
+          {/* Upsell Page */}
+          <Route path="/upsell" element={<UpsellPage />} />
 
           {/* Fallback: redirect unknown routes to landing */}
           <Route path="*" element={<LandingPage />} />

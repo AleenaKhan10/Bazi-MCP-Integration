@@ -93,9 +93,9 @@ export default function ClosingPage() {
   // --- Page Navigation (only 1→2 now) ---
   const goToPage2 = () => setStep(2)
 
-  // --- Stripe Placeholder (UNCHANGED) ---
+  // --- Route to Upsell Page ---
   const handleAddToCart = (tier) => {
-    alert(`✨ ${tier === 'vip' ? 'VIP Access' : 'Essential Report'} selected! Stripe checkout coming soon.`)
+    navigate('/upsell')
   }
 
   // --- Shorthand for content ---
