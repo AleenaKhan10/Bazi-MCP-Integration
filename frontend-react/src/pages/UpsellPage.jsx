@@ -80,7 +80,7 @@ export default function UpsellPage() {
           </h2>
 
           <div className="flex justify-center mb-6">
-            {/* <!-- INSERT IMAGE: image-1.png --> */}
+            <img src="/upsell_page_images/1.png" alt="Before vs After Alignment" className="rounded-xl shadow-lg w-full" />
           </div>
 
           <div className="closing-paragraph">
@@ -148,7 +148,7 @@ export default function UpsellPage() {
           </h2>
 
           <div className="flex justify-center mb-6">
-             {/* <!-- INSERT IMAGE: image-2.png --> */}
+             <img src="/upsell_page_images/2.png" alt="10-Year Macro-View Simulation" className="rounded-xl shadow-lg w-full" />
           </div>
 
           <div className="closing-paragraph">
@@ -210,7 +210,7 @@ export default function UpsellPage() {
           </h2>
 
           <div className="flex justify-center mb-6">
-            {/* <!-- INSERT IMAGE: image-3.png --> */}
+            <img src="/upsell_page_images/3.png" alt="Sha Stop Points" className="rounded-xl shadow-lg w-full" />
           </div>
 
           <div className="closing-paragraph">
@@ -338,7 +338,7 @@ export default function UpsellPage() {
           </h2>
 
           <div className="flex justify-center mb-6">
-             {/* <!-- INSERT IMAGE: image-6.png --> */}
+             <img src="/upsell_page_images/4.png" alt="Monk Technology" className="rounded-xl shadow-lg w-full" />
           </div>
 
           <div className="closing-paragraph">
@@ -427,12 +427,12 @@ export default function UpsellPage() {
           </h2>
 
           <div className="flex justify-center mb-6">
-             {/* <!-- INSERT IMAGE: image-7.png --> */}
+             <img src="/upsell_page_images/5.png" alt="3 Wind Chimes Special Offer" className="rounded-xl shadow-lg w-full max-w-md mx-auto" />
           </div>
           
-          <div className="flex flex-col md:flex-row justify-center gap-4 mb-8">
-             {/* <!-- INSERT IMAGE: image-8.png --> */}
-             {/* <!-- INSERT IMAGE: image-9.png --> */}
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-8">
+             <img src="/upsell_page_images/6.png" alt="6 Simple Feng Shui Steps Course" className="rounded-xl shadow-lg w-full md:w-1/2 object-cover" />
+             <img src="/upsell_page_images/7.png" alt="Purifying Wind Chimes" className="rounded-xl shadow-lg w-full md:w-1/2 object-cover" />
           </div>
 
           <p className="text-center text-lg mb-8 font-medium">And here's 10 reasons why <strong className="text-accent-gold">this $79 offer</strong> can be extremely powerful for you…</p>
@@ -572,14 +572,14 @@ export default function UpsellPage() {
           </h2>
 
           <div className="flex justify-center mb-8">
-             {/* <!-- INSERT IMAGE: image-12.png --> */}
+             <img src="/upsell_page_images/8.gif" alt="Activate The Chimes Yourself" className="w-full max-w-lg shadow-lg" />
           </div>
 
           <div className="space-y-10">
             <div className="text-center">
               <h3 className="text-lg font-bold text-accent-gold mb-4">Step One: Hang Your Wind Chimes Where<br/>You Spend Significant Time In</h3>
               <div className="flex justify-center mb-4">
-                 {/* <!-- INSERT IMAGE: image-13.png --> */}
+                 <img src="/upsell_page_images/9.png" alt="Step One: Hang Your Wind Chimes" className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-white" />
               </div>
               <p className="text-text-muted max-w-md mx-auto">Whether it's your bedroom, office, or main living space,<br/>the sacred frequencies will immediately begin dissolving Sha Qi particles<br/>in a 20-foot radius around each chime.</p>
             </div>
@@ -587,7 +587,7 @@ export default function UpsellPage() {
             <div className="text-center">
               <h3 className="text-lg font-bold text-accent-gold mb-4">Step Two: Each Time You Hear A Gentle Ring,<br/>Take A Moment To Focus On One Of The<br/>Positive Traits Revealed In Your Report.</h3>
               <div className="flex justify-center mb-4">
-                 {/* <!-- INSERT IMAGE: image-14.png --> */}
+                 <img src="/upsell_page_images/10.png" alt="Step Two: Focus On Positive Traits" className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-white" />
               </div>
               <p className="text-text-muted max-w-md mx-auto">Whether it's your natural intelligence patterns, your Day Master's gifts,<br/>or your upcoming peak luck periods – let each ring<br/>remind you of your true potential.</p>
             </div>
@@ -595,7 +595,7 @@ export default function UpsellPage() {
             <div className="text-center">
               <h3 className="text-lg font-bold text-accent-gold mb-4">Step Three: Feel The Toxic Energy<br/>Leaving Your Space And Your Soul<br/>With Each Cleansing Tone.</h3>
               <div className="flex justify-center mb-4">
-                 {/* <!-- INSERT IMAGE: image-15.png --> */}
+                 <img src="/upsell_page_images/9.png" alt="Step Three: Feel Toxic Energy Leaving" className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-white" />
               </div>
               <p className="text-text-muted max-w-md mx-auto">Visualize the death energy dissolving like smoke in the wind, replaced by<br/>pure, nourishing energy that feeds your elemental nature.</p>
             </div>

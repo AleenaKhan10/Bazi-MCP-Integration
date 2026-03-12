@@ -32,7 +32,7 @@
      generateFullReport() and all API calls are identical.
 */
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuiz } from '../context/QuizContext'
 import DAY_MASTERS from '../data/dayMasters'
@@ -195,7 +195,7 @@ export default function ClosingPage() {
             {/* Five Element Destructive Cycle Diagram — MOVED UP after heading */}
             <div className="flex justify-center mb-8">
               <img
-                src="/destructive-cycle.jpeg"
+                src="/closing_page_images/1.png"
                 alt="Five Element Destructive Cycle - Wood, Fire, Earth, Metal, Water"
                 className="rounded-xl shadow-lg"
                 style={{ maxHeight: '400px', maxWidth: '100%', objectFit: 'contain' }}
@@ -235,7 +235,18 @@ export default function ClosingPage() {
               </h2>
               <div className="closing-paragraph">
                 {c.step1.rpsParagraphs.map((p, i) => (
-                  <p key={i}>{r(p)}</p>
+                  <React.Fragment key={i}>
+                    <p>{r(p)}</p>
+                    {i === 1 && (
+                      <div className="flex justify-center my-8">
+                        <img 
+                          src="/closing_page_images/2.png" 
+                          alt="Cosmic Cycle Rock Paper Scissors" 
+                          className="rounded-xl shadow-lg w-full md:max-w-2xl" 
+                        />
+                      </div>
+                    )}
+                  </React.Fragment>
                 ))}
               </div>
             </div>
@@ -334,20 +345,19 @@ export default function ClosingPage() {
               {r(c.step2.reportTitle)}
             </h1>
 
-            {/* Steering Metaphor - Navigation Ship */}
-            <div className="flex justify-center mb-8">
-              <img
-                src="/steering-metaphor.jpeg"
-                alt="Steer Your Life's Path - Ancient ship navigating cosmic waters"
-                className="rounded-xl shadow-lg w-full"
-                style={{ maxHeight: '350px', objectFit: 'cover' }}
-              />
-            </div>
-
             <div className="closing-flow-section p-6 md:p-8 mb-0">
               <p className="text-accent-gold text-center text-lg font-medium mb-6 italic">
                 {r(c.step2.reportSubtitle)}
               </p>
+
+              {/* Bazi Energy Signature Navigator Image (Image 3) */}
+              <div className="flex justify-center mb-8 mt-4">
+                <img
+                  src="/closing_page_images/3.png"
+                  alt="Steer Your Life's Path - Bazi Energy Signature Navigator"
+                  className="rounded-xl shadow-lg w-full"
+                />
+              </div>
               <div className="closing-paragraph">
                 {c.step2.reportParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -413,11 +423,11 @@ export default function ClosingPage() {
               </div>
             </div>
 
-            {/* Four Pillars Section Header Image */}
+            {/* Four Pillars Section Header Image (Image 4) */}
             <div className="flex justify-center mb-8">
               <img
-                src="/four-pillars-headers.jpeg"
-                alt="Four Pillars - Life Force, Natural Intellect, Relationships, Peak Luck"
+                src="/closing_page_images/4.png"
+                alt="Four Pillars - Harnessing Your Unique Day Master"
                 className="rounded-xl shadow-lg"
                 style={{ maxHeight: '360px', maxWidth: '100%', objectFit: 'contain' }}
               />
@@ -476,6 +486,15 @@ export default function ClosingPage() {
               <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step3.simulationTitle)}
               </h2>
+              
+              {/* Bazi Destiny Simulator Image (Image 5) */}
+              <div className="flex justify-center mb-6">
+                <img
+                  src="/closing_page_images/5.png"
+                  alt="The Bazi Destiny Simulator: Analyzing Your Paths"
+                  className="rounded-xl shadow-lg w-full"
+                />
+              </div>
               <div className="closing-paragraph">
                 {c.step3.simulationParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -523,7 +542,18 @@ export default function ClosingPage() {
 
               <div className="closing-paragraph">
                 {c.step4.pricingClose.map((p, i) => (
-                  <p key={i}>{r(p)}</p>
+                  <React.Fragment key={i}>
+                    <p>{r(p)}</p>
+                    {i === 0 && (
+                      <div className="flex justify-center my-8 mt-2">
+                        <img 
+                          src="/closing_page_images/6.png" 
+                          alt="The Best Kept Secret To True Success" 
+                          className="w-full max-w-lg mb-6" 
+                        />
+                      </div>
+                    )}
+                  </React.Fragment>
                 ))}
               </div>
             </div>
@@ -556,13 +586,12 @@ export default function ClosingPage() {
                     Special One-Time Offer For Folks Who Want To Accelerate Their Transformation Using Both The FULL BaZi Report Together With Chi Manifestation's Proprietary "Inner &amp; Outer" Feng Shui System
                   </h2>
 
-                  {/* Course preview image */}
+                  {/* Course preview image (Image 7) */}
                   <div className="flex justify-center mb-6">
                     <img 
-                      src="/course-preview.jpeg" 
+                      src="/closing_page_images/7.gif" 
                       alt="Inner & Outer Feng Shui System Course Preview"
                       className="rounded-xl mx-auto shadow-lg w-full"
-                      style={{ maxHeight: '350px', objectFit: 'cover' }}
                     />
                   </div>
 
