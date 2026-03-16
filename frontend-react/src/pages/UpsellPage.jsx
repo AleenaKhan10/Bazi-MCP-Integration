@@ -36,8 +36,7 @@ export default function UpsellPage() {
   };
 
   const handleDecline = () => {
-    alert("Proceeding to checkout with original order.");
-    // In a real app, this would proceed to checkout without adding the upsell
+    navigate('/upsell2');
   };
 
   return (

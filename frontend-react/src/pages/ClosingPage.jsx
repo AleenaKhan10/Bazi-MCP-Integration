@@ -341,7 +341,7 @@ export default function ClosingPage() {
           <div className="animate-fade-in-up">
 
             {/* --- Report Pitch Title --- */}
-            <h1 className="closing-section-heading text-center mb-8 px-4 md:px-8">
+            <h1 className="closing-section-heading text-center mb-2 px-4 md:px-8">
               {r(c.step2.reportTitle)}
             </h1>
 
@@ -351,7 +351,7 @@ export default function ClosingPage() {
               </p>
 
               {/* Bazi Energy Signature Navigator Image (Image 3) */}
-              <div className="flex justify-center mb-8 mt-4">
+              <div className="flex justify-center mb-6 mt-5">
                 <img
                   src="/closing_page_images/3.png"
                   alt="Steer Your Life's Path - Bazi Energy Signature Navigator"
@@ -390,7 +390,7 @@ export default function ClosingPage() {
             </div>
 
             {/* --- Harness section --- */}
-            <h1 className="closing-section-heading text-center mb-8 px-4 md:px-8">
+            <h1 className="closing-subheading text-center mb-6 px-4 md:px-8">
               {r(c.step3.harnessTitle)}
             </h1>
 
@@ -522,7 +522,7 @@ export default function ClosingPage() {
             </div>
 
             {/* ====== PRICING INTRO ====== */}
-            <h1 className="closing-section-heading text-center mb-2 px-4 md:px-8">
+            <h1 className="closing-subheading text-center mb-2 px-4 md:px-8">
               {r(c.step4.pricingTitle)}
             </h1>
             <p className="text-center text-text-muted mb-8 italic">

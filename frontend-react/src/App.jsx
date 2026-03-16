@@ -25,6 +25,7 @@ import IntroReadingPage from './pages/IntroReadingPage'
 import ReadingPage from './pages/ReadingPage'
 import ClosingPage from './pages/ClosingPage'
 import UpsellPage from './pages/UpsellPage'
+import UpsellPage2 from './pages/UpsellPage2'
 
 export default function App() {
   return (
@@ -50,6 +51,9 @@ export default function App() {
 
           {/* Upsell Page */}
           <Route path="/upsell" element={<UpsellPage />} />
+
+          {/* Upsell Page 2 — 1-1 Consultation */}
+          <Route path="/upsell2" element={<UpsellPage2 />} />
 
           {/* Fallback: redirect unknown routes to landing */}
           <Route path="*" element={<LandingPage />} />
