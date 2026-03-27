@@ -69,19 +69,18 @@ export default function ClosingPage() {
   const dayMasterName = `${master.polarity} ${master.element}`
   const attackingName = master.attackedBy
 
-  // --- Placeholder Replacement Helper (UNCHANGED) ---
+  // --- Placeholder Replacement & HTML Rendering Helper ---
   const r = (text) => {
     if (!text) return ''
-    return text
+    const processed = text
       .replace(/\{name\}/g, userName)
       .replace(/\{dayMaster\}/g, dayMasterName)
       .replace(/\{attacking\}/g, attackingName)
-  }
-
-  // --- Rich text helper: renders bold (**), underline (__), italic (_), yellow {{text}} ---
-  const renderRichText = (text) => {
-    const processed = r(text)
-    // Split by formatting markers and reconstruct with JSX
+      
+    // If text contains HTML tags injected from our data file, render them as HTML styling
+    if (processed.includes('<') && processed.includes('>')) {
+      return <span dangerouslySetInnerHTML={{ __html: processed }} />
+    }
     return processed
   }
 
@@ -174,7 +173,7 @@ export default function ClosingPage() {
   )
 
   return (
-    <div className="min-h-screen px-4 py-12">
+    <div className="min-h-screen px-4 pt-4 pb-12">
       <div className="max-w-2xl mx-auto">
 
         {/* ============================================================
@@ -203,7 +202,7 @@ export default function ClosingPage() {
             </div>
 
             {/* Main paragraphs */}
-            <div className="closing-flow-section p-6 md:p-8 mb-0">
+            <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-0">
               <div className="closing-paragraph">
                 {c.step1.paragraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -229,7 +228,7 @@ export default function ClosingPage() {
             </div>
 
             {/* Rock Paper Scissors section */}
-            <div className="closing-flow-section p-6 md:p-8 mb-1">
+            <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
               <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step1.rpsTitle)}
               </h2>
@@ -274,7 +273,7 @@ export default function ClosingPage() {
             {/* --- Soul Seed Section (EXPANDABLE — hidden until clicked) --- */}
             {showSoulSeed && (
               <div className="animate-fade-in-up">
-                <div className="closing-flow-section p-6 md:p-8 mb-1">
+                <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
                   <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                     It's Like Finding The Perfect Soil, Water, Sunlight, Temperature & Fertilizer That Can Allow Your "<span className="text-accent-gold font-bold">Soul Seed</span>" To Naturally Flourish & To Manifest Talents That Bear Abundant, Heavy & Ripe Fruit For You... In All Aspects of Your Life...
                   </h2>
@@ -345,7 +344,7 @@ export default function ClosingPage() {
               {r(c.step2.reportTitle)}
             </h1>
 
-            <div className="closing-flow-section p-6 md:p-8 mb-0">
+            <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-0">
               <p className="text-accent-gold text-center text-lg font-medium mb-6 italic">
                 {r(c.step2.reportSubtitle)}
               </p>
@@ -366,7 +365,7 @@ export default function ClosingPage() {
             </div>
 
             {/* Adjustments */}
-            <div className="closing-flow-section p-6 md:p-8 mb-0">
+            <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-0">
               <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step2.adjustmentsTitle)}
               </h2>
@@ -378,7 +377,7 @@ export default function ClosingPage() {
             </div>
 
             {/* Direct Forces */}
-            <div className="closing-flow-section p-6 md:p-8 mb-1">
+            <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
               <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step2.directTitle)}
               </h2>
@@ -394,7 +393,7 @@ export default function ClosingPage() {
               {r(c.step3.harnessTitle)}
             </h1>
 
-            <div className="closing-flow-section p-6 md:p-8 mb-1">
+            <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
               <div className="closing-paragraph">
                 {c.step3.harnessParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -415,7 +414,7 @@ export default function ClosingPage() {
               {r(c.step3.beginningTitle)}
             </h2>
 
-            <div className="closing-flow-section p-6 md:p-8 mb-1">
+            <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
               <div className="closing-paragraph">
                 {c.step3.beginningParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -435,15 +434,9 @@ export default function ClosingPage() {
 
             {/* 4 Pillars */}
             {c.step3.pillars.map((pillar) => (
-              <div key={pillar.number} className="closing-flow-section p-6 md:p-8 mb-1">
+              <div key={pillar.number} className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
                 <h3 className="text-lg md:text-xl font-mystical text-accent-gold text-center mb-5 leading-snug px-4 md:px-8">
-                  {pillar.number === 4 ? (
-                    <>
-                      Most Importantly – The Biggest "Needle Mover" That You'll Get In Your Life Energy Attunement Report Is The "<u>Peak Luck Periods</u>" That Allow You To Make Leaps & Bounds In Just Days!
-                    </>
-                  ) : (
-                    r(pillar.title)
-                  )}
+                  {r(pillar.title)}
                 </h3>
                 
                 {pillar.intro && (
@@ -482,7 +475,7 @@ export default function ClosingPage() {
             ))}
 
             {/* Simulation */}
-            <div className="closing-flow-section p-6 md:p-8 mb-1">
+            <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
               <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step3.simulationTitle)}
               </h2>
@@ -503,7 +496,7 @@ export default function ClosingPage() {
             </div>
 
             {/* Recommendations */}
-            <div className="closing-flow-section p-6 md:p-8 mb-1">
+            <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
               <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step3.recommendationsTitle)}
               </h2>
@@ -522,14 +515,14 @@ export default function ClosingPage() {
             </div>
 
             {/* ====== PRICING INTRO ====== */}
-            <h1 className="closing-subheading text-center mb-2 px-4 md:px-8">
+            <h1 className="closing-subheading text-center mb-2 px-4 md:px-8 mt-4">
               {r(c.step4.pricingTitle)}
             </h1>
             <p className="text-center text-text-muted mb-8 italic">
               {r(c.step4.pricingSubtitle)}
             </p>
 
-            <div className="closing-flow-section p-6 md:p-8 mb-1">
+            <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
               <div className="closing-paragraph">
                 {c.step4.pricingParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -562,7 +555,7 @@ export default function ClosingPage() {
             <div>
 
                 {/* ====== INCLUSIONS LIST — 13 Card Boxes ====== */}
-                <div className="closing-flow-section p-6 md:p-8 mb-2">
+                <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-2">
                   <h1 className="closing-section-heading text-center mb-6 px-4 md:px-8">
                     {r(c.step4.inclusionsTitle)}
                   </h1>
@@ -581,8 +574,8 @@ export default function ClosingPage() {
                 </div>
 
                 {/* ====== FENG SHUI IMMERSION BUNDLE SECTION (NEW CONTENT) ====== */}
-                <div className="closing-flow-section p-6 md:p-8 mb-1">
-                  <h2 className="closing-subheading text-center mb-6 italic px-4 md:px-8 leading-relaxed">
+                <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
+                  <h2 className="closing-subheading text-center mb-6 italic font-bold px-4 md:px-8 leading-relaxed">
                     Special One-Time Offer For Folks Who Want To Accelerate Their Transformation Using Both The FULL BaZi Report Together With Chi Manifestation's Proprietary "Inner &amp; Outer" Feng Shui System
                   </h2>
 
@@ -644,7 +637,7 @@ export default function ClosingPage() {
                     <p>Not $500.</p>
                     <p>Not even $100.</p>
                     <p className="text-accent-gold font-bold text-lg text-center my-4">Get the VIP Bundle right now and pay just $38.88 for your first month.</p>
-                    <p>That's your Life Energy Attunement Report… PLUS:</p>
+                    <p>That's your Life Energy Attunement Report… <strong><u>PLUS</u></strong>:</p>
                   </div>
 
                   {/* 7 VIP Inclusion Cards */}
@@ -689,7 +682,7 @@ export default function ClosingPage() {
                 <PricingTable />
 
                 {/* ====== TESTIMONIALS ====== */}
-                <h2 className="closing-subheading text-center mb-6 mt-10 px-4 md:px-8">
+                <h2 className="closing-subheading text-center mb-6 mt-6 px-4 md:px-8 max-w-xl mx-auto leading-relaxed" style={{ textWrap: 'balance' }}>
                   And This Is Why We've Been Able To Get Results For Hundreds of Our Clients Who Trust Us With Their Growth…
                 </h2>
 
@@ -725,8 +718,8 @@ export default function ClosingPage() {
                 </div>
 
                 {/* ====== ANCIENT SCIENCES ====== */}
-                <div className="closing-flow-section p-6 md:p-8 mb-1">
-                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+                <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
+                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8 max-w-2xl mx-auto leading-relaxed" style={{ textWrap: 'balance' }}>
                     {r(c.step4.scienceTitle)}
                   </h2>
                   {/* Ancient Sciences Historical Image */}

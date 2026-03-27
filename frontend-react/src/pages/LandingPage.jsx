@@ -12,6 +12,22 @@ import FormInput from '../components/FormInput'
 import DOBPicker from '../components/DOBPicker'
 import CountryCityPicker from '../components/CountryCityPicker'
 
+// Dictionary of common email domain typos to catch before submission
+const COMMON_EMAIL_TYPOS = {
+  'gnail.com': 'gmail.com',
+  'gamil.com': 'gmail.com',
+  'gmal.com': 'gmail.com',
+  'gmai.com': 'gmail.com',
+  'yaho.com': 'yahoo.com',
+  'yahooo.com': 'yahoo.com',
+  'yhoo.com': 'yahoo.com',
+  'hotmial.com': 'hotmail.com',
+  'hotmai.com': 'hotmail.com',
+  'outlok.com': 'outlook.com',
+  'iclud.com': 'icloud.com',
+  'icloud.co': 'icloud.com'
+}
+
 /* ---- Floating Chinese Characters ---- */
 const floatingChars = [
   { char: '命', size: 80, top: '8%', left: '5%', delay: '0s' },
@@ -76,6 +92,15 @@ export default function LandingPage() {
       newErrors.email = 'Email is required'
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address'
+    } else {
+      const parts = formData.email.trim().split('@')
+      if (parts.length === 2) {
+        const domain = parts[1].toLowerCase()
+        if (COMMON_EMAIL_TYPOS[domain]) {
+          const expected = COMMON_EMAIL_TYPOS[domain]
+          newErrors.email = `Did you mean ${parts[0]}@${expected}? Please correct.`
+        }
+      }
     }
     if (!formData.gender) newErrors.gender = 'Please select your gender'
     if (!formData.birthMonth) newErrors.month = 'Required'
