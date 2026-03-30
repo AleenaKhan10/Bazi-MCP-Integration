@@ -192,7 +192,7 @@ export default function ClosingPage() {
             </h1>
 
             {/* Five Element Destructive Cycle Diagram — MOVED UP after heading */}
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-4">
               <img
                 src="/closing_page_images/1.png"
                 alt="Five Element Destructive Cycle - Wood, Fire, Earth, Metal, Water"
@@ -260,9 +260,9 @@ export default function ClosingPage() {
                 Content continues on same page.
                 ======================================== */}
             {!showSoulSeed && (
-              <div className="text-center mt-8 mb-6">
-                <button 
-                  onClick={() => setShowSoulSeed(true)} 
+              <div className="text-center mb-6">
+                <button
+                  onClick={() => setShowSoulSeed(true)}
                   className="btn-mystical text-base tracking-wider px-8 py-4"
                 >
                   ✨ {r(c.step2.ctaText)}
@@ -293,11 +293,11 @@ export default function ClosingPage() {
                   </div>
 
                   {/* Numbered list 1) and 2) */}
-                  <div className="space-y-3 my-6 pl-4">
+                  <div className="closing-paragraph space-y-3 my-6 pl-4">
                     {c.step2.numberedList.map((item, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <span className="text-accent-gold font-bold flex-shrink-0">{i + 1})</span>
-                        <p className="text-text-muted leading-relaxed text-[15px]">{r(item)}</p>
+                        <span className="text-white flex-shrink-0">{i + 1})</span>
+                        <p>{r(item)}</p>
                       </div>
                     ))}
                   </div>
@@ -315,7 +315,7 @@ export default function ClosingPage() {
                     Document line 74: button, then line 76 says "Next Page:"
                     This is the ONLY real page navigation in the document.
                     ======================================== */}
-                <div className="text-center mt-8 mb-6">
+                <div className="text-center mb-6">
                   <button onClick={goToPage2} className="btn-mystical text-base tracking-wider px-8 py-4">
                     ✨ {r(c.step2.ctaText)}
                   </button>
@@ -389,11 +389,10 @@ export default function ClosingPage() {
             </div>
 
             {/* --- Harness section --- */}
-            <h1 className="closing-subheading text-center mb-6 px-4 md:px-8">
-              {r(c.step3.harnessTitle)}
-            </h1>
-
             <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
+              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+                {r(c.step3.harnessTitle)}
+              </h2>
               <div className="closing-paragraph">
                 {c.step3.harnessParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -410,11 +409,10 @@ export default function ClosingPage() {
             </div>
 
             {/* Beginning of report */}
-            <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
-              {r(c.step3.beginningTitle)}
-            </h2>
-
             <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
+              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+                {r(c.step3.beginningTitle)}
+              </h2>
               <div className="closing-paragraph">
                 {c.step3.beginningParagraphs.map((p, i) => (
                   <p key={i}>{r(p)}</p>
@@ -435,9 +433,15 @@ export default function ClosingPage() {
             {/* 4 Pillars */}
             {c.step3.pillars.map((pillar) => (
               <div key={pillar.number} className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
-                <h3 className="text-lg md:text-xl font-mystical text-accent-gold text-center mb-5 leading-snug px-4 md:px-8">
-                  {r(pillar.title)}
-                </h3>
+                <h2 className="text-lg md:text-xl font-mystical text-accent-gold text-center mb-5 leading-snug px-4 md:px-8">
+                  {pillar.number === 4 ? (
+                    <>
+                      Most Importantly – The Biggest "Needle Mover" That You'll Get In Your Life Energy Attunement Report Is The "<strong><em><u>Peak Luck Periods</u></em></strong>" That Allow You To Make Leaps & Bounds In Just Days!
+                    </>
+                  ) : (
+                    r(pillar.title)
+                  )}
+                </h2>
                 
                 {pillar.intro && (
                   <p className="text-text-muted text-sm italic mb-4">{r(pillar.intro)}</p>
@@ -500,7 +504,7 @@ export default function ClosingPage() {
               <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                 {r(c.step3.recommendationsTitle)}
               </h2>
-              <p className="text-text-muted mb-4">You'd be able to…</p>
+              <p className="text-white mb-4">You'd be able to…</p>
               <ul className="closing-bullet-list">
                 {c.step3.recommendationsBullets.map((b, i) => (
                   <li key={i}>
@@ -509,16 +513,16 @@ export default function ClosingPage() {
                   </li>
                 ))}
               </ul>
-              <p className="text-text-muted leading-relaxed text-[15px] mt-4">
+              <div className="closing-paragraph mt-4">
                 {r(c.step3.socialProof)}
-              </p>
+              </div>
             </div>
 
             {/* ====== PRICING INTRO ====== */}
             <h1 className="closing-subheading text-center mb-2 px-4 md:px-8 mt-4">
               {r(c.step4.pricingTitle)}
             </h1>
-            <p className="text-center text-text-muted mb-8 italic">
+            <p className="text-center text-white mb-2 italic">
               {r(c.step4.pricingSubtitle)}
             </p>
 
@@ -538,8 +542,8 @@ export default function ClosingPage() {
                   <React.Fragment key={i}>
                     <p>{r(p)}</p>
                     {i === 0 && (
-                      <div className="flex justify-center my-8 mt-2">
-                        <img 
+                      <div className="flex justify-center my-4">
+                        <img
                           src="/closing_page_images/6.png" 
                           alt="The Best Kept Secret To True Success" 
                           className="w-full max-w-lg mb-6" 
@@ -575,7 +579,7 @@ export default function ClosingPage() {
 
                 {/* ====== FENG SHUI IMMERSION BUNDLE SECTION (NEW CONTENT) ====== */}
                 <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
-                  <h2 className="closing-subheading text-center mb-6 italic font-bold px-4 md:px-8 leading-relaxed">
+                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8 leading-relaxed">
                     Special One-Time Offer For Folks Who Want To Accelerate Their Transformation Using Both The FULL BaZi Report Together With Chi Manifestation's Proprietary "Inner &amp; Outer" Feng Shui System
                   </h2>
 
@@ -636,7 +640,7 @@ export default function ClosingPage() {
                     <p>You're not paying $2,000.</p>
                     <p>Not $500.</p>
                     <p>Not even $100.</p>
-                    <p className="text-accent-gold font-bold text-lg text-center my-4">Get the VIP Bundle right now and pay just $38.88 for your first month.</p>
+                    <p><strong className="text-accent-gold">Get the VIP Bundle right now and pay just $38.88 for your first month.</strong></p>
                     <p>That's your Life Energy Attunement Report… <strong><u>PLUS</u></strong>:</p>
                   </div>
 
@@ -644,31 +648,31 @@ export default function ClosingPage() {
                   <div className="space-y-3 mt-6">
                     <div className="inclusion-card">
                       <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Full Unlimited Access to Chi Manifestation's Proprietary Inner &amp; Outer Feng Shui Program</strong></p><p className="text-text-muted text-xs mt-1">The complete recorded lessons and activity worksheets created by the founder of Chi Manifestation, Ben, and a renowned veteran Feng Shui Master from Singapore – Master Dom. This is the EXACT system our private clients pay thousands to access. Now yours to study at your own pace.</p></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Full Unlimited Access to Chi Manifestation's Proprietary Inner &amp; Outer Feng Shui Program</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">The complete recorded lessons and activity worksheets created by the founder of Chi Manifestation, Ben, and a renowned veteran Feng Shui Master from Singapore – Master Dom. This is the EXACT system our private clients pay thousands to access. Now yours to study at your own pace.</p></div>
                     </div>
                     <div className="inclusion-card">
                       <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">24-Hour Client Success Support</strong></p><p className="text-text-muted text-xs mt-1">Questions about your worksheets? Confused about an activity? Message the Client Success team and get answers within 24 hours. It's like having a Feng Shui coach walking alongside you.</p></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">24-Hour Client Success Support</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Questions about your worksheets? Confused about an activity? Message the Client Success team and get answers within 24 hours. It's like having a Feng Shui coach walking alongside you.</p></div>
                     </div>
                     <div className="inclusion-card">
                       <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Outer Feng Shui Monthly Coaching Calls with Master Dom</strong></p><p className="text-text-muted text-xs mt-1">Live Q&amp;A sessions where you can ask Master Dom anything. First-come, first-served. Topics planned by Master Dom himself based on what his students need most.</p></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Outer Feng Shui Monthly Coaching Calls with Master Dom</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Live Q&amp;A sessions where you can ask Master Dom anything. First-come, first-served. Topics planned by Master Dom himself based on what his students need most.</p></div>
                     </div>
                     <div className="inclusion-card">
                       <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Customized BaZi Monthly Forecast</strong></p><p className="text-text-muted text-xs mt-1">Master Dom personally shares which days are lucky for wealth, relationships, and conflict based on YOUR unique BaZi chart. It's like having a radar that warns you of storms... and highlights golden opportunities.</p></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Customized BaZi Monthly Forecast</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Master Dom personally shares which days are lucky for wealth, relationships, and conflict based on YOUR unique BaZi chart. It's like having a radar that warns you of storms... and highlights golden opportunities.</p></div>
                     </div>
                     <div className="inclusion-card">
                       <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">New Monthly Resources</strong></p><p className="text-text-muted text-xs mt-1">Fresh lessons, soundtracks, and tools added every month. Designed to accelerate your results. Request a topic and you might see it covered next month.</p></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">New Monthly Resources</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Fresh lessons, soundtracks, and tools added every month. Designed to accelerate your results. Request a topic and you might see it covered next month.</p></div>
                     </div>
                     <div className="inclusion-card">
                       <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Private Community Access</strong></p><p className="text-text-muted text-xs mt-1">Join like-minded individuals from around the world. Support each other. Learn and flourish together. Because you can only go so far by doing it alone. But when you do it together, the sky's the limit.</p></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Private Community Access</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Join like-minded individuals from around the world. Support each other. Learn and flourish together. Because you can only go so far by doing it alone. But when you do it together, the sky's the limit.</p></div>
                     </div>
                     <div className="inclusion-card">
                       <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Monthly "Stand A Chance to Win" Events</strong></p><p className="text-text-muted text-xs mt-1">Participate in the community, earn points, and win physical Feng Shui products. Shipping fully covered by us. The more you engage, the more you win.</p></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Monthly "Stand A Chance to Win" Events</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Participate in the community, earn points, and win physical Feng Shui products. Shipping fully covered by us. The more you engage, the more you win.</p></div>
                     </div>
                   </div>
 
@@ -744,7 +748,7 @@ export default function ClosingPage() {
                       </li>
                     ))}
                   </ul>
-                  <p className="text-text-muted leading-relaxed text-[15px] mt-4 font-medium">
+                  <p className="text-accent-gold leading-relaxed text-[15px] mt-4 font-medium">
                     {r(c.step4.scienceClosing)}
                   </p>
                 </div>
