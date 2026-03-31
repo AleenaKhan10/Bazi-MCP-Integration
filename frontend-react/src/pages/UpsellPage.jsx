@@ -420,21 +420,92 @@ export default function UpsellPage() {
         </div>
 
         {/* THE PITCH */}
-        <div className="closing-flow-section p-6 md:p-8 mb-6">
+        <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-6">
           <h2 className="closing-subheading text-center mb-6 px-4 md:px-8 text-accent-gold">
-            As a special offer only on this page… you'll be able to get 3 Purifying Wind Chimes for just $79 that comes with a FREE 6-Step Feng Shui Home Energy Improvement Video Course (Worth $198) Recorded in-person by a Vetted Feng Shui Master Based In Singapore, Chinatown.
+            As a special offer only on this page… you'll be able to get 3 Purifying Wind Chimes for just $49 that comes with a FREE 6-Step Feng Shui Home Energy Improvement Video Course (Worth $198) Recorded in-person by a Vetted Feng Shui Master Based In Singapore, Chinatown.
           </h2>
+          <div className="w-[100vw] max-w-5xl relative left-1/2 -translate-x-1/2 px-4 mb-10 z-10 animate-fade-in-up">
+        {/* INTERACTIVE OFFER BOX REPLACING STATIC IMAGES 5, 6, 7 */}
+        <div className="bg-transparent rounded-2xl border border-white shadow-[0_0_30px_rgba(255,255,255,0.05)] overflow-hidden text-white">
+          <div className="p-6 md:p-10 flex flex-col md:flex-row gap-10 items-stretch">
+            {/* Left Column */}
+            <div className="flex-[1.2] flex flex-col justify-between">
+              <div>
+                <h3 className="font-mystical text-3xl md:text-4xl text-white leading-tight mb-3 text-center md:text-left">
+                  One-Time Special Offer:<br />
+                  <span className="text-accent-gold">3x Purifying Wind Chimes</span>
+                </h3>
+                
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-8">
+                  <div className="flex text-accent-gold text-sm tracking-widest">★★★★★</div>
+                  <span className="text-sm text-gray-300 border-l border-gray-600 pl-3 ml-1">Over 123,021 Homes Purified</span>
+                </div>
 
-          <div className="flex justify-center mb-6">
-             <img src="/upsell_page_images/5.png" alt="3 Wind Chimes Special Offer" className="rounded-xl shadow-lg w-full max-w-md mx-auto" />
-          </div>
-          
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-8">
-             <img src="/upsell_page_images/6.png" alt="6 Simple Feng Shui Steps Course" className="rounded-xl shadow-lg w-full md:w-1/2 object-cover" />
-             <img src="/upsell_page_images/7.png" alt="Purifying Wind Chimes" className="rounded-xl shadow-lg w-full md:w-1/2 object-cover" />
+                <ul className="space-y-5 mb-8 text-[15.5px] text-gray-200 leading-relaxed font-normal">
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1 text-white flex-shrink-0">
+                        <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+                      </span>
+                      <span>Purifies any negative spiritual energy in the flesh through its purifying tone...</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1 text-white flex-shrink-0">
+                        <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+                      </span>
+                      <span>Ensures that energy that flows into your home is free from toxic <i className="font-bold text-accent-gold">suffocating energy</i></span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1 text-white flex-shrink-0">
+                        <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+                      </span>
+                      <span>Can be placed in the <i className="font-bold text-accent-gold">'money making'</i> areas in the home, office – or in the car to provide a constant stream of <i className="font-bold text-accent-gold">energetic support</i> throughout the day</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Inner Bonus Box */}
+                <div className="border border-white/50 rounded-lg p-4 flex items-center md:items-start bg-transparent gap-4 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-white/5 pointer-events-none"></div>
+                  <div className="flex-1 text-sm italic text-gray-300 leading-relaxed font-serif relative z-10">
+                    Get a FREE 6-Step Feng Shui Home Energy Improvement Video Course (Worth $198) For Purchases of 3 Wind Chimes - Recorded in-person by a Vetted Master Based In Singapore, Chinatown.
+                  </div>
+                  <img src="/upsell_page_images/6.png" alt="6 Simple Feng Shui Steps" className="w-24 md:w-[110px] object-contain rounded-md shadow-sm border border-gray-600 flex-shrink-0 relative z-10 bg-black" />
+                </div>
+              </div>
+
+              {/* Right Column */}
+              <div className="w-full md:w-[45%] flex flex-col justify-center gap-5">
+                <img src="/upsell_page_images/7.png" alt="Golden Purifying Wind Chimes" className="w-full h-auto rounded-[20px] object-cover shadow-[0_0_20px_rgba(255,255,255,0.05)] border border-gray-700" />
+                
+                <div className="relative mt-2">
+                  <button 
+                    onClick={() => navigate('/checkout')}
+                    className="w-full bg-[#f26522] hover:bg-[#d9581c] text-white font-bold py-[18px] px-6 rounded-md shadow-[0_6px_20px_-3px_rgba(242,101,34,0.4)] transition-all active:scale-[0.98] flex flex-col items-center justify-center leading-tight gap-1"
+                  >
+                    <span className="text-2xl md:text-[28px] tracking-wide font-sans">BUY 3 AT $49 ONLY</span>
+                    <span className="text-sm md:text-[15px] font-medium opacity-95">(U.P. $79. Comes with FREE Shipping)</span>
+                  </button>
+                  <div className="absolute -bottom-2.5 left-5 bg-[#173c66] border border-blue-900 text-white text-[10px] px-2.5 py-0.5 font-bold uppercase rounded shadow-sm tracking-wider z-10">SCROLL</div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <p className="text-center text-lg mb-8 font-medium">And here's 10 reasons why <strong className="text-accent-gold">this $79 offer</strong> can be extremely powerful for you…</p>
+          {/* BONUS IMAGES SIDE BY SIDE */}
+          <div className="w-[100vw] max-w-4xl relative left-1/2 -translate-x-1/2 px-4 mb-16 animate-fade-in-up mt-8">
+            <div className="flex flex-col md:flex-row bg-transparent border-0">
+              <div className="w-full md:w-1/2 aspect-square p-0 flex items-center justify-center">
+                <img src="/upsell_page_images/6.png" alt="6 Simple Feng Shui Steps Course" className="w-full h-full object-contain" />
+              </div>
+              
+              <div className="w-full md:w-1/2 aspect-square p-0 flex items-center justify-center">
+                <img src="/upsell_page_images/7.png" alt="Purifying Wind Chimes" className="w-full h-full object-contain" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-center text-lg mb-8 font-medium mt-8">And here's 10 reasons why <strong className="text-accent-gold">this $49 offer</strong> can be extremely powerful for you…</p>
 
           {/* 10 REASONS LIST - Styled like the 13 inclusions */}
           <div className="space-y-4">
@@ -668,30 +739,16 @@ export default function UpsellPage() {
             We've seen this combination of Inner and Outer Feng Shui transform thousands of lives. We know that when you align your environment to support rather than sabotage your Day Master's nature, results follow naturally and inevitably.
           </p>
         </div>
-
-        {/* FINAL CTA */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <button 
             onClick={handlePurchase} 
             className="btn-mystical w-full text-base tracking-wider px-6 py-5 whitespace-normal flex flex-col items-center justify-center gap-1 shadow-[0_0_20px_rgba(235,190,105,0.4)] hover:shadow-[0_0_30px_rgba(235,190,105,0.6)]"
           >
             <span className="font-bold text-lg leading-tight uppercase">YES → INSTALL THE MONK PURIFICATION SYSTEM IN MY HOME</span>
-            <span className="text-sm font-medium opacity-90">Dissolve Sha Stop Points & Activate My Luck Cycles: Only $79 Today</span>
+            <span className="text-sm font-medium opacity-90">Dissolve Sha Stop Points & Activate My Luck Cycles: Only $49 Today</span>
           </button>
           
-          {/* Note: Skipped strikethrough lines 532-568 which were the alternative text below the button in the mockups */}
-
           <div className="mt-8 flex flex-col items-center gap-4">
-            {/* <!-- INSERT IMAGE: image-18.png --> */}
-            <div className="flex flex-wrap justify-center gap-2 mt-2 grayscale opacity-70">
-              {/* <!-- INSERT IMAGE: image-19.png --> */}
-              {/* <!-- INSERT IMAGE: image-20.png --> */}
-              {/* <!-- INSERT IMAGE: image-21.png --> */}
-              {/* <!-- INSERT IMAGE: image-22.png --> */}
-              {/* <!-- INSERT IMAGE: image-23.png --> */}
-              {/* <!-- INSERT IMAGE: image-24.png --> */}
-            </div>
-            
             <button 
               onClick={handleDecline}
               className="mt-6 text-sm text-text-muted hover:text-white underline underline-offset-4 opacity-70 transition-opacity hover:opacity-100"
@@ -700,7 +757,43 @@ export default function UpsellPage() {
             </button>
           </div>
         </div>
+      </div>
 
+      {/* FULL WIDTH TRANSPARENT TESTIMONIAL SECTION */}
+      <div className="w-[100vw] bg-transparent text-text-primary pt-16 pb-24 px-4 font-sans relative left-1/2 -translate-x-1/2">
+        <div className="max-w-5xl mx-auto">
+          <h3 className="text-center text-[26px] md:text-[30px] font-bold mb-12 flex flex-col items-center leading-snug font-serif">
+            <span className="text-white mb-0.5">Join Thousands Who Used The Purifying Wind Chimes To</span>
+            <span className="text-accent-gold">Cleanse Their Energy And Invite Luck, Peace & Abundance</span>
+            <span className="text-accent-gold">Into Their Lives...</span>
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12 text-left">
+            {[
+              { name: "Aiden, CO", text: "I was skeptical at first, but wow… what a surprise! Hung mine in my garden and it’s now part of my morning ritual. Every time I hear it ring, I feel a wave of calm and clarity. My home feels more peaceful, and I’ve had fewer arguments and more laughter in the last few weeks.", image: "/upsell_page_images/25.jpg" },
+              { name: "Sophie, UK", text: "I ordered 3 purifying wind chimes and they arrived in good condition! They look so beautiful and I hung them at my front door, workspace, and bedroom, and the heavy, stale feeling in my home vanished, replaced by a calm, uplifting energy!", image: "/upsell_page_images/22.jpg" },
+              { name: "Lila, NSW", text: "Bought two (one for me and one for my mum) and we both noticed changes almost instantly. The energy at home feels cleaner, and I’m sleeping through the night for the first time in ages.", image: "/upsell_page_images/23.jpg" },
+              { name: "Carlos, Canada", text: "Brilliant quality and gorgeous tone! It’s like the whole house exhales every time the breeze sets it off.", image: "/upsell_page_images/27.jpg" },
+              { name: "Hannah, Australia", text: "The chimes are absolutely stunning, and the sound they make is so pure and cleansing. I hung one near my workspace where I often feel stuck, and the flow of inspiration came back! I’ve also started attracting new clients after weeks of quiet.", image: "/upsell_page_images/26.jpg" },
+              { name: "Vanessa, Singapore", text: "Arrived well packed and feels sacred. The chime’s tone is pure and calming. I can literally sense the negative energy leaving my room and the stress leaving my body.", image: "/upsell_page_images/28.png" }
+            ].map((testimonial, idx) => (
+              <div key={idx} className="flex flex-col">
+                <img src={testimonial.image} alt={testimonial.name} className="w-full h-auto object-contain mb-4 rounded-sm shadow-md" />
+                <h4 className="font-bold text-white text-[15px] mb-0.5 flex items-center gap-1">
+                  {testimonial.name}
+                  <svg className="w-[15px] h-[15px] text-[#1b74e4]" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="10" fill="white" />
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#1b74e4" />
+                  </svg>
+                </h4>
+                <div className="text-accent-gold text-[11px] tracking-widest mb-1.5">★★★★★</div>
+                <p className="text-text-muted text-[13px] leading-relaxed pr-2">
+                  {testimonial.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
