@@ -41,6 +41,11 @@
 /* ===========================================
    GLOBAL
    =========================================== */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   font-family:
     "Inter",
@@ -51,8 +56,12 @@ body {
   color: #f1f5f9;
   min-height: 100vh;
   margin: 0;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* ===========================================
@@ -1115,13 +1124,15 @@ body {
 }
 .pricing-card-vip .pricing-card-header {
   margin-top: 0px;
-  min-height: 208px;
+  min-height: 340px;
 }
 
 .pricing-card-header {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  margin-bottom: 20px;
-  min-height: 220px;
+  margin-bottom: 8px;
+  min-height: 350px;
 }
 .pricing-tier-label {
   display: block;

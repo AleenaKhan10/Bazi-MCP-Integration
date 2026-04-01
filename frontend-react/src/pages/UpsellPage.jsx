@@ -286,7 +286,11 @@ export default function UpsellPage() {
           </h2>
 
           <div className="flex justify-center mb-6">
-             {/* <!-- INSERT IMAGE: <INSERT IMAGE> --> */}
+            <img 
+              src="/upsell_page_images/11.png" 
+              alt="Death Multiplication Cycle" 
+              className="w-full h-auto rounded-xl shadow-[0_4px_25px_rgba(0,0,0,0.5)] border border-gray-800" 
+            />
           </div>
 
           <div className="closing-paragraph">

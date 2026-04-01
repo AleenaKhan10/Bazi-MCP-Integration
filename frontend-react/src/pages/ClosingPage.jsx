@@ -120,6 +120,9 @@ export default function ClosingPage() {
           </div>
           <p className="pricing-description text-xs">One-time payment</p>
           <p className="pricing-description">{c.step4.standardTier.description}</p>
+          <div className="flex justify-center mt-auto h-[180px] w-full items-center perspective-1000">
+            <img src="/closing_page_images/card1.png" alt="Card 1" className="h-full w-auto object-contain drop-shadow-2xl animate-fade-in-up hover:scale-105 transition-transform duration-300" />
+          </div>
         </div>
         <button 
           onClick={() => handleAddToCart('standard')}
@@ -152,6 +155,9 @@ export default function ClosingPage() {
             <p className="pricing-description text-xs">{c.step4.vipTier.recurringPrice}</p>
           )}
           <p className="pricing-description">{c.step4.vipTier.description}</p>
+          <div className="flex justify-center mt-auto h-[180px] w-full items-center perspective-1000">
+            <img src="/closing_page_images/card2.png" alt="Card 2" className="h-full w-auto object-contain drop-shadow-2xl animate-fade-in-up hover:scale-105 transition-transform duration-300" />
+          </div>
         </div>
         <button 
           onClick={() => handleAddToCart('vip')}
