@@ -44,16 +44,16 @@ export default function UpsellPage() {
       <div className="max-w-2xl mx-auto animate-fade-in-up">
         
         {/* HEADER SECTION */}
-        <div className="text-center mb-8 px-4 md:px-8">
-          <h1 className="closing-section-heading mb-12">
+        <div className=”text-center mb-4 px-4 md:px-8”>
+          <h1 className=”closing-section-heading mb-12”>
             Congratulations On Taking The First Step Toward Unlocking Your True Energetic Potential!
           </h1>
-          <h2 className="closing-section-heading">
+          <h2 className=”closing-subheading”>
             Stay On This Page To Discover Your First “Energy Adjustment” That Can Fix The Clashing Energies In Your Chart.
           </h2>
         </div>
 
-        <div className="closing-flow-section p-6 md:p-8 mb-6">
+        <div className=”closing-flow-section p-6 md:p-8 mb-2”>
           <div className="closing-paragraph">
             <p>Your Life Energy Attunement Report is being prepared and will arrive in your inbox within the next few minutes. You're about to discover exactly which energies are working for and against you…</p>
             <p>And right now, I want you to get excited for the new chapter of your life that you're about to write.</p>
@@ -62,7 +62,7 @@ export default function UpsellPage() {
             <p>You'll see yourself making progress…</p>
             <p>You'll watch yourself grow leaps and bounds…</p>
             <p>You're about to experience something most people never feel in their entire lives.</p>
-            <p><strong className="text-text-primary">The sensation of effortless momentum.</strong></p>
+            <p>The sensation of <strong className="text-text-primary">effortless momentum.</strong></p>
             <p>Where your goals stop feeling like pushing a boulder uphill... and start feeling like surfing a wave that's already carrying you exactly where you want to go.</p>
             <p>Right now, at this moment, you've made a choice that will split your life into "before" and "after."</p>
             <p><strong className="text-text-primary">Before</strong>: You were stepping on snakes. Making moves that looked right but sent you sliding backward. Putting in effort that went nowhere. Watching people with half your talent somehow catch breaks you never did.</p>
@@ -73,7 +73,7 @@ export default function UpsellPage() {
         </div>
 
         {/* SALMON SALMON METAPHOR */}
-        <div className="closing-flow-section p-6 md:p-8 mb-6">
+        <div className="closing-flow-section p-6 md:p-8 mb-2">
           <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
             Think about a salmon trying to swim upstream.
           </h2>
@@ -180,9 +180,9 @@ export default function UpsellPage() {
             <p>Your Day Master requires a specific type of "fuel" to operate at peak performance.</p>
             <p>It's like a high-performance engine.</p>
             <p>It needs specific fuel to run at full capacity.</p>
-            <p>A <strong className="text-text-primary">{r("%DAY MASTER%")}</strong> person like you requires <strong className="text-text-primary">the right</strong> energy to operate at peak. That's your premium fuel. When you get it, everything flows. Opportunities arrive. Money moves toward you. The right people show up at the right time.</p>
+            <p>A <strong className="text-accent-gold">{r("%DAY MASTER%")}</strong> person like you requires <strong className="text-text-primary">the right</strong> energy to operate at peak. That's your premium fuel. When you get it, everything flows. Opportunities arrive. Money moves toward you. The right people show up at the right time.</p>
             <p>But right now?</p>
-            <p><em className="italic text-text-muted">You're getting contaminated fuel instead.</em></p>
+            <p><em className="italic">You're getting contaminated fuel instead.</em></p>
             <p>The <strong className="text-text-primary">{r("%DAY MASTER ATTACKING%")}</strong> in your environment are mixing into your energy supply like diesel poured into a gasoline tank.</p>
             <p>And just like that diesel-gasoline mix, this creates a violent chemical reaction that doesn't just stop your engine from running...</p>
             <p>It <strong className="text-text-primary">burns through your reserves faster than you can replenish them.</strong></p>
@@ -242,8 +242,8 @@ export default function UpsellPage() {
         </div>
 
         {/* MEASURABLE EFFECTS */}
-        <div className="closing-flow-section p-6 md:p-8 mb-6">
-          <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+        <div className="closing-flow-section px-6 md:px-8 pt-2 pb-6 md:pb-8 mb-6">
+          <h2 className="closing-subheading text-center mb-2 px-4 md:px-8">
             And the effects are measurable.
           </h2>
 
@@ -266,16 +266,16 @@ export default function UpsellPage() {
 
           <div className="closing-paragraph">
             <p>But instead of receiving clean water and sunlight, it's been receiving acid rain and toxic waste. The soil becomes contaminated. The air becomes unbreathable. And anything you try to plant immediately withers and dies.</p>
-            <p>Your living space has become a <em className="italic font-bold text-accent-gold">spiritual Chernobyl.</em></p>
+            <p>Your living space has become a <em className="italic font-bold text-white">spiritual Chernobyl.</em></p>
             <p>Every corner where clashing elements have fought their violent battles has left behind an invisible "imprint" – a concentrated pocket of death energy that actively repels abundance, love, and success.</p>
             <p>These Sha Stop Points work like reverse magnets for everything you want in life. Instead of attracting opportunities, they create an energetic force field that pushes away:</p>
           </div>
 
           <ul className="closing-bullet-list mt-4">
-            <li><span className="text-accent-gold mr-2">●</span>Financial windfalls that were heading your way</li>
-            <li><span className="text-accent-gold mr-2">●</span>Romantic connections that could have blossomed</li>
-            <li><span className="text-accent-gold mr-2">●</span>Career breakthroughs that were within reach</li>
-            <li><span className="text-accent-gold mr-2">●</span>Health improvements that were starting to manifest</li>
+            <li><span className="text-white mr-2">●</span>Financial windfalls that were heading your way</li>
+            <li><span className="text-white mr-2">●</span>Romantic connections that could have blossomed</li>
+            <li><span className="text-white mr-2">●</span>Career breakthroughs that were within reach</li>
+            <li><span className="text-white mr-2">●</span>Health improvements that were starting to manifest</li>
           </ul>
         </div>
 
@@ -320,9 +320,9 @@ export default function UpsellPage() {
             <p>And the contamination isn't staying contained.</p>
           </div>
 
-          <h2 className="closing-subheading text-center mt-8 mb-6 px-4 md:px-8">
-            Like smoke from a fire, <strong className="text-accent-gold">it spreads to everyone who enters your space.</strong>
-          </h2>
+          <p className="text-white text-lg leading-relaxed mt-4 mb-4">
+            Like smoke from a fire, <strong>it spreads to everyone who enters your space.</strong>
+          </p>
 
           <div className="closing-paragraph">
             <p>Your family. Your closest friends. Your colleagues.</p>
@@ -361,20 +361,22 @@ export default function UpsellPage() {
             <p>If that poisoned energy reaches your home without being purified first, it's going to make everything cold, uncomfortable, and lifeless. But if you have a way to warm, cleanse, and transform that energy before it enters your space, it becomes nourishing, healing, and life-giving.</p>
             <p><strong className="text-text-primary">They'd discovered a ritual that could 'awaken' and purify this energy before it reached you.</strong></p>
             <p>This is why the ancient temples were built far away from society, with monks kept away from the chaotic world through layers upon layers of rooms, walls, and elaborate purification rituals. This sacred architecture helped to warm, purify, and refine the energy that the monks were able to absorb... giving them and their spiritual students a proven way to awaken to their true instincts, powers, and inner purposes.</p>
-            <p><strong className="text-text-primary">Now, using a similar technique discovered by these masters, we've created a ritual that removes the spiritual toxins and "suffocating energy" that's been poisoning your home.</strong></p>
-            <p><strong className="text-text-primary">Just like setting up a heater that transforms cold, contaminated water into pure, warm, life-giving flow...</strong></p>
-            <p><strong className="text-text-primary">These sacred sounds create an energetic purification system that cleanses the invisible currents entering your life.</strong></p>
-            <p><strong className="text-text-primary">This ensures that only positive, abundant, healing energy reaches your mind, body, and environment.</strong></p>
+          </div>
+          <p className="text-accent-gold leading-[1.8] text-[15px] mb-4">Now, using a similar technique discovered by these masters, we've created a ritual that removes the spiritual toxins and "suffocating energy" that's been poisoning your home.</p>
+          <p className="text-accent-gold leading-[1.8] text-[15px] mb-4">Just like setting up a heater that transforms cold, contaminated water into pure, warm, life-giving flow...</p>
+          <p className="text-accent-gold leading-[1.8] text-[15px] mb-4">These sacred sounds create an energetic purification system that cleanses the invisible currents entering your life.</p>
+          <p className="text-accent-gold leading-[1.8] text-[15px] mb-4">This ensures that only positive, abundant, healing energy reaches your mind, body, and environment.</p>
+          <div className="closing-paragraph">
             <p>The purifying frequencies literally break apart the molecular structure of Sha Qi particles – dissolving the toxic "exhaust fumes" created by clashing elements and forcing out every last drop of negative energy that might be embedded in your soul.</p>
             <p><strong className="text-text-primary">Think of it as a spiritual air purification system that works 24/7.</strong></p>
             <p>Every time the sacred sounds activate, they send out waves of cleansing energy that:</p>
           </div>
 
           <ul className="closing-bullet-list mt-8 space-y-4">
-            <li><span className="text-accent-gold mr-5 mt-1 flex-shrink-0">●</span><span><strong className="text-text-primary">Dissolve Sha Stop Points:</strong> Breaking apart the concentrated pockets of death energy that have been blocking your abundance</span></li>
-            <li><span className="text-accent-gold mr-5 mt-1 flex-shrink-0">●</span><span><strong className="text-text-primary">Neutralize Toxic Imprints:</strong> Erasing the energetic contamination left behind by elemental clashes</span></li>
-            <li><span className="text-accent-gold mr-5 mt-1 flex-shrink-0">●</span><span><strong className="text-text-primary">Transform Attacking Elements:</strong> Converting the hostile energies into nourishing fuel for your Day Master</span></li>
-            <li><span className="text-accent-gold mr-5 mt-1 flex-shrink-0">●</span><span><strong className="text-text-primary">Restore Natural Flow:</strong> Rebuilding the healthy Production Cycle that draws opportunities to you effortlessly</span></li>
+            <li><span className="text-accent-gold mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Dissolve Sha Stop Points:</span> Breaking apart the concentrated pockets of death energy that have been blocking your abundance</span></li>
+            <li><span className="text-accent-gold mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Neutralize Toxic Imprints:</span> Erasing the energetic contamination left behind by elemental clashes</span></li>
+            <li><span className="text-accent-gold mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Transform Attacking Elements:</span> Converting the hostile energies into nourishing fuel for your Day Master</span></li>
+            <li><span className="text-accent-gold mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Restore Natural Flow:</span> Rebuilding the healthy Production Cycle that draws opportunities to you effortlessly</span></li>
           </ul>
 
           <div className="closing-paragraph mt-4">
