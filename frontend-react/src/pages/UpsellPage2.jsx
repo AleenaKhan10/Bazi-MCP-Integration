@@ -313,10 +313,10 @@ export default function UpsellPage2() {
           
           <div className="mt-8 flex justify-center">
             <div className="flex flex-col md:flex-row md:flex-wrap justify-center gap-x-8 gap-y-3 text-[15px] opacity-90 max-w-xl text-center md:text-left text-white">
-              <span className="whitespace-nowrap"><span className="text-[#facc15] font-bold mr-2">✓</span>45-Minute Private Zoom Session with Master Dom ($397 value)</span>
-              <span className="whitespace-nowrap mt-1"><span className="text-[#facc15] font-bold mr-2">✓</span>Personalized Wealth Acceleration Action Plan ($197 value)</span>
-              <span className="whitespace-nowrap md:w-full md:text-center mt-1"><span className="text-[#facc15] font-bold mr-2">✓</span>Lifetime Access to the Session Recording ($97 value)</span>
-              <span className="whitespace-nowrap md:w-full md:text-center mt-1"><span className="text-[#facc15] font-bold mr-2">✓</span>Priority Email Support for 30 Days ($147 value)</span>
+              <span><span className="text-[#facc15] font-bold mr-2">✓</span>45-Minute Private Zoom Session with Master Dom ($397 value)</span>
+              <span className="mt-1"><span className="text-[#facc15] font-bold mr-2">✓</span>Personalized Wealth Acceleration Action Plan ($197 value)</span>
+              <span className="md:w-full md:text-center mt-1"><span className="text-[#facc15] font-bold mr-2">✓</span>Lifetime Access to the Session Recording ($97 value)</span>
+              <span className="md:w-full md:text-center mt-1"><span className="text-[#facc15] font-bold mr-2">✓</span>Priority Email Support for 30 Days ($147 value)</span>
             </div>
           </div>
         </div>
@@ -513,10 +513,10 @@ export default function UpsellPage2() {
 
           <div className="mt-8 flex justify-center">
             <div className="flex flex-col md:flex-row md:flex-wrap justify-center gap-x-8 gap-y-3 text-[15px] opacity-90 max-w-xl text-center md:text-left text-white">
-              <span className="whitespace-nowrap"><span className="text-[#facc15] font-bold mr-2">✓</span>45-Minute Private Zoom Session with Master Dom ($397 value)</span>
-              <span className="whitespace-nowrap mt-1"><span className="text-[#facc15] font-bold mr-2">✓</span>Personalized Wealth Acceleration Action Plan ($197 value)</span>
-              <span className="whitespace-nowrap md:w-full md:text-center mt-1"><span className="text-[#facc15] font-bold mr-2">✓</span>Lifetime Access to the Session Recording ($97 value)</span>
-              <span className="whitespace-nowrap md:w-full md:text-center mt-1"><span className="text-[#facc15] font-bold mr-2">✓</span>Priority Email Support for 30 Days ($147 value)</span>
+              <span><span className="text-[#facc15] font-bold mr-2">✓</span>45-Minute Private Zoom Session with Master Dom ($397 value)</span>
+              <span className="mt-1"><span className="text-[#facc15] font-bold mr-2">✓</span>Personalized Wealth Acceleration Action Plan ($197 value)</span>
+              <span className="md:w-full md:text-center mt-1"><span className="text-[#facc15] font-bold mr-2">✓</span>Lifetime Access to the Session Recording ($97 value)</span>
+              <span className="md:w-full md:text-center mt-1"><span className="text-[#facc15] font-bold mr-2">✓</span>Priority Email Support for 30 Days ($147 value)</span>
             </div>
           </div>
           
