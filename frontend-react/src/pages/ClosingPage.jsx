@@ -299,7 +299,7 @@ export default function ClosingPage() {
                   </div>
 
                   {/* Numbered list 1) and 2) */}
-                  <div className="closing-paragraph space-y-3 my-6 pl-4">
+                  <div className="closing-paragraph space-y-2 mt-6 mb-2 pl-4">
                     {c.step2.numberedList.map((item, i) => (
                       <div key={i} className="flex items-start gap-2">
                         <span className="text-white flex-shrink-0">{i + 1})</span>
@@ -407,7 +407,7 @@ export default function ClosingPage() {
               <ul className="closing-bullet-list">
                 {c.step3.harnessBullets.map((b, i) => (
                   <li key={i}>
-                    <span className="text-accent-gold mr-2">●</span>
+                    <span className="text-white mr-2">●</span>
                     {r(b)}
                   </li>
                 ))}
@@ -460,14 +460,14 @@ export default function ClosingPage() {
                 </div>
 
                 {pillar.subtitle && (
-                  <p className="text-accent-gold font-medium mt-4 mb-3">{r(pillar.subtitle)}</p>
+                  <p className="text-white font-medium mt-4 mb-3">{r(pillar.subtitle)}</p>
                 )}
 
                 {pillar.bullets && (
                   <ul className="closing-bullet-list">
                     {pillar.bullets.map((b, i) => (
                       <li key={i}>
-                        <span className="text-accent-gold mr-2">●</span>
+                        <span className="text-white mr-2">●</span>
                         {r(b)}
                       </li>
                     ))}
@@ -514,7 +514,7 @@ export default function ClosingPage() {
               <ul className="closing-bullet-list">
                 {c.step3.recommendationsBullets.map((b, i) => (
                   <li key={i}>
-                    <span className="text-accent-gold mr-2">●</span>
+                    <span className="text-white mr-2">●</span>
                     {r(b)}
                   </li>
                 ))}
@@ -525,7 +525,7 @@ export default function ClosingPage() {
             </div>
 
             {/* ====== PRICING INTRO ====== */}
-            <h1 className="closing-subheading text-center mb-2 px-4 md:px-8 mt-4">
+            <h1 className="closing-subheading text-center mb-2 px-4 md:px-8 mt-8">
               {r(c.step4.pricingTitle)}
             </h1>
             <p className="text-center text-white mb-2 italic">
