@@ -42,7 +42,7 @@ export default function IntroReadingPage() {
     <div className="min-h-screen px-4 py-12">
       <div className="max-w-2xl mx-auto">
         {/* ====== SECTION 1: Welcome Header ====== */}
-        <div className="text-center mb-4 animate-fade-in-up">
+        <div className="text-center mb-6 px-4 md:px-8 animate-fade-in-up">
           <h1 className="text-2xl md:text-3xl font-mystical font-bold text-text-primary leading-snug mb-6">
             Welcome to your life energy chart reading, {userName}.
           </h1>
@@ -54,7 +54,7 @@ export default function IntroReadingPage() {
         </div>
 
         {/* ====== BaZi Table (after header, before Day Master Intro) ====== */}
-        <div className="text-center my-4">
+        <div className="text-center mt-8 mb-4">
           <h3 className="text-xl font-mystical font-bold text-gold-gradient mb-2">
             Your Day Master is...
           </h3>
@@ -62,7 +62,7 @@ export default function IntroReadingPage() {
         <BaziTable baziResult={baziResult} formData={formData} />
 
         {/* ====== SECTION 2: Day Master Intro ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-0 animate-fade-in-up-delay-1 intro-reading-content">
+        <div className="glass-card-inner px-6 md:px-8 pt-6 md:pt-8 pb-4 mb-0 animate-fade-in-up-delay-1 intro-reading-content">
           <p>
             That's because your{" "}
             <span className="text-accent-gold font-semibold">
@@ -100,12 +100,10 @@ export default function IntroReadingPage() {
           </p>
 
           {/* Centered emphasis */}
-          <div className="text-center my-8">
-            <p className="text-accent-gold italic font-mystical text-lg leading-relaxed">
+          <div className="text-center my-8 px-8 md:px-16">
+            <p className="text-accent-gold italic font-mystical text-xl leading-relaxed">
               It may just be the final key that you need to
-              <br />
               unlock a new world of potential,
-              <br />
               harmony and alignment with your goals...
             </p>
           </div>
@@ -128,7 +126,7 @@ export default function IntroReadingPage() {
         </div>
 
         {/* ====== SECTION 3: Core Engine + Frequencies ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-0 animate-fade-in-up-delay-2 intro-reading-content">
+        <div className="glass-card-inner px-6 md:px-8 pt-0 pb-4 mb-0 animate-fade-in-up-delay-2 intro-reading-content">
           <p>It shows you how you create.</p>
           <p>It shows you how you make a real impact in the world.</p>
           <p>
@@ -148,19 +146,16 @@ export default function IntroReadingPage() {
             individual...
           </p>
 
-          <div className="text-center my-4">
-            <p className="text-text-muted leading-relaxed">
+          <div className="text-center my-4 px-8 md:px-16">
+            <p className="text-text-muted leading-relaxed text-xl">
               And through extracting these crucial insights
-              <br />
               about your energetic essence
-              <br />
               from your{" "}
               <span className="text-accent-gold">{dayMasterName}</span> Day
               Master...
             </p>
-            <p className="text-text-primary font-semibold mt-4 leading-relaxed">
+            <p className="text-text-primary font-semibold mt-6 leading-relaxed text-xl">
               The simple adjustments that can completely <strong>alter</strong>
-              <br />
               the trajectory of your life...{" "}
               <strong>will be revealed to you.</strong>
             </p>
@@ -200,7 +195,7 @@ export default function IntroReadingPage() {
         </div>
 
         {/* ====== SECTION 4: Gravitational Field ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-0 animate-fade-in-up-delay-3 intro-reading-content">
+        <div className="glass-card-inner px-6 md:px-8 pt-0 pb-6 md:pb-8 mb-0 animate-fade-in-up-delay-3 intro-reading-content">
           <p>
             Just as planets have gravitational fields that attract certain
             objects while repelling others...
@@ -308,11 +303,10 @@ export default function IntroReadingPage() {
         </div>
 
         {/* ====== SECTION 6: Ancient Masters ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-0 intro-reading-content">
-          <div className="text-center mb-6 px-4 md:px-12">
+        <div className="glass-card-inner px-6 md:px-8 pt-6 md:pt-8 pb-4 mb-0 intro-reading-content">
+          <div className="text-center mb-6 px-8 md:px-16">
             <h3 className="text-xl md:text-2xl font-mystical font-bold text-white leading-relaxed">
               What the Ancient Masters discovered
-              <br />
               will give you chills that tingle down your spine, {userName}...
             </h3>
           </div>
@@ -365,7 +359,7 @@ export default function IntroReadingPage() {
         </div>
 
         {/* ====== SECTION 7: Xu Ziping's Discovery ====== */}
-        <div className="glass-card-inner p-6 md:p-8 mb-0 intro-reading-content">
+        <div className="glass-card-inner px-6 md:px-8 pt-0 pb-6 md:pb-8 mb-0 intro-reading-content">
           <p>
             But Xu Ziping noticed something the imperial court records revealed:
             people with identical birth years often had completely different
@@ -393,10 +387,9 @@ export default function IntroReadingPage() {
             fingerprint.
           </p>
 
-          <div className="text-center my-8">
-            <p className="text-accent-gold font-mystical font-bold text-lg">
+          <div className="text-center my-8 px-8 md:px-16">
+            <p className="text-accent-gold font-mystical font-bold text-xl">
               The genius of Xu Ziping's system was recognizing
-              <br />
               the "roots, seeds, and fruits" principle...
             </p>
           </div>
@@ -430,7 +423,7 @@ export default function IntroReadingPage() {
         <div className="glass-card p-8 text-center mb-8 glow-gold-strong intro-reading-content">
           <div className="mb-8">
             <p
-              className="text-text-muted italic leading-relaxed mb-6"
+              className="text-text-muted italic leading-relaxed mb-10"
               style={{ fontSize: "clamp(18px, 3vw, 24px)" }}
             >
               It's like discovering you've been
@@ -440,11 +433,10 @@ export default function IntroReadingPage() {
               then finally turning around...
             </p>
             <p
-              className="text-text-primary leading-relaxed"
+              className="text-text-primary leading-relaxed px-8 md:px-16"
               style={{ fontSize: "clamp(16px, 2.5vw, 20px)" }}
             >
               And now, let's explore the powerful flow of energy
-              <br />
               moving through your{" "}
               <span className="text-accent-gold font-semibold">
                 {dayMasterName}
