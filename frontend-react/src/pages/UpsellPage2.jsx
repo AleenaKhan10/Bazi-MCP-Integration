@@ -71,8 +71,8 @@ export default function UpsellPage2() {
         </div>
 
         {/* 3 THINGS SECTION */}
-        <div className="text-center mb-8 px-4 md:px-8 mt-16">
-          <h2 className="closing-section-heading">
+        <div className="text-center mb-4 px-4 md:px-8 mt-8">
+          <h2 className="closing-subheading px-8 md:px-16">
             The 3 Things Your Digital Report CAN'T Tell You (That Are Costing You Money Right Now)
           </h2>
         </div>
@@ -147,8 +147,8 @@ export default function UpsellPage2() {
         </div>
 
         {/* STORY SECTION */}
-        <div className="text-center mb-6 px-4 md:px-8 mt-4">
-          <h2 className="closing-section-heading">
+        <div className="text-center mb-2 px-4 md:px-8">
+          <h2 className="closing-subheading px-8 md:px-16">
             Here's What Happened When Sarah Ignored This Step
           </h2>
         </div>
@@ -186,13 +186,13 @@ export default function UpsellPage2() {
         </div>
 
         {/* OFFER PITCH */}
-        <div className="text-center mb-8 px-4 md:px-8 mt-16">
-          <h2 className="closing-section-heading">
+        <div className="text-center mb-2 px-4 md:px-8 mt-8">
+          <h2 className="closing-subheading px-8 md:px-16">
             So Here's What I'm Offering You Right Now
           </h2>
         </div>
 
-        <div className="closing-flow-section p-6 md:p-8 mb-6">
+        <div className="closing-flow-section px-6 md:px-8 pt-2 pb-6 md:pb-8 mb-6">
           <div className="closing-paragraph">
             <p>Normally, a private session with Master Dom books out 6-8 weeks in advance.</p>
             <p>His hourly rate for consultations is $397.</p>
@@ -239,7 +239,7 @@ export default function UpsellPage2() {
             Here's Everything You're Getting
           </h2>
           <div className="closing-paragraph">
-            <p>When you say YES to this Emergency Chart Analysis session, here's what happens:</p>
+            <p className="text-white">When you say YES to this Emergency Chart Analysis session, here's what happens:</p>
           </div>
           
           <div className="space-y-4 mt-6">
@@ -296,7 +296,7 @@ export default function UpsellPage2() {
               <span className="line-through opacity-70">$397</span>
               <span className="text-red-500">$197</span>
             </div>
-            <h4 className="text-xl mb-6">1-1 BaZi Consultation with Master Dom</h4>
+            <h4 className="text-xl mb-2">1-1 BaZi Consultation with Master Dom</h4>
           </div>
         </div>
 
@@ -331,13 +331,13 @@ export default function UpsellPage2() {
         </div>
 
         {/* URGENCY SECTION */}
-        <div className="text-center mb-4 px-4 md:px-8 mt-6">
-          <h2 className="closing-section-heading">
+        <div className="text-center mb-2 px-4 md:px-8 mt-6">
+          <h2 className="closing-subheading px-8 md:px-16">
             Why This Is Only Available Right Now
           </h2>
         </div>
 
-        <div className="closing-flow-section p-6 md:p-8 mb-6">
+        <div className="closing-flow-section px-6 md:px-8 pt-2 pb-6 md:pb-8 mb-6">
           <div className="closing-paragraph">
             <p>Here's the catch, <strong className="text-accent-gold">{userName}</strong>.</p>
             <p><strong className="text-text-primary">This offer only exists on this page.</strong></p>
@@ -351,13 +351,13 @@ export default function UpsellPage2() {
         </div>
 
         {/* CAN I FIGURE OUT ON MY OWN */}
-        <div className="text-center mb-6 px-4 md:px-8 mt-8">
-          <h2 className="closing-section-heading">
+        <div className="text-center mb-2 px-4 md:px-8 mt-4">
+          <h2 className="closing-subheading px-8 md:px-16">
             "But Can't I Just Figure This Out On My Own?"
           </h2>
         </div>
 
-        <div className="closing-flow-section p-6 md:p-8 mb-6">
+        <div className="closing-flow-section px-6 md:px-8 pt-2 pb-6 md:pb-8 mb-6">
           <div className="closing-paragraph">
             <p>Of course you can.</p>
             <p>You can spend the next six months Googling "BaZi remedies" and watching YouTube videos from people who learned feng shui from a weekend course.</p>
@@ -424,13 +424,13 @@ export default function UpsellPage2() {
         </div>
 
         {/* DECISION SECTION */}
-        <div className="text-center mb-4 px-4 md:px-8 mt-4">
-          <h2 className="closing-section-heading">
+        <div className="text-center mb-2 px-4 md:px-8 mt-4">
+          <h2 className="closing-subheading px-8 md:px-16">
             Last Thing Before You Decide
           </h2>
         </div>
 
-        <div className="closing-flow-section p-6 md:p-8 mb-6">
+        <div className="closing-flow-section px-6 md:px-8 pt-2 pb-6 md:pb-8 mb-6">
           <div className="closing-paragraph">
             <p>I want you to imagine something for me, <strong className="text-accent-gold">{userName}</strong>.</p>
             <p>Imagine it's 90 days from now.</p>
@@ -447,7 +447,7 @@ export default function UpsellPage2() {
             <p><strong className="text-text-primary">Just clarity, certainty, and a plan that actually works.</strong></p>
           </div>
             
-          <h3 className="closing-subheading text-center mt-12 mb-6">Your Next Step Is Simple</h3>
+          <h3 className="closing-subheading text-center mt-12 mb-6 px-8 md:px-16">Your Next Step Is Simple</h3>
           <div className="closing-paragraph">
             <p className="text-center">Click the button below to add the Emergency Chart Analysis session to your order for just $197.</p>
             <p className="text-center">You'll be redirected to the next page immediately with a calendar link to book your session.</p>

@@ -193,7 +193,7 @@ export default function ClosingPage() {
           <div className="animate-fade-in-up">
 
             {/* Title — underline attacking element */}
-            <h1 className="closing-section-heading text-center mb-8 px-4 md:px-8">
+            <h1 className="closing-section-heading text-center mt-4 mb-8 px-4 md:px-8">
               A Crucial Part of Your {dayMasterName} Energy Flow Is Currently Being 'Suffocated' & Blocked... By Strong Clashing <u className="decoration-accent-gold">{attackingName}</u> Energies!
             </h1>
 
@@ -219,7 +219,7 @@ export default function ClosingPage() {
               <ul className="closing-bullet-list">
                 {c.step1.bulletList.map((b, i) => (
                   <li key={i}>
-                    <span className="text-accent-gold mr-2">●</span>
+                    <span className="text-accent-gold mr-2 text-xs">●</span>
                     {r(b)}
                   </li>
                 ))}
@@ -278,7 +278,7 @@ export default function ClosingPage() {
 
             {/* --- Soul Seed Section (EXPANDABLE — hidden until clicked) --- */}
             {showSoulSeed && (
-              <div className="animate-fade-in-up">
+              <div className="animate-fade-in-up mt-4">
                 <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
                   <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
                     It's Like Finding The Perfect Soil, Water, Sunlight, Temperature & Fertilizer That Can Allow Your "<span className="text-accent-gold font-bold">Soul Seed</span>" To Naturally Flourish & To Manifest Talents That Bear Abundant, Heavy & Ripe Fruit For You... In All Aspects of Your Life...
@@ -346,7 +346,7 @@ export default function ClosingPage() {
           <div className="animate-fade-in-up">
 
             {/* --- Report Pitch Title --- */}
-            <h1 className="closing-section-heading text-center mb-2 px-4 md:px-8">
+            <h1 className="closing-section-heading text-center mt-4 mb-6 px-4 md:px-8">
               {r(c.step2.reportTitle)}
             </h1>
 
@@ -372,7 +372,7 @@ export default function ClosingPage() {
 
             {/* Adjustments */}
             <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-0">
-              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+              <h2 className="closing-subheading text-center mb-6 px-8 md:px-16">
                 {r(c.step2.adjustmentsTitle)}
               </h2>
               <div className="closing-paragraph">
@@ -384,7 +384,7 @@ export default function ClosingPage() {
 
             {/* Direct Forces */}
             <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
-              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+              <h2 className="closing-subheading text-center mb-6 px-8 md:px-16">
                 {r(c.step2.directTitle)}
               </h2>
               <div className="closing-paragraph">
@@ -396,7 +396,7 @@ export default function ClosingPage() {
 
             {/* --- Harness section --- */}
             <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
-              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+              <h2 className="closing-subheading text-center mb-6 px-8 md:px-16">
                 {r(c.step3.harnessTitle)}
               </h2>
               <div className="closing-paragraph">
@@ -407,7 +407,7 @@ export default function ClosingPage() {
               <ul className="closing-bullet-list">
                 {c.step3.harnessBullets.map((b, i) => (
                   <li key={i}>
-                    <span className="text-white mr-2">●</span>
+                    <span className="text-white mr-2 text-xs">●</span>
                     {r(b)}
                   </li>
                 ))}
@@ -416,7 +416,7 @@ export default function ClosingPage() {
 
             {/* Beginning of report */}
             <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
-              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+              <h2 className="closing-subheading text-center mb-6 px-8 md:px-16">
                 {r(c.step3.beginningTitle)}
               </h2>
               <div className="closing-paragraph">
@@ -439,7 +439,7 @@ export default function ClosingPage() {
             {/* 4 Pillars */}
             {c.step3.pillars.map((pillar) => (
               <div key={pillar.number} className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
-                <h2 className="text-lg md:text-xl font-mystical text-accent-gold text-center mb-5 leading-snug px-4 md:px-8">
+                <h2 className="text-lg md:text-xl font-mystical text-accent-gold text-center mb-5 leading-snug px-8 md:px-16">
                   {pillar.number === 4 ? (
                     <>
                       Most Importantly – The Biggest "Needle Mover" That You'll Get In Your Life Energy Attunement Report Is The "<strong><em><u>Peak Luck Periods</u></em></strong>" That Allow You To Make Leaps & Bounds In Just Days!
@@ -467,7 +467,7 @@ export default function ClosingPage() {
                   <ul className="closing-bullet-list">
                     {pillar.bullets.map((b, i) => (
                       <li key={i}>
-                        <span className="text-white mr-2">●</span>
+                        <span className="text-white mr-2 text-xs">●</span>
                         {r(b)}
                       </li>
                     ))}
@@ -486,7 +486,7 @@ export default function ClosingPage() {
 
             {/* Simulation */}
             <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
-              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+              <h2 className="closing-subheading text-center mb-6 px-8 md:px-16">
                 {r(c.step3.simulationTitle)}
               </h2>
               
@@ -507,14 +507,14 @@ export default function ClosingPage() {
 
             {/* Recommendations */}
             <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
-              <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
+              <h2 className="closing-subheading text-center mb-6 px-8 md:px-16">
                 {r(c.step3.recommendationsTitle)}
               </h2>
               <p className="text-white mb-4">You'd be able to…</p>
               <ul className="closing-bullet-list">
                 {c.step3.recommendationsBullets.map((b, i) => (
                   <li key={i}>
-                    <span className="text-white mr-2">●</span>
+                    <span className="text-white mr-2 text-xs">●</span>
                     {r(b)}
                   </li>
                 ))}
@@ -525,10 +525,10 @@ export default function ClosingPage() {
             </div>
 
             {/* ====== PRICING INTRO ====== */}
-            <h1 className="closing-subheading text-center mb-2 px-4 md:px-8 mt-8">
+            <h1 className="closing-subheading text-center mb-4 px-4 md:px-8 mt-8">
               {r(c.step4.pricingTitle)}
             </h1>
-            <p className="text-center text-white mb-2 italic">
+            <p className="text-center text-white mb-2 italic px-8 md:px-16">
               {r(c.step4.pricingSubtitle)}
             </p>
 
@@ -566,7 +566,7 @@ export default function ClosingPage() {
 
                 {/* ====== INCLUSIONS LIST — 13 Card Boxes ====== */}
                 <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-2">
-                  <h1 className="closing-section-heading text-center mb-6 px-4 md:px-8">
+                  <h1 className="closing-section-heading text-center mb-6 px-8 md:px-16">
                     {r(c.step4.inclusionsTitle)}
                   </h1>
                   <div>
@@ -585,9 +585,9 @@ export default function ClosingPage() {
 
                 {/* ====== FENG SHUI IMMERSION BUNDLE SECTION (NEW CONTENT) ====== */}
                 <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
-                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8 leading-relaxed">
+                  <h1 className="closing-section-heading text-center mb-6 px-4 md:px-8 leading-relaxed">
                     Special One-Time Offer For Folks Who Want To Accelerate Their Transformation Using Both The FULL BaZi Report Together With Chi Manifestation's Proprietary "Inner &amp; Outer" Feng Shui System
-                  </h2>
+                  </h1>
 
                   {/* Course preview image (Image 7) */}
                   <div className="flex justify-center mb-6">
@@ -692,7 +692,7 @@ export default function ClosingPage() {
                 <PricingTable />
 
                 {/* ====== TESTIMONIALS ====== */}
-                <h2 className="closing-subheading text-center mb-6 mt-6 px-4 md:px-8 max-w-xl mx-auto leading-relaxed" style={{ textWrap: 'balance' }}>
+                <h2 className="closing-subheading text-center mb-6 mt-6 px-8 md:px-16 max-w-xl mx-auto leading-relaxed" style={{ textWrap: 'balance' }}>
                   And This Is Why We've Been Able To Get Results For Hundreds of Our Clients Who Trust Us With Their Growth…
                 </h2>
 
@@ -729,7 +729,7 @@ export default function ClosingPage() {
 
                 {/* ====== ANCIENT SCIENCES ====== */}
                 <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
-                  <h2 className="closing-subheading text-center mb-6 px-4 md:px-8 max-w-2xl mx-auto leading-relaxed" style={{ textWrap: 'balance' }}>
+                  <h2 className="closing-subheading text-center mb-6 px-8 md:px-16 max-w-2xl mx-auto leading-relaxed" style={{ textWrap: 'balance' }}>
                     {r(c.step4.scienceTitle)}
                   </h2>
                   {/* Ancient Sciences Historical Image */}
@@ -749,7 +749,7 @@ export default function ClosingPage() {
                   <ul className="closing-bullet-list mt-4">
                     {c.step4.scienceBullets.map((b, i) => (
                       <li key={i}>
-                        <span className="text-accent-gold mr-2">●</span>
+                        <span className="text-accent-gold mr-2 text-xs">●</span>
                         {r(b)}
                       </li>
                     ))}
@@ -771,7 +771,7 @@ export default function ClosingPage() {
                       className="w-24 h-24 object-contain"
                     />
                   </div>
-                  <h2 className="closing-subheading text-center mb-4 px-4 md:px-8">
+                  <h2 className="closing-subheading text-center mt-2 mb-6 px-8 md:px-12">
                     {r(c.step4.guaranteeTitle)}.
                   </h2>
                   <div className="closing-paragraph">

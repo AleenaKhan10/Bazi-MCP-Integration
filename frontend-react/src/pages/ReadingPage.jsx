@@ -70,7 +70,7 @@ export default function ReadingPage() {
 
         {/* ====== Day Master Card (kept from original) ====== */}
         <div
-          className="glass-card p-8 text-center mb-8 animate-fade-in-up-delay-1 glow-gold-strong"
+          className="glass-card p-8 text-center mb-4 animate-fade-in-up-delay-1 glow-gold-strong"
           style={{ background: `linear-gradient(135deg, ${elemStyle.glow}, rgba(15, 22, 41, 0.95))` }}
         >
           {/* Day Master Illustration */}

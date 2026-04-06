@@ -42,43 +42,43 @@ const DAY_MASTER_READINGS = {
     ],
     workSuperpowers: [
       {
-        title: 'Building Things That Last',
+        title: '1) Building Things That Last',
         description: 'While others rush for quick wins, you create systems that run smoothly for years. You\'re the person who builds the foundation everyone else relies on.',
       },
       {
-        title: 'Leading Through Crisis',
+        title: '2) Leading Through Crisis',
         description: 'When chaos hits, you become the calm center. Teams naturally look to you because your steady presence transforms panic into focus.',
       },
       {
-        title: 'Seeing The Long Game',
+        title: '3) Seeing The Long Game',
         description: 'You spot opportunities others miss because you think in decades, not months. This patience gives you an almost unfair advantage.',
       },
     ],
     relationshipGifts: [
       {
-        title: 'Making People Feel Safe',
+        title: '1) Making People Feel Safe',
         description: 'Others feel genuinely protected around you – emotionally, not just physically. You\'re who they call when life gets overwhelming.',
       },
       {
-        title: 'Bridging Generations',
+        title: '2) Bridging Generations',
         description: 'You naturally connect with all ages. Younger people seek your wisdom, older people respect your depth.',
       },
       {
-        title: 'Solving Conflicts',
+        title: '3) Solving Conflicts',
         description: 'Your clear moral compass makes you a natural mediator. People trust you to find fair solutions.',
       },
     ],
     naturalAbilities: [
       {
-        title: 'Reading Patterns',
+        title: '1) Reading Patterns',
         description: 'You see the real issues beneath surface problems. While others treat symptoms, you fix root causes.',
       },
       {
-        title: 'Making Things Stronger',
+        title: '2) Making Things Stronger',
         description: 'Whatever you touch becomes more stable. Relationships, businesses, families – you have a gift for strengthening weak foundations.',
       },
       {
-        title: 'Inspiring Trust',
+        title: '3) Inspiring Trust',
         description: 'People naturally confide in you because your integrity is obvious. You become the standard others measure themselves against.',
       },
     ],
@@ -105,43 +105,43 @@ const DAY_MASTER_READINGS = {
     ],
     workSuperpowers: [
       {
-        title: 'Creating Harmonious Connections',
+        title: '1) Creating Harmonious Connections',
         description: 'While others build walls, you create beautiful bridges between people, ideas, and departments. You\'re the person who makes collaboration feel natural and elegant.',
       },
       {
-        title: 'Elegant Problem-Solving',
+        title: '2) Elegant Problem-Solving',
         description: 'When situations feel harsh or ugly, you find graceful solutions. You transform conflict into cooperation with your diplomatic touch.',
       },
       {
-        title: 'Flexible Innovation',
+        title: '3) Flexible Innovation',
         description: 'You adapt to changing conditions better than anyone, finding creative ways around obstacles that would stop more rigid by personalities.',
       },
     ],
     relationshipGifts: [
       {
-        title: 'Natural Peacemaking',
+        title: '1) Natural Peacemaking',
         description: 'Others feel more beautiful and refined in your presence. You\'re who they call when relationships need healing and grace.',
       },
       {
-        title: 'Artistic Inspiration',
+        title: '2) Artistic Inspiration',
         description: 'You bring out the creative side in everyone you meet. People discover new interests and express themselves more beautifully around you.',
       },
       {
-        title: 'Gentle Guidance',
+        title: '3) Gentle Guidance',
         description: 'Your soft wisdom helps others grow without feeling criticized. You\'re like sunlight that helps flowers bloom naturally.',
       },
     ],
     naturalAbilities: [
       {
-        title: 'Reading Emotional Currents',
+        title: '1) Reading Emotional Currents',
         description: 'You sense the subtle energies in any room and know how to adjust the atmosphere to create harmony.',
       },
       {
-        title: 'Making Things Beautiful',
+        title: '2) Making Things Beautiful',
         description: 'Whatever you touch becomes more elegant and refined. Spaces, relationships, projects – you have a gift for adding grace.',
       },
       {
-        title: 'Connecting Opposites',
+        title: '3) Connecting Opposites',
         description: 'You see how different elements can work together beautifully, creating unity from diversity like flowers in a garden.',
       },
     ],
@@ -168,43 +168,43 @@ const DAY_MASTER_READINGS = {
     ],
     workSuperpowers: [
       {
-        title: 'Igniting Transformation',
+        title: '1) Igniting Transformation',
         description: 'While others make gradual changes, you create breakthrough moments that completely shift energy and possibility. You\'re the person who turns struggling teams into unstoppable forces.',
       },
       {
-        title: 'Magnetic Leadership',
+        title: '2) Magnetic Leadership',
         description: 'When situations need dynamic direction, you naturally become the beacon everyone follows. Your passionate vision transforms confusion into clear, inspired action.',
       },
       {
-        title: 'Energizing Innovation',
+        title: '3) Energizing Innovation',
         description: 'You see the big picture and ignite creative solutions that others never considered. Your enthusiasm makes the impossible feel achievable.',
       },
     ],
     relationshipGifts: [
       {
-        title: 'Bringing Out Potential',
+        title: '1) Bringing Out Potential',
         description: 'Others feel more alive and capable in your presence. You\'re who they call when they need to remember what they\'re truly capable of achieving.',
       },
       {
-        title: 'Inspiring Courage',
+        title: '2) Inspiring Courage',
         description: 'You help people break through their limitations by showing them what\'s possible. Your confidence becomes contagious and transforms fear into excitement.',
       },
       {
-        title: 'Creating Joy',
+        title: '3) Creating Joy',
         description: 'Your natural radiance brightens any environment. People feel happier and more optimistic simply by being around your solar energy.',
       },
     ],
     naturalAbilities: [
       {
-        title: 'Reading the Room',
+        title: '1) Reading the Room',
         description: 'You instantly sense what energy a situation needs and know how to shift the entire atmosphere with your presence.',
       },
       {
-        title: 'Motivating Others',
+        title: '2) Motivating Others',
         description: 'Whatever group you join becomes more passionate and driven. You have a gift for making people believe in bigger possibilities.',
       },
       {
-        title: 'Breakthrough Thinking',
+        title: '3) Breakthrough Thinking',
         description: 'You see solutions that illuminate completely new paths forward, like sunlight revealing landscapes that were hidden in darkness.',
       },
     ],
@@ -231,43 +231,43 @@ const DAY_MASTER_READINGS = {
     ],
     workSuperpowers: [
       {
-        title: 'Deep Analysis & Insight',
+        title: '1) Deep Analysis & Insight',
         description: 'While others skim the surface, you illuminate hidden patterns and reveal crucial details others miss. You\'re the person who transforms confusion into crystal clarity.',
       },
       {
-        title: 'Patient Development',
+        title: '2) Patient Development',
         description: 'When complex projects need sustained attention, you naturally become the steady flame that guides long-term success. Your thoughtful approach prevents costly mistakes.',
       },
       {
-        title: 'Wisdom Cultivation',
+        title: '3) Wisdom Cultivation',
         description: 'You see potential in ideas and people that others overlook, nurturing growth through careful attention and devoted support.',
       },
     ],
     relationshipGifts: [
       {
-        title: 'Gentle Illumination',
+        title: '1) Gentle Illumination',
         description: 'Others feel understood and valued in your presence. You\'re who they call when they need someone who truly listens and offers thoughtful perspective.',
       },
       {
-        title: 'Devoted Mentoring',
+        title: '2) Devoted Mentoring',
         description: 'You bring out the best in people through patient guidance and genuine care. Your steady support helps others develop their own inner light.',
       },
       {
-        title: 'Creating Safety',
+        title: '3) Creating Safety',
         description: 'Your warm, consistent presence makes people feel secure enough to be vulnerable and grow. You\'re like a lighthouse in emotional storms.',
       },
     ],
     naturalAbilities: [
       {
-        title: 'Reading Between Lines',
+        title: '1) Reading Between Lines',
         description: 'You sense the deeper meanings in conversations and situations, understanding what people really need even when they can\'t express it.',
       },
       {
-        title: 'Sustained Focus',
+        title: '2)Sustained Focus',
         description: 'Whatever requires long-term attention thrives under your care. You have a gift for maintaining quality and depth over time.',
       },
       {
-        title: 'Transforming Complexity',
+        title: '3) Transforming Complexity',
         description: 'You see through tangled problems to find elegant, lasting solutions that honor everyone involved.',
       },
     ],
@@ -294,43 +294,43 @@ const DAY_MASTER_READINGS = {
     ],
     workSuperpowers: [
       {
-        title: 'Creating Unshakeable Foundations',
+        title: '1) Creating Unshakeable Foundations',
         description: 'While others build on shifting ground, you create systems that endure for decades. You\'re the person who ensures nothing important ever collapses.',
       },
       {
-        title: 'Crisis Stability',
+        title: '2) Crisis Stability',
         description: 'When everything is falling apart, you become the immovable center that holds everything together. Your steady presence prevents total organizational collapse.',
       },
       {
-        title: 'Long-term Strategic Thinking',
+        title: '3) Long-term Strategic Thinking',
         description: 'You see the big picture across years and decades, building sustainable success that others can depend on for generations.',
       },
     ],
     relationshipGifts: [
       {
-        title: 'Protective Reliability',
+        title: '1) Protective Reliability',
         description: 'Others feel completely secure knowing you\'ll always be there. You\'re who they call when they need someone absolutely dependable through thick and thin.',
       },
       {
-        title: 'Family Foundation',
+        title: '2) Family Foundation',
         description: 'You create the stable home base that allows everyone else to take risks and explore. Your steady presence gives others permission to grow.',
       },
       {
-        title: 'Loyal Support',
+        title: '3) Loyal Support',
         description: 'Your unwavering dedication makes people feel valued and protected. You\'re like bedrock that supports entire ecosystems of relationships.',
       },
     ],
     naturalAbilities: [
       {
-        title: 'Reading Long-term Patterns',
+        title: '1) Reading Long-term Patterns',
         description: 'You see what will last and what won\'t, understanding the difference between temporary trends and permanent foundations.',
       },
       {
-        title: 'Creating Security',
+        title: '2) Creating Security',
         description: 'Whatever environment you enter becomes more stable and secure. You have a gift for making people feel safe and grounded.',
       },
       {
-        title: 'Resource Management',
+        title: '3) Resource Management',
         description: 'You naturally conserve and protect resources, ensuring sustainability and avoiding waste through careful stewardship.',
       },
     ],
@@ -357,43 +357,43 @@ const DAY_MASTER_READINGS = {
     ],
     workSuperpowers: [
       {
-        title: 'Talent Development',
+        title: '1) Talent Development',
         description: 'You see potential where others see problems. Your patient cultivation turns struggling individuals into high performers through methodical nurturing.',
       },
       {
-        title: 'Resource Optimization',
+        title: '2) Resource Optimization',
         description: 'Like soil that can grow anything with the right care, you make the most of whatever resources are available, finding creative solutions others miss.',
       },
       {
-        title: 'Methodical Problem-Solving',
+        title: '3) Methodical Problem-Solving',
         description: 'Your analytical approach combined with endless resourcefulness means you break down complex challenges into manageable, step-by-step solutions.',
       },
     ],
     relationshipGifts: [
       {
-        title: 'Growth Facilitation',
+        title: '1) Growth Facilitation',
         description: 'Others feel safe to be vulnerable and grow around you. You create the perfect conditions for people to become their best selves.',
       },
       {
-        title: 'Adaptive Support',
+        title: '2) Adaptive Support',
         description: 'You adjust your nurturing style to what each person needs, like soil that supports both delicate flowers and mighty trees.',
       },
       {
-        title: 'Patient Cultivation',
+        title: '3) Patient Cultivation',
         description: 'Where others give up, you keep nurturing. You understand that real growth takes time and consistent care.',
       },
     ],
     naturalAbilities: [
       {
-        title: 'Reading Growth Potential',
+        title: '1) Reading Growth Potential',
         description: 'You instinctively know what someone needs to flourish and can create the perfect developmental environment for them.',
       },
       {
-        title: 'Resource Multiplication',
+        title: '2) Resource Multiplication',
         description: 'You take limited resources and somehow make them stretch to support multiple projects and people.',
       },
       {
-        title: 'Sustainable Development',
+        title: '3) Sustainable Development',
         description: 'Everything you nurture tends to keep growing long after your direct involvement, because you build strong foundational skills.',
       },
     ],
@@ -420,43 +420,43 @@ const DAY_MASTER_READINGS = {
     ],
     workSuperpowers: [
       {
-        title: 'Crisis Leadership',
+        title: '1) Crisis Leadership',
         description: 'When everything is falling apart, you become the unshakeable force that makes the tough calls. Others freeze; you advance with calculated precision.',
       },
       {
-        title: 'Cutting Through BS',
+        title: '2) Cutting Through BS',
         description: 'You have a gift for seeing straight to the core of problems and eliminating everything that doesn\'t matter. Your directness saves massive time and resources.',
       },
       {
-        title: 'Pressure Performance',
+        title: '3) Pressure Performance',
         description: 'The more intense the situation, the sharper you become. Your best work emerges when others are overwhelmed by stress.',
       },
     ],
     relationshipGifts: [
       {
-        title: 'Unwavering Loyalty',
+        title: '1) Unwavering Loyalty',
         description: 'Once someone earns your respect, you become their fiercest protector. You\'ll fight battles they can\'t fight themselves.',
       },
       {
-        title: 'Righteous Protection',
+        title: '2) Righteous Protection',
         description: 'You naturally defend those who can\'t defend themselves. Your sense of justice makes people feel safe under your wing.',
       },
       {
-        title: 'Strength in Storms',
+        title: '3) Strength in Storms',
         description: 'Others depend on your emotional steel during their darkest moments. You\'re the rock that doesn\'t erode.',
       },
     ],
     naturalAbilities: [
       {
-        title: 'Reading Power Dynamics',
+        title: '1) Reading Power Dynamics',
         description: 'You instantly understand who holds real authority and how to navigate or challenge existing power structures.',
       },
       {
-        title: 'Strategic Striking',
+        title: '2) Strategic Striking',
         description: 'Like a master swordsman, you know exactly when and where to apply force for maximum impact with minimum effort.',
       },
       {
-        title: 'Forging Under Fire',
+        title: '3) Forging Under Fire',
         description: 'Adversity doesn\'t weaken you; it refines your edge. Each challenge makes you sharper and more valuable.',
       },
     ],
@@ -483,43 +483,43 @@ const DAY_MASTER_READINGS = {
     ],
     workSuperpowers: [
       {
-        title: 'Strategic Innovation',
+        title: '1) Strategic Innovation',
         description: 'You see patterns and connections others miss, creating brilliant solutions by combining seemingly unrelated ideas in sophisticated ways.',
       },
       {
-        title: 'Refined Problem-Solving',
+        title: '2) Refined Problem-Solving',
         description: 'Where others use brute force, you find elegant approaches. Your solutions are not just effective—they\'re beautiful in their simplicity.',
       },
       {
-        title: 'Creative Intelligence',
+        title: '3) Creative Intelligence',
         description: 'You excel at taking raw concepts and polishing them into something remarkable, like transforming ore into precious jewelry.',
       },
     ],
     relationshipGifts: [
       {
-        title: 'Sophisticated Guidance',
+        title: '1) Sophisticated Guidance',
         description: 'Others come to you when they want to elevate their approach. You help people refine their ideas and present their best selves.',
       },
       {
-        title: 'Experimental Wisdom',
+        title: '2) Experimental Wisdom',
         description: 'Your willingness to try different relationship dynamics gives you unique insights into what works and what doesn\'t.',
       },
       {
-        title: 'Inspirational Elegance',
+        title: '3) Inspirational Elegance',
         description: 'Your presence raises the standard. People naturally want to be more thoughtful and refined when they\'re around you.',
       },
     ],
     naturalAbilities: [
       {
-        title: 'Reading Subtleties',
+        title: '1) Reading Subtleties',
         description: 'You notice details others miss and can sense the hidden potential in situations, people, and opportunities.',
       },
       {
-        title: 'Multi-dimensional Thinking',
+        title: '2) Multi-dimensional Thinking',
         description: 'While others think linearly, you think in layers, able to juggle multiple perspectives and possibilities simultaneously.',
       },
       {
-        title: 'Quality Refinement',
+        title: '3) Quality Refinement',
         description: 'You have an innate ability to take something good and make it exceptional through careful, sophisticated adjustments.',
       },
     ],
@@ -546,43 +546,43 @@ const DAY_MASTER_READINGS = {
     ],
     workSuperpowers: [
       {
-        title: 'Adaptive Problem-Solving',
+        title: '1) Adaptive Problem-Solving',
         description: 'Where others hit walls, you flow around them. Your ability to find alternative paths creates solutions that preserve relationships while achieving goals.',
       },
       {
-        title: 'Information Synthesis',
+        title: '2) Information Synthesis',
         description: 'Like an ocean that reflects everything, you absorb vast amounts of information and can recall exactly what\'s needed when it\'s needed.',
       },
       {
-        title: 'Network Orchestration',
+        title: '3) Network Orchestration',
         description: 'You excel at connecting the right people at the right time, creating value through relationships and information flow rather than direct force.',
       },
     ],
     relationshipGifts: [
       {
-        title: 'Diplomatic Navigation',
+        title: '1) Diplomatic Navigation',
         description: 'You help people find common ground by flowing between different perspectives and reflecting back what each side needs to hear.',
       },
       {
-        title: 'Expansive Connection',
+        title: '2) Expansive Connection',
         description: 'Your social reach allows you to introduce people to opportunities and relationships they never would have found on their own.',
       },
       {
-        title: 'Fluid Adaptation',
+        title: '3) Fluid Adaptation',
         description: 'You adjust your approach to what each relationship needs, like water taking the shape of its container while maintaining your essential nature.',
       },
     ],
     naturalAbilities: [
       {
-        title: 'Reading Currents',
+        title: '1) Reading Currents',
         description: 'You sense the flow of trends, social dynamics, and hidden opportunities before others even notice them emerging.',
       },
       {
-        title: 'Boundary Management',
+        title: '2) Boundary Management',
         description: 'You understand when to push boundaries and when to respect them, knowing that too much freedom becomes destructive while too little stagnates growth.',
       },
       {
-        title: 'Memory Banking',
+        title: '3) Memory Banking',
         description: 'Like the deep ocean holding treasures, you store valuable information and experiences that become incredibly useful at unexpected moments.',
       },
     ],
@@ -609,43 +609,43 @@ const DAY_MASTER_READINGS = {
     ],
     workSuperpowers: [
       {
-        title: 'Deep Pattern Recognition',
+        title: '1) Deep Pattern Recognition',
         description: 'Like mist that sees everything it touches, you notice subtle connections and underlying patterns that escape more obvious thinkers.',
       },
       {
-        title: 'Intuitive Research',
+        title: '2) Intuitive Research',
         description: 'Your observational skills combined with intellectual curiosity make you exceptional at uncovering hidden truths and solving complex puzzles.',
       },
       {
-        title: 'Gentle Transformation',
+        title: '3) Gentle Transformation',
         description: 'You create change through patient nurturing rather than force, like how gentle rain gradually transforms landscapes.',
       },
     ],
     relationshipGifts: [
       {
-        title: 'Emotional Intelligence',
+        title: '1) Emotional Intelligence',
         description: 'You sense the unspoken feelings and needs of others, providing comfort and understanding exactly when it\'s needed most.',
       },
       {
-        title: 'Creative Inspiration',
+        title: '2) Creative Inspiration',
         description: 'Your unique perspectives and idealistic nature inspire others to see possibilities they never considered.',
       },
       {
-        title: 'Safe Space Creation',
+        title: '3) Safe Space Creation',
         description: 'People feel comfortable sharing their vulnerabilities with you because of your gentle, non-judgmental presence.',
       },
     ],
     naturalAbilities: [
       {
-        title: 'Reading Between Lines',
+        title: '1) Reading Between Lines',
         description: 'You excel at understanding what people aren\'t saying and picking up on subtle environmental cues others miss entirely.',
       },
       {
-        title: 'Adaptive Flow',
+        title: '2) Adaptive Flow',
         description: 'Like water taking any shape, you adjust to different situations while maintaining your essential gentle nature.',
       },
       {
-        title: 'Detail Synthesis',
+        title: '3) Detail Synthesis',
         description: 'You process complex information and distill it into insights that are both accurate and unexpectedly illuminating.',
       },
     ],

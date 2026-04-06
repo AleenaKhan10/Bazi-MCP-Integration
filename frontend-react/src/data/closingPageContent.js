@@ -27,8 +27,8 @@ const CLOSING_CONTENT = {
     title: 'A Crucial Part of Your {dayMaster} Energy Flow Is Currently Being \'Suffocated\' & Blocked... By Strong Clashing {attacking} Energies!',
     
     paragraphs: [
-      'Right now I\'ve calculated that your Day Master is getting attacked by {attacking} Elements!',
-      'You\'re paper—and {attacking} is the scissors cutting straight through your natural strengths.',
+      'Right now I\'ve calculated that your Day Master is getting attacked by <u>{attacking}</u>  Elements!',
+      'You\'re paper—and <u>{attacking}</u> is the scissors cutting straight through your natural strengths.',
       'And this can show up in a variety of ways...',
       'If you feel disconnected from your life\'s purpose...',
       'Trapped in routines that drain rather than energize you...',
@@ -75,7 +75,7 @@ const CLOSING_CONTENT = {
   // (images 3-6) — Purpose: SOLUTION REVEAL
   // ==========================================
   step2: {
-    title: 'It\'s Like Finding The Perfect Soil, Water,<br/>Sunlight, Temperature & Fertilizer<br/>That Can Allow Your <b>"Soul Seed"</b> To Naturally Flourish &<br/>To Manifest Talents That Bear Abundant, Heavy & Ripe Fruit For You...<br/>In All Aspects of Your Life...',
+    title: 'It\'s Like Finding The Perfect Soil, Water, Sunlight, Temperature & Fertilizer That Can Allow Your <b>"Soul Seed"</b> To Naturally Flourish & To Manifest Talents That Bear Abundant, Heavy & Ripe Fruit For You...In All Aspects of Your Life...',
 
     paragraphs: [
       'That\'s why we\'ve prepared a special reading just for you that helps to go through every unique aspect and element of your life...',
@@ -111,7 +111,7 @@ const CLOSING_CONTENT = {
     ],
 
     // --- Adjustments sub-section ---
-    adjustmentsTitle: 'And As You Discover The Simple "Adjustments"<br/>That Take No Longer Than 5-Minutes In<br/>Your Life...',
+    adjustmentsTitle: 'And As You Discover The Simple "Adjustments" That Take No Longer Than 5-Minutes In Your Life...',
 
     adjustmentsParagraphs: [
       'You\'ll start to catch on to the \'winds of luck\' that will help you to move towards your goals...',
@@ -121,7 +121,7 @@ const CLOSING_CONTENT = {
     ],
 
     // --- Direct Forces sub-section ---
-    directTitle: 'We\'ll Even Show You How To "Direct"<br/>These Primordial Forces Just Like The Wind...',
+    directTitle: 'We\'ll Even Show You How To "Direct" These Primordial Forces Just Like The Wind...',
     
     directParagraphs: [
       'Into the most important aspects of your life...',
@@ -138,7 +138,7 @@ const CLOSING_CONTENT = {
   // (images 6-12) — Purpose: VALUE STACK
   // ==========================================
   step3: {
-    harnessTitle: 'Now When You Discover How To \'Harness\'<br/>These Natural Resources In Your Life<br/>With Simple Effortless Adjustments...',
+    harnessTitle: 'Now When You Discover How To \'Harness\' These Natural Resources In Your Life With Simple Effortless Adjustments...',
     
     harnessParagraphs: [
       'You will get to improve almost every aspect of your life with an unshakeable confidence...',
@@ -172,7 +172,7 @@ const CLOSING_CONTENT = {
     pillars: [
       {
         number: 1,
-        title: 'The First Aspect of Your Life Energy<br/>That We\'ll Look At Is Your "Life Force" – or Chi Levels.',
+        title: 'The First Aspect of Your Life Energy That We\'ll Look At Is Your "Life Force" – or Chi Levels.',
         paragraphs: [
           'Some people call this motivation, energy, will, courage, or intention. It goes by many names, and it\'s why some people have the energy to \'create\' while others lag behind.',
           'That\'s why we\'ll look into the various factors based on your {dayMaster} Day Master that are affecting your \'Life Force\' levels.',
@@ -193,7 +193,7 @@ const CLOSING_CONTENT = {
       },
       {
         number: 2,
-        title: 'Next, {name}\'s <b><i><u>Full</u></i></b> Report<br/>Will Also Dive Into...<br/><b>Your Natural Intellect & Intelligence Patterns.</b>',
+        title: 'Next, {name}\'s <b><i><u>Full</u></i></b> Report<br/>Will Also Dive Into...<br/><br/><b>Your Natural Intellect & Intelligence Patterns.</b>',
         paragraphs: [
           'The reason why it\'s important to discover what your \'intelligence patterns\' are... is because this gives you the confidence that you\'re taking the right paths to reach your goals.',
           'When you discover the specific Intelligence Patterns that you\'ve been given in the Life Energy Attunement Report...',
@@ -205,11 +205,12 @@ const CLOSING_CONTENT = {
           'You\'ll find that you start to see new, interesting, and unexpected ways to solve problems in your life. You start receiving creative \'downloads\' from the universe, and the path towards making tremendous breakthroughs in your life naturally appears almost obviously in front of you...',
           'The more you work with the natural intelligence patterns... the more you tune yourself to receive the nourishing energies from the universe... and the more that you\'ll start to recognise your unique gifts that make you irreplaceable in any relationship, career, or venture that you decide to go on...',
           '<b>Because your Intelligence Patterns hold the key to making you the important and pivotal person in the room... where others begin depending on you, allowing you to demand higher salaries in the Fire Horse Year of 2026...</b>',
+	  'And closely linked to this… {name}\'s Life Energy Attunement Report will also go deep into your relationships! ',
         ],
       },
       {
         number: 3,
-        title: 'Giving You The Power To <b>Redesign</b><br/>Your Relationships To <b><i>Your Choosing</i>...</b>',
+        title: 'Giving You The Power To <b>Redesign</b>Your Relationships To <b><i>Your Choosing</i>...</b>',
         paragraphs: [
           'And closely linked to this... {name}\'s Life Energy Attunement Report will also go deep into your relationships!',
           'This means that whether you\'re trying to work through the problems in your marriage, office... or even with your children or peers...',
@@ -220,7 +221,7 @@ const CLOSING_CONTENT = {
       },
       {
         number: 4,
-        title: 'Most Importantly – The Biggest "Needle Mover"<br/>That You\'ll Get In Your Life Energy Attunement Report Is<br/>The <b><i>"Peak Luck Periods"</i></b> That Allow You To Make<br/>Leaps & Bounds In Just Days!',
+        title: 'Most Importantly – The Biggest "Needle Mover"<br/>That You\'ll Get In Your Life Energy Attunement Report Is The <b><i>"Peak Luck Periods"</i></b> That Allow You To Make Leaps & Bounds In Just Days!',
         intro: null,
         paragraphs: [
           'This pinnacle period is what allows some people to win the lottery, pick winning stocks, or to have that <i>golden touch</i> where it seems like success follows them wherever they go.',
@@ -239,7 +240,7 @@ const CLOSING_CONTENT = {
     ],
 
     // --- Simulation pitch ---
-    simulationTitle: 'That\'s Why We\'ve Created A Powerful Software That "Simulates" Your<br/>Life Path Based On Your Unique BaZi – Running Through Thousands of Simulations<br/>Using The 10,000 Year Imperial Calendar To Dig Out The Simple Adjustments<br/>That Helps You Tune Into Your <b><u>Peak Luck Period</u></b>... And More!',
+    simulationTitle: 'That\'s Why We\'ve Created A Powerful Software That "Simulates" Your Life Path Based On Your Unique BaZi – Running Through Thousands of Simulations Using The 10,000 Year Imperial Calendar To Dig Out The Simple Adjustments That Helps You Tune Into Your <b><u>Peak Luck Period</u></b>... And More!',
 
     simulationParagraphs: [
       'And what\'s unique about our software... is that it helps you to simulate all the possible \'paths\' that your life can take.',

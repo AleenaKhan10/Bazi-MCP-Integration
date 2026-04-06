@@ -48,7 +48,7 @@ export default function UpsellPage() {
           <h1 className="closing-section-heading mb-12">
             Congratulations On Taking The First Step Toward Unlocking Your True Energetic Potential!
           </h1>
-          <h2 className="closing-subheading">
+          <h2 className="closing-subheading text-white text-lg" style={{WebkitTextFillColor: 'white'}}>
             Stay On This Page To Discover Your First "Energy Adjustment" That Can Fix The Clashing Energies In Your Chart.
           </h2>
         </div>
@@ -390,16 +390,16 @@ export default function UpsellPage() {
         {/* ALIGN ENVIRONMENT */}
         <div className="closing-flow-section p-6 md:p-8 mb-6">
           <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
-            Now, the moment that you use your home to support your unique {r("%DAY MASTER%")} nature... and align your environment to charge your soul's natural patterns with the specific elemental nourishment it craves... that's when you can finally express the full magnitude of your gifts without restriction.
+            Now, the moment that you use your home to support your unique <em><u>{r("%DAY MASTER%")}</u></em> nature... and align your environment to charge your soul's natural patterns with the specific elemental nourishment it craves... that's when you can finally express the full magnitude of your gifts without restriction.
           </h2>
 
           <div className="closing-paragraph">
-            <p>Think of it this way: You've just discovered that you're a rare, powerful <strong className="text-text-primary">{r("[%DAY MASTER%]")}</strong> - but you're currently planted in completely toxic soil.</p>
+            <p>Think of it this way: You've just discovered that you're a rare, powerful <strong className="text-text-primary">{r("%DAY MASTER%")}</strong> - but you're currently planted in completely toxic soil.</p>
             <p>Your consciousness needs the right environmental foundation to flourish.</p>
-            <p>Just like how a mighty oak needs rich, well-drained earth to grow into its full majesty... or how a brilliant fire needs clean oxygen to burn at its brightest... your <strong className="text-text-primary">{r("[%DAY MASTER%]")}</strong> requires an environment that feeds rather than starves its natural energy.</p>
+            <p>Just like how a mighty oak needs rich, well-drained earth to grow into its full majesty... or how a brilliant fire needs clean oxygen to burn at its brightest... your <strong className="text-text-primary">{r("%DAY MASTER%")}</strong> requires an environment that feeds rather than starves its natural energy.</p>
             <p><strong className="text-text-primary">Right now, your home has become contaminated soil that's choking the life out of your elemental gifts.</strong></p>
             <p>Every room where <strong className="text-text-primary">{r("%DAY MASTER ATTACKING%")}</strong> have created Sha Stop Points is like having pockets of acid in the earth around your roots. No matter how powerful your inner nature, it cannot thrive in an environment that's actively working against it.</p>
-            <p>But when you transform your home into the perfect "soil" for your <strong className="text-text-primary">{r("[%DAY MASTER%]")}</strong> to flourish...</p>
+            <p>But when you transform your home into the perfect "soil" for your <strong className="text-text-primary">{r("%DAY MASTER%")}</strong> to flourish...</p>
             <p>When every corner becomes a nourishing sanctuary that feeds your natural patterns...</p>
             <p>When the toxic contamination is neutralized and replaced with pure, supportive energy...</p>
             <p>That's when you'll experience the explosive growth that comes from perfect alignment between your <em>inner</em> gifts and your <em>outer</em> environment.</p>
@@ -428,7 +428,7 @@ export default function UpsellPage() {
         {/* THE PITCH */}
         <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-6">
           <h2 className="closing-subheading text-center mb-6 px-4 md:px-8 text-accent-gold">
-            As a special offer only on this page… you'll be able to get 3 Purifying Wind Chimes for just $49 that comes with a FREE 6-Step Feng Shui Home Energy Improvement Video Course (Worth $198) Recorded in-person by a Vetted Feng Shui Master Based In Singapore, Chinatown.
+            As A Special Offer Only On This Page… You'll Be Able To Get <em><u>3</u></em> Purifying Wind Chimes For <b><u>Just $49</u></b> That Comes With A FREE 6-Step Feng Shui Home Energy Improvement Video Course (Worth $198) Recorded In-Person By A Vetted Feng Shui Master Based In Singapore, Chinatown.
           </h2>
           <div className="w-[100vw] max-w-5xl relative left-1/2 -translate-x-1/2 px-4 mb-10 z-10 animate-fade-in-up">
         {/* INTERACTIVE OFFER BOX REPLACING STATIC IMAGES 5, 6, 7 */}
@@ -437,9 +437,9 @@ export default function UpsellPage() {
             {/* Left Column */}
             <div className="flex-[1.2] flex flex-col justify-between">
               <div>
-                <h3 className="font-mystical text-3xl md:text-4xl text-white leading-tight mb-3 text-center md:text-left">
+                <h3 className="font-mystical text-xl text-white leading-tight mb-3 text-center md:text-left">
                   One-Time Special Offer:<br />
-                  <span className="text-accent-gold">3x Purifying Wind Chimes</span>
+                  <span className="text-accent-gold text-2xl">3x Purifying Wind Chimes</span>
                 </h3>
                 
                 <div className="flex items-center justify-center md:justify-start gap-2 mb-8">
@@ -496,22 +496,9 @@ export default function UpsellPage() {
               </div>
             </div>
           </div>
-
-          {/* BONUS IMAGES SIDE BY SIDE */}
-          <div className="w-[100vw] max-w-4xl relative left-1/2 -translate-x-1/2 px-4 mb-16 animate-fade-in-up mt-8">
-            <div className="flex flex-col md:flex-row bg-transparent border-0">
-              <div className="w-full md:w-1/2 aspect-square p-0 flex items-center justify-center">
-                <img src="/upsell_page_images/6.png" alt="6 Simple Feng Shui Steps Course" className="w-full h-full object-contain" />
-              </div>
-              
-              <div className="w-full md:w-1/2 aspect-square p-0 flex items-center justify-center">
-                <img src="/upsell_page_images/7.png" alt="Purifying Wind Chimes" className="w-full h-full object-contain" />
-              </div>
-            </div>
-          </div>
         </div>
 
-        <p className="text-center text-lg mb-8 font-medium mt-8">And here's 10 reasons why <strong className="text-accent-gold">this $49 offer</strong> can be extremely powerful for you…</p>
+        <p className="text-center text-lg mb-8 font-medium mt-8 px-8 md:px-16">And here are 10 reasons why <strong className="text-accent-gold">this $49 offer</strong> can be extremely powerful for you…</p>
 
           {/* 10 REASONS LIST - Styled like the 13 inclusions */}
           <div className="space-y-4">
@@ -636,7 +623,7 @@ export default function UpsellPage() {
             This is the missing piece that makes everything "click" together…
           </h2>
           <div className="closing-paragraph">
-            <p>Your Inner Feng Shui <strong className="text-text-primary">(BaZi reading)</strong> revealed your energetic blueprint and natural gifts. <strong className="text-text-primary">Your Outer Feng Shui (purifying environment) creates the conditions for those gifts to flourish in reality.</strong></p>
+            <p>Your <strong className="text-text-primary">Inner Feng Shui (BaZi reading)</strong> revealed your energetic blueprint and natural gifts. <strong className="text-text-primary">Your Outer Feng Shui (purifying environment)</strong> creates the conditions for those gifts to flourish in reality.</p>
             <p>Without both pieces working together, you'll have the knowledge but not the results. You'll understand your potential but watch it get strangled by environmental contamination.</p>
           </div>
         </div>
@@ -647,37 +634,33 @@ export default function UpsellPage() {
             And here's how simple it is to activate this ancient purification technology:
           </h2>
 
-          <div className="flex justify-center mb-8">
-             <img src="/upsell_page_images/8.gif" alt="Activate The Chimes Yourself" className="w-full max-w-lg shadow-lg" />
-          </div>
-
           <div className="space-y-10">
             <div className="text-center">
-              <h3 className="text-lg font-bold text-accent-gold mb-4">Step One: Hang Your Wind Chimes Where<br/>You Spend Significant Time In</h3>
+              <h3 className="text-lg font-bold text-white mb-4 px-8 md:px-16">Step One: Hang Your Wind Chimes Where You Spend Significant Time In</h3>
               <div className="flex justify-center mb-4">
                  <img src="/upsell_page_images/9.png" alt="Step One: Hang Your Wind Chimes" className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-white" />
               </div>
-              <p className="text-text-muted max-w-md mx-auto">Whether it's your bedroom, office, or main living space,<br/>the sacred frequencies will immediately begin dissolving Sha Qi particles<br/>in a 20-foot radius around each chime.</p>
+              <p className="text-text-muted max-w-md mx-auto">Whether it's your bedroom, office, or main living space, the sacred frequencies will immediately begin dissolving Sha Qi particles in a 20-foot radius around each chime.</p>
             </div>
 
             <div className="text-center">
-              <h3 className="text-lg font-bold text-accent-gold mb-4">Step Two: Each Time You Hear A Gentle Ring,<br/>Take A Moment To Focus On One Of The<br/>Positive Traits Revealed In Your Report.</h3>
+              <h3 className="text-lg font-bold text-white mb-4 px-8 md:px:16">Step Two: Each Time You Hear A Gentle Ring, Take A Moment To Focus On One Of The Positive Traits Revealed In Your Report.</h3>
               <div className="flex justify-center mb-4">
                  <img src="/upsell_page_images/10.png" alt="Step Two: Focus On Positive Traits" className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-white" />
               </div>
-              <p className="text-text-muted max-w-md mx-auto">Whether it's your natural intelligence patterns, your Day Master's gifts,<br/>or your upcoming peak luck periods – let each ring<br/>remind you of your true potential.</p>
+              <p className="text-text-muted max-w-md mx-auto">Whether it's your natural intelligence patterns, your Day Master's gifts, or your upcoming peak luck periods – let each ring remind you of your true potential.</p>
             </div>
 
             <div className="text-center">
-              <h3 className="text-lg font-bold text-accent-gold mb-4">Step Three: Feel The Toxic Energy<br/>Leaving Your Space And Your Soul<br/>With Each Cleansing Tone.</h3>
+              <h3 className="text-lg font-bold text-white mb-4 px-8 md:px-16">Step Three: Feel The Toxic Energy Leaving Your Space And Your Soul With Each Cleansing Tone.</h3>
               <div className="flex justify-center mb-4">
                  <img src="/upsell_page_images/9.png" alt="Step Three: Feel Toxic Energy Leaving" className="w-64 h-64 rounded-full object-cover shadow-lg border-4 border-white" />
               </div>
-              <p className="text-text-muted max-w-md mx-auto">Visualize the death energy dissolving like smoke in the wind, replaced by<br/>pure, nourishing energy that feeds your elemental nature.</p>
+              <p className="text-text-muted max-w-md mx-auto">Visualize the death energy dissolving like smoke in the wind, replaced by pure, nourishing energy that feeds your elemental nature.</p>
             </div>
           </div>
 
-          <p className="text-center italic mt-8 text-text-muted font-medium">
+          <p className="text-center italic mt-8 text-white font-medium px-8 md:px-16">
             That's it. No complicated rituals. No hours of meditation. No expensive ongoing maintenance.
           </p>
         </div>
@@ -688,25 +671,24 @@ export default function UpsellPage() {
             onClick={handlePurchase} 
             className="btn-mystical w-full text-base tracking-wider px-6 py-5 whitespace-normal flex flex-col items-center justify-center gap-1 shadow-[0_0_20px_rgba(235,190,105,0.4)] hover:shadow-[0_0_30px_rgba(235,190,105,0.6)]"
           >
-            <span className="font-bold text-lg leading-tight uppercase">YES → INSTALL THE MONK PURIFICATION SYSTEM IN MY HOME</span>
-            <span className="text-sm font-medium opacity-90">Dissolve Sha Stop Points & Activate My Luck Cycles: Only $79 Today</span>
+            <span className="font-bold text-lg leading-tight uppercase">YES → INSTALL THE MONK PURIFICATION SYSTEM IN MY HOME FOR JUST $49 TODAY</span>
           </button>
         </div>
 
         {/* GUARANTEE */}
         <div className="guarantee-section mb-6">
           
-          <h2 className="text-xl md:text-2xl font-mystical text-accent-gold text-center mb-6 px-4 md:px-8 leading-snug">
-            And because we're so confident that this environmental transformation will amplify every insight from your Life Energy Attunement Report, we're backing this offer with our complete 60-Day Money-Back Guarantee.
-          </h2>
-          
           <div className="flex justify-center mb-6">
-            <img 
-              src="/money-back-guarantee.png" 
+            <img
+              src="/money-back-guarantee.png"
               alt="60-Day Money Back Guarantee"
               className="w-32 h-32 object-contain"
             />
           </div>
+
+          <h2 className="text-xl md:text-2xl font-mystical text-accent-gold text-center mb-6 px-4 md:px-8 leading-snug">
+            And because we're so confident that this environmental transformation will amplify every insight from your Life Energy Attunement Report, we're backing this offer with our complete 60-Day Money-Back Guarantee.
+          </h2>
 
           {/* THIRD TESTIMONIAL */}
           <div className="testimonial-card my-6">
@@ -720,7 +702,7 @@ export default function UpsellPage() {
               </div>
               <div className="flex-1 text-center md:text-left">
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
-                  <p className="text-text-primary font-bold text-[15px]">Sarah R., Small Business Owner, Texas</p>
+                  <p className="text-text-primary font-bold text-[15px]">Sarah, Small Business Owner, Texas</p>
                   <p className="text-gray-900 text-xs tracking-tighter mt-1">★★★★★</p>
                 </div>
                 <p className="text-text-muted leading-relaxed text-[15px]">
@@ -730,16 +712,16 @@ export default function UpsellPage() {
             </div>
           </div>
 
-          <p className="text-text-muted mb-4 px-4 font-medium">If you don't experience:</p>
-          <ul className="closing-bullet-list px-4 mb-6">
-            <li><span className="text-accent-gold mr-2">●</span>Clearer thinking and stronger intuition within the first week</li>
-            <li><span className="text-accent-gold mr-2">●</span>Noticeable improvements in your energy levels and motivation</li>
-            <li><span className="text-accent-gold mr-2">●</span>Better sleep and more peaceful feelings in your home</li>
-            <li><span className="text-accent-gold mr-2">●</span>Increased synchronicities and opportunities flowing your way</li>
-            <li><span className="text-accent-gold mr-2">●</span>The sense that your BaZi gifts are finally being expressed fully</li>
+          <p className="text-white mb-4 px-4 font-medium text-left">If you don't experience:</p>
+          <ul className="closing-bullet-list px-4 mb-6 text-left">
+            <li><span className="text-accent-gold mr-2 text-xs">●</span>Clearer thinking and stronger intuition within the first week</li>
+            <li><span className="text-accent-gold mr-2 text-xs">●</span>Noticeable improvements in your energy levels and motivation</li>
+            <li><span className="text-accent-gold mr-2 text-xs">●</span>Better sleep and more peaceful feelings in your home</li>
+            <li><span className="text-accent-gold mr-2 text-xs">●</span>Increased synchronicities and opportunities flowing your way</li>
+            <li><span className="text-accent-gold mr-2 text-xs">●</span>The sense that your BaZi gifts are finally being expressed fully</li>
           </ul>
 
-          <p className="text-center font-medium px-4 mb-6">Simply return the wind chimes for a full refund – no questions asked.</p>
+          <p className="font-medium px-4 mt-6 mb-6 text-left">Simply return the wind chimes for a full refund. No questions asked.</p>
           
           <p className="text-center text-text-muted px-4">
             We've seen this combination of Inner and Outer Feng Shui transform thousands of lives. We know that when you align your environment to support rather than sabotage your Day Master's nature, results follow naturally and inevitably.
@@ -750,14 +732,13 @@ export default function UpsellPage() {
             onClick={handlePurchase} 
             className="btn-mystical w-full text-base tracking-wider px-6 py-5 whitespace-normal flex flex-col items-center justify-center gap-1 shadow-[0_0_20px_rgba(235,190,105,0.4)] hover:shadow-[0_0_30px_rgba(235,190,105,0.6)]"
           >
-            <span className="font-bold text-lg leading-tight uppercase">YES → INSTALL THE MONK PURIFICATION SYSTEM IN MY HOME</span>
-            <span className="text-sm font-medium opacity-90">Dissolve Sha Stop Points & Activate My Luck Cycles: Only $49 Today</span>
+            <span className="font-bold text-lg leading-tight uppercase">YES → INSTALL THE MONK PURIFICATION SYSTEM IN MY HOME FOR JUST $49 TODAY</span>
           </button>
           
           <div className="mt-8 flex flex-col items-center gap-4">
             <button 
               onClick={handleDecline}
-              className="mt-6 text-sm text-text-muted hover:text-white underline underline-offset-4 opacity-70 transition-opacity hover:opacity-100"
+              className="mt-2 text-sm text-text-muted hover:text-white underline underline-offset-4 opacity-70 transition-opacity hover:opacity-100 px-8 md:px-16"
             >
               No thanks, I will pass on this opportunity to purify my environment.
             </button>
@@ -768,7 +749,7 @@ export default function UpsellPage() {
       {/* FULL WIDTH TRANSPARENT TESTIMONIAL SECTION */}
       <div className="w-[100vw] bg-transparent text-text-primary pt-16 pb-24 px-4 font-sans relative left-1/2 -translate-x-1/2">
         <div className="max-w-5xl mx-auto">
-          <h3 className="text-center text-[26px] md:text-[30px] font-bold mb-12 flex flex-col items-center leading-snug font-serif">
+          <h3 className="closing-subheading font-bold mb-12 flex flex-col items-center leading-snug font-serif">
             <span className="text-white mb-0.5">Join Thousands Who Used The Purifying Wind Chimes To</span>
             <span className="text-accent-gold">Cleanse Their Energy And Invite Luck, Peace & Abundance</span>
             <span className="text-accent-gold">Into Their Lives...</span>
@@ -792,8 +773,8 @@ export default function UpsellPage() {
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#1b74e4" />
                   </svg>
                 </h4>
-                <div className="text-accent-gold text-[11px] tracking-widest mb-1.5">★★★★★</div>
-                <p className="text-text-muted text-[13px] leading-relaxed pr-2">
+                <div className="text-accent-gold text-[15px] tracking-widest mb-1.5">★★★★★</div>
+                <p className="text-text-muted text-[15px] leading-relaxed pr-2">
                   {testimonial.text}
                 </p>
               </div>

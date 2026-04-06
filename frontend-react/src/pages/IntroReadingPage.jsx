@@ -47,9 +47,7 @@ export default function IntroReadingPage() {
             Welcome to your life energy chart reading, {userName}.
           </h1>
           <h2 className="text-xl md:text-2xl font-mystical font-bold text-gold-gradient leading-relaxed">
-            The First Aspect We'll Explore Is Your <u>Day Master</u>,
-            <br />
-            Because It Reveals So Much About The Power Within You...
+            The First Aspect We'll Explore Is Your <u>Day Master</u>, Because It Reveals So Much About The Power Within You...
           </h2>
         </div>
 
@@ -423,7 +421,7 @@ export default function IntroReadingPage() {
         <div className="glass-card p-8 text-center mb-8 glow-gold-strong intro-reading-content">
           <div className="mb-8">
             <p
-              className="text-text-muted italic leading-relaxed mb-10"
+              className="text-text-muted italic leading-relaxed mb-14"
               style={{ fontSize: "clamp(18px, 3vw, 24px)" }}
             >
               It's like discovering you've been
