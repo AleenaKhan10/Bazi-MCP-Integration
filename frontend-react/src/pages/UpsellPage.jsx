@@ -448,6 +448,11 @@ export default function UpsellPage() {
                   <span className="text-sm text-gray-300 border-l border-gray-600 pl-3 ml-1">Over 123,021 Homes Purified</span>
                 </div>
 
+                {/* Mobile-only wind chimes image positioned before features as requested by the Green Arrow feedback */}
+                <div className="block md:hidden mb-8 px-2">
+                  <img src="/upsell_page_images/7.png" alt="Golden Purifying Wind Chimes" className="w-full max-w-[340px] mx-auto h-auto rounded-[20px] object-cover shadow-[0_0_20px_rgba(255,255,255,0.05)] border border-gray-700" />
+                </div>
+
                 <ul className="space-y-5 mb-8 text-[15.5px] text-gray-200 leading-relaxed font-normal">
                     <li className="flex items-start gap-3">
                       <span className="mt-1 text-white flex-shrink-0">
@@ -471,18 +476,20 @@ export default function UpsellPage() {
                 </div>
 
                 {/* Inner Bonus Box */}
-                <div className="border border-white/50 rounded-lg p-4 flex items-center md:items-start bg-transparent gap-4 relative overflow-hidden">
+                <div className="border border-white/50 rounded-lg p-4 flex flex-col md:flex-row items-center md:items-start text-center md:text-left bg-transparent gap-4 md:gap-5 relative overflow-hidden">
                   <div className="absolute inset-0 bg-white/5 pointer-events-none"></div>
-                  <div className="flex-1 text-sm italic text-gray-300 leading-relaxed font-serif relative z-10">
+                  <div className="flex-1 text-[14.5px] italic text-gray-300 leading-relaxed font-serif relative z-10">
                     Get a FREE 6-Step Feng Shui Home Energy Improvement Video Course (Worth $198) For Purchases of 3 Wind Chimes - Recorded in-person by a Vetted Master Based In Singapore, Chinatown.
                   </div>
-                  <img src="/upsell_page_images/6.png" alt="6 Simple Feng Shui Steps" className="w-24 md:w-[110px] object-contain rounded-md shadow-sm border border-gray-600 flex-shrink-0 relative z-10 bg-black" />
+                  <div className="w-[250px] md:w-[180px] lg:w-[200px] flex-shrink-0 relative z-10 flex justify-center mt-4 md:mt-0">
+                    <img src="/upsell_page_images/6.png" alt="6 Simple Feng Shui Steps" className="w-full h-auto object-contain rounded-md shadow-sm border border-gray-600 bg-black" />
+                  </div>
                 </div>
               </div>
 
               {/* Right Column */}
               <div className="w-full md:w-[45%] flex flex-col justify-center gap-5">
-                <img src="/upsell_page_images/7.png" alt="Golden Purifying Wind Chimes" className="w-full h-auto rounded-[20px] object-cover shadow-[0_0_20px_rgba(255,255,255,0.05)] border border-gray-700" />
+                <img src="/upsell_page_images/7.png" alt="Golden Purifying Wind Chimes" className="hidden md:block w-full h-auto rounded-[20px] object-cover shadow-[0_0_20px_rgba(255,255,255,0.05)] border border-gray-700" />
                 
                 <div className="relative mt-2">
                   <button 
