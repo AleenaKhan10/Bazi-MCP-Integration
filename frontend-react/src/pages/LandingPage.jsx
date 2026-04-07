@@ -5,7 +5,7 @@
    vibrant CTA, benefits section below
    =========================================== */
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuiz } from '../context/QuizContext'
 import FormInput from '../components/FormInput'
@@ -48,6 +48,10 @@ export default function LandingPage() {
   const navigate = useNavigate()
   const { formData, setFormData } = useQuiz()
   const [errors, setErrors] = useState({})
+
+  useEffect(() => {
+    document.title = "Get Your FREE BaZi Reading!"
+  }, [])
 
   const handleChange = (field) => (e) => {
     setFormData((prev) => ({ ...prev, [field]: e.target.value }))

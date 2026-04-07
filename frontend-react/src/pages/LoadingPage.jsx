@@ -31,6 +31,10 @@ export default function LoadingPage() {
   const [error, setError] = useState(null)
   const apiCalled = useRef(false)
 
+  useEffect(() => {
+    document.title = "Analyzing Your Chart..."
+  }, [])
+
   // --- Build dynamic loading messages from user's form data ---
   const firstName = formData.firstName || 'Your'
   const monthNum = parseInt(formData.birthMonth) || 1

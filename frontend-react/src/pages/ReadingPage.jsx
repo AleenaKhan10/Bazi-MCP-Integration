@@ -33,6 +33,10 @@ export default function ReadingPage() {
   const navigate = useNavigate()
   const { formData, baziResult } = useQuiz()
 
+  useEffect(() => {
+    document.title = "Your Day Master Traits"
+  }, [])
+
   // Guard
   useEffect(() => {
     if (!formData.firstName || !baziResult) {

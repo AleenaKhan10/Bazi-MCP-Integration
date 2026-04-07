@@ -10,6 +10,7 @@ export default function UpsellPage2() {
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.title = "Private Invitation To A 1-1 Consultation With A Feng Shui Master"
   }, []);
 
   const dayMasterChar = baziResult?.['日主'] || '庚';
@@ -52,7 +53,7 @@ export default function UpsellPage2() {
 
         {/* INTRO + MASTER DOM IMAGE */}
         <div className="closing-flow-section p-6 md:p-8 mb-6">
-          <div className="flex flex-col md:flex-row gap-6 items-stretch mb-6">
+          <div className="flex flex-col-reverse md:flex-row gap-6 items-stretch mb-6">
             <div className="flex-1 closing-paragraph">
               <p>
                 <strong className="text-accent-gold">{userName}</strong>, you just took the first step toward unlocking the abundance that's been hidden in your chart for years.
@@ -65,7 +66,7 @@ export default function UpsellPage2() {
               <p>Let me show you what I mean…</p>
             </div>
             <div className="w-full md:w-1/2 flex-shrink-0">
-               <img src="/upsell2-page-images/29.png" alt="Master Dom" className="w-full h-full object-cover rounded-xl shadow-lg" />
+               <img src="/upsell2-page-images/29.png" alt="Master Dom" className="w-full aspect-square md:aspect-auto md:h-full object-cover rounded-xl shadow-lg" />
             </div>
           </div>
         </div>

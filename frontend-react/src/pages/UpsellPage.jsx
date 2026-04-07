@@ -10,6 +10,7 @@ export default function UpsellPage() {
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.title = "Congratulations! Your Report Is On Its Way..."
   }, []);
 
   // Guard: redirect if no data
@@ -544,7 +545,7 @@ export default function UpsellPage() {
                 <div className="flex-1 text-center md:text-left">
                   <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
                     <p className="text-text-primary font-bold text-[15px]">Jennifer M., Marketing Executive, California</p>
-                    <p className="text-gray-900 text-xs tracking-tighter mt-1">★★★★★</p>
+                    <p className="text-accent-gold text-xs tracking-tighter mt-1">★★★★★</p>
                   </div>
                   <p className="text-text-muted leading-relaxed text-[15px]">
                     "I was completely skeptical about the whole 'death energy' concept until I got my BaZi reading and realized I was a Wood Day Master surrounded by Metal attacking elements. My consultant explained how my home office was literally cutting down my natural creativity every day. Within 48 hours of hanging the Purifying Wind Chimes outside my front door, my biggest client called with a project I'd been trying to land for 6 months!"
@@ -608,7 +609,7 @@ export default function UpsellPage() {
                 <div className="flex-1 text-center md:text-left">
                   <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
                     <p className="text-text-primary font-bold text-[15px]">David C., Real Estate Investor, New York</p>
-                    <p className="text-gray-900 text-xs tracking-tighter mt-1">★★★★★</p>
+                    <p className="text-accent-gold text-xs tracking-tighter mt-1">★★★★★</p>
                   </div>
                   <p className="text-text-muted leading-relaxed text-[15px]">
                     "The BaZi reading showed me I was in a peak luck period, but nothing was manifesting until I got the wind chimes. My Fire Day Master was being suffocated by Water elements in my environment – no wonder I felt drained all the time! The moment I placed them in my home office and bedroom, it was like someone turned on a switch. The 'death particles' my reading warned about started clearing out, and within 3 weeks I closed on two properties that netted me over $200K. The combination of inner and outer feng shui is absolutely game-changing."
@@ -703,7 +704,7 @@ export default function UpsellPage() {
               <div className="flex-1 text-center md:text-left">
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
                   <p className="text-text-primary font-bold text-[15px]">Sarah, Small Business Owner, Texas</p>
-                  <p className="text-gray-900 text-xs tracking-tighter mt-1">★★★★★</p>
+                  <p className="text-accent-gold text-xs tracking-tighter mt-1">★★★★★</p>
                 </div>
                 <p className="text-text-muted leading-relaxed text-[15px]">
                   "My Life Energy Attunement Report revealed I was severely deficient in Metal element, which explained why I had zero structure or follow-through in my business. But even after learning about my intelligence patterns and daily adjustments, I still felt stuck until I addressed my environment. The wind chimes transformed my workspace into what feels like a sacred sanctuary. Now when they ring, I remember I'm an Earth Day Master with natural nurturing abilities, and my confidence has skyrocketed. My business revenue doubled in 6 weeks, and three former clients reached out asking to work with me again. The toxic energy that was repelling success has completely cleared – I can actually feel the difference in my home now."

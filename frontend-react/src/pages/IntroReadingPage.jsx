@@ -24,6 +24,10 @@ export default function IntroReadingPage() {
   const navigate = useNavigate();
   const { formData, baziResult } = useQuiz();
 
+  useEffect(() => {
+    document.title = "Welcome To Your Life Energy Chart"
+  }, [])
+
   // Guard
   useEffect(() => {
     if (!formData.firstName || !baziResult) {

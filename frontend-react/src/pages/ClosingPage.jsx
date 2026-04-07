@@ -43,6 +43,10 @@ export default function ClosingPage() {
   const navigate = useNavigate()
   const { formData, baziResult } = useQuiz()
 
+  useEffect(() => {
+    document.title = "Get Your FULL Life Energy Attunement Report"
+  }, [])
+
   // --- Page state (was 1-4, now just 1 or 2) ---
   const [step, setStep] = useState(1)
 
