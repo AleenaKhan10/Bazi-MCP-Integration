@@ -32,12 +32,11 @@ export default function UpsellPage() {
   };
 
   const handlePurchase = () => {
-    alert("✨ Monk Purification System added to your order! Proceeding to Stripe checkout coming soon.");
-    // In a real app, this would add the upsell to cart and proceed to final checkout or one-click buy
+    window.location.href = 'https://track.chimanifestation.com/bazi-oto1';
   };
 
   const handleDecline = () => {
-    navigate('/upsell2');
+    navigate('/oto-private-consultation-dom');
   };
 
   return (
@@ -493,7 +492,7 @@ export default function UpsellPage() {
                 
                 <div className="relative mt-2">
                   <button 
-                    onClick={() => navigate('/checkout')}
+                    onClick={handlePurchase}
                     className="w-full bg-[#f26522] hover:bg-[#d9581c] text-white font-bold py-[18px] px-6 rounded-md shadow-[0_6px_20px_-3px_rgba(242,101,34,0.4)] transition-all active:scale-[0.98] flex flex-col items-center justify-center leading-tight gap-1"
                   >
                     <span className="text-2xl md:text-[28px] tracking-wide font-sans">BUY 3 AT $49 ONLY</span>

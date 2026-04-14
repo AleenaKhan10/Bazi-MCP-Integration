@@ -28,13 +28,11 @@ export default function UpsellPage2() {
   };
 
   const handleUpgrade = () => {
-    alert("Proceeding to checkout with 1-1 Consultation!");
-    // navigate('/checkout-2');
+    window.location.href = 'https://track.chimanifestation.com/bazi-oto2';
   };
 
   const handleDecline = () => {
-    console.log("Declined 1-1 Consultation.");
-    // navigate('/thank-you');
+    window.location.href = 'https://www.chimanifestation.com/bazi-summary';
   };
 
   return (

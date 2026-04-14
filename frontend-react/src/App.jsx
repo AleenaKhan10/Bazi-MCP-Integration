@@ -50,10 +50,10 @@ export default function App() {
           <Route path="/closing" element={<ClosingPage />} />
 
           {/* Upsell Page */}
-          <Route path="/upsell" element={<UpsellPage />} />
+          <Route path="/oto-wind-chimes" element={<UpsellPage />} />
 
           {/* Upsell Page 2 — 1-1 Consultation */}
-          <Route path="/upsell2" element={<UpsellPage2 />} />
+          <Route path="/oto-private-consultation-dom" element={<UpsellPage2 />} />
 
           {/* Fallback: redirect unknown routes to landing */}
           <Route path="*" element={<LandingPage />} />

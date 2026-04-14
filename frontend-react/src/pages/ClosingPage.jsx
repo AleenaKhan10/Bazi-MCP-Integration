@@ -96,9 +96,13 @@ export default function ClosingPage() {
   // --- Page Navigation (only 1→2 now) ---
   const goToPage2 = () => setStep(2)
 
-  // --- Route to Upsell Page ---
+  // --- Route to Checkout Tracking Link ---
   const handleAddToCart = (tier) => {
-    navigate('/upsell')
+    if (tier === 'vip') {
+      window.location.href = 'https://track.chimanifestation.com/bazi-vip'
+    } else {
+      window.location.href = 'https://track.chimanifestation.com/bazi-essential'
+    }
   }
 
   // --- Shorthand for content ---
