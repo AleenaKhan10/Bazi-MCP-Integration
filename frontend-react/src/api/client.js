@@ -107,9 +107,8 @@ export async function getCountries() {
 // Get cities for a specific country (used when country has NO states)
 export async function getCities(country) {
   try {
-    const response = await axios.post(
-      'https://countriesnow.space/api/v0.1/countries/cities',
-      { country }
+    const response = await axios.get(
+      `https://countriesnow.space/api/v0.1/countries/cities/q?country=${encodeURIComponent(country)}`
     )
     if (response.data.error) {
       throw new Error(response.data.msg)
@@ -138,9 +137,8 @@ export async function getCities(country) {
 //   "Singapore"      → [] (empty — no states)
 export async function getStates(country) {
   try {
-    const response = await axios.post(
-      'https://countriesnow.space/api/v0.1/countries/states',
-      { country }
+    const response = await axios.get(
+      `https://countriesnow.space/api/v0.1/countries/states/q?country=${encodeURIComponent(country)}`
     )
     if (response.data.error) {
       throw new Error(response.data.msg)
@@ -169,9 +167,8 @@ export async function getStates(country) {
 //   (only ~100-200 cities instead of 20,000+)
 export async function getCitiesByState(country, state) {
   try {
-    const response = await axios.post(
-      'https://countriesnow.space/api/v0.1/countries/state/cities',
-      { country, state }
+    const response = await axios.get(
+      `https://countriesnow.space/api/v0.1/countries/state/cities/q?country=${encodeURIComponent(country)}&state=${encodeURIComponent(state)}`
     )
     if (response.data.error) {
       throw new Error(response.data.msg)
