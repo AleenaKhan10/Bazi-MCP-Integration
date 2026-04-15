@@ -289,7 +289,7 @@ export default function ClosingPage() {
               <div className="animate-fade-in-up mt-4">
                 <div className="closing-flow-section px-4 md:px-8 py-2 md:py-4 mb-1">
                   <h2 className="closing-subheading text-center mb-6 px-4 md:px-8">
-                    It's Like Finding The Perfect Soil, Water, Sunlight, Temperature & Fertilizer That Can Allow Your "<span className="text-accent-gold font-bold">Soul Seed</span>" To Naturally Flourish & To Manifest Talents That Bear Abundant, Heavy & Ripe Fruit For You... In All Aspects of Your Life...
+                    It's Like Finding The Perfect Soil, Water, Sunlight, Temperature & Fertilizer That Can Allow Your "<span className="text-accent-gold font-bold"><u>Soul Seed</u></span>" To Naturally Flourish & To Manifest Talents That Bear Abundant, Heavy & Ripe Fruit For You... In All Aspects of Your Life...
                   </h2>
                   {/* Soul Seed Growth Metaphor */}
                   <div className="flex justify-center mb-6">
