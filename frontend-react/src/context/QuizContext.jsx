@@ -21,7 +21,7 @@
      const { formData, setFormData, baziResult } = useQuiz()
 */
 
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 
 // -------------------------------------------
 // 1. Create the Context object
@@ -39,21 +39,47 @@ export function QuizProvider({ children }) {
   //   e.g., "Texas" for US, "Sindh" for Pakistan
   //   Empty string for countries without states (Singapore, etc.)
   // -------------------------------------------
-  const [formData, setFormData] = useState({
-    firstName: '',
-    email: '',
-    gender: '',
-    birthMonth: '',
-    birthDay: '',
-    birthYear: '',
-    birthTime: '',
-    country: '',
-    state: '',     // NEW: state/province (empty if country has no states)
-    city: '',
+  const [formData, setFormData] = useState(() => {
+    try {
+      const saved = localStorage.getItem('bazi_formData')
+      if (saved) return JSON.parse(saved)
+    } catch (e) {}
+    return {
+      firstName: '',
+      email: '',
+      gender: '',
+      birthMonth: '',
+      birthDay: '',
+      birthYear: '',
+      birthTime: '',
+      country: '',
+      state: '',
+      city: '',
+    }
   })
 
   // BaZi calculation result from backend
-  const [baziResult, setBaziResult] = useState(null)
+  const [baziResult, setBaziResult] = useState(() => {
+    try {
+      const saved = localStorage.getItem('bazi_result')
+      if (saved) return JSON.parse(saved)
+    } catch (e) {}
+    return null
+  })
+
+  // Sync formData to localStorage
+  useEffect(() => {
+    localStorage.setItem('bazi_formData', JSON.stringify(formData))
+  }, [formData])
+
+  // Sync baziResult to localStorage
+  useEffect(() => {
+    if (baziResult) {
+      localStorage.setItem('bazi_result', JSON.stringify(baziResult))
+    } else {
+      localStorage.removeItem('bazi_result')
+    }
+  }, [baziResult])
 
   // Loading state (for Loading Page)
   const [isLoading, setIsLoading] = useState(false)
@@ -104,6 +130,8 @@ export function QuizProvider({ children }) {
   // Reset everything (for "Generate New Report")
   // -------------------------------------------
   const resetQuiz = () => {
+    localStorage.removeItem('bazi_formData')
+    localStorage.removeItem('bazi_result')
     setFormData({
       firstName: '',
       email: '',
