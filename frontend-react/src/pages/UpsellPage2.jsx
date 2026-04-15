@@ -40,7 +40,7 @@ export default function UpsellPage2() {
       <div className="max-w-2xl mx-auto animate-fade-in-up">
         
         {/* HEADER SECTION */}
-        <div className="text-center mb-2 px-4 md:px-8">
+        <div className="text-center mb-6 px-4 md:px-8">
           <h1 className="closing-section-heading mb-8">
             WAIT! Your Chart Just Revealed Something Critical
           </h1>
@@ -487,13 +487,7 @@ export default function UpsellPage2() {
         </div>
 
         {/* FINAL CTA */}
-        <div className="text-center mb-12 md:mt-[-22px]">
-          <div className="pt-8 mt-12 border-t border-white/10 space-y-4 mb-12">
-            <p className="text-lg font-bold">Total Value: $838</p>
-            <p className="text-xl font-bold">Your Price Today: Just $197</p>
-            <p className="text-[15px] opacity-90">Simply click on the “Upgrade My Order” button Below to get started.</p>
-          </div>
-
+        <div className="text-center mb-12">
           <h3 className="text-2xl font-bold tracking-wider mb-4">PRIVATE CLIENT</h3>
           <div className="flex items-center justify-center gap-3 mb-6 text-3xl font-bold">
             <span className="line-through opacity-70">$397</span>

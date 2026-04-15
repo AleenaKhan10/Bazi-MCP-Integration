@@ -60,7 +60,7 @@ const CLOSING_CONTENT = {
       'While being based on the Day Master of your life.',
       'If you\'re a <b>\'rock\'</b> and you\'re in a <b>"scissor"</b> year, you\'re going to have some of the largest windfalls in your life.',
       'In fact, when the energies are auspicious to you, you get extra lucky, and some Feng Shui Masters will recommend their clients to trade, buy lottery tickets, or take \'risks\' during these auspicious luck cycles where the universe is \'tipping\' in your favour!',
-      'But if your day master is a <b>"Rock"</b> and it\'s a <b>"Paper"</b> year, then it\'s your sign to slow down and be a little more conservative, to prepare your resources and build the foundation for a Scissors Year.',
+      'But if your Day Master is a <b>"Rock"</b> and it\'s a <b>"Paper"</b> year, then it\'s your sign to slow down and be a little more conservative, to prepare your resources and build the foundation for a Scissors Year.',
       'This is the exact system that Kings had used to win wars in Imperial Dynasties – and it was one of the generational secrets that was passed down from the top scholars... reserved only for those who had scored in the top of their class in the ancient Dynasties...',
       'This is why you\'ve likely never heard of this before, because it takes a true master to be able to understand, and translate the traditional eastern characters into modern English...',
       'And the secrets that are contained in this ancient language will shock you, because it\'s more powerful, complete, and accurate than any other system out there. It\'s even been a pivotal \'Cornerstone\' of ancient eastern medicine, and was considered one of the Great Sciences & inventions of their time!',
