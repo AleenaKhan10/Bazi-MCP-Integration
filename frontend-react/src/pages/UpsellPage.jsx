@@ -373,10 +373,10 @@ export default function UpsellPage() {
           </div>
 
           <ul className="closing-bullet-list mt-8 space-y-4">
-            <li><span className="text-accent-gold mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Dissolve Sha Stop Points:</span> Breaking apart the concentrated pockets of death energy that have been blocking your abundance</span></li>
-            <li><span className="text-accent-gold mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Neutralize Toxic Imprints:</span> Erasing the energetic contamination left behind by elemental clashes</span></li>
-            <li><span className="text-accent-gold mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Transform Attacking Elements:</span> Converting the hostile energies into nourishing fuel for your Day Master</span></li>
-            <li><span className="text-accent-gold mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Restore Natural Flow:</span> Rebuilding the healthy Production Cycle that draws opportunities to you effortlessly</span></li>
+            <li><span className="text-white mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Dissolve Sha Stop Points:</span> Breaking apart the concentrated pockets of death energy that have been blocking your abundance</span></li>
+            <li><span className="text-white mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Neutralize Toxic Imprints:</span> Erasing the energetic contamination left behind by elemental clashes</span></li>
+            <li><span className="text-white mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Transform Attacking Elements:</span> Converting the hostile energies into nourishing fuel for your Day Master</span></li>
+            <li><span className="text-white mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Restore Natural Flow:</span> Rebuilding the healthy Production Cycle that draws opportunities to you effortlessly</span></li>
           </ul>
 
           <div className="closing-paragraph mt-4">
@@ -505,7 +505,7 @@ export default function UpsellPage() {
           </div>
         </div>
 
-        <p className="text-center text-lg mb-8 font-medium mt-8 px-8 md:px-16">And here are 10 reasons why <strong className="text-accent-gold">this $49 offer</strong> can be extremely powerful for you…</p>
+        <p className="text-center text-2xl mb-8 font-medium mt-16 px-8 md:px-16">And here are 10 reasons why <strong className="text-accent-gold">this $49 offer</strong> can be extremely powerful for you…</p>
 
           {/* 10 REASONS LIST - Styled like the 13 inclusions */}
           <div className="space-y-4">
@@ -626,7 +626,7 @@ export default function UpsellPage() {
 
           </div>
 
-          <h2 className="closing-subheading text-center mt-8 mb-6 px-4 md:px-8">
+          <h2 className="closing-subheading text-center mt-16 mb-6 px-4 md:px-8">
             This is the missing piece that makes everything "click" together…
           </h2>
           <div className="closing-paragraph">

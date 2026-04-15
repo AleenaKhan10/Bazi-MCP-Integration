@@ -148,18 +148,16 @@ export default function IntroReadingPage() {
             individual...
           </p>
 
-          <div className="text-center my-4 px-8 md:px-16">
-            <p className="text-text-muted leading-relaxed text-xl">
+          <div className="text-center my-8 px-8 md:px-16">
+            <p className="text-text-muted leading-relaxed text-xl font-mystical">
               And through extracting these crucial insights
               about your energetic essence
               from your{" "}
               <span className="text-accent-gold">{dayMasterName}</span> Day
               Master...
             </p>
-            <p className="text-text-primary font-semibold mt-6 leading-relaxed text-xl">
-              The simple adjustments that can completely <strong>alter</strong>
-              the trajectory of your life...{" "}
-              <strong>will be revealed to you.</strong>
+            <p className="text-text-primary font-mystical mt-6 leading-relaxed text-xl">
+              The simple adjustments that can completely <strong>alter the trajectory of your life... will be revealed to you.</strong>
             </p>
           </div>
 
@@ -348,7 +346,7 @@ export default function IntroReadingPage() {
               <em>making simple adjustments</em>
             </strong>{" "}
             that bring them closer to what's in their true destiny, because the
-            day master goes beyond just your "birth month" unlike traditional
+            Day Master goes beyond just your "birth month" unlike traditional
             astrology.
           </p>
           <p>
@@ -390,7 +388,7 @@ export default function IntroReadingPage() {
           </p>
 
           <div className="text-center my-8 px-8 md:px-16">
-            <p className="text-accent-gold font-mystical font-bold text-xl">
+            <p className="text-accent-gold font-mystical font-bold text-2xl">
               The genius of Xu Ziping's system was recognizing
               the "roots, seeds, and fruits" principle...
             </p>
@@ -425,8 +423,8 @@ export default function IntroReadingPage() {
         <div className="glass-card p-8 text-center mb-8 glow-gold-strong intro-reading-content">
           <div className="mb-8">
             <p
-              className="text-text-muted italic leading-relaxed mb-14"
-              style={{ fontSize: "clamp(18px, 3vw, 24px)" }}
+              className="text-text-muted italic leading-relaxed mb-20"
+              style={{ fontSize: "clamp(16px, 2.5vw, 20px)" }}
             >
               It's like discovering you've been
               <br />
