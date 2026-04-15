@@ -13,6 +13,17 @@ export default function UpsellPage2() {
     document.title = "Private Invitation To A 1-1 Consultation With A Feng Shui Master"
   }, []);
 
+  // Security Guard: Prevent direct access without going through Upsell 1
+  useEffect(() => {
+    if (!sessionStorage.getItem('can_access_upsell_2')) {
+      navigate('/');
+    }
+  }, [navigate]);
+
+  if (!sessionStorage.getItem('can_access_upsell_2')) {
+    return null;
+  }
+
   const dayMasterChar = baziResult?.['日主'] || '庚';
   const master = DAY_MASTERS[dayMasterChar] || DAY_MASTERS['庚'];
   const userName = formData?.firstName || 'Friend';
@@ -28,10 +39,12 @@ export default function UpsellPage2() {
   };
 
   const handleUpgrade = () => {
+    sessionStorage.removeItem('can_access_upsell_2');
     window.location.href = 'https://track.chimanifestation.com/bazi-oto2';
   };
 
   const handleDecline = () => {
+    sessionStorage.removeItem('can_access_upsell_2');
     window.location.href = 'https://www.chimanifestation.com/bazi-summary';
   };
 

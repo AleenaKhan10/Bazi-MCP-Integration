@@ -98,6 +98,9 @@ export default function ClosingPage() {
 
   // --- Route to Checkout Tracking Link ---
   const handleAddToCart = (tier) => {
+    // Generate an access token to authorize the return trip from Stripe
+    sessionStorage.setItem('can_access_upsell_1', 'true');
+    
     if (tier === 'vip') {
       window.location.href = 'https://track.chimanifestation.com/bazi-vip'
     } else {

@@ -13,9 +13,15 @@ export default function UpsellPage() {
     document.title = "Congratulations! Your Report Is On Its Way..."
   }, []);
 
-  // Guard: redirect if no data
-  if (!formData?.firstName || !baziResult) {
-    navigate('/');
+  // Security Guard: Prevent direct access without going through checkout
+  useEffect(() => {
+    // Only allow access if they just came from the Stripe checkout flow
+    if (!sessionStorage.getItem('can_access_upsell_1')) {
+      navigate('/');
+    }
+  }, [navigate]);
+
+  if (!sessionStorage.getItem('can_access_upsell_1')) {
     return null;
   }
 
@@ -32,10 +38,14 @@ export default function UpsellPage() {
   };
 
   const handlePurchase = () => {
+    sessionStorage.setItem('can_access_upsell_2', 'true');
+    sessionStorage.removeItem('can_access_upsell_1'); // cleanup
     window.location.href = 'https://track.chimanifestation.com/bazi-oto1';
   };
 
   const handleDecline = () => {
+    sessionStorage.setItem('can_access_upsell_2', 'true');
+    sessionStorage.removeItem('can_access_upsell_1'); // cleanup
     navigate('/oto-private-consultation-dom');
   };
 
