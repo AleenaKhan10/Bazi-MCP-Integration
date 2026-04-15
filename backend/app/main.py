@@ -15,6 +15,7 @@ from fastapi.responses import JSONResponse
 from slowapi.errors import RateLimitExceeded
 from pathlib import Path
 import logging
+import httpx
 
 from app.config import settings
 from app.routers import reports
@@ -114,6 +115,32 @@ app.mount("/reports", StaticFiles(directory=str(reports_dir)), name="reports")
 # Include Routers
 # ===========================================
 app.include_router(reports.router)
+
+# ===========================================
+# Geo Proxy Endpoints (countriesnow.space)
+# ===========================================
+COUNTRIESNOW_BASE = "https://countriesnow.space/api/v0.1/countries"
+
+@app.get("/api/geo/cities")
+async def proxy_cities(country: str):
+    """Proxy cities request to countriesnow.space"""
+    async with httpx.AsyncClient(timeout=15) as client:
+        resp = await client.get(f"{COUNTRIESNOW_BASE}/cities/q?country={country}")
+        return resp.json()
+
+@app.get("/api/geo/states")
+async def proxy_states(country: str):
+    """Proxy states request to countriesnow.space"""
+    async with httpx.AsyncClient(timeout=15) as client:
+        resp = await client.get(f"{COUNTRIESNOW_BASE}/states/q?country={country}")
+        return resp.json()
+
+@app.get("/api/geo/state/cities")
+async def proxy_state_cities(country: str, state: str):
+    """Proxy state cities request to countriesnow.space"""
+    async with httpx.AsyncClient(timeout=15) as client:
+        resp = await client.get(f"{COUNTRIESNOW_BASE}/state/cities/q?country={country}&state={state}")
+        return resp.json()
 
 # ===========================================
 # Root Endpoint

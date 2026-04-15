@@ -40,7 +40,7 @@ export default function UpsellPage2() {
       <div className="max-w-2xl mx-auto animate-fade-in-up">
         
         {/* HEADER SECTION */}
-        <div className="text-center mb-8 px-4 md:px-8">
+        <div className="text-center mb-2 px-4 md:px-8">
           <h1 className="closing-section-heading mb-8">
             WAIT! Your Chart Just Revealed Something Critical
           </h1>
@@ -50,7 +50,7 @@ export default function UpsellPage2() {
         </div>
 
         {/* INTRO + MASTER DOM IMAGE */}
-        <div className="closing-flow-section p-6 md:p-8 mb-6">
+        <div className="closing-flow-section px-6 md:px-8 pt-2 pb-6 md:pb-8 mb-2">
           <div className="flex flex-col-reverse md:flex-row gap-6 items-stretch mb-6">
             <div className="flex-1 closing-paragraph">
               <p>
@@ -70,7 +70,7 @@ export default function UpsellPage2() {
         </div>
 
         {/* 3 THINGS SECTION */}
-        <div className="text-center mb-4 px-4 md:px-8 mt-8">
+        <div className="text-center mb-4 px-4 md:px-8 mt-4">
           <h2 className="closing-subheading px-8 md:px-16">
             The 3 Things Your Digital Report CAN'T Tell You (That Are Costing You Money Right Now)
           </h2>

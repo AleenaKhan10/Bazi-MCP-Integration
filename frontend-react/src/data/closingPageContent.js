@@ -75,7 +75,7 @@ const CLOSING_CONTENT = {
   // (images 3-6) — Purpose: SOLUTION REVEAL
   // ==========================================
   step2: {
-    title: 'It\'s Like Finding The Perfect Soil, Water, Sunlight, Temperature & Fertilizer That Can Allow Your <b>"Soul Seed"</b> To Naturally Flourish & To Manifest Talents That Bear Abundant, Heavy & Ripe Fruit For You...In All Aspects of Your Life...',
+    title: 'It\'s Like Finding The Perfect Soil, Water, Sunlight, Temperature & Fertilizer That Can Allow Your <b>"<u>Soul Seed</u>"</b> To Naturally Flourish & To Manifest Talents That Bear Abundant, Heavy & Ripe Fruit For You...In All Aspects of Your Life...',
 
     paragraphs: [
       'That\'s why we\'ve prepared a special reading just for you that helps to go through every unique aspect and element of your life...',
@@ -210,7 +210,7 @@ const CLOSING_CONTENT = {
       },
       {
         number: 3,
-        title: 'Giving You The Power To <b>Redesign</b>Your Relationships To <b><i>Your Choosing</i>...</b>',
+        title: 'Giving You The Power To <b>Redesign</b> Your Relationships To <b><i>Your Choosing</i>...</b>',
         paragraphs: [
           'And closely linked to this... {name}\'s Life Energy Attunement Report will also go deep into your relationships!',
           'This means that whether you\'re trying to work through the problems in your marriage, office... or even with your children or peers...',
