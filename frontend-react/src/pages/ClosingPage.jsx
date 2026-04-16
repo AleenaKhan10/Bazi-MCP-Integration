@@ -158,12 +158,12 @@ export default function ClosingPage() {
         )}
         <div className="pricing-card-header">
           <span className="pricing-tier-label">{c.step4.vipTier.name}</span>
-          <div className="pricing-price">
-            <span className="pricing-currency">$</span>
-            <span className="pricing-amount">{c.step4.vipTier.price}</span>
+          <div className="pricing-price text-red-500">
+            <span className="pricing-currency" style={{ color: '#ef4444' }}>$</span>
+            <span className="pricing-amount" style={{ color: '#ef4444' }}>{c.step4.vipTier.price}</span>
           </div>
           {c.step4.vipTier.recurringPrice && (
-            <p className="pricing-description text-xs">{c.step4.vipTier.recurringPrice}</p>
+            <p className="pricing-description text-xs text-red-500 font-medium" style={{ color: '#ef4444' }}>{c.step4.vipTier.recurringPrice}</p>
           )}
           <p className="pricing-description">{c.step4.vipTier.description}</p>
           <div className="flex justify-center mt-auto h-[180px] w-full items-center perspective-1000">

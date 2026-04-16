@@ -383,10 +383,10 @@ export default function UpsellPage() {
           </div>
 
           <ul className="closing-bullet-list mt-8 space-y-4">
-            <li><span className="text-white mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Dissolve Sha Stop Points:</span> Breaking apart the concentrated pockets of death energy that have been blocking your abundance</span></li>
-            <li><span className="text-white mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Neutralize Toxic Imprints:</span> Erasing the energetic contamination left behind by elemental clashes</span></li>
-            <li><span className="text-white mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Transform Attacking Elements:</span> Converting the hostile energies into nourishing fuel for your Day Master</span></li>
-            <li><span className="text-white mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-accent-gold">Restore Natural Flow:</span> Rebuilding the healthy Production Cycle that draws opportunities to you effortlessly</span></li>
+            <li><span className="text-white mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-white font-medium">Dissolve Sha Stop Points:</span> Breaking apart the concentrated pockets of death energy that have been blocking your abundance</span></li>
+            <li><span className="text-white mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-white font-medium">Neutralize Toxic Imprints:</span> Erasing the energetic contamination left behind by elemental clashes</span></li>
+            <li><span className="text-white mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-white font-medium">Transform Attacking Elements:</span> Converting the hostile energies into nourishing fuel for your Day Master</span></li>
+            <li><span className="text-white mr-5 mt-1 flex-shrink-0">●</span><span><span className="text-white font-medium">Restore Natural Flow:</span> Rebuilding the healthy Production Cycle that draws opportunities to you effortlessly</span></li>
           </ul>
 
           <div className="closing-paragraph mt-4">
