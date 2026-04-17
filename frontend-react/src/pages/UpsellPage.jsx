@@ -506,7 +506,7 @@ export default function UpsellPage() {
                     className="w-full bg-[#f26522] hover:bg-[#d9581c] text-white font-bold py-[18px] px-6 rounded-md shadow-[0_6px_20px_-3px_rgba(242,101,34,0.4)] transition-all active:scale-[0.98] flex flex-col items-center justify-center leading-tight gap-1"
                   >
                     <span className="text-2xl md:text-[28px] tracking-wide font-sans">BUY 3 AT $49 ONLY</span>
-                    <span className="text-sm md:text-[15px] font-medium opacity-95">(U.P. $79. Comes with FREE Shipping)</span>
+                    <span className="text-sm md:text-[15px] font-medium opacity-95">(U.P. $79. 60-Day Money Back Guarantee.)</span>
                   </button>
                   <div className="absolute -bottom-2.5 left-5 bg-[#173c66] border border-blue-900 text-white text-[10px] px-2.5 py-0.5 font-bold uppercase rounded shadow-sm tracking-wider z-10">SCROLL</div>
                 </div>

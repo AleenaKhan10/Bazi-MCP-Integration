@@ -163,7 +163,15 @@ export default function ClosingPage() {
             <span className="pricing-amount" style={{ color: '#ef4444' }}>{c.step4.vipTier.price}</span>
           </div>
           {c.step4.vipTier.recurringPrice && (
-            <p className="pricing-description text-xs text-red-500 font-medium" style={{ color: '#ef4444' }}>{c.step4.vipTier.recurringPrice}</p>
+            <p className="pricing-description text-xs font-medium">
+              {c.step4.vipTier.recurringPrice === 'Per Month. Cancel anytime.' ? (
+                <>
+                  <span className="text-red-500" style={{ color: '#ef4444' }}>Per Month.</span> Cancel anytime.
+                </>
+              ) : (
+                <span className="text-red-500" style={{ color: '#ef4444' }}>{c.step4.vipTier.recurringPrice}</span>
+              )}
+            </p>
           )}
           <p className="pricing-description">{c.step4.vipTier.description}</p>
           <div className="flex justify-center mt-auto h-[180px] w-full items-center perspective-1000">

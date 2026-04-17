@@ -319,11 +319,11 @@ const CLOSING_CONTENT = {
 
     vipTier: {
       name: 'VIP',
-      price: 38.88,
+      price: 28.88,
       originalPrice: null,
       badge: 'MOST POPULAR — 78% Choose This',
       description: 'Your Personalized Life Energy Attunement Report + Inner & Outer Feng Shui System',
-      recurringPrice: 'Then $29/month. Cancel anytime.',
+      recurringPrice: 'Per Month. Cancel anytime.',
       features: [
         'Everything in Essential, PLUS:',
         'Full Inner & Outer Feng Shui Course ($1,888+ value)',
