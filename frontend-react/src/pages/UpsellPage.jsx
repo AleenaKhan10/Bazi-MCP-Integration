@@ -40,7 +40,7 @@ export default function UpsellPage() {
   const handlePurchase = () => {
     sessionStorage.setItem('can_access_upsell_2', 'true');
     sessionStorage.removeItem('can_access_upsell_1'); // cleanup
-    window.location.href = 'https://track.chimanifestation.com/bazi-oto1';
+    window.location.href = 'https://track.chimanifestation.com/bazi-oto1?client_reference_id=aibaziotowc';
   };
 
   const handleDecline = () => {

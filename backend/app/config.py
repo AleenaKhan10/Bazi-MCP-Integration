@@ -30,6 +30,14 @@ class Settings(BaseSettings):
     RESEND_API_KEY: Optional[str] = None
     
     # ===========================================
+    # Integrations (Stripe & ClickFunnels)
+    # ===========================================
+    STRIPE_API_KEY: Optional[str] = None
+    STRIPE_WEBHOOK_SECRET: Optional[str] = None
+    CLICKFUNNELS_API_KEY: Optional[str] = None
+    
+    
+    # ===========================================
     # Pydantic Configuration
     # ===========================================
     class Config:
@@ -38,6 +46,7 @@ class Settings(BaseSettings):
         
         # Case insensitive - "api_key" = "API_KEY"
         case_sensitive = False
+        extra = "ignore"
 
 
 # ===========================================

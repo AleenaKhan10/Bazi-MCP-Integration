@@ -102,9 +102,9 @@ export default function ClosingPage() {
     sessionStorage.setItem('can_access_upsell_1', 'true');
     
     if (tier === 'vip') {
-      window.location.href = 'https://track.chimanifestation.com/bazi-vip'
+      window.location.href = 'https://track.chimanifestation.com/bazi-vip?client_reference_id=aibazivip';
     } else {
-      window.location.href = 'https://track.chimanifestation.com/bazi-essential'
+      window.location.href = 'https://track.chimanifestation.com/bazi-essential?client_reference_id=aibazifeonly';
     }
   }
 

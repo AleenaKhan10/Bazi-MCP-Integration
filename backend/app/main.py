@@ -114,7 +114,10 @@ app.mount("/reports", StaticFiles(directory=str(reports_dir)), name="reports")
 # ===========================================
 # Include Routers
 # ===========================================
+from app.routers import webhooks
+
 app.include_router(reports.router)
+app.include_router(webhooks.router)
 
 # ===========================================
 # Geo Proxy Endpoints (countriesnow.space)
