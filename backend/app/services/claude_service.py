@@ -408,7 +408,10 @@ Expected Outcomes by Day 100:
                 "ANTHROPIC_API_KEY not set. Check your .env file."
             )
         
-        self.client = anthropic.Anthropic(api_key=self.api_key)
+        self.client = anthropic.Anthropic(
+            api_key=self.api_key,
+            base_url="https://api.anthropic.com"
+        )
         self.model = settings.CLAUDE_MODEL
     
     @retry(

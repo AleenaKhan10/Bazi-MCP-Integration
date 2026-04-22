@@ -2,16 +2,52 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuiz } from '../context/QuizContext';
 import DAY_MASTERS from '../data/dayMasters';
+import { generateFullReport } from '../api/client';
 
 export default function UpsellPage() {
   const navigate = useNavigate();
-  const { formData, baziResult } = useQuiz();
+  const { formData, baziResult, getFormattedBirthDate, getLocationString } = useQuiz();
 
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     document.title = "Congratulations! Your Report Is On Its Way..."
   }, []);
+
+  // --- BACKGROUND REPORT GENERATOR & EMAIL TRIGGER ---
+  // This ensures the report is generated exactly ONCE after core payment
+  useEffect(() => {
+    const triggerReport = async () => {
+      const isReportSent = localStorage.getItem('bazi_report_sent');
+      
+      // Only fire if not already sent AND we have user email
+      if (!isReportSent && formData && formData.email) {
+        try {
+          console.log("🚀 Background Process: Triggering full BaZi report generation and email delivery...");
+          
+          const apiPayload = {
+            firstName: formData.firstName,
+            email: formData.email,
+            gender: formData.gender,
+            birthDate: getFormattedBirthDate(),
+            birthTime: formData.birthTime,
+            location: getLocationString()
+          };
+
+          // Fire API call and ignore blocking (runs silently)
+          generateFullReport(apiPayload).catch(err => console.error("Background report generation failed:", err));
+
+          // Immediately set lock so it never fires again on refresh/back-button
+          localStorage.setItem('bazi_report_sent', 'true');
+          
+        } catch (error) {
+          console.error("Background task error:", error);
+        }
+      }
+    };
+
+    triggerReport();
+  }, [formData]);
 
   // Security Guard: Prevent direct access without going through checkout
   useEffect(() => {

@@ -1,7 +1,10 @@
-
+import os
+from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
 from typing import Optional
 
+# Override system environment variables with .env file variables
+load_dotenv(".env", override=True)
 
 class Settings(BaseSettings):
     """
@@ -22,7 +25,7 @@ class Settings(BaseSettings):
     
     ANTHROPIC_API_KEY: Optional[str] = None
     
-    CLAUDE_MODEL: str = "claude-sonnet-4-5-20250929"
+    CLAUDE_MODEL: str = "claude-sonnet-4-6"
     
     # ===========================================
     # Email Service (Resend)
