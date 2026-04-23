@@ -40,7 +40,7 @@ export default function UpsellPage2() {
 
   const handleUpgrade = () => {
     sessionStorage.removeItem('can_access_upsell_2');
-    window.location.href = 'https://track.chimanifestation.com/bazi-oto2?client_reference_id=aibaziprivate';
+    window.location.href = 'https://buy.stripe.com/test_14AaEWasG7AW0zt4Duffy01?client_reference_id=aibaziprivate';
   };
 
   const handleDecline = () => {
