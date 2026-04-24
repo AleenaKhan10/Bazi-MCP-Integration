@@ -101,10 +101,15 @@ export default function ClosingPage() {
     // Generate an access token to authorize the return trip from Stripe
     sessionStorage.setItem('can_access_upsell_1', 'true');
     
+    // Encode email safely for Stripe client_reference_id (only alphanumeric, dashes, underscores allowed)
+    const rawEmail = formData.email || '';
+    const safeEmailId = rawEmail.replace(/@/g, '_at_').replace(/\./g, '_dot_').replace(/\+/g, '_plus_');
+    const emailStr = encodeURIComponent(rawEmail); // For prefilled_email
+
     if (tier === 'vip') {
-      window.location.href = 'https://buy.stripe.com/test_8x27sKgR4cVgeqj8TKffy03?client_reference_id=aibazivip';
+      window.location.href = `https://buy.stripe.com/test_8x27sKgR4cVgeqj8TKffy03?client_reference_id=${safeEmailId}___aibazivip&prefilled_email=${emailStr}`;
     } else {
-      window.location.href = 'https://buy.stripe.com/test_cNi4gy6cq08u0zt3zqffy02?client_reference_id=aibazifeonly';
+      window.location.href = `https://buy.stripe.com/test_cNi4gy6cq08u0zt3zqffy02?client_reference_id=${safeEmailId}___aibazifeonly&prefilled_email=${emailStr}`;
     }
   }
 

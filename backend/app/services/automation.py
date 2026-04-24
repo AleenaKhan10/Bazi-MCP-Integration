@@ -9,23 +9,33 @@ GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw11HBlpZxifBxjxviI
 
 async def push_to_google_sheet(
     email: str,
-    name: str,
-    package_id: str,
-    payment_intent_id: str,
-    day_master: str = ""
+    name: str = "",
+    package_id: str = "",
+    payment_intent_id: str = "",
+    day_master: str = "",
+    gender: str = "",
+    birth_date: str = "",
+    birth_time: str = "",
+    location: str = ""
 ) -> bool:
     """
-    Sends customer data to the configured Google Apps Script endpoint to log the purchase securely.
+    Sends customer data to the configured Google Apps Script endpoint.
+    Used for both Lead Capture (pre-payment) and Purchase Update (post-payment).
     """
     payload = {
         "email": email,
         "name": name,
         "dayMaster": day_master,
         "package": package_id,
-        "paymentId": payment_intent_id
+        "paymentId": payment_intent_id,
+        "gender": gender,
+        "birthDate": birth_date,
+        "birthTime": birth_time,
+        "location": location
     }
     
-    logger.info(f"📤 Pushing data to Google Sheets for customer: {email} (Package: {package_id})")
+    action_type = "Purchase Update" if package_id else "Lead Capture"
+    logger.info(f"📤 [{action_type}] Pushing data to Google Sheets for: {email} (Package: {package_id or 'None'})")
     
     try:
         async with httpx.AsyncClient(timeout=15.0, follow_redirects=True) as client:

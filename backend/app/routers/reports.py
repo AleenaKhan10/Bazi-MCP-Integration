@@ -9,7 +9,7 @@ Features:
 - Email delivery via Resend
 """
 
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, HTTPException, Request, BackgroundTasks
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 from typing import Optional
@@ -20,6 +20,7 @@ from app.services.mcp_client import mcp_client, MCPClientError
 from app.services.claude_service import get_claude_service, ClaudeServiceError
 from app.services.report_generator import report_generator, ReportGeneratorError
 from app.services.email_service import email_service, EmailServiceError
+from app.services.automation import push_to_google_sheet
 from app.core.limiter import limiter  # Rate limiter
 
 
@@ -209,7 +210,7 @@ async def generate_report(data: ReportRequest, request: Request):
 
 @router.post("/bazi-only")
 @limiter.limit("30/hour")  # Higher limit for simple calculations
-async def get_bazi_only(data: ReportRequest, request: Request):
+async def get_bazi_only(data: ReportRequest, request: Request, background_tasks: BackgroundTasks):
     """
     Get only BaZi calculations (without Claude report)
     
@@ -217,6 +218,7 @@ async def get_bazi_only(data: ReportRequest, request: Request):
     - Testing MCP connection
     - Quick BaZi lookup
     - Loading page (get Day Master quickly)
+    - Capturing Lead Data to Google Sheets
     """
     try:
         bazi_data = await mcp_client.get_bazi_detail(
@@ -225,6 +227,24 @@ async def get_bazi_only(data: ReportRequest, request: Request):
             location=data.location,
             gender=data.gender
         )
+        
+        # Capture Lead Data to Google Sheets
+        if data.email:
+            day_master = bazi_data.get("日主", "") if isinstance(bazi_data, dict) else ""
+            
+            # Use background task so frontend doesn't wait
+            background_tasks.add_task(
+                push_to_google_sheet,
+                email=data.email,
+                name=data.name or "",
+                day_master=day_master,
+                gender=data.gender,
+                birth_date=data.birth_date,
+                birth_time=data.birth_time,
+                location=data.location,
+                package_id="",
+                payment_intent_id=""
+            )
         
         return {
             "success": True,

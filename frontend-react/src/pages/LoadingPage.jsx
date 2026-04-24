@@ -85,6 +85,7 @@ export default function LoadingPage() {
           ? `${formData.city}, ${formData.state}, ${formData.country}`
           : `${formData.city}, ${formData.country}`
         : 'Unknown Location',
+      email: formData.email,
     })
       .then((result) => {
         if (result.success && result.bazi_data) {
