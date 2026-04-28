@@ -45,6 +45,7 @@ export async function getBaziOnly(formData) {
     location: formData.location || "Unknown Location",
     gender: formData.gender,
     name: formData.firstName || formData.name || "Valued User",
+    email: formData.email, // Sent for Lead Capture in Google Sheets
   })
   return response.data
 }
