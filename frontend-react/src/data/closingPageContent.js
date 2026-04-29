@@ -286,7 +286,7 @@ const CLOSING_CONTENT = {
 
     pricingClose: [
       'Now while we do have expert Feng Shui masters which you can reach out to for $388 for a LIVE BaZi consultation (subjected to availability), we\'re also offering an easy way for you to get started.',
-      'That\'s why we\'ve priced your first deep dive Life Energy Attunement Report <b>at just $18.88.</b>',
+      'That\'s why we\'ve priced your first deep dive Life Energy Attunement Report <b class="text-white">at just $18.88.</b>',
       'If you\'re ready to dive into what your future holds for you using this ancient system...',
       'And find the \'turning points\' in your life that can help you advance in leaps with a few simple adjustments...',
       'Simply click on the "Add To Cart" Button Below, where you\'ll be taken to a secure checkout page.',

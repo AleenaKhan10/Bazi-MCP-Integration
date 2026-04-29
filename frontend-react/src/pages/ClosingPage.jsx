@@ -131,8 +131,8 @@ export default function ClosingPage() {
         <div className="pricing-card-header">
           <span className="pricing-tier-label">{c.step4.standardTier.name}</span>
           <div className="pricing-price">
-            <span className="pricing-currency">$</span>
-            <span className="pricing-amount">{c.step4.standardTier.price}</span>
+            <span className="pricing-currency" style={{ color: '#ffffff' }}>$</span>
+            <span className="pricing-amount" style={{ color: '#ffffff' }}>{c.step4.standardTier.price}</span>
           </div>
           <p className="pricing-description text-xs">One-time payment</p>
           <p className="pricing-description">{c.step4.standardTier.description}</p>
@@ -163,18 +163,18 @@ export default function ClosingPage() {
         )}
         <div className="pricing-card-header">
           <span className="pricing-tier-label">{c.step4.vipTier.name}</span>
-          <div className="pricing-price text-red-500">
-            <span className="pricing-currency" style={{ color: '#ef4444' }}>$</span>
-            <span className="pricing-amount" style={{ color: '#ef4444' }}>{c.step4.vipTier.price}</span>
+          <div className="pricing-price text-accent-gold">
+            <span className="pricing-currency text-accent-gold">$</span>
+            <span className="pricing-amount text-accent-gold">{c.step4.vipTier.price}</span>
           </div>
           {c.step4.vipTier.recurringPrice && (
             <p className="pricing-description text-xs font-medium">
               {c.step4.vipTier.recurringPrice === 'Per Month. Cancel anytime.' ? (
                 <>
-                  <span className="text-red-500" style={{ color: '#ef4444' }}>Per Month.</span> Cancel anytime.
+                  <span className="text-accent-gold">Per Month.</span> Cancel anytime.
                 </>
               ) : (
-                <span className="text-red-500" style={{ color: '#ef4444' }}>{c.step4.vipTier.recurringPrice}</span>
+                <span className="text-accent-gold">{c.step4.vipTier.recurringPrice}</span>
               )}
             </p>
           )}
