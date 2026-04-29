@@ -84,7 +84,7 @@ async def stripe_webhook(
             background_tasks.add_task(
                 push_to_google_sheet,
                 email=final_email,
-                name=name,
+                name="",
                 package_id=client_reference_id,
                 payment_intent_id=payment_intent,
                 day_master=day_master
