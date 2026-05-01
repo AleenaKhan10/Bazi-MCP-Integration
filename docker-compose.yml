@@ -38,6 +38,9 @@ services:
       - HOST=0.0.0.0
       - PORT=8000
       - DEBUG=false
+      - STRIPE_API_KEY=${STRIPE_SECRET_KEY:-}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:-}
+      - CLICKFUNNELS_API_KEY=${CLICKFUNNELS_API_KEY:-}
     volumes:
       # Persist generated reports outside the container
       - reports_data:/app/reports
