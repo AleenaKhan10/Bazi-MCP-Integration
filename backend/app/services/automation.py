@@ -5,8 +5,7 @@ from typing import Dict, Any, Optional
 logger = logging.getLogger(__name__)
 
 # The Google Apps Script deployed endpoint URL
-# GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw11HBlpZxifBxjxviIP6mtzNFhepkZODvMhLLOv_amj4Jixbz9b3TLkWxh7VMonwdx8w/exec"
-GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw2EtVSY3Z_9bSc3E3uRpX-xfnwL-4oU-1htuTmd-rAFzxJLE_vdsqR7vE_7r_lkODZlg/exec"
+GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwjiLOIHdh75y1nu-nNuZUarxPAJhpqpitvLxmrC9ccmEnrXXPICco-qt9dbiXo9vet/exec"
 
 async def push_to_google_sheet(
     email: str,
