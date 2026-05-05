@@ -79,7 +79,7 @@ export default function UpsellPage() {
     const rawEmail = formData.email || '';
     const safeEmailId = rawEmail.replace(/@/g, '_at_').replace(/\./g, '_dot_').replace(/\+/g, '_plus_');
     const emailStr = encodeURIComponent(rawEmail);
-    window.location.href = `https://buy.stripe.com/test_8x2eVceIW08u6XR8TKffy00?client_reference_id=${safeEmailId}___aibaziotowc&prefilled_email=${emailStr}`;
+    window.location.href = `https://pay.chimanifestation.com/b/28EeVdd5963VfNC9qV2Ji12?client_reference_id=${safeEmailId}___aibaziotowc&prefilled_email=${emailStr}`;
   };
 
   const handleDecline = () => {

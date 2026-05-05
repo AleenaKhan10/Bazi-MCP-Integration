@@ -107,9 +107,9 @@ export default function ClosingPage() {
     const emailStr = encodeURIComponent(rawEmail); // For prefilled_email
 
     if (tier === 'vip') {
-      window.location.href = `https://buy.stripe.com/test_8x27sKgR4cVgeqj8TKffy03?client_reference_id=${safeEmailId}___aibazivip&prefilled_email=${emailStr}`;
+      window.location.href = `https://pay.chimanifestation.com/b/fZu5kD1mrgIz30Q32x2Ji10?client_reference_id=${safeEmailId}___aibazivip&prefilled_email=${emailStr}`;
     } else {
-      window.location.href = `https://buy.stripe.com/test_cNi4gy6cq08u0zt3zqffy02?client_reference_id=${safeEmailId}___aibazifeonly&prefilled_email=${emailStr}`;
+      window.location.href = `https://pay.chimanifestation.com/b/00w6oH9SXfEvbxmauZ2Ji11?client_reference_id=${safeEmailId}___aibazifeonly&prefilled_email=${emailStr}`;
     }
   }
 
