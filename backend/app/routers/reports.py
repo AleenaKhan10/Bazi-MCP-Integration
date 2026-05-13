@@ -10,18 +10,19 @@ Features:
 """
 
 from fastapi import APIRouter, HTTPException, Request, BackgroundTasks
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
 from pydantic import BaseModel, Field
 from typing import Optional
 import logging
 
-from app.schemas.report import ReportRequest, HealthResponse
+from app.schemas.report import ReportRequest, HealthResponse, AdminReportRequest
 from app.services.mcp_client import mcp_client, MCPClientError
 from app.services.claude_service import get_claude_service, ClaudeServiceError
 from app.services.report_generator import report_generator, ReportGeneratorError
 from app.services.email_service import email_service, EmailServiceError
 from app.services.automation import push_to_google_sheet
 from app.core.limiter import limiter  # Rate limiter
+from app.config import settings
 
 
 # ===========================================
@@ -323,4 +324,69 @@ async def send_report_email(data: SendEmailRequest, request: Request):
                 "error": "Email sending failed",
                 "message": str(e)
             }
+        )
+
+
+# ===========================================
+# Admin Endpoint for Manual Generation
+# ===========================================
+
+@router.post("/admin/generate-report")
+async def admin_generate_report(data: AdminReportRequest):
+    """
+    Generate BaZi Report manually from Admin route.
+    Bypasses rate limits and payments.
+    Requires admin credentials.
+    Returns the PDF file directly for download.
+    """
+    # 1. Verify credentials
+    if data.admin_email != settings.ADMIN_EMAIL or data.admin_password != settings.ADMIN_PASSWORD:
+        logger.warning(f"Failed admin login attempt with email: {data.admin_email}")
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid admin credentials"
+        )
+    
+    try:
+        # 2. Get BaZi Data
+        logger.info(f"📊 [ADMIN] Getting BaZi data for: {data.birth_date} {data.birth_time}")
+        bazi_data = await mcp_client.get_bazi_detail(
+            birth_date=data.birth_date,
+            birth_time=data.birth_time,
+            location=data.location,
+            gender=data.gender
+        )
+        
+        # 3. Generate Report with Claude
+        logger.info("🤖 [ADMIN] Generating report with Claude...")
+        claude_service = get_claude_service()
+        markdown_content = await claude_service.generate_report(bazi_data)
+        
+        # 4. Generate Files
+        logger.info("📄 [ADMIN] Creating PDF...")
+        request_data = {
+            "name": data.name if data.name else data.location.split(',')[0].strip(),
+            "birth_time": data.birth_time,
+            "location": data.location,
+            "gender": data.gender
+        }
+        result = report_generator.generate(bazi_data, markdown_content, request_data)
+        
+        pdf_path = result["pdf_file"]
+        filename = f"{request_data['name']}_BaZi_Report.pdf"
+        
+        logger.info(f"✅ [ADMIN] Report generated successfully: {pdf_path}")
+        
+        # 5. Return PDF directly as download
+        return FileResponse(
+            path=pdf_path,
+            filename=filename,
+            media_type="application/pdf"
+        )
+        
+    except Exception as e:
+        logger.error(f"❌ [ADMIN] Error generating report: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Admin report generation failed: {str(e)}"
         )

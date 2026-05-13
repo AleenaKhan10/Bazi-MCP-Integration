@@ -13,16 +13,16 @@ export default function UpsellPage2() {
     document.title = "Private Invitation To A 1-1 Consultation With A Feng Shui Master"
   }, []);
 
-  // Security Guard: Prevent direct access without going through Upsell 1
+  // Security Guard: Prevent direct access without going through Upsell 1 (DEACTIVATED FOR DIRECT VIEWING)
   useEffect(() => {
-    if (!sessionStorage.getItem('can_access_upsell_2')) {
-      navigate('/');
-    }
+    // if (!sessionStorage.getItem('can_access_upsell_2')) {
+    //   navigate('/');
+    // }
   }, [navigate]);
 
-  if (!sessionStorage.getItem('can_access_upsell_2')) {
-    return null;
-  }
+  // if (!sessionStorage.getItem('can_access_upsell_2')) {
+  //   return null;
+  // }
 
   const dayMasterChar = baziResult?.['日主'] || '庚';
   const master = DAY_MASTERS[dayMasterChar] || DAY_MASTERS['庚'];

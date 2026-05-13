@@ -39,6 +39,11 @@ class Settings(BaseSettings):
     STRIPE_WEBHOOK_SECRET: Optional[str] = None
     CLICKFUNNELS_API_KEY: Optional[str] = None
     
+    # ===========================================
+    # Admin Credentials (for manual PDF generation)
+    # ===========================================
+    ADMIN_EMAIL: str = "admin123"
+    ADMIN_PASSWORD: str = "admin123"
     
     # ===========================================
     # Pydantic Configuration

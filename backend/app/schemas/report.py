@@ -131,6 +131,15 @@ class ReportRequest(BaseModel):
         return v
 
 
+class AdminReportRequest(ReportRequest):
+    """
+    Request model for the protected admin route for manual PDF generation.
+    Inherits all fields from ReportRequest and adds admin credentials.
+    """
+    admin_email: str = Field(..., description="Admin email for authentication")
+    admin_password: str = Field(..., description="Admin password for authentication")
+
+
 class HealthResponse(BaseModel):
     """Health check response"""
     status: str = "ok"

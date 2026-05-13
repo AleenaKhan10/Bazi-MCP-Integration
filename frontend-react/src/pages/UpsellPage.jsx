@@ -49,21 +49,21 @@ export default function UpsellPage() {
     triggerReport();
   }, [formData]);
 
-  // Security Guard: Prevent direct access without going through checkout
+  // Security Guard: Prevent direct access without going through checkout (DEACTIVATED FOR DIRECT VIEWING)
   useEffect(() => {
     // Only allow access if they just came from the Stripe checkout flow
-    if (!sessionStorage.getItem('can_access_upsell_1')) {
-      navigate('/');
-    }
+    // if (!sessionStorage.getItem('can_access_upsell_1')) {
+    //   navigate('/');
+    // }
   }, [navigate]);
 
-  if (!sessionStorage.getItem('can_access_upsell_1')) {
-    return null;
-  }
+  // if (!sessionStorage.getItem('can_access_upsell_1')) {
+  //   return null;
+  // }
 
-  const dayMasterChar = baziResult['日主'] || '庚';
+  const dayMasterChar = baziResult?.['日主'] || '庚';
   const master = DAY_MASTERS[dayMasterChar] || DAY_MASTERS['庚'];
-  const userName = formData.firstName;
+  const userName = formData.firstName || '';
   const dayMasterName = `${master.polarity} ${master.element}`;
   const attackingName = master.attackedBy;
 

@@ -70,6 +70,9 @@ TODAY IS {date_str}.
 **INPUT DATA:**
 {bazi_json}
 
+**CRITICAL LANGUAGE RULE:** 
+Write 100% of your paragraphs, explanations, and analysis in ENGLISH ONLY. Do NOT use Chinese characters in your sentences. The ONLY exception is for specific BaZi terms (like Day Master names or Elements) exactly as provided in the template structure below. If you are not explicitly asked to use Chinese for a term in the template, use English.
+
 **REQUIRED SECTIONS FOR PART 1:**
 
 # 八字命理全析 | Complete BaZi Destiny Analysis
@@ -150,6 +153,9 @@ TODAY IS {date_str}.
 
 **INPUT DATA:**
 {bazi_json}
+
+**CRITICAL LANGUAGE RULE:** 
+Write 100% of your paragraphs, explanations, and analysis in ENGLISH ONLY. Do NOT use Chinese characters in your sentences. The ONLY exception is for specific BaZi terms (like Day Master names or Elements) exactly as provided in the template structure below. If you are not explicitly asked to use Chinese for a term in the template, use English.
 
 **REQUIRED SECTIONS FOR PART 2:**
 
@@ -275,6 +281,8 @@ TODAY IS {date_str}.
 **INPUT DATA:**
 {bazi_json}
 
+**CRITICAL LANGUAGE RULE:** 
+Write 100% of your paragraphs, explanations, and analysis in ENGLISH ONLY. Do NOT use Chinese characters in your sentences. The ONLY exception is for specific BaZi terms (like Day Master names or Elements) exactly as provided in the template structure below. If you are not explicitly asked to use Chinese for a term in the template, use English.
 
 **REQUIRED SECTIONS FOR PART 3:**
 
@@ -295,7 +303,7 @@ DO NOT create comparison tables. DO NOT mention "Investment Priority" or "Authen
 ❌ DO NOT include estimated prices, cost, ROI, or "Cost-Benefit Reality" section.
 
 **Treasure 1: 铜风铃 Bronze Purifying Wind Chimes**
-[Sales: https://www.chimanifestation.com/chimes]
+[Sales: https://www.chimanifestation.com/bazi-members-shop]
 - Element: Metal (庚辛金)
 - Divine Beast: White Tiger (西方白虎) - Guardian of Metal Direction
 - What It Does: Transforms stagnant Sha Qi into harmonious sound vibrations
@@ -304,7 +312,7 @@ DO NOT create comparison tables. DO NOT mention "Investment Priority" or "Authen
 - Why #1 Priority: [Based on chart's Metal/Sha Qi situation]
 
 **Treasure 2: 龙龟长生护符 Long Gui (Dragon-Turtle) Longevity Amulet**
-[Sales: https://www.chimanifestation.com/longgui]
+[Sales: https://www.chimanifestation.com/bazi-members-shop]
 - Element: Earth-Water fusion (戊己土 + 壬癸水)
 - Divine Beast: Black Tortoise (北方玄武) + Dragon Emperor (东方青龙)
 - What It Does: Mediates Water-Earth conflict, attracts noble helpers
@@ -313,7 +321,7 @@ DO NOT create comparison tables. DO NOT mention "Investment Priority" or "Authen
 - Why #2 Priority: [Based on chart]
 
 **Treasure 3: 虎眼石貔貅手链 Pixiu Bracelet - Tiger Eye**
-[Sales: https://www.chimanifestation.com/pixiu]
+[Sales: https://www.chimanifestation.com/bazi-members-shop]
 - Element: Earth-Fire fusion (戊己土 + 丙丁火)
 - Divine Beast: Pixiu (貔貅) - Celestial Wealth Guardian
 - What It Does: Attracts wealth while providing protection and courage
@@ -322,7 +330,7 @@ DO NOT create comparison tables. DO NOT mention "Investment Priority" or "Authen
 - Why #3 Priority: [Based on chart]
 
 **Treasure 4: 招财石狮 Chi Prosperity Stone Lions (Fortune Guardian Dogs)**
-[Sales: https://www.chimanifestation.com/fortunelions2]
+[Sales: https://www.chimanifestation.com/bazi-members-shop]
 - Element: Earth (戊己土) — Pure grounding protective energy
 - Divine Beast: 石狮 (Guardian Lions) — Imperial protectors placed at palace gates for 2,000+ years
 - What It Does: Wards off negative energy, evil spirits, ensures prosperity

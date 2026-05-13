@@ -27,6 +27,7 @@ import ReadingPage from './pages/ReadingPage'
 import ClosingPage from './pages/ClosingPage'
 import UpsellPage from './pages/UpsellPage'
 import UpsellPage2 from './pages/UpsellPage2'
+import AdminMagicPage from './pages/AdminMagicPage'
 
 // Fires Meta Pixel PageView on every route change (including initial mount).
 // Required because this is a SPA — full page reloads don't happen on navigation.
@@ -68,6 +69,9 @@ export default function App() {
 
           {/* Upsell Page 2 — 1-1 Consultation */}
           <Route path="/oto-private-consultation-dom" element={<UpsellPage2 />} />
+
+          {/* Admin Magic Page - Manual PDF Generation */}
+          <Route path="/admin/magic" element={<AdminMagicPage />} />
 
           {/* Fallback: redirect unknown routes to landing */}
           <Route path="*" element={<LandingPage />} />
