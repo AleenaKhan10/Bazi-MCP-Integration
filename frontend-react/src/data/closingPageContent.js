@@ -210,7 +210,7 @@ const CLOSING_CONTENT = {
       },
       {
         number: 3,
-        title: 'Giving You The Power To <b>Redesign</b> Your Relationships To <b><i>Your Choosing</i>...</b>',
+        title: '<span style="font-family: Georgia, serif; text-transform: none; color: #d4b886; letter-spacing: 0.01em;" class="block leading-snug">Giving You The Power To<br/><span class="text-accent-gold font-bold block my-1" style="font-size: 1.2em;">Redesign</span>Your Relationships To <span class="text-accent-gold font-bold italic">Your</span><br/><span class="text-accent-gold font-bold italic block mt-1" style="font-size: 1.2em;">Choosing...</span></span>',
         paragraphs: [
           'And closely linked to this... {name}\'s Life Energy Attunement Report will also go deep into your relationships!',
           'This means that whether you\'re trying to work through the problems in your marriage, office... or even with your children or peers...',
