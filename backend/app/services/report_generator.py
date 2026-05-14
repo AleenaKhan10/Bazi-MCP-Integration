@@ -328,6 +328,8 @@ class ReportGenerator:
         
         # Comprehensive PDF CSS - Supports Four Pillars with Elemental Colors
         pdf_css = CSS(string='''
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+            
             /* Page Setup */
             @page {
                 size: A4;
@@ -342,8 +344,8 @@ class ReportGenerator:
             }
             
             body {
-                font-family: "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
-                font-size: 10pt;
+                font-family: "Noto Serif", "Noto Serif SC", serif;
+                font-size: 10.5pt;
                 line-height: 1.7;
                 color: #1e293b;
                 background: white !important;
@@ -546,8 +548,9 @@ class ReportGenerator:
             
             /* Paragraphs */
             p {
-                margin: 8px 0;
-                text-align: justify;
+                margin: 10px 0 14px 0;
+                text-align: left;
+                line-height: 1.8;
             }
             
             /* Text Emphasis */
@@ -641,13 +644,14 @@ class ReportGenerator:
                 page-break-after: auto;
             }
             
-            h1, h2, h3 {
-                page-break-after: avoid;
+            h1, h2, h3, h4 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
             }
             
-            /* Keep h2 with following content together */
-            h2 {
-                page-break-before: auto;
+            p, li {
+                orphans: 3;
+                widows: 3;
             }
         ''')
         

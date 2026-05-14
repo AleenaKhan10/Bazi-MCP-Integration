@@ -70,8 +70,8 @@ TODAY IS {date_str}.
 **INPUT DATA:**
 {bazi_json}
 
-**CRITICAL LANGUAGE RULE:** 
-Write 100% of your paragraphs, explanations, and analysis in ENGLISH ONLY. Do NOT use Chinese characters in your sentences. The ONLY exception is for specific BaZi terms (like Day Master names or Elements) exactly as provided in the template structure below. If you are not explicitly asked to use Chinese for a term in the template, use English.
+**CRITICAL LANGUAGE & SYMBOL RULE:** 
+Write 100% of your paragraphs, explanations, and analysis in ENGLISH ONLY. Do NOT use Chinese characters in your sentences. TRANSLATE ALL CHINESE WORDS TO ENGLISH IN YOUR OUTPUT. Even if the template below contains Chinese words (like 大运, 贵人, etc), you MUST translate them and write them ONLY in English (e.g. use "Luck Pillar" instead of 大运). Absolutely NO Chinese characters are allowed in the final output. DO NOT use any emojis or emoticons.
 
 **REQUIRED SECTIONS FOR PART 1:**
 
@@ -80,7 +80,7 @@ Write 100% of your paragraphs, explanations, and analysis in ENGLISH ONLY. Do NO
 
 ---
 
-## INTRODUCTION [300 words MAX]
+## INTRODUCTION [300 words MAX] (MUST BE 100% IN ENGLISH. NO CHINESE)
 Cover these 4 points concisely:
 A) **Bazi History:** Xu Ziping (Song Dynasty ~960 CE) shifted from Year Branch to Day Master analysis. Ganzhi Calendar = 10 Heavenly Stems + 12 Earthly Branches = 60-year cycle.
 B) **Five Elements (Wu Xing):**
@@ -91,7 +91,7 @@ D) **Elements Quick Guide:** Wood=growth, Fire=passion, Earth=stability, Metal=p
 
 ---
 
-## 1. THREE LIFE PATHS [200 words MAX]
+## 1. THREE LIFE PATHS [200 words MAX] (MUST BE 100% IN ENGLISH. NO CHINESE)
 Create 3 allegorical life trajectories based on Day Master:
 - **Path A (Conservative):** Safe route - obstacles, supporters, outcome
 - **Path B (Balanced):** Middle path - challenges, helpers, outcome  
@@ -103,7 +103,7 @@ For each path: Name it poetically, show obstacles tied to clashing elements, ide
 
 ---
 
-## 2. TEN-YEAR LUCK CYCLE [200 words MAX]
+## 2. TEN-YEAR LUCK CYCLE [200 words MAX] (MUST BE 100% IN ENGLISH. NO CHINESE)
 Create this EXACT table ({year}-{year_plus_9}):
 
 | Year | Luck (1-10) | Element Energy | Key Action |
@@ -119,7 +119,7 @@ Then add:
 
 ---
 
-## 3. FIVE ELEMENTS ANALYSIS [300 words MAX]
+## 3. FIVE ELEMENTS ANALYSIS [300 words MAX] (MUST BE 100% IN ENGLISH. NO CHINESE)
 Based on Day Master, create:
 
 | Element | % in Chart | Status | Manifestation |
@@ -140,6 +140,9 @@ Then explain:
 
 **OUTPUT RULES:**
 - Return ONLY Markdown.
+- STRICTLY WRITE ALL PARAGRAPHS IN ENGLISH. DO NOT OUTPUT CHINESE SENTENCES.
+- DO NOT USE ANY EMOJIS (e.g. no 🌲, 🔥, 💧, ⛰, ⚔, etc).
+- ALWAYS leave a blank empty line before starting any Markdown table.
 - Start with `# 八字命理全析`.
 """
 
@@ -154,12 +157,12 @@ TODAY IS {date_str}.
 **INPUT DATA:**
 {bazi_json}
 
-**CRITICAL LANGUAGE RULE:** 
-Write 100% of your paragraphs, explanations, and analysis in ENGLISH ONLY. Do NOT use Chinese characters in your sentences. The ONLY exception is for specific BaZi terms (like Day Master names or Elements) exactly as provided in the template structure below. If you are not explicitly asked to use Chinese for a term in the template, use English.
+**CRITICAL LANGUAGE & SYMBOL RULE:** 
+Write 100% of your paragraphs, explanations, and analysis in ENGLISH ONLY. Do NOT use Chinese characters in your sentences. TRANSLATE ALL CHINESE WORDS TO ENGLISH IN YOUR OUTPUT. Even if the template below contains Chinese words (like 大运, 贵人, etc), you MUST translate them and write them ONLY in English (e.g. use "Luck Pillar" instead of 大运). Absolutely NO Chinese characters are allowed in the final output. DO NOT use any emojis or emoticons.
 
 **REQUIRED SECTIONS FOR PART 2:**
 
-## 4. RELATIONSHIPS [300 words MAX]
+## 4. RELATIONSHIPS [300 words MAX] (MUST BE 100% IN ENGLISH. NO CHINESE)
 Analyze 4 relationship types based on Day Master + current luck cycle:
 
 **A) Romantic Partners**
@@ -181,7 +184,7 @@ Analyze 4 relationship types based on Day Master + current luck cycle:
 
 ---
 
-## 5. NATURAL INTELLIGENCE (10 Gods) [300 words MAX]
+## 5. NATURAL INTELLIGENCE (10 Gods) [300 words MAX] (MUST BE 100% IN ENGLISH. NO CHINESE)
 Analyze their 10 Gods configuration:
 
 | God Type | Present? | Meaning for You |
@@ -201,7 +204,7 @@ Show patterns emerging from 10 Gods + Day Master + Luck Cycle interaction.
 
 ---
 
-## 6. COMMUNICATION & ENERGY [250 words]
+## 6. COMMUNICATION & ENERGY [250 words] (MUST BE 100% IN ENGLISH. NO CHINESE)
 Based on Day Master:
 - How to present yourself to the world
 - Talents you must demonstrate
@@ -210,7 +213,7 @@ Based on Day Master:
 
 ---
 
-## 7. LIFE FORCE (CHI) ANALYSIS [250 words]
+## 7. LIFE FORCE (CHI) ANALYSIS [250 words] (MUST BE 100% IN ENGLISH. NO CHINESE)
 - Current Chi level (high/medium/low)
 - Best months to "strike" and take action
 - Months to recover
@@ -218,7 +221,7 @@ Based on Day Master:
 
 ---
 
-## 8. WEALTH CLEANSING RITUAL [250 words]
+## 8. WEALTH CLEANSING RITUAL [250 words] (MUST BE 100% IN ENGLISH. NO CHINESE)
 Based on Day Master element, provide the SPECIFIC ritual:
 
 **[Day Master Element] Wealth Ritual:**
@@ -236,7 +239,7 @@ Based on Day Master element, provide the SPECIFIC ritual:
 
 ---
 
-## 9. HOME FENG SHUI [250 words]
+## 9. HOME FENG SHUI [250 words] (MUST BE 100% IN ENGLISH. NO CHINESE)
 **Sha Qi (Suffocating Energy):**
 Brief explanation of how negative energy collects and must be cleansed.
 
@@ -267,6 +270,9 @@ DO NOT mention "Laughing Buddha" or "Wealth God figurine" - use LongGui instead:
 
 **OUTPUT RULES:**
 - Return ONLY Markdown.
+- STRICTLY WRITE ALL PARAGRAPHS IN ENGLISH. DO NOT OUTPUT CHINESE SENTENCES.
+- DO NOT USE ANY EMOJIS (e.g. no 🌲, 🔥, 💧, ⛰, ⚔, etc).
+- ALWAYS leave a blank empty line before starting any Markdown table.
 - Start directly with `## 4. RELATIONSHIPS`.
 """
 
@@ -281,12 +287,13 @@ TODAY IS {date_str}.
 **INPUT DATA:**
 {bazi_json}
 
-**CRITICAL LANGUAGE RULE:** 
-Write 100% of your paragraphs, explanations, and analysis in ENGLISH ONLY. Do NOT use Chinese characters in your sentences. The ONLY exception is for specific BaZi terms (like Day Master names or Elements) exactly as provided in the template structure below. If you are not explicitly asked to use Chinese for a term in the template, use English.
+**CRITICAL LANGUAGE & SYMBOL RULE:** 
+Write 100% of your paragraphs, explanations, and analysis in ENGLISH ONLY. Do NOT use Chinese characters in your sentences. The ONLY exception is for specific BaZi terms (like Day Master names or Elements) exactly as provided in the template structure below. If you are not explicitly asked to use Chinese for a term in the template, use English. DO NOT use any emojis or emoticons.
 
 **REQUIRED SECTIONS FOR PART 3:**
 
-## 10. CHALLENGING PERIODS (Death Particle) [250 words]
+## 10. CHALLENGING PERIODS (Death Particle) [250 words] (MUST BE 100% IN ENGLISH. NO CHINESE)
+[CRITICAL: TRANSLATE ALL CHINESE WORDS TO ENGLISH IN YOUR OUTPUT FOR THIS SECTION. NO EXCEPTIONS.]
 Warning periods ahead ({year}-{year_plus_1}):
 - **Period 1:** [Dates] - Challenge: [what], Strategy: [how to survive]
 - **Period 2:** [Dates] - Challenge: [what], Strategy: [how to survive]
@@ -295,7 +302,8 @@ During these times: Work 10x harder. Warning signs to watch. Encouraging message
 
 ---
 
-## 11. FOUR SACRED IMPERIAL TREASURES [300 words MAX]
+## 11. FOUR SACRED IMPERIAL TREASURES [300 words MAX] (MUST BE 100% IN ENGLISH. NO CHINESE)
+[CRITICAL: TRANSLATE ALL CHINESE WORDS TO ENGLISH IN YOUR OUTPUT FOR THIS SECTION. NO EXCEPTIONS.]
 **The Emperor's Protection Arsenal for [Day Master]**
 
 Introduce 4 protective items tailored to their chart using EXACT format below.
@@ -342,7 +350,8 @@ DO NOT create comparison tables. DO NOT mention "Investment Priority" or "Authen
 
 ---
 
-## 12. CELEBRITY COMPARISONS [400 words]
+## 12. CELEBRITY COMPARISONS [400 words] (MUST BE 100% IN ENGLISH. NO CHINESE)
+[CRITICAL: TRANSLATE ALL CHINESE WORDS TO ENGLISH IN YOUR OUTPUT FOR THIS SECTION. NO EXCEPTIONS.]
 3 famous individuals with similar Day Master or element configuration.
 For each celebrity provide:
 - **Celebrity Name** with their Day Master or key elemental similarity
@@ -355,7 +364,8 @@ For each celebrity provide:
 
 ---
 
-## 13. DAILY ROUTINE ADJUSTMENTS [300 words MAX]
+## 13. DAILY ROUTINE ADJUSTMENTS [300 words MAX] (MUST BE 100% IN ENGLISH. NO CHINESE)
+[CRITICAL: TRANSLATE ALL CHINESE WORDS TO ENGLISH IN YOUR OUTPUT FOR THIS SECTION. NO EXCEPTIONS.]
 Personalized daily practices based on Day Master + weak elements.
 
 **STRICT: Each subsection MUST be ~75 words - prioritize only the MOST important activity!**
@@ -404,6 +414,9 @@ Expected Outcomes by Day 100:
 
 **OUTPUT RULES:**
 - Return ONLY Markdown.
+- STRICTLY WRITE ALL PARAGRAPHS IN ENGLISH. DO NOT OUTPUT CHINESE SENTENCES.
+- DO NOT USE ANY EMOJIS (e.g. no 🌲, 🔥, 💧, ⛰, ⚔, etc).
+- ALWAYS leave a blank empty line before starting any Markdown table.
 - Start directly with `## 10. CHALLENGING PERIODS`.
 """
 
