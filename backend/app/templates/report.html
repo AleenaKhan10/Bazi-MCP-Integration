@@ -574,7 +574,17 @@
     <div class="page-container">
       <!-- Header -->
       <header class="report-header">
-        <span class="header-logo">🔮</span>
+        <span class="header-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="var(--primary-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="10" r="8"></circle>
+            <path d="M8 17.3A8 8 0 0 0 16 17.3"></path>
+            <path d="M10 21h4"></path>
+            <path d="M12 18v3"></path>
+            <path d="M14.5 5.5l1-1 1 1-1 1z"></path>
+            <path d="M6.5 10.5l1-1 1 1-1 1z"></path>
+            <path d="M12 7a3 3 0 0 0-3 3"></path>
+          </svg>
+        </span>
         <h1 class="report-title">{{ name }}'s BaZi Destiny Report</h1>
         <p class="report-subtitle">
           – Prepared By Chi Manifestation BaZi Master –
@@ -587,7 +597,7 @@
 
       <!-- Four Pillars Display - TABLE FORMAT (Manager Requested) -->
       <section class="bazi-dashboard">
-        <h2 class="pillars-title">四柱 – The Four Pillars of Destiny</h2>
+        <h2 class="pillars-title">The Four Pillars of Destiny</h2>
 
         <table class="bazi-table">
           <thead>
@@ -611,45 +621,37 @@
             <!-- Heavenly Stem Row -->
             <tr class="stem-row">
               <td class="label-cell">
-                HS<br /><span class="label-chinese">天干</span>
+                HS<br /><span class="label-chinese">Stem</span>
               </td>
               <td class="element-cell {{ hour_stem_element }}">
-                <span class="chinese-char">{{ hour_stem }}</span>
-                <span class="romanized">{{ hour_stem_name }}</span>
+                <span class="chinese-char">{{ hour_stem_name }}</span>
               </td>
               <td class="element-cell {{ day_stem_element }}">
-                <span class="chinese-char">{{ day_stem }}</span>
-                <span class="romanized">{{ day_stem_name }}</span>
+                <span class="chinese-char">{{ day_stem_name }}</span>
               </td>
               <td class="element-cell {{ month_stem_element }}">
-                <span class="chinese-char">{{ month_stem }}</span>
-                <span class="romanized">{{ month_stem_name }}</span>
+                <span class="chinese-char">{{ month_stem_name }}</span>
               </td>
               <td class="element-cell {{ year_stem_element }}">
-                <span class="chinese-char">{{ year_stem }}</span>
-                <span class="romanized">{{ year_stem_name }}</span>
+                <span class="chinese-char">{{ year_stem_name }}</span>
               </td>
             </tr>
             <!-- Earthly Branch Row -->
             <tr class="branch-row">
               <td class="label-cell">
-                EB<br /><span class="label-chinese">地支</span>
+                EB<br /><span class="label-chinese">Branch</span>
               </td>
               <td class="element-cell {{ hour_branch_element }}">
-                <span class="chinese-char">{{ hour_branch }}</span>
-                <span class="romanized">{{ hour_branch_name }}</span>
+                <span class="chinese-char">{{ hour_branch_name }}</span>
               </td>
               <td class="element-cell {{ day_branch_element }}">
-                <span class="chinese-char">{{ day_branch }}</span>
-                <span class="romanized">{{ day_branch_name }}</span>
+                <span class="chinese-char">{{ day_branch_name }}</span>
               </td>
               <td class="element-cell {{ month_branch_element }}">
-                <span class="chinese-char">{{ month_branch }}</span>
-                <span class="romanized">{{ month_branch_name }}</span>
+                <span class="chinese-char">{{ month_branch_name }}</span>
               </td>
               <td class="element-cell {{ year_branch_element }}">
-                <span class="chinese-char">{{ year_branch }}</span>
-                <span class="romanized">{{ year_branch_name }}</span>
+                <span class="chinese-char">{{ year_branch_name }}</span>
               </td>
             </tr>
           </tbody>

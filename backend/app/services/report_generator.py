@@ -245,9 +245,19 @@ class ReportGenerator:
         
         # Try to parse Chinese date format (e.g., "1993年9月28日")
         chinese_match = re.search(r'(\d+)年(\d+)月(\d+)日', str(birth_date_raw))
+        formatted_birth_date = birth_date_only
+        
         if chinese_match:
+            birth_year = chinese_match.group(1)
             birth_month = chinese_match.group(2)  # e.g., "9"
             birth_day = chinese_match.group(3)    # e.g., "28"
+            
+            # Convert to English format (e.g. August 19, 2000)
+            try:
+                month_name = datetime.strptime(birth_month, "%m").strftime("%B")
+                formatted_birth_date = f"{month_name} {birth_day}, {birth_year}"
+            except Exception:
+                pass
         else:
             # Try ISO format (e.g., "1993-09-28")
             iso_match = re.search(r'(\d{4})-(\d{2})-(\d{2})', str(birth_date_raw))
@@ -261,7 +271,7 @@ class ReportGenerator:
         return template.render(
             # Header info
             name=name,
-            birth_date=birth_date_only,  # CHANGE 2: Date only, no time
+            birth_date=formatted_birth_date,  # Translated date
             birth_time=request_data.get('birth_time', 'N/A') if request_data else 'N/A',
             location=location,
             gender=request_data.get('gender', 'Male').capitalize() if request_data else 'N/A',
@@ -301,8 +311,8 @@ class ReportGenerator:
             
             # Summary data
             bazi_chars=bazi_data.get('八字', 'N/A'),
-            day_master=bazi_data.get('日主', 'N/A'),
-            zodiac=bazi_data.get('生肖', 'N/A'),
+            day_master=self._get_stem_name(bazi_data.get('日主', 'N/A')),
+            zodiac=self._get_branch_name(bazi_data.get('生肖', 'N/A')),
             # CHANGE 4 FIX: Inject Five Elements SVG into content BEFORE template rendering
             report_content=self._inject_five_elements_svg(html_content, bazi_data.get('日主', '')),
             current_year=datetime.now().year,
