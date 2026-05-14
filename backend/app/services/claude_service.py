@@ -75,7 +75,7 @@ Write 100% of your paragraphs, explanations, and analysis in ENGLISH ONLY. Do NO
 
 **REQUIRED SECTIONS FOR PART 1:**
 
-# 八字命理全析 | Complete BaZi Destiny Analysis
+# Complete BaZi Destiny Analysis
 **{bazi_summary_line}**
 
 ---
@@ -143,7 +143,7 @@ Then explain:
 - STRICTLY WRITE ALL PARAGRAPHS IN ENGLISH. DO NOT OUTPUT CHINESE SENTENCES.
 - DO NOT USE ANY EMOJIS (e.g. no 🌲, 🔥, 💧, ⛰, ⚔, etc).
 - ALWAYS leave a blank empty line before starting any Markdown table.
-- Start with `# 八字命理全析`.
+- Start with `# Complete BaZi Destiny Analysis`.
 """
 
     # ===========================================
