@@ -268,6 +268,15 @@ class ReportGenerator:
         # CHANGE 4: Format report_year as "Mmm-YYYY" (e.g., "Feb-2026")
         report_year = datetime.now().strftime("%b-%Y")  # e.g., "Feb-2026"
         
+        # Load the emoji picture as Base64 for Linux WeasyPrint compatibility
+        import base64
+        try:
+            icon_path = Path(__file__).parent.parent / "templates" / "emoji_icon.png"
+            with open(icon_path, "rb") as image_file:
+                header_logo_b64 = f"data:image/png;base64,{base64.b64encode(image_file.read()).decode('utf-8')}"
+        except Exception:
+            header_logo_b64 = ""
+        
         return template.render(
             # Header info
             name=name,
@@ -323,7 +332,10 @@ class ReportGenerator:
             report_year=report_year,  # Formatted as "Feb-2026"
             
             # Dynamic Five Elements caption
-            day_master_element=self._get_day_master_element(bazi_data.get('日主', ''))
+            day_master_element=self._get_day_master_element(bazi_data.get('日主', '')),
+            
+            # Base64 Image
+            header_logo_b64=header_logo_b64
         )
     
     def _save_html(self, report_dir: Path, html_content: str) -> Path:
@@ -338,7 +350,7 @@ class ReportGenerator:
         
         # Comprehensive PDF CSS - Supports Four Pillars with Elemental Colors
         pdf_css = CSS(string='''
-            @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Lato:wght@400;700&display=swap');
             
             /* Page Setup */
             @page {
@@ -354,7 +366,7 @@ class ReportGenerator:
             }
             
             body {
-                font-family: "Noto Serif", "Noto Serif SC", serif;
+                font-family: "Merriweather", Georgia, serif;
                 font-size: 10.5pt;
                 line-height: 1.7;
                 color: #1e293b;
@@ -378,6 +390,7 @@ class ReportGenerator:
             }
             
             .report-title {
+                font-family: 'Cinzel', serif;
                 font-size: 18pt;
                 color: #b48e3e;
                 margin-bottom: 5px;
@@ -386,12 +399,14 @@ class ReportGenerator:
             }
             
             .report-subtitle {
+                font-family: 'Lato', sans-serif;
                 font-size: 10pt;
                 color: rgba(255,255,255,0.7);
                 font-style: italic;
             }
             
             .report-meta {
+                font-family: 'Lato', sans-serif;
                 font-size: 9pt;
                 color: rgba(255,255,255,0.6);
                 margin-top: 10px;
@@ -407,6 +422,7 @@ class ReportGenerator:
             }
             
             .pillars-title {
+                font-family: 'Cinzel', serif;
                 text-align: center;
                 font-size: 12pt;
                 color: #0f172a;
@@ -493,6 +509,7 @@ class ReportGenerator:
             }
             
             .meta-label {
+                font-family: 'Lato', sans-serif;
                 font-size: 7pt;
                 color: #475569;
                 text-transform: uppercase;
@@ -500,6 +517,7 @@ class ReportGenerator:
             }
             
             .meta-value {
+                font-family: 'Cinzel', serif;
                 font-size: 11pt;
                 color: #b48e3e;
                 font-weight: bold;
@@ -533,6 +551,7 @@ class ReportGenerator:
             
             /* Headings */
             h1 {
+                font-family: 'Cinzel', serif;
                 font-size: 14pt;
                 color: #0f172a;
                 margin: 25px 0 12px;
@@ -542,6 +561,7 @@ class ReportGenerator:
             }
             
             h2 {
+                font-family: 'Cinzel', serif;
                 font-size: 12pt;
                 color: #b48e3e;
                 margin: 18px 0 10px;
