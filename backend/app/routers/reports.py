@@ -257,6 +257,37 @@ async def get_bazi_only(data: ReportRequest, request: Request, background_tasks:
 
 
 # ===========================================
+# Partial Save Endpoint (Lead Capture)
+# ===========================================
+
+class PartialSaveRequest(BaseModel):
+    email: str
+    name: Optional[str] = ""
+    gender: Optional[str] = ""
+    birth_date: Optional[str] = ""
+    birth_time: Optional[str] = ""
+    location: Optional[str] = ""
+
+@router.post("/partial-save")
+@limiter.limit("50/hour")
+async def partial_save(data: PartialSaveRequest, request: Request, background_tasks: BackgroundTasks):
+    """Save partial lead data from multi-step form to Google Sheets"""
+    if data.email:
+        background_tasks.add_task(
+            push_to_google_sheet,
+            email=data.email,
+            name=data.name or "",
+            day_master="",
+            gender=data.gender or "",
+            birth_date=data.birth_date or "",
+            birth_time=data.birth_time or "",
+            location=data.location or "",
+            package_id="",
+            payment_intent_id=""
+        )
+    return {"success": True}
+
+# ===========================================
 # Send Report Email (Standalone)
 # ===========================================
 
