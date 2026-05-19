@@ -11,6 +11,7 @@ import { useQuiz } from '../context/QuizContext'
 import FormInput from '../components/FormInput'
 import DOBPicker from '../components/DOBPicker'
 import CountryCityPicker from '../components/CountryCityPicker'
+import axios from 'axios'
 
 // Dictionary of common email domain typos to catch before submission
 const COMMON_EMAIL_TYPOS = {
@@ -48,6 +49,8 @@ export default function LandingPage() {
   const navigate = useNavigate()
   const { formData, setFormData } = useQuiz()
   const [errors, setErrors] = useState({})
+  const [currentStep, setCurrentStep] = useState(1)
+  const [isUnknownTime, setIsUnknownTime] = useState(false)
 
   useEffect(() => {
     document.title = "Get Your FREE BaZi Reading!"
@@ -85,47 +88,90 @@ export default function LandingPage() {
     }
   }
 
-  const validateForm = () => {
+  const partialSave = (forceTime = null) => {
+    const bDate = formData.birthYear && formData.birthMonth && formData.birthDay 
+      ? `${formData.birthYear}-${String(formData.birthMonth).padStart(2, '0')}-${String(formData.birthDay).padStart(2, '0')}` 
+      : ""
+    const bTime = forceTime !== null ? forceTime : (isUnknownTime ? "00:00" : formData.birthTime)
+    
+    axios.post('/api/partial-save', {
+      email: formData.email,
+      name: formData.firstName,
+      gender: formData.gender || "",
+      birth_date: bDate,
+      birth_time: bTime || "",
+      location: formData.city ? `${formData.city}, ${formData.state ? formData.state + ', ' : ''}${formData.country}` : (formData.country || "")
+    }).catch(err => console.error("Partial save failed:", err))
+  }
+
+  const validateStep = (step) => {
     const newErrors = {}
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = 'First name is required'
-    } else if (formData.firstName.trim().length < 2) {
-      newErrors.firstName = 'Name must be at least 2 characters'
-    }
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address'
-    } else {
-      const parts = formData.email.trim().split('@')
-      if (parts.length === 2) {
-        const domain = parts[1].toLowerCase()
-        if (COMMON_EMAIL_TYPOS[domain]) {
-          const expected = COMMON_EMAIL_TYPOS[domain]
-          newErrors.email = `Did you mean ${parts[0]}@${expected}? Please correct.`
+    if (step === 1) {
+      if (!formData.firstName?.trim()) newErrors.firstName = 'First name is required'
+      else if (formData.firstName.trim().length < 2) newErrors.firstName = 'Name must be at least 2 characters'
+      if (!formData.email?.trim()) newErrors.email = 'Email is required'
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Please enter a valid email address'
+      else {
+        const parts = formData.email.trim().split('@')
+        if (parts.length === 2) {
+          const domain = parts[1].toLowerCase()
+          if (COMMON_EMAIL_TYPOS[domain]) {
+            newErrors.email = `Did you mean ${parts[0]}@${COMMON_EMAIL_TYPOS[domain]}? Please correct.`
+          }
         }
       }
+      if (!formData.gender) newErrors.gender = 'Please select your gender'
+    } else if (step === 2) {
+      if (!formData.birthMonth) newErrors.month = 'Required'
+      if (!formData.birthDay) newErrors.day = 'Required'
+      if (!formData.birthYear) newErrors.year = 'Required'
+    } else if (step === 3) {
+      if (!isUnknownTime && !formData.birthTime) newErrors.birthTime = 'Birth time is required'
+    } else if (step === 4) {
+      if (!formData.country) newErrors.country = 'Please select your birth country'
+      if (!formData.city) newErrors.city = 'Please select your birth city'
     }
-    if (!formData.gender) newErrors.gender = 'Please select your gender'
-    if (!formData.birthMonth) newErrors.month = 'Required'
-    if (!formData.birthDay) newErrors.day = 'Required'
-    if (!formData.birthYear) newErrors.year = 'Required'
-    if (!formData.birthTime) newErrors.birthTime = 'Birth time is required'
-    if (!formData.country) newErrors.country = 'Please select your birth country'
-    if (!formData.city) newErrors.city = 'Please select your birth city'
     setErrors(newErrors)
+    
+    // Scroll to error
+    if (Object.keys(newErrors).length > 0) {
+      setTimeout(() => {
+        const firstError = document.querySelector('.text-error')
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }, 50)
+    }
+    
     return Object.keys(newErrors).length === 0
+  }
+
+  const handleNext = () => {
+    if (validateStep(currentStep)) {
+      partialSave()
+      setCurrentStep(prev => prev + 1)
+    }
+  }
+
+  const handleBack = () => {
+    setCurrentStep(prev => prev - 1)
+  }
+
+  const handleUnknownTime = () => {
+    setIsUnknownTime(true)
+    setFormData(prev => ({ ...prev, birthTime: '00:00' }))
+    setErrors(prev => ({ ...prev, birthTime: null }))
+    // Save immediately and go to next step
+    partialSave('00:00')
+    setCurrentStep(prev => prev + 1)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!validateForm()) {
-      const firstError = document.querySelector('.text-error')
-      if (firstError) {
-        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      }
+    if (!validateStep(4)) {
       return
     }
+    partialSave()
     navigate('/loading')
   }
 
@@ -187,128 +233,151 @@ export default function LandingPage() {
           {/* ====== FORM — Open layout on background ====== */}
           <form onSubmit={handleSubmit} noValidate className="landing-form animate-fade-in-up-delay-2">
 
-            {/* Row 1: Name + Email */}
-            <div className="form-row-2col" style={{ marginBottom: '28px' }}>
-              <div>
-                <span className="form-label">Your First Name ✦</span>
-                <input
-                  type="text"
-                  id="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange('firstName')}
-                  placeholder="John"
-                  className={`input-mystical ${errors.firstName ? 'input-error' : ''}`}
-                />
-                {errors.firstName && <p className="text-xs text-error mt-1">⚠ {errors.firstName}</p>}
-              </div>
-              <div>
-                <span className="form-label">Email Address ✦</span>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleChange('email')}
-                  placeholder="johndoe@example.com"
-                  className={`input-mystical ${errors.email ? 'input-error' : ''}`}
-                />
-                {errors.email 
-                  ? <p className="text-xs text-error mt-1">⚠ {errors.email}</p>
-                  : <p className="text-xs text-text-dim mt-1" style={{ opacity: 0.5 }}>Your report will be delivered here</p>
-                }
-              </div>
-            </div>
-
-            {/* Row 2: Gender + Birth Time */}
-            <div className="form-row-2col" style={{ marginBottom: '28px' }}>
-              <div>
-                <span className="form-label">Gender ✦</span>
-                <div className="flex gap-3 mt-1">
-                  {['male', 'female'].map((g) => (
-                    <label
-                      key={g}
-                      className={`
-                        flex-1 flex items-center justify-center gap-2
-                        px-3 py-3.5 rounded-lg cursor-pointer
-                        transition-all duration-300 border
-                        ${formData.gender === g
-                          ? 'border-accent-purple/60 bg-accent-purple/10 text-white shadow-[0_0_20px_rgba(139,92,246,0.15)]'
-                          : 'border-white/8 bg-white/3 text-text-muted hover:border-accent-purple/30 hover:bg-accent-purple/5'
-                        }
-                      `}
-                    >
-                      <input
-                        type="radio"
-                        name="gender"
-                        value={g}
-                        checked={formData.gender === g}
-                        onChange={handleChange('gender')}
-                        className="sr-only"
-                      />
-                      <span className="text-lg">{g === 'male' ? '♂' : '♀'}</span>
-                      <span className="capitalize font-medium text-sm">{g}</span>
-                    </label>
-                  ))}
+            {/* Wizard Progress Indicator */}
+            <div className="flex justify-between items-center mb-6 px-2">
+              {[1, 2, 3, 4].map(stepNum => (
+                <div key={stepNum} className="flex-1 flex items-center">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center border text-sm font-bold transition-all duration-300 ${
+                    currentStep >= stepNum 
+                      ? 'border-accent-gold bg-accent-gold/20 text-accent-gold shadow-[0_0_10px_rgba(234,179,8,0.3)]' 
+                      : 'border-white/20 bg-white/5 text-white/40'
+                  }`}>
+                    {stepNum}
+                  </div>
+                  {stepNum < 4 && (
+                    <div className={`h-[2px] flex-1 mx-2 transition-all duration-300 ${
+                      currentStep > stepNum ? 'bg-accent-gold/50' : 'bg-white/10'
+                    }`} />
+                  )}
                 </div>
-                {errors.gender && <p className="text-xs text-error mt-1">⚠ {errors.gender}</p>}
+              ))}
+            </div>
+
+            {/* STEP 1: Basic Info */}
+            {currentStep === 1 && (
+              <div className="animate-fade-in-up">
+                <div className="form-row-2col" style={{ marginBottom: '24px' }}>
+                  <div>
+                    <span className="form-label">Your First Name ✦</span>
+                    <input
+                      type="text"
+                      value={formData.firstName}
+                      onChange={handleChange('firstName')}
+                      placeholder="John"
+                      className={`input-mystical ${errors.firstName ? 'input-error' : ''}`}
+                    />
+                    {errors.firstName && <p className="text-xs text-error mt-1">⚠ {errors.firstName}</p>}
+                  </div>
+                  <div>
+                    <span className="form-label">Email Address ✦</span>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange('email')}
+                      placeholder="johndoe@example.com"
+                      className={`input-mystical ${errors.email ? 'input-error' : ''}`}
+                    />
+                    {errors.email 
+                      ? <p className="text-xs text-error mt-1">⚠ {errors.email}</p>
+                      : <p className="text-xs text-text-dim mt-1" style={{ opacity: 0.5 }}>Your report will be delivered here</p>
+                    }
+                  </div>
+                </div>
+                <div style={{ marginBottom: '28px' }}>
+                  <span className="form-label">Gender ✦</span>
+                  <div className="flex gap-3 mt-1">
+                    {['male', 'female'].map((g) => (
+                      <label key={g} className={`flex-1 flex items-center justify-center gap-2 px-3 py-3.5 rounded-lg cursor-pointer transition-all duration-300 border ${formData.gender === g ? 'border-accent-purple/60 bg-accent-purple/10 text-white shadow-[0_0_20px_rgba(139,92,246,0.15)]' : 'border-white/8 bg-white/3 text-text-muted hover:border-accent-purple/30 hover:bg-accent-purple/5'}`}>
+                        <input type="radio" name="gender" value={g} checked={formData.gender === g} onChange={handleChange('gender')} className="sr-only" />
+                        <span className="text-lg">{g === 'male' ? '♂' : '♀'}</span>
+                        <span className="capitalize font-medium text-sm">{g}</span>
+                      </label>
+                    ))}
+                  </div>
+                  {errors.gender && <p className="text-xs text-error mt-1">⚠ {errors.gender}</p>}
+                </div>
+                <button type="button" onClick={handleNext} className="btn-mystical w-full">Next Step ✦</button>
               </div>
+            )}
 
-              <div>
-                <span className="form-label">Birth Time ✦</span>
-                <input
-                  type="time"
-                  id="birthTime"
-                  value={formData.birthTime}
-                  onChange={handleChange('birthTime')}
-                  className={`input-mystical ${errors.birthTime ? 'input-error' : ''}`}
-                />
-                {errors.birthTime 
-                  ? <p className="text-xs text-error mt-1">⚠ {errors.birthTime}</p>
-                  : <p className="text-xs text-text-dim mt-1" style={{ opacity: 0.5 }}>24-hour format (e.g., 14:30)</p>
-                }
+            {/* STEP 2: Date of Birth */}
+            {currentStep === 2 && (
+              <div className="animate-fade-in-up">
+                <div style={{ marginBottom: '36px' }}>
+                  <DOBPicker
+                    month={formData.birthMonth}
+                    day={formData.birthDay}
+                    year={formData.birthYear}
+                    onMonthChange={handleChange('birthMonth')}
+                    onDayChange={handleChange('birthDay')}
+                    onYearChange={handleChange('birthYear')}
+                    errors={{ month: errors.month, day: errors.day, year: errors.year }}
+                  />
+                </div>
+                <div className="flex gap-4">
+                  <button type="button" onClick={handleBack} className="btn-mystical w-1/3 !bg-transparent !border-white/20 !text-white hover:!bg-white/10">Back</button>
+                  <button type="button" onClick={handleNext} className="btn-mystical w-2/3">Next Step ✦</button>
+                </div>
               </div>
-            </div>
+            )}
 
-            {/* Row 3: Date of Birth */}
-            <div style={{ marginBottom: '28px' }}>
-              <DOBPicker
-                month={formData.birthMonth}
-                day={formData.birthDay}
-                year={formData.birthYear}
-                onMonthChange={handleChange('birthMonth')}
-                onDayChange={handleChange('birthDay')}
-                onYearChange={handleChange('birthYear')}
-                errors={{
-                  month: errors.month,
-                  day: errors.day,
-                  year: errors.year,
-                }}
-              />
-            </div>
+            {/* STEP 3: Time of Birth */}
+            {currentStep === 3 && (
+              <div className="animate-fade-in-up">
+                <div style={{ marginBottom: '28px' }}>
+                  <span className="form-label">Birth Time ✦</span>
+                  <input
+                    type="time"
+                    value={isUnknownTime ? "00:00" : formData.birthTime}
+                    onChange={(e) => {
+                      setIsUnknownTime(false);
+                      handleChange('birthTime')(e);
+                    }}
+                    disabled={isUnknownTime}
+                    className={`input-mystical ${errors.birthTime ? 'input-error' : ''} ${isUnknownTime ? 'opacity-50' : ''}`}
+                  />
+                  {errors.birthTime 
+                    ? <p className="text-xs text-error mt-1">⚠ {errors.birthTime}</p>
+                    : <p className="text-xs text-text-dim mt-1" style={{ opacity: 0.5 }}>24-hour format</p>
+                  }
+                  
+                  <div className="mt-4">
+                    <button 
+                      type="button" 
+                      onClick={handleUnknownTime}
+                      className="w-full py-3 px-4 rounded-lg border border-white/20 bg-white/5 text-white text-sm hover:bg-white/10 hover:border-white/40 transition-all flex items-center justify-center gap-2"
+                    >
+                      <span className="text-xl">🤔</span> I don't know my exact birth time
+                    </button>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <button type="button" onClick={handleBack} className="btn-mystical w-1/3 !bg-transparent !border-white/20 !text-white hover:!bg-white/10">Back</button>
+                  <button type="button" onClick={handleNext} className="btn-mystical w-2/3">Next Step ✦</button>
+                </div>
+              </div>
+            )}
 
-            {/* Row 4: Country + City */}
-            <div style={{ marginBottom: '36px' }}>
-              <CountryCityPicker
-                country={formData.country}
-                state={formData.state}
-                city={formData.city}
-                onCountryChange={handleCountryChange}
-                onStateChange={handleStateChange}
-                onCityChange={handleChange('city')}
-                errors={{
-                  country: errors.country,
-                  state: errors.state,
-                  city: errors.city,
-                }}
-              />
-            </div>
-
-            {/* CTA Button */}
-            <button
-              type="submit"
-              className="btn-mystical w-full"
-            >
-              ✦ Begin Your Free “Life Energy Chart Reading” Now
-            </button>
+            {/* STEP 4: Location */}
+            {currentStep === 4 && (
+              <div className="animate-fade-in-up">
+                <div style={{ marginBottom: '36px' }}>
+                  <CountryCityPicker
+                    country={formData.country}
+                    state={formData.state}
+                    city={formData.city}
+                    onCountryChange={handleCountryChange}
+                    onStateChange={handleStateChange}
+                    onCityChange={handleChange('city')}
+                    errors={{ country: errors.country, state: errors.state, city: errors.city }}
+                  />
+                </div>
+                <div className="flex gap-4">
+                  <button type="button" onClick={handleBack} className="btn-mystical w-1/3 !bg-transparent !border-white/20 !text-white hover:!bg-white/10">Back</button>
+                  <button type="submit" className="btn-mystical w-2/3">✦ Begin Reading Now</button>
+                </div>
+              </div>
+            )}
 
             {/* Trust badge */}
             <p className="text-center mt-4" style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)' }}>
