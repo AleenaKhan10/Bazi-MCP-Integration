@@ -41,7 +41,13 @@ function MetaPixelRouteTracker() {
   return null
 }
 
+import { captureFacebookAttribution } from './utils/metaTracking'
+
 export default function App() {
+  useEffect(() => {
+    captureFacebookAttribution()
+  }, [])
+
   return (
     // QuizProvider wraps everything →
     // all pages can access shared state via useQuiz()

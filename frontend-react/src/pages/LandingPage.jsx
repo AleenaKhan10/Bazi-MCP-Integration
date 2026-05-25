@@ -54,6 +54,12 @@ export default function LandingPage() {
 
   useEffect(() => {
     document.title = "Get Your FREE BaZi Reading!"
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'fb_view_content',
+      contentName: 'Landing Page',
+      contentCategory: 'funnel_entry'
+    });
   }, [])
 
   const handleChange = (field) => (e) => {
@@ -148,6 +154,15 @@ export default function LandingPage() {
 
   const handleNext = () => {
     if (validateStep(currentStep)) {
+      if (currentStep === 1) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'fb_lead',
+          email: formData.email,
+          firstName: formData.firstName,
+          contentName: 'Lead Captured'
+        });
+      }
       partialSave()
       setCurrentStep(prev => prev + 1)
     }

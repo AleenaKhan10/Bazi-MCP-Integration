@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useQuiz } from '../context/QuizContext';
 import DAY_MASTERS from '../data/dayMasters';
 import { generateFullReport } from '../api/client';
+import { getFacebookCookies } from '../utils/metaTracking';
 
 export default function UpsellPage() {
   const navigate = useNavigate();
@@ -12,6 +13,12 @@ export default function UpsellPage() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     document.title = "Congratulations! Your Report Is On Its Way..."
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'fb_view_content',
+      contentName: 'Upsell 1 - Wind Chimes',
+      contentCategory: 'upsell'
+    });
   }, []);
 
   // --- BACKGROUND REPORT GENERATOR & EMAIL TRIGGER ---
@@ -73,13 +80,49 @@ export default function UpsellPage() {
                .replace(/%DAY MASTER ATTACKING%/g, attackingName);
   };
 
-  const handlePurchase = () => {
+  const handlePurchase = async () => {
     sessionStorage.setItem('can_access_upsell_2', 'true');
     sessionStorage.removeItem('can_access_upsell_1'); // cleanup
-    const rawEmail = formData.email || '';
-    const safeEmailId = rawEmail.replace(/@/g, '_at_').replace(/\./g, '_dot_').replace(/\+/g, '_plus_');
-    const emailStr = encodeURIComponent(rawEmail);
-    window.location.href = `https://pay.chimanifestation.com/b/28EeVdd5963VfNC9qV2Ji12?client_reference_id=${safeEmailId}___aibaziotowc&prefilled_email=${emailStr}`;
+    
+    const email = formData.email || '';
+    const { fbp, fbc } = getFacebookCookies();
+    const eventId = crypto.randomUUID();
+
+    const packageCode = 'aibaziotowc';
+    const value = 49.00;
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'fb_initiate_checkout',
+      value: value,
+      currency: 'USD',
+      eventId: eventId,
+      contentId: packageCode,
+    });
+
+    try {
+      const response = await fetch('/api/checkout/create-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          package_code: packageCode,
+          email: email,
+          fbp: fbp,
+          fbc: fbc,
+          event_id: eventId,
+          user_agent: navigator.userAgent
+        })
+      });
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Failed to initialize checkout. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Failed to connect to checkout server.");
+    }
   };
 
   const handleDecline = () => {

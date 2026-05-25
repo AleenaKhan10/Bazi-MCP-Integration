@@ -5,6 +5,7 @@ from typing import Optional
 
 from app.config import settings
 from app.services.automation import push_to_google_sheet, push_to_clickfunnels
+from app.services.meta_capi import send_purchase_to_meta
 
 router = APIRouter(prefix="/api/webhooks", tags=["Webhooks"])
 logger = logging.getLogger(__name__)
@@ -48,54 +49,50 @@ async def stripe_webhook(
     # Handle the checkout.session.completed event
     if event.type == 'checkout.session.completed':
         session = event.data.object
-        
-        # 1. Extract Tracking Identity Tags
-        raw_client_ref = getattr(session, 'client_reference_id', None)
         payment_intent = getattr(session, 'payment_intent', 'unknown_intent')
         
-        # Parse the combined client_reference_id (e.g. email___packageid)
-        original_email = None
-        client_reference_id = None
+        # 1. NEW: Extract from Metadata (Stripe Checkout Sessions)
+        metadata = getattr(session, 'metadata', {}) or {}
+        package_id = metadata.get("package_id")
         
-        if raw_client_ref and "___" in raw_client_ref:
-            original_email_safe, client_reference_id = raw_client_ref.split("___", 1)
-            # Restore the safe email back to its true form
-            original_email = original_email_safe.replace('_at_', '@').replace('_dot_', '.').replace('_plus_', '+')
-        else:
-            client_reference_id = raw_client_ref
-            
-        # 2. Extract Customer Informational Data
         customer_details = getattr(session, 'customer_details', None)
-        stripe_email = getattr(customer_details, 'email', '') if customer_details else ''
-        name = getattr(customer_details, 'name', 'Unknown User') if customer_details else 'Unknown User'
-        
-        # Use original_email from tracking if available, otherwise fallback to stripe_email
-        final_email = original_email if original_email else stripe_email
-        
-        # Extract DayMaster if you decide to pass it via session metadata
-        metadata = getattr(session, 'metadata', None)
-        day_master = getattr(metadata, 'dayMaster', '') if metadata else ''
+        email = metadata.get("customer_email") or (customer_details.email if customer_details else getattr(session, 'customer_email', ''))
 
+        # 2. LEGACY FALLBACK: Extract from client_reference_id (Stripe Payment Links)
+        # Remove this block 7 days after full cutover.
+        if not package_id:
+            raw_client_ref = getattr(session, 'client_reference_id', None)
+            if raw_client_ref and "___" in raw_client_ref:
+                original_email_safe, package_id = raw_client_ref.split("___", 1)
+                if not email:
+                    email = original_email_safe.replace('_at_', '@').replace('_dot_', '.').replace('_plus_', '+')
+            else:
+                package_id = raw_client_ref
+
+        day_master = metadata.get('dayMaster', '')
+
+        logger.info(f"💰 Successful Payment Received! Customer: {email}, Package ID: {package_id}")
         
-        logger.info(f"💰 Successful Payment Received! Customer (Form): {final_email} (Stripe: {stripe_email}), Package ID: {client_reference_id}")
-        
-        if client_reference_id:
+        if package_id:
             # 3. Offload external API calls to background tasks so Stripe gets a quick 200 OK
             background_tasks.add_task(
                 push_to_google_sheet,
-                email=final_email,
+                email=email,
                 name="",
-                package_id=client_reference_id,
+                package_id=package_id,
                 payment_intent_id=payment_intent,
                 day_master=day_master
             )
             
             background_tasks.add_task(
                 push_to_clickfunnels,
-                email=final_email,
-                package_id=client_reference_id
+                email=email,
+                package_id=package_id
             )
+
+            # 4. NEW: Meta CAPI call
+            background_tasks.add_task(send_purchase_to_meta, session)
         else:
-            logger.warning(f"Payment received for {final_email} but NO client_reference_id was attached. Manual intervention may be needed.")
+            logger.warning(f"Payment received for {email} but NO package_id was attached. Manual intervention may be needed.")
 
     return {"status": "success"}

@@ -37,6 +37,7 @@ import { useNavigate } from 'react-router-dom'
 import { useQuiz } from '../context/QuizContext'
 import DAY_MASTERS from '../data/dayMasters'
 import CLOSING_CONTENT from '../data/closingPageContent'
+import { getFacebookCookies } from '../utils/metaTracking'
 
 
 export default function ClosingPage() {
@@ -45,6 +46,12 @@ export default function ClosingPage() {
 
   useEffect(() => {
     document.title = "Get Your FULL Life Energy Attunement Report"
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'fb_view_content',
+      contentName: 'Pricing Page',
+      contentCategory: 'closing_page'
+    });
   }, [])
 
   // --- Page state (was 1-4, now just 1 or 2) ---
@@ -97,19 +104,49 @@ export default function ClosingPage() {
   const goToPage2 = () => setStep(2)
 
   // --- Route to Checkout Tracking Link ---
-  const handleAddToCart = (tier) => {
+  const handleAddToCart = async (tier) => {
     // Generate an access token to authorize the return trip from Stripe
     sessionStorage.setItem('can_access_upsell_1', 'true');
     
-    // Encode email safely for Stripe client_reference_id (only alphanumeric, dashes, underscores allowed)
-    const rawEmail = formData.email || '';
-    const safeEmailId = rawEmail.replace(/@/g, '_at_').replace(/\./g, '_dot_').replace(/\+/g, '_plus_');
-    const emailStr = encodeURIComponent(rawEmail); // For prefilled_email
+    const email = formData.email || '';
+    const { fbp, fbc } = getFacebookCookies();
+    const eventId = crypto.randomUUID();
 
-    if (tier === 'vip') {
-      window.location.href = `https://pay.chimanifestation.com/b/fZu5kD1mrgIz30Q32x2Ji10?client_reference_id=${safeEmailId}___aibazivip&prefilled_email=${emailStr}`;
-    } else {
-      window.location.href = `https://pay.chimanifestation.com/b/00w6oH9SXfEvbxmauZ2Ji11?client_reference_id=${safeEmailId}___aibazifeonly&prefilled_email=${emailStr}`;
+    const packageCode = tier === 'vip' ? 'aibazivip' : 'aibazifeonly';
+    const value = tier === 'vip' ? 28.88 : 18.88;
+
+    // Fire InitiateCheckout to data layer BEFORE redirect
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'fb_initiate_checkout',
+      value: value,
+      currency: 'USD',
+      eventId: eventId,
+      contentId: packageCode,
+    });
+
+    try {
+      const response = await fetch('/api/checkout/create-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          package_code: packageCode,
+          email: email,
+          fbp: fbp,
+          fbc: fbc,
+          event_id: eventId,
+          user_agent: navigator.userAgent
+        })
+      });
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Failed to initialize checkout. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Failed to connect to checkout server.");
     }
   }
 
