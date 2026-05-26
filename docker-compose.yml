@@ -41,6 +41,10 @@ services:
       - STRIPE_API_KEY=${STRIPE_SECRET_KEY:-}
       - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:-}
       - CLICKFUNNELS_API_KEY=${CLICKFUNNELS_API_KEY:-}
+      - META_PIXEL_ID=${META_PIXEL_ID:-}
+      - META_CAPI_ACCESS_TOKEN=${META_CAPI_ACCESS_TOKEN:-}
+      - META_TEST_EVENT_CODE=${META_TEST_EVENT_CODE:-}
+      - SITE_URL=${SITE_URL:-https://bazi.chimanifestation.com}
     volumes:
       # Persist generated reports outside the container
       - reports_data:/app/reports
