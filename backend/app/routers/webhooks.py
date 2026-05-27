@@ -48,20 +48,22 @@ async def stripe_webhook(
 
     # Handle the checkout.session.completed event
     if event.type == 'checkout.session.completed':
-        session = event.data.object
-        payment_intent = getattr(session, 'payment_intent', 'unknown_intent')
-        
+        # Convert Stripe object to plain dict — StripeObject in SDK 15.x no longer
+        # extends dict, so .get() raises AttributeError otherwise.
+        session = event.data.object.to_dict()
+        payment_intent = session.get('payment_intent', 'unknown_intent')
+
         # 1. NEW: Extract from Metadata (Stripe Checkout Sessions)
-        metadata = getattr(session, 'metadata', {}) or {}
+        metadata = session.get('metadata') or {}
         package_id = metadata.get("package_id")
-        
-        customer_details = getattr(session, 'customer_details', None)
-        email = metadata.get("customer_email") or (customer_details.email if customer_details else getattr(session, 'customer_email', ''))
+
+        customer_details = session.get('customer_details') or {}
+        email = metadata.get("customer_email") or customer_details.get('email') or session.get('customer_email', '')
 
         # 2. LEGACY FALLBACK: Extract from client_reference_id (Stripe Payment Links)
         # Remove this block 7 days after full cutover.
         if not package_id:
-            raw_client_ref = getattr(session, 'client_reference_id', None)
+            raw_client_ref = session.get('client_reference_id')
             if raw_client_ref and "___" in raw_client_ref:
                 original_email_safe, package_id = raw_client_ref.split("___", 1)
                 if not email:
