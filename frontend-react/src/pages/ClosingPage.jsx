@@ -707,7 +707,7 @@ export default function ClosingPage() {
                     <p>You're not paying $2,000.</p>
                     <p>Not $500.</p>
                     <p>Not even $100.</p>
-                    <p><strong className="text-accent-gold">Get the VIP Bundle right now and pay just $38.88 for your first month.</strong></p>
+                    <p><strong className="text-accent-gold">Get the VIP Bundle right now at just $28.88 a month.</strong></p>
                     <p>That's your Life Energy Attunement Report… <strong><u>PLUS</u></strong>:</p>
                   </div>
 
@@ -719,33 +719,28 @@ export default function ClosingPage() {
                     </div>
                     <div className="inclusion-card">
                       <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">24-Hour Client Success Support</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Questions about your worksheets? Confused about an activity? Message the Client Success team and get answers within 24 hours. It's like having a Feng Shui coach walking alongside you.</p></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Monthly Live Coaching with Master Dom</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Live group sessions on Outer Feng Shui topics chosen by Master Dom, followed by Q&A where you can bring your own home situation for direct guidance. First-come, first-served.</p></div>
                     </div>
                     <div className="inclusion-card">
                       <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Outer Feng Shui Monthly Coaching Calls with Master Dom</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Live Q&amp;A sessions where you can ask Master Dom anything. First-come, first-served. Topics planned by Master Dom himself based on what his students need most.</p></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Your Personalized BaZi Monthly Forecast</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Master Dom personally maps your unique BaZi chart each month, identifying your wealth days, conflict days, danger days, and relationship windows. Think of it as a radar that warns you about what's coming — so you stop walking into bad situations blind.</p></div>
                     </div>
                     <div className="inclusion-card">
                       <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Customized BaZi Monthly Forecast</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Master Dom personally shares which days are lucky for wealth, relationships, and conflict based on YOUR unique BaZi chart. It's like having a radar that warns you of storms... and highlights golden opportunities.</p></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">24-Hour Client Success Support</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Stuck on a worksheet? Confused about a lesson? Need guidance on whether your bed position is okay? Message our Client Success team and we'll respond within 24 hours. Like having a Feng Shui coach in your pocket.</p></div>
                     </div>
                     <div className="inclusion-card">
                       <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">New Monthly Resources</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Fresh lessons, soundtracks, and tools added every month. Designed to accelerate your results. Request a topic and you might see it covered next month.</p></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Private Community Access</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">A members-only space with people from around the world working on the same transformation. Share wins, ask questions, get accountability. The journey is easier when you're not doing it alone.</p></div>
                     </div>
                     <div className="inclusion-card">
                       <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Private Community Access</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Join like-minded individuals from around the world. Support each other. Learn and flourish together. Because you can only go so far by doing it alone. But when you do it together, the sky's the limit.</p></div>
-                    </div>
-                    <div className="inclusion-card">
-                      <div className="inclusion-card-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg></div>
-                      <div><p className="inclusion-card-text"><strong className="text-text-primary">Monthly "Stand A Chance to Win" Events</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Participate in the community, earn points, and win physical Feng Shui products. Shipping fully covered by us. The more you engage, the more you win.</p></div>
+                      <div><p className="inclusion-card-text"><strong className="text-text-primary">New Monthly Resources</strong></p><p className="text-text-muted text-[15px] mt-2 leading-relaxed">Fresh lessons, audio tracks, and tools added every month. If there's a topic you want covered, request it — we frequently build resources around member requests.</p></div>
                     </div>
                   </div>
 
                   <div className="closing-paragraph mt-6">
-                    <p className="text-text-muted text-sm">After your first month, you'll continue for just $29/month.</p>
-                    <p className="text-text-muted text-sm">Cancel anytime.</p>
+                    <p className="text-text-muted text-sm">Cancel anytime. No questions asked.</p>
                   </div>
                 </div>
 

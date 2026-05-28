@@ -18,7 +18,7 @@
 */
 
 import { useEffect } from 'react'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { QuizProvider } from './context/QuizContext'
 import LandingPage from './pages/LandingPage'
 import LoadingPage from './pages/LoadingPage'
@@ -28,19 +28,6 @@ import ClosingPage from './pages/ClosingPage'
 import UpsellPage from './pages/UpsellPage'
 import UpsellPage2 from './pages/UpsellPage2'
 import AdminMagicPage from './pages/AdminMagicPage'
-
-// Fires Meta Pixel PageView on every route change (including initial mount).
-// Required because this is a SPA — full page reloads don't happen on navigation.
-function MetaPixelRouteTracker() {
-  const location = useLocation()
-  useEffect(() => {
-    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-      window.fbq('track', 'PageView')
-    }
-  }, [location.pathname])
-  return null
-}
-
 import { captureFacebookAttribution } from './utils/metaTracking'
 
 export default function App() {
@@ -53,7 +40,6 @@ export default function App() {
     // all pages can access shared state via useQuiz()
     <QuizProvider>
       <BrowserRouter>
-        <MetaPixelRouteTracker />
         <Routes>
           {/* Step 1: Landing (Form) */}
           <Route path="/" element={<LandingPage />} />
