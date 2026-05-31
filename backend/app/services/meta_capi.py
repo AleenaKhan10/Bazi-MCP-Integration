@@ -22,10 +22,9 @@ async def send_purchase_to_meta(session: dict):
         return
 
     metadata = session.get("metadata", {}) or {}
-    email = (
-        metadata.get("customer_email")
-        or (session.get("customer_details") or {}).get("email")
-    )
+    customer_details = session.get("customer_details") or {}
+    email = metadata.get("customer_email") or customer_details.get("email")
+    phone = customer_details.get("phone")
 
     if not email:
         print("[Meta CAPI] No email available for event - skipping")
@@ -36,6 +35,12 @@ async def send_purchase_to_meta(session: dict):
         "client_ip_address": metadata.get("client_ip"),
         "client_user_agent": metadata.get("user_agent"),
     }
+
+    # Hashed phone for advanced matching (improves Event Match Quality)
+    if phone:
+        phone_normalized = ''.join(filter(str.isdigit, phone))
+        if phone_normalized:
+            user_data["ph"] = [_sha256(phone_normalized)]
 
     if metadata.get("fbp"):
         user_data["fbp"] = metadata["fbp"]

@@ -74,7 +74,16 @@ async def stripe_webhook(
         day_master = metadata.get('dayMaster', '')
 
         logger.info(f"💰 Successful Payment Received! Customer: {email}, Package ID: {package_id}")
-        
+
+        # Wind Chimes is a physical product — log shipping for manual fulfillment
+        if package_id == "aibaziotowc":
+            shipping_details = session.get("shipping_details") or session.get("shipping")
+            if shipping_details:
+                logger.info(f"[Wind Chimes Order] Customer email: {email}")
+                logger.info(f"[Wind Chimes Order] Shipping details: {shipping_details}")
+            else:
+                logger.warning(f"[Wind Chimes Order] No shipping details on session for {email}")
+
         if package_id:
             # 3. Offload external API calls to background tasks so Stripe gets a quick 200 OK
             background_tasks.add_task(
