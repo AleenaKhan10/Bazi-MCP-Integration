@@ -10,13 +10,14 @@ stripe.api_key = settings.STRIPE_API_KEY
 
 router = APIRouter()
 
-# package codes -> Product IDs and Prices
-# Stripe uses `prod_` IDs instead of `price_` IDs, so we use price_data for inline pricing.
+# package codes -> Stripe Price IDs + checkout mode
+# VIP is a monthly recurring subscription (mode="subscription"); the others are one-time (mode="payment").
+# Price IDs map directly to the Prices configured in the Stripe Dashboard.
 PACKAGE_MAP = {
-    "aibazifeonly": {"product": "prod_UL9O2D7XON9dL0", "amount": 1888},      # $18.88
-    "aibazivip": {"product": "prod_UL9PRfWTtU4qYg", "amount": 2888},         # $28.88
-    "aibaziotowc": {"product": "prod_UL9RRhkjQyZy5J", "amount": 4900},       # $49.00
-    "aibaziprivate": {"product": "prod_UL9Q8Yn1ALXh9W", "amount": 19700},    # $197.00
+    "aibazifeonly":  {"price": "price_1TTYrcECidVHefax9OxMCCTD", "mode": "payment"},       # $18.88 one-time
+    "aibazivip":     {"price": "price_1TTYrZECidVHefaxYGnLjVMV", "mode": "subscription"},  # $28.88 / month
+    "aibaziotowc":   {"price": "price_1TTYrTECidVHefaxkviRBru1", "mode": "payment"},       # $49.00 one-time
+    "aibaziprivate": {"price": "price_1TTYrXECidVHefaxyVVBWxFY", "mode": "payment"},       # $197.00 one-time
 }
 
 # Success URL routing - where each package redirects after payment
@@ -78,31 +79,31 @@ async def create_session(req: CreateSessionRequest, request: Request):
     else:
         client_ip = ""
 
+    metadata = {
+        "package_id": req.package_code,
+        "fbp": req.fbp or "",
+        "fbc": req.fbc or "",
+        "event_id": req.event_id,
+        "user_agent": req.user_agent[:500] if req.user_agent else "",
+        "client_ip": client_ip,
+        "customer_email": req.email,
+    }
+
     session_params = {
-        "mode": "payment",
+        "mode": package_info["mode"],
         "payment_method_types": ["card"],
-        "line_items": [{
-            "price_data": {
-                "currency": "usd",
-                "product": package_info["product"],
-                "unit_amount": package_info["amount"],
-            },
-            "quantity": 1
-        }],
+        "line_items": [{"price": package_info["price"], "quantity": 1}],
         "customer_email": req.email,
         "success_url": SUCCESS_URLS[req.package_code],
         "cancel_url": CANCEL_URLS[req.package_code],
         "phone_number_collection": {"enabled": True},
-        "metadata": {
-            "package_id": req.package_code,
-            "fbp": req.fbp or "",
-            "fbc": req.fbc or "",
-            "event_id": req.event_id,
-            "user_agent": req.user_agent[:500] if req.user_agent else "",
-            "client_ip": client_ip,
-            "customer_email": req.email,
-        }
+        "metadata": metadata,
     }
+
+    # Mirror metadata onto the subscription object so it's available on
+    # invoice.paid webhooks for recurring charges, not just the initial session.
+    if package_info["mode"] == "subscription":
+        session_params["subscription_data"] = {"metadata": metadata}
 
     # Wind Chimes is a physical product — collect shipping and charge $8 flat worldwide
     if req.package_code in PACKAGES_WITH_SHIPPING:

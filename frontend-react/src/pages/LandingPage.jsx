@@ -221,7 +221,7 @@ export default function LandingPage() {
         <div className="landing-content">
 
 
-          {/* Bold Headline */}
+         {/* Bold Headline */}
           <h1
             className="font-mystical text-gold-gradient animate-fade-in-up"
             style={{
@@ -231,13 +231,13 @@ export default function LandingPage() {
               marginBottom: '16px',
             }}
           >
-            Unlock Your "Life Energy" Signature And It's Invisible Imprint On The World
+            Unlock Your "Life Energy" Signature And Its Invisible Imprint On The World
           </h1>
 
           {/* Subtitle — bigger font, bold+italic key words */}
           <p className="landing-subtitle animate-fade-in-up-delay-1" style={{ fontSize: 'clamp(16px, 2.5vw, 22px)' }}>
             And discover simple <strong>"Energy Adjustments"</strong> that can <strong><em>Shift</em></strong> you
-            to a <strong><em>Lifeline</em></strong> of prosperity & abundance in just 5 minutes a day
+            to a <strong><em>Lifeline</em></strong> of prosperity &amp; abundance in just 5 minutes a day
           </p>
 
           {/* Ornamental divider */}
